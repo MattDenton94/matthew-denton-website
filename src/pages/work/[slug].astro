@@ -1,0 +1,125 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import CtaBand from "@/components/CtaBand.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const work = await getCollection("work");
+  return work.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"work">;
+}
+
+const { entry } = Astro.props;
+const { title, client, summary, year, services, liveUrl, coverImage, coverImageAlt, isPlaceholder } = entry.data;
+const { Content } = await entry.render();
+---
+
+<BaseLayout title={title} description={summary}>
+  <section class="border-b border-surface-border">
+    <div class="container-page py-14 sm:py-20">
+      <a href="/work" class="btn-ghost mb-8 inline-flex text-sm">&larr; All work</a>
+
+      <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-16">
+        <div>
+          <p class="eyebrow">{client} &middot; {year}</p>
+          <h1 class="mt-3 font-display text-4xl font-semibold sm:text-5xl lg:text-6xl">{title}</h1>
+          <p class="mt-6 max-w-xl text-lg text-paper/75">{summary}</p>
+        </div>
+
+        <div class="flex flex-col gap-6 lg:items-end lg:text-right">
+          <ul class="flex flex-wrap gap-2 lg:justify-end">
+            {services.map((s) => (
+              <li class="rounded-full border border-surface-border px-3 py-1 font-mono text-[0.65rem] uppercase tracking-widish text-muted">
+                {s}
+              </li>
+            ))}
+          </ul>
+          {liveUrl && (
+            <a href={liveUrl} target="_blank" rel="noopener noreferrer" class="btn-outline">
+              {isPlaceholder ? "Visit live site" : "View repository"} &nearr;
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-surface-border bg-ink-alt">
+    <div class="container-page py-10 sm:py-14">
+      <div class="overflow-hidden rounded-2xl border border-surface-border">
+        <img src={coverImage} alt={coverImageAlt} class="w-full object-cover object-top" />
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-surface-border">
+    <div class="container-page py-16 sm:py-24">
+      <div class="prose-case mx-auto max-w-prose">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  {entry.slug === "tnt-fitness" && (
+    <section class="border-b border-surface-border bg-ink-alt">
+      <div class="container-page py-16 sm:py-24">
+        <p class="eyebrow">More of the build</p>
+        <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">Desktop &amp; mobile</h2>
+        <div class="mt-10 grid gap-8 lg:grid-cols-[1.6fr_1fr] lg:items-start">
+          <div class="overflow-hidden rounded-2xl border border-surface-border">
+            <img
+              src="/images/work/tnt-fitness-full.png"
+              alt="Full scrolling view of the TNT Fitness homepage, desktop layout."
+              loading="lazy"
+              class="w-full object-cover object-top"
+            />
+          </div>
+          <div class="overflow-hidden rounded-2xl border border-surface-border">
+            <img
+              src="/images/work/tnt-fitness-mobile.png"
+              alt="The TNT Fitness homepage on a mobile viewport."
+              loading="lazy"
+              class="w-full object-cover object-top"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <CtaBand />
+</BaseLayout>
+
+<style is:global>
+  .prose-case h2 {
+    @apply mt-12 font-display text-2xl font-semibold sm:text-3xl;
+  }
+  .prose-case h2:first-child {
+    @apply mt-0;
+  }
+  .prose-case p {
+    @apply mt-4 text-base leading-relaxed text-paper/80 sm:text-lg;
+  }
+  .prose-case ul {
+    @apply mt-4 space-y-3;
+  }
+  .prose-case li {
+    @apply relative pl-5 text-base leading-relaxed text-paper/80 sm:text-lg;
+  }
+  .prose-case li::before {
+    content: "";
+    @apply absolute left-0 top-[0.65em] h-1.5 w-1.5 rounded-full bg-accent;
+  }
+  .prose-case strong {
+    @apply text-paper;
+  }
+  .prose-case code {
+    @apply whitespace-nowrap rounded bg-surface-raised px-1.5 py-0.5 font-mono text-[0.82em] text-accent;
+  }
+</style>

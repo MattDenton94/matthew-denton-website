@@ -1,0 +1,128 @@
+---
+import Logo from "./Logo.astro";
+import { NAV_LINKS, SITE, waLink } from "@/lib/site";
+
+const path = Astro.url.pathname;
+function isActive(href: string) {
+  if (href === "/") return path === "/";
+  return path === href || path.startsWith(href + "/");
+}
+---
+
+<header class="sticky top-0 z-50 border-b border-surface-border/80 bg-ink/85 backdrop-blur">
+  <div class="container-page flex h-[76px] items-center justify-between gap-4">
+    <a href="/" class="group flex items-center gap-3 text-paper" aria-label={`${SITE.name} — home`}>
+      <Logo class="h-8 w-8 text-paper transition-colors group-hover:text-accent" />
+      <span class="hidden font-display text-lg font-semibold tracking-wide sm:inline">
+        {SITE.name}
+      </span>
+    </a>
+
+    <nav aria-label="Primary" class="hidden md:block">
+      <ul class="flex items-center gap-8 font-mono text-xs uppercase tracking-label">
+        {NAV_LINKS.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class:list={[
+                "relative py-2 transition-colors hover:text-accent",
+                isActive(link.href) ? "text-accent" : "text-paper/80",
+              ]}
+              aria-current={isActive(link.href) ? "page" : undefined}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href={waLink("Hi Matthew, I'd like to talk about a website.")} class="btn-primary hidden sm:inline-flex">
+        Start a project
+      </a>
+      <button
+        id="menu-toggle"
+        type="button"
+        class="flex h-11 w-11 items-center justify-center rounded-full border border-surface-border text-paper md:hidden"
+        aria-controls="mobile-nav"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Toggle menu</span>
+        <span class="menu-bars relative block h-3 w-4">
+          <span class="absolute inset-x-0 top-0 h-[1.5px] bg-current transition-transform"></span>
+          <span class="absolute inset-x-0 top-1/2 h-[1.5px] -translate-y-1/2 bg-current transition-opacity"></span>
+          <span class="absolute inset-x-0 bottom-0 h-[1.5px] bg-current transition-transform"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!--
+  Deliberately rendered as a sibling of <header>, not nested inside it.
+  <header> has backdrop-blur, and backdrop-filter on an ancestor creates a new
+  containing block for position:fixed descendants — nesting this panel inside
+  it collapses its fixed top/bottom sizing to the header's own (tiny) box.
+-->
+<div
+  id="mobile-nav"
+  class="fixed inset-x-0 top-[76px] bottom-0 z-40 hidden flex-col overflow-y-auto bg-ink md:hidden"
+>
+  <nav aria-label="Mobile" class="container-page flex flex-1 flex-col py-6">
+    <ul class="flex flex-col">
+      {NAV_LINKS.map((link) => (
+        <li class="border-b border-surface-border">
+          <a
+            href={link.href}
+            class="block py-5 font-display text-3xl font-semibold text-paper transition-colors hover:text-accent"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <a
+      href={waLink("Hi Matthew, I'd like to talk about a website.")}
+      class="btn-primary mt-8 w-full"
+    >
+      Start a project
+    </a>
+  </nav>
+</div>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const nav = document.getElementById("mobile-nav");
+
+  if (toggle && nav) {
+    const bars = toggle.querySelectorAll(".menu-bars > span");
+
+    function setOpen(open: boolean) {
+      toggle!.setAttribute("aria-expanded", String(open));
+      nav!.classList.toggle("hidden", !open);
+      nav!.classList.toggle("flex", open);
+      document.body.classList.toggle("overflow-hidden", open);
+      bars[0]?.classList.toggle("translate-y-[5px]", open);
+      bars[0]?.classList.toggle("rotate-45", open);
+      bars[1]?.classList.toggle("opacity-0", open);
+      bars[2]?.classList.toggle("-translate-y-[5px]", open);
+      bars[2]?.classList.toggle("-rotate-45", open);
+    }
+
+    toggle.addEventListener("click", () => {
+      const isOpen = toggle.getAttribute("aria-expanded") === "true";
+      setOpen(!isOpen);
+    });
+
+    nav.addEventListener("click", (e) => {
+      if ((e.target as HTMLElement).tagName === "A") setOpen(false);
+    });
+
+    document.addEventListener("astro:before-swap", () => setOpen(false));
+
+    window.matchMedia("(min-width: 768px)").addEventListener("change", (e) => {
+      if (e.matches) setOpen(false);
+    });
+  }
+</script>

@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  entry: CollectionEntry<"work">;
+  priority?: boolean;
+}
+
+const { entry, priority = false } = Astro.props;
+const { title, client, summary, year, services, coverImage, coverImageAlt, isPlaceholder } = entry.data;
+---
+
+<a
+  href={`/work/${entry.slug}`}
+  class="group block overflow-hidden rounded-2xl border border-surface-border bg-surface transition-colors hover:border-accent/60"
+>
+  <div class="relative aspect-[3/2] overflow-hidden border-b border-surface-border bg-ink-alt">
+    <img
+      src={coverImage}
+      alt={coverImageAlt}
+      loading={priority ? "eager" : "lazy"}
+      class="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+    />
+    {isPlaceholder && (
+      <span class="absolute right-3 top-3 rounded-full border border-surface-border bg-ink/80 px-3 py-1 font-mono text-[0.65rem] uppercase tracking-label text-muted backdrop-blur">
+        In progress
+      </span>
+    )}
+  </div>
+  <div class="flex flex-col gap-3 p-6 sm:p-7">
+    <div class="flex items-center justify-between gap-3">
+      <p class="eyebrow">{client} &middot; {year}</p>
+    </div>
+    <h3 class="font-display text-2xl font-semibold text-paper transition-colors group-hover:text-accent sm:text-[1.75rem]">
+      {title}
+    </h3>
+    <p class="text-sm leading-relaxed text-paper/75">{summary}</p>
+    <ul class="mt-1 flex flex-wrap gap-2">
+      {services.map((s) => (
+        <li class="rounded-full border border-surface-border px-3 py-1 font-mono text-[0.65rem] uppercase tracking-widish text-muted">
+          {s}
+        </li>
+      ))}
+    </ul>
+  </div>
+</a>

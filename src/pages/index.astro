@@ -1,0 +1,134 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import WorkCard from "@/components/WorkCard.astro";
+import CtaBand from "@/components/CtaBand.astro";
+import { getCollection } from "astro:content";
+import { SITE, waLink } from "@/lib/site";
+
+const work = (await getCollection("work")).sort((a, b) => a.data.order - b.data.order);
+const featured = work.find((w) => w.data.featured) ?? work[0];
+
+const capabilities = [
+  { n: "01", label: "Design", copy: "A layout, type system and colour palette built around your business — never a template with your logo dropped in." },
+  { n: "02", label: "Build", copy: "Clean, fast, accessible code. No bloated page-builder plugins slowing down every visit." },
+  { n: "03", label: "Copy that converts", copy: "Every page written to move someone from reading to messaging, calling or booking." },
+  { n: "04", label: "Speed & SEO", copy: "Sites that load instantly and are structured so search engines actually understand them." },
+];
+
+const process = [
+  { n: "01", title: "Discover", copy: "A short call about your business, your customers, and what a website actually needs to do for you." },
+  { n: "02", title: "Design", copy: "A real design direction — typography, colour, layout — for you to react to before a line of code is written." },
+  { n: "03", title: "Build", copy: "A fast, responsive, accessible site, built and tested across real devices, not just a browser window." },
+  { n: "04", title: "Launch & hand over", copy: "Deployed, connected to your domain, and handed over with everything documented in plain English." },
+];
+---
+
+<BaseLayout
+  title="Matthew Denton"
+  description={SITE.tagline}
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden border-b border-surface-border">
+    <div class="container-page pb-20 pt-16 sm:pb-28 sm:pt-24">
+      <p class="eyebrow animate-fade-up">{SITE.role}</p>
+      <h1 class="mt-5 max-w-3xl font-display text-[2.75rem] font-semibold leading-[1.04] sm:text-6xl lg:text-7xl animate-fade-up" style="animation-delay: 60ms;">
+        Websites that get your phone to <span class="text-accent">actually ring.</span>
+      </h1>
+      <p class="mt-7 max-w-xl text-lg text-paper/75 sm:text-xl animate-fade-up" style="animation-delay: 120ms;">
+        I design and build fast, honest websites for small businesses — the kind that turn a visitor into a WhatsApp message, a booking, or a call, not just a page view.
+      </p>
+      <div class="mt-9 flex flex-col gap-4 sm:flex-row animate-fade-up" style="animation-delay: 180ms;">
+        <a href={waLink("Hi Matthew, I'd like to talk about a website.")} class="btn-primary">
+          Start a project
+        </a>
+        <a href="/work" class="btn-outline">
+          See the work
+        </a>
+      </div>
+      <p class="mt-8 font-mono text-xs uppercase tracking-widish text-muted animate-fade-up" style="animation-delay: 240ms;">
+        {SITE.location} &middot; Working with clients remotely &middot; Replies within a day
+      </p>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="border-b border-surface-border bg-ink-alt">
+    <div class="container-page py-16 sm:py-20">
+      <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        {capabilities.map((c) => (
+          <div class="border-t border-surface-border pt-6">
+            <p class="font-mono text-xs text-accent">{c.n}</p>
+            <h3 class="mt-3 font-display text-xl font-semibold">{c.label}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-paper/70">{c.copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED WORK -->
+  <section class="border-b border-surface-border">
+    <div class="container-page py-20 sm:py-28">
+      <div class="flex items-end justify-between gap-6">
+        <div>
+          <p class="eyebrow">Selected work</p>
+          <h2 class="mt-3 text-4xl font-semibold sm:text-5xl">Real sites, for real businesses.</h2>
+        </div>
+        <a href="/work" class="btn-ghost hidden sm:inline-flex">View all work</a>
+      </div>
+
+      {featured && (
+        <div class="mt-12 max-w-2xl">
+          <WorkCard entry={featured} priority />
+        </div>
+      )}
+
+      <a href="/work" class="btn-outline mt-10 inline-flex sm:hidden">View all work</a>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="border-b border-surface-border bg-ink-alt">
+    <div class="container-page py-20 sm:py-28">
+      <p class="eyebrow">How it works</p>
+      <h2 class="mt-3 max-w-lg text-4xl font-semibold sm:text-5xl">Four stages. No surprises.</h2>
+
+      <div class="mt-14 grid gap-x-8 gap-y-12 sm:grid-cols-2">
+        {process.map((step, i) => (
+          <div class:list={["flex gap-5", i < 2 && "sm:pb-4"]}>
+            <span class="font-display text-3xl font-semibold text-accent">{step.n}</span>
+            <div>
+              <h3 class="font-display text-xl font-semibold">{step.title}</h3>
+              <p class="mt-2 max-w-sm text-sm leading-relaxed text-paper/70">{step.copy}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY / ABOUT TEASER -->
+  <section class="border-b border-surface-border">
+    <div class="container-page py-20 sm:py-28">
+      <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+        <div>
+          <p class="eyebrow">Why work with me</p>
+          <h2 class="mt-3 text-4xl font-semibold sm:text-5xl">No templates. No jargon. No bloat.</h2>
+        </div>
+        <div class="space-y-6 text-base leading-relaxed text-paper/75 sm:text-lg">
+          <p>
+            Most small business websites fail for the same reason: they were built to look fine in a screenshot, not to work for the person standing in front of a phone trying to decide whether to message you.
+          </p>
+          <p>
+            I build the way I'd want a site built for my own business — accessible by default, fast on a bad connection, honest about what's finished and what isn't, and always pointed at the one thing that actually matters: getting someone to reach out.
+          </p>
+          <a href="/about" class="link-underline font-semibold text-paper">
+            More about how I work &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

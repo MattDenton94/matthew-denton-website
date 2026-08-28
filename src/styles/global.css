@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-surface-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-ink text-paper font-sans antialiased;
+    font-feature-settings: "ss01" 1, "cv05" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-accent text-ink;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display font-semibold text-paper;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme("colors.accent.DEFAULT");
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::-moz-selection {
+    @apply bg-accent text-ink;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-content px-6 sm:px-8 lg:px-10;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[0.72rem] uppercase tracking-label text-accent;
+  }
+
+  .skip-link {
+    @apply fixed left-4 top-4 z-[999] -translate-y-24 rounded bg-accent px-4 py-2 text-sm font-semibold text-ink transition-transform focus-visible:translate-y-0;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-widish transition-all duration-200 ease-out;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-ink hover:bg-accent-light active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply btn border border-surface-border text-paper hover:border-accent hover:text-accent active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply btn px-0 text-paper underline decoration-surface-border decoration-2 underline-offset-8 hover:decoration-accent hover:text-accent;
+  }
+
+  .link-underline {
+    @apply underline decoration-accent/40 decoration-2 underline-offset-4 transition-colors hover:decoration-accent;
+  }
+
+  .card {
+    @apply rounded-2xl border border-surface-border bg-surface;
+  }
+
+  .grain-overlay {
+    @apply pointer-events-none fixed inset-0 z-[1] bg-grain opacity-[0.05] mix-blend-soft-light;
+  }
+}

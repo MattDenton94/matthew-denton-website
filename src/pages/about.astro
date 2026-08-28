@@ -1,0 +1,83 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import CtaBand from "@/components/CtaBand.astro";
+import { SITE } from "@/lib/site";
+
+const principles = [
+  {
+    title: "Built to convert, not just impress",
+    copy: "A beautiful site that doesn't turn visitors into enquiries is a portfolio piece, not a business tool. Every layout decision starts from what you actually need people to do.",
+  },
+  {
+    title: "Fast, on a real connection",
+    copy: "Not everyone browsing your site is on fibre at a desk. Pages are built lean — minimal JavaScript, properly sized images — so they load quickly on an average mobile connection.",
+  },
+  {
+    title: "Accessible by default",
+    copy: "Readable contrast, real focus states, semantic markup, and layouts that hold up with a screen reader or a keyboard. Not an afterthought bolted on before launch.",
+  },
+  {
+    title: "Honest about what's finished",
+    copy: "If content or photography isn't ready, the site says so clearly rather than shipping with fake stock photos pretending to be your business.",
+  },
+];
+---
+
+<BaseLayout
+  title="About"
+  description="A little about how Matthew Denton works and what shapes every project."
+>
+  <section class="border-b border-surface-border">
+    <div class="container-page grid gap-12 py-16 sm:py-24 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-16">
+      <div class="mx-auto w-full max-w-xs overflow-hidden rounded-2xl border border-surface-border lg:mx-0 lg:max-w-sm">
+        <img
+          src="/images/portrait-placeholder.svg"
+          alt="Placeholder — a real portrait of Matthew Denton will go here."
+          class="aspect-[4/5] w-full object-cover"
+        />
+      </div>
+      <div>
+        <p class="eyebrow">About</p>
+        <h1 class="mt-3 font-display text-4xl font-semibold sm:text-5xl lg:text-6xl">
+          I build the sites I'd want built for my own business.
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-paper/75">
+          I'm {SITE.name}, a freelance web designer and developer based in {SITE.location}. I work with small and independent businesses — gyms, trades, local services — who need a site that pulls its weight, not an agency retainer or a subscription page-builder they'll never fully understand.
+        </p>
+        <p class="mt-4 max-w-xl text-lg leading-relaxed text-paper/75">
+          Every project is designed and hand-built from scratch: real typography and layout decisions made for your business, code that loads fast and holds up, and copy written to move someone from curious to contacting you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-surface-border bg-ink-alt">
+    <div class="container-page py-16 sm:py-24">
+      <p class="eyebrow">How I work</p>
+      <h2 class="mt-3 max-w-lg text-4xl font-semibold sm:text-5xl">The principles behind every build.</h2>
+
+      <div class="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2">
+        {principles.map((p) => (
+          <div class="border-t border-surface-border pt-6">
+            <h3 class="font-display text-xl font-semibold">{p.title}</h3>
+            <p class="mt-3 max-w-md text-sm leading-relaxed text-paper/70">{p.copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-surface-border">
+    <div class="container-page py-16 sm:py-24">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow justify-center">What I actually do</p>
+        <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">Design, build, and stay reachable after launch.</h2>
+        <p class="mt-6 text-base leading-relaxed text-paper/75 sm:text-lg">
+          Design and front-end development for small business websites — one-page sites, multi-page brochure sites, and booking-focused landing pages. If a project needs something beyond that (a store, a booking system, a custom back end), I'll say so upfront rather than force-fitting it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

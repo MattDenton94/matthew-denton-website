@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-labelledby="title desc">
+  <title id="title">Nafts case study cover placeholder</title>
+  <desc id="desc">A placeholder cover graphic standing in for a screenshot of the live Nafts website.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1E1E22"/>
+      <stop offset="100%" stop-color="#131315"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#2A2A2E" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+  <g opacity="0.9">
+    <line x1="0" y1="0" x2="1200" y2="800" stroke="#2A2A2E" stroke-width="1"/>
+    <line x1="1200" y1="0" x2="0" y2="800" stroke="#2A2A2E" stroke-width="1"/>
+  </g>
+  <circle cx="600" cy="400" r="3" fill="#E3A23D"/>
+  <g font-family="IBM Plex Mono, ui-monospace, monospace" text-anchor="middle" fill="#96908A">
+    <text x="600" y="360" font-size="15" letter-spacing="4">NAFTS</text>
+    <text x="600" y="440" font-size="13" letter-spacing="2" fill="#E3A23D">CASE STUDY IN PROGRESS</text>
+  </g>
+</svg>

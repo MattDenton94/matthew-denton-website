@@ -1,0 +1,31 @@
+---
+import { waLink } from "@/lib/site";
+
+interface Props {
+  heading?: string;
+  body?: string;
+}
+
+const {
+  heading = "Got a business that deserves a better website?",
+  body = "Tell me what you do, who you're trying to reach, and what's not working right now. I'll reply within a day.",
+} = Astro.props;
+---
+
+<section class="border-t border-surface-border bg-ink-alt">
+  <div class="container-page py-20 sm:py-28">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="eyebrow justify-center">Next step</p>
+      <h2 class="mt-3 text-4xl font-semibold sm:text-5xl">{heading}</h2>
+      <p class="mx-auto mt-5 max-w-prose text-base text-paper/75 sm:text-lg">{body}</p>
+      <div class="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href={waLink("Hi Matthew, I'd like to talk about a website.")} class="btn-primary">
+          Message on WhatsApp
+        </a>
+        <a href="/contact" class="btn-outline">
+          Or use the contact form
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
