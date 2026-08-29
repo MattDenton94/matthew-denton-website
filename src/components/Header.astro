@@ -1,6 +1,6 @@
 ---
 import Logo from "./Logo.astro";
-import { NAV_LINKS, SITE, waLink } from "@/lib/site";
+import { NAV_LINKS, SITE } from "@/lib/site";
 
 const path = Astro.url.pathname;
 function isActive(href: string) {
@@ -38,7 +38,7 @@ function isActive(href: string) {
     </nav>
 
     <div class="flex items-center gap-3">
-      <a href={waLink("Hi Matthew, I'd like to talk about a website.")} class="btn-primary hidden sm:inline-flex">
+      <a href="/contact" class="btn-primary hidden sm:inline-flex">
         Start a project
       </a>
       <button
@@ -82,10 +82,7 @@ function isActive(href: string) {
         </li>
       ))}
     </ul>
-    <a
-      href={waLink("Hi Matthew, I'd like to talk about a website.")}
-      class="btn-primary mt-8 w-full"
-    >
+    <a href="/contact" class="btn-primary mt-8 w-full">
       Start a project
     </a>
   </nav>

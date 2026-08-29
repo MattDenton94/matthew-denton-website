@@ -1,0 +1,76 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  entry: CollectionEntry<"work">;
+  variant: "bleed" | "framed";
+  index: number;
+}
+
+const { entry, variant, index } = Astro.props;
+const { title, client, summary, year, liveUrl, coverImage, coverImageAlt, isPlaceholder } = entry.data;
+const num = String(index).padStart(2, "0");
+const liveUrlLabel = liveUrl?.includes("github.com") ? "Repository" : "Live site";
+---
+
+{variant === "bleed" ? (
+  <div>
+    <a href={`/work/${entry.slug}`} class="group block overflow-hidden rounded-xl">
+      <div class="relative aspect-[16/10] w-full overflow-hidden bg-ink-alt sm:aspect-[16/9]">
+        <img
+          src={coverImage}
+          alt={coverImageAlt}
+          loading="eager"
+          class="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+        />
+        {isPlaceholder && (
+          <span class="absolute right-4 top-4 rounded-full border border-surface-border/60 bg-ink/70 px-3 py-1 font-mono text-[0.65rem] uppercase tracking-label text-paper/70 backdrop-blur">
+            Imagery landing soon
+          </span>
+        )}
+      </div>
+    </a>
+    <div class="mt-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p class="eyebrow">{num} &middot; {client} &middot; {year}</p>
+        <a href={`/work/${entry.slug}`} class="mt-2 block font-display text-3xl font-semibold text-paper transition-colors hover:text-accent sm:text-4xl">
+          {title}
+        </a>
+      </div>
+      <div class="max-w-md sm:text-right">
+        <p class="text-base text-paper/75">{summary}</p>
+        <div class="mt-3 flex gap-5 sm:justify-end">
+          <a href={`/work/${entry.slug}`} class="link-underline text-sm font-semibold text-paper">Case study</a>
+          {liveUrl && <a href={liveUrl} target="_blank" rel="noopener noreferrer" class="link-underline text-sm font-semibold text-paper">{liveUrlLabel} &nearr;</a>}
+        </div>
+      </div>
+    </div>
+  </div>
+) : (
+  <div class="grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-center lg:gap-14">
+    <a
+      href={`/work/${entry.slug}`}
+      class="group block overflow-hidden rounded-2xl border border-surface-border bg-surface shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)]"
+    >
+      <div class="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[16/10]">
+        <img
+          src={coverImage}
+          alt={coverImageAlt}
+          loading="eager"
+          class="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+        />
+      </div>
+    </a>
+    <div>
+      <p class="eyebrow">{num} &middot; {client} &middot; {year}</p>
+      <a href={`/work/${entry.slug}`} class="mt-2 block font-display text-3xl font-semibold text-paper transition-colors hover:text-accent sm:text-4xl">
+        {title}
+      </a>
+      <p class="mt-3 text-base text-paper/75">{summary}</p>
+      <div class="mt-5 flex gap-5">
+        <a href={`/work/${entry.slug}`} class="link-underline text-sm font-semibold text-paper">Case study</a>
+        {liveUrl && <a href={liveUrl} target="_blank" rel="noopener noreferrer" class="link-underline text-sm font-semibold text-paper">{liveUrlLabel} &nearr;</a>}
+      </div>
+    </div>
+  </div>
+)}

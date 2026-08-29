@@ -12,19 +12,19 @@ const work = (await getCollection("work")).sort((a, b) => a.data.order - b.data.
   description="Case studies from real client projects — what was built, why, and how it holds up."
 >
   <section class="border-b border-surface-border">
-    <div class="container-page py-16 sm:py-24">
+    <div class="container-page py-12 sm:py-16">
       <p class="eyebrow">Work</p>
       <h1 class="mt-3 max-w-2xl text-4xl font-semibold sm:text-5xl lg:text-6xl">
         A small, honest portfolio.
       </h1>
-      <p class="mt-6 max-w-xl text-lg text-paper/75">
+      <p class="mt-5 max-w-xl text-lg text-paper/75">
         I'd rather show two real projects properly than pad this page with concepts. This list grows as client work ships.
       </p>
     </div>
   </section>
 
   <section class="border-b border-surface-border bg-ink-alt">
-    <div class="container-page py-16 sm:py-20">
+    <div class="container-page py-12 sm:py-16">
       <div class="grid gap-8 sm:grid-cols-2">
         {work.map((entry, i) => <WorkCard entry={entry} priority={i === 0} />)}
       </div>

@@ -1,41 +1,36 @@
 ---
 title: "TNT Fitness"
 client: "TNT Fitness — Bothasig, Cape Town"
-summary: "A concept rebuild for a boxing and self-defence gym: a single-page site built to get first-time visitors onto a WhatsApp booking thread in one tap."
+summary: "A boxing and self-defence gym that needed a site as direct and no-nonsense as the coaching — built to turn a first-time visitor into a booked session in one tap."
 year: "2025"
-services: ["Design", "Front-end build", "Accessibility", "Local SEO"]
+services: ["Design", "Frontend build"]
 liveUrl: "https://github.com/MattDenton94/TNT_Fitness"
-coverImage: "/images/work/tnt-fitness-cover.png"
-coverImageAlt: "The TNT Fitness homepage, showing the hero section with the tagline and a WhatsApp booking button."
+coverImage: "/images/work/tnt-fitness-services.png"
+coverImageAlt: "The Classes & Services section of the TNT Fitness site — eight cards covering boxing fitness, strength & conditioning, self-defence classes and more, each with a custom icon."
+coverImageDark: true
+gallery:
+  - src: "/images/work/tnt-fitness-pricing.png"
+    alt: "The pricing section — drop-in, weekly and unlimited membership tiers, plus a self-defence-only option, with a highlighted best-value card."
+  - src: "/images/work/tnt-fitness-schedule.png"
+    alt: "The weekly training schedule, styled as a red-and-black training board."
+  - src: "/images/work/tnt-fitness-mobile.png"
+    alt: "The TNT Fitness homepage on a mobile viewport."
 accent: "ember"
-featured: true
+featured: false
 isPlaceholder: false
-order: 1
+order: 2
 ---
 
-## The brief
+## What the gym needed
 
-TNT Fitness is a boxing, strength and self-defence gym in Bothasig, Cape Town, run by coaches who wanted a site that reads like the gym feels — direct, disciplined, a little relentless — and that turns a browsing stranger into a booked first session without making them think about it.
+TNT Fitness runs boxing, strength and self-defence classes out of Bothasig, Cape Town, and wanted one thing above all: a site a coach could text a link to and trust it would get someone booked, on a phone, standing in a gym car park. No CMS to maintain, no monthly hosting bill, nothing a non-technical owner would ever need to touch.
 
-No CMS, no monthly hosting bill, no build pipeline for a client who will never touch the code. Just a fast, honest, single page that a coach can hand off a link to and trust it'll do its job on a phone screen in a gym car park.
+## What I designed and built
 
-## What I built
+A single-page site with a hard black-and-red palette and condensed, shouting type — it's meant to feel like a gym noticeboard, not a spa brochure. Every section — services, pricing, the weekly schedule — routes straight into a pre-filled WhatsApp message, because that's where this gym's members actually reply; a contact form would have been a dead end.
 
-A single-page, mobile-first static site — plain HTML, CSS and a sliver of vanilla JavaScript for the mobile nav. No framework, no dependencies, no build step. It deploys as-is to GitHub Pages and will still run in ten years without anyone updating a package.
+Pricing is grouped by what someone's actually deciding between — drop-in, a few days a week, unlimited, or self-defence only — instead of one flat grid. The weekly schedule is built as a proper table that turns into a stacked, readable card list on a phone rather than forcing a horizontal scroll.
 
-Every call to action — hero, pricing card, schedule, footer — routes straight into a pre-filled WhatsApp message, because that's where this gym's members actually reply. A contact form would have been a dead end; a chat thread converts.
+## The build, underneath
 
-The layout runs on a small set of repeating patterns — an eyebrow label, a heading, a card — reused across services, pricing tiers, results and testimonials, so the page feels consistent without feeling templated. Pricing is grouped by what a visitor is actually deciding between (drop-in vs. membership vs. self-defence-only) rather than laid out as one flat grid.
-
-## Details that mattered
-
-- **Structured data** — a `SportsActivityLocation` schema block with opening hours and address, so the gym's hours and location can surface directly in search results.
-- **Accessibility** — skip link, visible focus states, `prefers-reduced-motion` support, and a schedule table that degrades to a readable stacked card layout instead of forcing a horizontal scroll on small screens.
-- **Performance** — no web fonts beyond two families, no JS framework, images sized and lazy-loaded correctly. The whole page ships light enough to load instantly on the kind of patchy data connection you actually have standing outside a gym.
-- **Honesty about state** — this build shipped with clearly labelled placeholder photography rather than stock images pretending to be the real gym, so the client always knows exactly what's real and what's still waiting on a camera.
-
-## Why it looks the way it does
-
-Dense black background, a hard red accent, condensed uppercase display type for anything shouting a decision at you (headings, buttons, the pricing board), and a calmer body font for anything you're meant to actually read. It's meant to feel like a gym noticeboard, not a spa brochure.
-
-The screenshot above is the real build, served from the repository linked below — not a mock-up.
+It's plain HTML, CSS and a sliver of vanilla JavaScript — no framework, no dependencies, no build step — so it deploys as-is and will still run in ten years without anyone updating a package. It also carries the fundamentals that don't show up in a screenshot: structured data so the gym's hours and location can surface directly in search results, visible focus states and `prefers-reduced-motion` support, and images sized so the page loads instantly on a patchy connection outside a gym.

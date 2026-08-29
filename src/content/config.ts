@@ -11,6 +11,10 @@ const work = defineCollection({
     liveUrl: z.string().url().optional(),
     coverImage: z.string(),
     coverImageAlt: z.string(),
+    coverImageDark: z.boolean().default(false),
+    gallery: z
+      .array(z.object({ src: z.string(), alt: z.string() }))
+      .default([]),
     accent: z.enum(["ember", "moss", "slate"]).default("ember"),
     featured: z.boolean().default(false),
     isPlaceholder: z.boolean().default(false),

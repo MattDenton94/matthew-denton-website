@@ -4,14 +4,14 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="border-t border-surface-border bg-ink-alt">
-  <div class="container-page py-16">
+  <div class="container-page py-14 sm:py-16">
     <div class="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
       <div>
         <p class="font-display text-2xl font-semibold text-paper">
-          Let's build something<br class="hidden sm:block" /> worth booking.
+          Let's build something worth being proud of.
         </p>
-        <a href={waLink("Hi Matthew, I'd like to talk about a website.")} class="btn-primary mt-6 inline-flex">
-          Message on WhatsApp
+        <a href="/contact" class="btn-primary mt-6 inline-flex">
+          Start a project
         </a>
       </div>
 
@@ -28,8 +28,8 @@ const year = new Date().getFullYear();
         <p class="eyebrow mb-4">Contact</p>
         <ul class="space-y-3 text-sm text-paper/80">
           <li><a href={`mailto:${SITE.email}`} class="hover:text-accent">{SITE.email}</a></li>
-          <li><a href={waLink("Hi Matthew, I'd like to talk about a website.")} class="hover:text-accent">{SITE.whatsappDisplay}</a></li>
-          <li class="text-muted">{SITE.location}</li>
+          <li><a href={waLink("Hi Matthew, I'd like to talk about a website.")} class="hover:text-accent">WhatsApp</a></li>
+          <li class="text-muted">{SITE.locationLine}</li>
         </ul>
       </div>
     </div>
