@@ -10,6 +10,7 @@ export const SITE = {
   locationLine: "Based in South Africa. Open to clients everywhere.",
   startingPrice: "R2,000",
   pricingLine: "Every project is quoted individually, starting from R2,000 — no fixed packages.",
+  shopifyStartingPrice: "R2,500",
   ctaLabel: "Get My Website",
   replyPromise: "I'll reply within a day.",
 
