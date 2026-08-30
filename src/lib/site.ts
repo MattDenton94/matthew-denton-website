@@ -5,10 +5,13 @@ export const SITE = {
   name: "Matthew Denton",
   brand: "Denton Web",
   role: "Freelance Web Designer & Developer",
-  tagline: "Websites that make small businesses look as good as they actually are.",
+  tagline: "Professional websites for South African small businesses, from R2,000.",
   location: "South Africa",
-  locationLine: "Based in South Africa. Working worldwide.",
-  pricingLine: "Every project is quoted individually — no packages, no starting-from price.",
+  locationLine: "Based in South Africa. Open to clients everywhere.",
+  startingPrice: "R2,000",
+  pricingLine: "Every project is quoted individually, starting from R2,000 — no fixed packages.",
+  ctaLabel: "Get My Website",
+  replyPromise: "I'll reply within a day.",
 
   // PLACEHOLDER — swap for the real production domain once registered.
   url: "https://www.matthewdenton.co.za",

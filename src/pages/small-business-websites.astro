@@ -1,0 +1,162 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { SITE, waLink } from "@/lib/site";
+
+const audiences = [
+  "Plumbers", "Electricians", "Builders", "Salons", "Barbers",
+  "Mechanics", "Restaurants", "Guesthouses", "Tradespeople",
+];
+
+const problems = [
+  "Looks outdated next to your competitors",
+  "Doesn't work properly on a phone",
+  "Makes it hard for someone to actually contact you",
+  "Doesn't explain clearly what you do",
+];
+
+const included = [
+  "Custom design & build",
+  "Mobile-optimised",
+  "WhatsApp integration",
+  "Contact form",
+  "Google Maps",
+  "Social links",
+  "Analytics setup",
+  "Domain connection",
+];
+
+const faqs = [
+  { q: "How much does a website cost?", a: `Every project starts from ${SITE.startingPrice} and is quoted individually based on what you actually need — there are no fixed packages.` },
+  { q: "How long does it take?", a: "It depends on the scope, but I'll give you a clear timeline before any work starts." },
+  { q: "Do I need to provide the content?", a: "Not necessarily — I can write the copy for you, or work with what you already have." },
+  { q: "Can I pay in instalments?", a: "Talk to me about what works for you — payment terms can usually be arranged." },
+];
+
+const waMessage = "Hi Matthew, I saw your website for small businesses and I'm interested.";
+---
+
+<BaseLayout
+  title="Websites for South African Small Businesses"
+  description="Professional websites for South African small businesses, from R2,000. Designed to turn visitors into calls, WhatsApp messages and customers."
+  hideWhatsAppFloat
+>
+  <!-- HERO -->
+  <section class="border-b border-surface-border">
+    <div class="container-page py-14 sm:py-20">
+      <p class="eyebrow">For South African small businesses</p>
+      <h1 class="mt-3 max-w-3xl font-display text-4xl font-semibold leading-[1.08] sm:text-6xl">
+        Professional websites for South African small businesses.
+      </h1>
+      <p class="mt-6 max-w-xl text-lg text-paper/75 sm:text-xl">
+        A proper website makes it easier for customers to trust you and find you. From {SITE.startingPrice}, quoted before you commit to anything.
+      </p>
+
+      <ul class="mt-6 flex flex-wrap gap-2">
+        {audiences.map((a) => (
+          <li class="rounded-full border border-surface-border px-3 py-1 font-mono text-[0.65rem] uppercase tracking-widish text-muted">
+            {a}
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+        <a href={waLink(waMessage)} target="_blank" rel="noopener noreferrer" class="btn-primary">
+          Chat on WhatsApp
+        </a>
+        <a href="/contact" class="btn-outline">
+          Or use the contact form
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="border-b border-surface-border bg-ink-alt">
+    <div class="container-page py-14 sm:py-20">
+      <p class="eyebrow">Sound familiar?</p>
+      <h2 class="mt-3 max-w-lg text-3xl font-semibold sm:text-4xl">Your website might be working against you if it:</h2>
+      <ul class="mt-6 space-y-3">
+        {problems.map((item) => (
+          <li class="flex items-start gap-3 text-lg text-paper/85">
+            <span class="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+      <p class="mt-5 text-lg font-semibold text-paper">That's what I fix.</p>
+    </div>
+  </section>
+
+  <!-- OFFER -->
+  <section class="border-b border-surface-border">
+    <div class="container-page py-14 sm:py-20">
+      <p class="eyebrow">What's included</p>
+      <h2 class="mt-3 max-w-lg text-3xl font-semibold sm:text-4xl">Everything your business actually needs.</h2>
+
+      <ul class="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+        {included.map((item) => (
+          <li class="flex items-start gap-3 text-lg text-paper/85">
+            <span class="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+        <p class="font-display text-2xl font-semibold text-paper">From {SITE.startingPrice}</p>
+        <a href={waLink(waMessage)} target="_blank" rel="noopener noreferrer" class="btn-primary">Chat on WhatsApp</a>
+      </div>
+      <p class="mt-2 text-sm text-muted">{SITE.pricingLine}</p>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section class="border-b border-surface-border bg-ink-alt">
+    <div class="container-page py-14 sm:py-20">
+      <p class="eyebrow">Real work</p>
+      <h2 class="mt-3 max-w-lg text-3xl font-semibold sm:text-4xl">See what I've built for other businesses.</h2>
+      <a href="/work" class="link-underline mt-5 inline-block text-lg font-semibold text-paper">
+        View the portfolio &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="border-b border-surface-border">
+    <div class="container-page py-14 sm:py-20">
+      <p class="eyebrow">Common questions</p>
+      <h2 class="mt-3 max-w-lg text-3xl font-semibold sm:text-4xl">Before you ask.</h2>
+
+      <div class="mt-8 divide-y divide-surface-border border-t border-surface-border sm:mt-10">
+        {faqs.map((item) => (
+          <details class="group py-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-semibold text-paper marker:content-none">
+              {item.q}
+              <span class="flex-shrink-0 text-2xl leading-none text-accent transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-3 max-w-2xl text-base leading-relaxed text-paper/75">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="border-b border-surface-border bg-ink-alt">
+    <div class="container-page py-14 sm:py-20">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow justify-center">Next step</p>
+        <h2 class="mt-3 text-3xl font-semibold sm:text-4xl lg:text-5xl">Your business deserves a better website.</h2>
+        <p class="mx-auto mt-4 max-w-prose text-base text-paper/75 sm:text-lg">
+          Professional websites from {SITE.startingPrice}. Message me on WhatsApp and tell me a bit about your business.
+        </p>
+        <div class="mt-8 flex flex-col items-center justify-center gap-4">
+          <a href={waLink(waMessage)} target="_blank" rel="noopener noreferrer" class="btn-primary">
+            Chat on WhatsApp
+          </a>
+          <a href="/contact" class="link-underline text-sm text-paper/80">Or use the contact form</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

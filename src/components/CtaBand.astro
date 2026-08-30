@@ -8,7 +8,7 @@ interface Props {
 
 const {
   heading = "Got a business that deserves a better website?",
-  body = "Tell me what you do and what's not working right now. I'll reply within a day, and every project is quoted individually.",
+  body = `Tell me what you do and what's not working right now. ${SITE.replyPromise} ${SITE.pricingLine}`,
 } = Astro.props;
 ---
 
@@ -20,7 +20,7 @@ const {
       <p class="mx-auto mt-4 max-w-prose text-base text-paper/75 sm:text-lg">{body}</p>
       <div class="mt-8 flex flex-col items-center justify-center gap-4">
         <a href="/contact" class="btn-primary">
-          Start a project
+          {SITE.ctaLabel}
         </a>
         <p class="text-sm text-muted">
           Or reach me directly —

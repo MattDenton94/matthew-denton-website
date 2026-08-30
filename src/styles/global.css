@@ -103,3 +103,10 @@
     @apply pointer-events-none fixed inset-0 z-[1] bg-grain opacity-[0.05] mix-blend-soft-light;
   }
 }
+
+summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}

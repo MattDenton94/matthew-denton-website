@@ -9,10 +9,29 @@ const work = (await getCollection("work")).sort((a, b) => a.data.order - b.data.
 const [primaryWork, secondaryWork] = work;
 
 const capabilities = [
-  { n: "01", label: "Design", copy: "A layout, type system and colour palette built around your business — never a template with your logo dropped in." },
-  { n: "02", label: "Frontend", copy: "Clean, fast, hand-built code. No bloated page-builder plugin stack slowing every visit down." },
-  { n: "03", label: "Copy that converts", copy: "Every page written to move someone from reading to messaging, calling or booking." },
-  { n: "04", label: "Personal", copy: "You work directly with me, start to finish. No account manager, no hand-offs." },
+  { n: "01", label: "Look professional", copy: "Your website is often the first impression a potential customer gets of your business. It should look like it." },
+  { n: "02", label: "Get found", copy: "A properly structured site gives people another way to discover your business — before they've even called." },
+  { n: "03", label: "Get contacted", copy: "WhatsApp, contact forms, maps and booking links — all built around making it easy to reach you." },
+  { n: "04", label: "Work with a real person", copy: "You deal directly with me, start to finish. No agency middleman." },
+];
+
+const problems = [
+  "Looks outdated next to your competitors",
+  "Doesn't work properly on a phone",
+  "Makes it hard for someone to actually contact you",
+  "Doesn't explain clearly what you do",
+  "Makes a good business look smaller than it is",
+];
+
+const included = [
+  "Custom design & build",
+  "Mobile-optimised",
+  "WhatsApp integration",
+  "Contact form",
+  "Google Maps",
+  "Social links",
+  "Analytics setup",
+  "Domain connection",
 ];
 
 const process = [
@@ -28,6 +47,16 @@ const whatAGoodSiteDoes = [
   "Works properly, on every device",
   "Makes it easy to get in touch",
 ];
+
+const faqs = [
+  { q: "How much does a website cost?", a: `Every project starts from ${SITE.startingPrice} and is quoted individually based on what you actually need — there are no fixed packages.` },
+  { q: "How long does it take?", a: "It depends on the scope, but I'll give you a clear timeline before any work starts." },
+  { q: "Do I need to provide the content?", a: "Not necessarily — I can write the copy for you, or work with what you already have." },
+  { q: "Do you provide hosting and a domain?", a: "I'll help you get set up with both, or work with what you already have." },
+  { q: "Can you update my existing website?", a: "Yes — depending on what it's built on, I can update it directly, or tell you honestly if a rebuild is the better option." },
+  { q: "Can I pay in instalments?", a: "Talk to me about what works for you — payment terms can usually be arranged." },
+  { q: "Do you only work with South African businesses?", a: `${SITE.locationLine} If you're outside South Africa, I'm still happy to talk.` },
+];
 ---
 
 <BaseLayout
@@ -42,18 +71,18 @@ const whatAGoodSiteDoes = [
         Your business is better than your <span class="text-accent">website</span> makes it look.
       </h1>
       <p class="mt-6 max-w-xl text-lg text-paper/75 sm:text-xl animate-fade-up" style="animation-delay: 120ms;">
-        I design and build websites that actually represent what you do — so more of the people who find you end up calling, messaging, booking, or walking through the door.
+        Professional websites for South African small businesses — designed to turn visitors into calls, WhatsApp messages and customers.
       </p>
       <div class="mt-8 flex flex-col gap-4 sm:flex-row animate-fade-up" style="animation-delay: 180ms;">
         <a href="/contact" class="btn-primary">
-          Start a project
+          {SITE.ctaLabel}
         </a>
         <a href="#work" class="btn-outline">
           See the work
         </a>
       </div>
       <p class="mt-7 font-mono text-xs uppercase tracking-widish text-muted animate-fade-up" style="animation-delay: 240ms;">
-        {SITE.locationLine} &middot; Replies within a day
+        Websites from {SITE.startingPrice} &middot; {SITE.locationLine} &middot; Replies within a day
       </p>
     </div>
   </section>
@@ -73,8 +102,34 @@ const whatAGoodSiteDoes = [
     </div>
   </section>
 
+  <!-- PROBLEM -->
+  <section class="border-b border-surface-border">
+    <div class="container-page py-14 sm:py-20">
+      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+        <div>
+          <p class="eyebrow">The problem</p>
+          <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">Does your website actually help your business?</h2>
+        </div>
+        <div>
+          <p class="text-lg leading-relaxed text-paper/75">
+            A lot of small business websites quietly work against the business behind them. Yours might be one of them if it:
+          </p>
+          <ul class="mt-5 space-y-3">
+            {problems.map((item) => (
+              <li class="flex items-start gap-3 text-lg text-paper/85">
+                <span class="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p class="mt-5 text-lg font-semibold text-paper">That's what I fix.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PORTFOLIO — the visual centre of the page -->
-  <section id="work" class="scroll-mt-20 border-b border-surface-border">
+  <section id="work" class="scroll-mt-20 border-b border-surface-border bg-ink-alt">
     <div class="container-page py-16 sm:py-24">
       <div class="mb-12 flex items-end justify-between gap-6 sm:mb-16">
         <div>
@@ -90,6 +145,31 @@ const whatAGoodSiteDoes = [
       </div>
 
       <a href="/work" class="btn-outline mt-14 inline-flex sm:hidden">All work</a>
+    </div>
+  </section>
+
+  <!-- OFFER -->
+  <section class="border-b border-surface-border">
+    <div class="container-page py-14 sm:py-20">
+      <p class="eyebrow">What's included</p>
+      <h2 class="mt-3 max-w-lg text-3xl font-semibold sm:text-4xl">Everything a small business actually needs.</h2>
+
+      <ul class="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
+        {included.map((item) => (
+          <li class="flex items-start gap-3 text-lg text-paper/85">
+            <span class="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+        <p class="font-display text-2xl font-semibold text-paper">
+          From {SITE.startingPrice}
+        </p>
+        <a href="/contact" class="btn-primary">{SITE.ctaLabel}</a>
+      </div>
+      <p class="mt-2 text-sm text-muted">{SITE.pricingLine}</p>
     </div>
   </section>
 
@@ -140,6 +220,26 @@ const whatAGoodSiteDoes = [
             You talk to me. I build it — no hand-offs, no account manager, no agency theatre.
           </p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="border-b border-surface-border bg-ink-alt">
+    <div class="container-page py-14 sm:py-20">
+      <p class="eyebrow">Common questions</p>
+      <h2 class="mt-3 max-w-lg text-3xl font-semibold sm:text-4xl">Before you ask.</h2>
+
+      <div class="mt-8 divide-y divide-surface-border border-t border-surface-border sm:mt-10">
+        {faqs.map((item) => (
+          <details class="group py-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-semibold text-paper marker:content-none">
+              {item.q}
+              <span class="flex-shrink-0 text-2xl leading-none text-accent transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-3 max-w-2xl text-base leading-relaxed text-paper/75">{item.a}</p>
+          </details>
+        ))}
       </div>
     </div>
   </section>
