@@ -11,6 +11,7 @@ export const SITE = {
   startingPrice: "R2,000",
   pricingLine: "Every project is quoted individually, starting from R2,000 — no fixed packages.",
   shopifyStartingPrice: "R2,500",
+  webAppStartingPrice: "R3,500",
   ctaLabel: "Get My Website",
   replyPromise: "I'll reply within a day.",
 
