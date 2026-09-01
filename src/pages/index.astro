@@ -15,6 +15,13 @@ const capabilities = [
   { n: "04", label: "Work with a real person", copy: "You deal directly with me, start to finish. No agency middleman." },
 ];
 
+const webApps = [
+  "Pricing & quote calculators",
+  "Booking & scheduling",
+  "Client portals",
+  "Internal tools & dashboards",
+];
+
 const shopifyIncluded = [
   "Shopify store setup",
   "Responsive design",
@@ -113,8 +120,79 @@ const faqs = [
     </div>
   </section>
 
-  <!-- SHOPIFY ECOMMERCE -->
+  <!-- OFFER -->
   <section class="border-b border-surface-border">
+    <div class="container-page py-14 sm:py-20">
+      <p class="eyebrow">What's included</p>
+      <h2 class="mt-3 max-w-lg text-3xl font-semibold sm:text-4xl">Everything a small business actually needs.</h2>
+
+      <ul class="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
+        {included.map((item) => (
+          <li class="flex items-start gap-3 text-lg text-paper/85">
+            <span class="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+        <p class="font-display text-2xl font-semibold text-paper">
+          From {SITE.startingPrice}
+        </p>
+        <a href="/contact" class="btn-primary">{SITE.ctaLabel}</a>
+      </div>
+      <p class="mt-2 text-sm text-muted">{SITE.pricingLine}</p>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="border-b border-surface-border bg-ink-alt">
+    <div class="container-page py-14 sm:py-20">
+      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+        <div>
+          <p class="eyebrow">The problem</p>
+          <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">Does your website actually help your business?</h2>
+        </div>
+        <div>
+          <p class="text-lg leading-relaxed text-paper/75">
+            A lot of small business websites quietly work against the business behind them. Yours might be one of them if it:
+          </p>
+          <ul class="mt-5 space-y-3">
+            {problems.map((item) => (
+              <li class="flex items-start gap-3 text-lg text-paper/85">
+                <span class="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p class="mt-5 text-lg font-semibold text-paper">That's what I fix.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO — the visual centre of the page -->
+  <section id="work" class="scroll-mt-20 border-b border-surface-border">
+    <div class="container-page py-16 sm:py-24">
+      <div class="mb-12 flex items-end justify-between gap-6 sm:mb-16">
+        <div>
+          <p class="eyebrow">Selected work</p>
+          <h2 class="mt-3 text-4xl font-semibold sm:text-5xl">Real sites, for real businesses.</h2>
+        </div>
+        <a href="/work" class="btn-ghost hidden sm:inline-flex">All work</a>
+      </div>
+
+      <div class="space-y-20 sm:space-y-24">
+        {primaryWork && <ProjectSpotlight entry={primaryWork} variant="bleed" index={1} />}
+        {secondaryWork && <ProjectSpotlight entry={secondaryWork} variant="framed" index={2} />}
+      </div>
+
+      <a href="/work" class="btn-outline mt-14 inline-flex sm:hidden">All work</a>
+    </div>
+  </section>
+
+  <!-- SHOPIFY ECOMMERCE — secondary service -->
+  <section class="border-b border-surface-border bg-ink-alt">
     <div class="container-page py-14 sm:py-20">
       <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-20">
         <div>
@@ -141,7 +219,7 @@ const faqs = [
           </a>
 
           <p class="mt-4 text-base text-paper/70">
-            Need something more custom? I also build fully bespoke websites — <a href="#work" class="link-underline text-paper/80">see the work</a>.
+            Need something more custom instead? I also build fully bespoke websites — <a href="#work" class="link-underline text-paper/80">see the work</a>.
           </p>
         </div>
 
@@ -168,74 +246,27 @@ const faqs = [
     </div>
   </section>
 
-  <!-- PROBLEM -->
+  <!-- WEB APPLICATIONS — secondary service -->
   <section class="border-b border-surface-border">
     <div class="container-page py-14 sm:py-20">
-      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-        <div>
-          <p class="eyebrow">The problem</p>
-          <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">Does your website actually help your business?</h2>
-        </div>
-        <div>
-          <p class="text-lg leading-relaxed text-paper/75">
-            A lot of small business websites quietly work against the business behind them. Yours might be one of them if it:
-          </p>
-          <ul class="mt-5 space-y-3">
-            {problems.map((item) => (
-              <li class="flex items-start gap-3 text-lg text-paper/85">
-                <span class="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
-                {item}
-              </li>
-            ))}
-          </ul>
-          <p class="mt-5 text-lg font-semibold text-paper">That's what I fix.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <p class="eyebrow">Web applications</p>
+      <h2 class="mt-3 max-w-lg text-3xl font-semibold sm:text-4xl">Sometimes you need more than a website.</h2>
+      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-paper/75">
+        Some businesses need something a website alone can't do — a quote calculator, a booking system, a client portal, a simple internal tool. I build small, focused web applications too — no unnecessary complexity, just something that works.
+      </p>
 
-  <!-- PORTFOLIO — the visual centre of the page -->
-  <section id="work" class="scroll-mt-20 border-b border-surface-border bg-ink-alt">
-    <div class="container-page py-16 sm:py-24">
-      <div class="mb-12 flex items-end justify-between gap-6 sm:mb-16">
-        <div>
-          <p class="eyebrow">Selected work</p>
-          <h2 class="mt-3 text-4xl font-semibold sm:text-5xl">Real sites, for real businesses.</h2>
-        </div>
-        <a href="/work" class="btn-ghost hidden sm:inline-flex">All work</a>
-      </div>
-
-      <div class="space-y-20 sm:space-y-24">
-        {primaryWork && <ProjectSpotlight entry={primaryWork} variant="bleed" index={1} />}
-        {secondaryWork && <ProjectSpotlight entry={secondaryWork} variant="framed" index={2} />}
-      </div>
-
-      <a href="/work" class="btn-outline mt-14 inline-flex sm:hidden">All work</a>
-    </div>
-  </section>
-
-  <!-- OFFER -->
-  <section class="border-b border-surface-border">
-    <div class="container-page py-14 sm:py-20">
-      <p class="eyebrow">What's included</p>
-      <h2 class="mt-3 max-w-lg text-3xl font-semibold sm:text-4xl">Everything a small business actually needs.</h2>
-
-      <ul class="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
-        {included.map((item) => (
-          <li class="flex items-start gap-3 text-lg text-paper/85">
-            <span class="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+      <ul class="mt-6 flex flex-wrap gap-2">
+        {webApps.map((item) => (
+          <li class="rounded-full border border-surface-border px-3 py-1 font-mono text-[0.65rem] uppercase tracking-widish text-muted">
             {item}
           </li>
         ))}
       </ul>
 
-      <div class="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-        <p class="font-display text-2xl font-semibold text-paper">
-          From {SITE.startingPrice}
-        </p>
-        <a href="/contact" class="btn-primary">{SITE.ctaLabel}</a>
+      <div class="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-5">
+        <a href="/contact" class="btn-primary">Let's scope your project</a>
+        <p class="text-sm text-muted">Every project like this is quoted individually — the range is too wide for a single starting price.</p>
       </div>
-      <p class="mt-2 text-sm text-muted">{SITE.pricingLine}</p>
     </div>
   </section>
 
