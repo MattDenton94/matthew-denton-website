@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.matthewdenton.co.za/sitemap-index.xml
+Sitemap: https://matthew-denton-vercel.vercel.app/sitemap-index.xml

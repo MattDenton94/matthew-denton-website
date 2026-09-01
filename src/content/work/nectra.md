@@ -2,7 +2,7 @@
 title: "Nectra — MagFold Pro"
 client: "Nectra"
 summary: "A single-product Shopify store built to sell one thing well — a foldable MagSafe power bank — with the pricing, trust signals and social proof a paid-traffic funnel actually needs."
-year: "2025"
+year: "2026"
 services: ["Shopify", "Ecommerce", "Frontend build"]
 coverImage: "/images/work/nectra-hero.jpg"
 coverImageAlt: "The Nectra homepage hero — a dark navy background, 'Never run out of battery again' headline, and the MagFold Pro power bank propped against a phone."

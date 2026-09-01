@@ -15,8 +15,7 @@ export const SITE = {
   ctaLabel: "Get My Website",
   replyPromise: "I'll reply within a day.",
 
-  // PLACEHOLDER — swap for the real production domain once registered.
-  url: "https://www.matthewdenton.co.za",
+  url: "https://matthew-denton-vercel.vercel.app",
 
   email: "mattdenton94@gmail.com",
 
@@ -24,10 +23,7 @@ export const SITE = {
   whatsappDisplay: "+27 76 413 3052",
 
   socials: [
-    // PLACEHOLDER — add real profiles once decided which to keep public.
-    { label: "Instagram", href: "https://instagram.com/" },
-    { label: "GitHub", href: "https://github.com/MattDenton94" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/matthew-denton94" },
   ],
 } as const;
 

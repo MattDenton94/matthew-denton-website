@@ -33,10 +33,9 @@ npm run preview   # serve the production build locally
 
 ## Content still needed before launch
 
-- Final production domain (`SITE.url` in `src/lib/site.ts` is still a placeholder)
 - A real portrait photo for `/about` (currently a placeholder graphic)
 - Real testimonial quotes, if/when added to the homepage
-- Confirm the build year and live URL for the Nectra case study (`src/content/work/nectra.md`)
+- A live URL for the Nectra case study, if there is one to link to (`src/content/work/nectra.md`)
 
 ## Deployment
 
