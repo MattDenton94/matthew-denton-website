@@ -33,7 +33,6 @@ npm run preview   # serve the production build locally
 
 ## Content still needed before launch
 
-- A real portrait photo for `/about` (currently a placeholder graphic)
 - Real testimonial quotes, if/when added to the homepage
 - A live URL for the Nectra case study, if there is one to link to (`src/content/work/nectra.md`)
 
