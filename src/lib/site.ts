@@ -17,12 +17,10 @@ export const SITE = {
   // PLACEHOLDER — swap for the real production domain once registered.
   url: "https://www.matthewdenton.co.za",
 
-  // PLACEHOLDER — swap for a real inbox.
-  email: "hello@matthewdenton.co.za",
+  email: "mattdenton94@gmail.com",
 
-  // PLACEHOLDER — swap for a real WhatsApp Business number (E.164, no spaces, no leading +).
-  whatsappNumber: "27000000000",
-  whatsappDisplay: "+27 00 000 0000",
+  whatsappNumber: "27764133052",
+  whatsappDisplay: "+27 76 413 3052",
 
   socials: [
     // PLACEHOLDER — add real profiles once decided which to keep public.
