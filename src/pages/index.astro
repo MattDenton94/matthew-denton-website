@@ -22,6 +22,24 @@ const webApps = [
   "Internal tools & dashboards",
 ];
 
+const webAppExamples = [
+  {
+    src: "/images/work/webapp-budget-dashboard.jpg",
+    alt: "A personal budget tracker — income, expenses, balance and savings rate, with an add-transaction form and spending by category.",
+    label: "Personal budget tracker",
+  },
+  {
+    src: "/images/work/webapp-profit-tracker-summary.jpg",
+    alt: "A daily profit tracker built for Nectra's DTC store — a monthly summary table of revenue, ad spend, expenses, profit and margin.",
+    label: "Nectra — profit tracker",
+  },
+  {
+    src: "/images/work/webapp-travel-explorer.jpg",
+    alt: "A travel and visa-requirement explorer, with country cards showing visa status, best time to visit and nightly rates.",
+    label: "Travel & visa explorer",
+  },
+];
+
 const shopifyIncluded = [
   "Shopify store setup",
   "Responsive design",
@@ -254,6 +272,15 @@ const faqs = [
       <p class="mt-4 max-w-2xl text-lg leading-relaxed text-paper/75">
         Some businesses need something a website alone can't do — a quote calculator, a booking system, a client portal, a simple internal tool. I build small, focused web applications too — no unnecessary complexity, just something that works.
       </p>
+
+      <div class="mt-6 grid gap-4 sm:grid-cols-3">
+        {webAppExamples.map((ex) => (
+          <div class="overflow-hidden rounded-xl border border-surface-border bg-surface">
+            <img src={ex.src} alt={ex.alt} loading="lazy" class="aspect-[4/3] w-full object-cover object-top" />
+            <p class="p-3 text-sm font-semibold text-paper">{ex.label}</p>
+          </div>
+        ))}
+      </div>
 
       <ul class="mt-6 flex flex-wrap gap-2">
         {webApps.map((item) => (
