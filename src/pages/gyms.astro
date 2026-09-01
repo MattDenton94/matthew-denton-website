@@ -1,0 +1,184 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import WorkCard from "@/components/WorkCard.astro";
+import Testimonials from "@/components/Testimonials.astro";
+import CtaBand from "@/components/CtaBand.astro";
+import { getCollection } from "astro:content";
+import { GYM_TESTIMONIALS } from "@/data/testimonials";
+
+const work = await getCollection("work");
+const gymWork = ["tnt-fitness", "nafts"]
+  .map((slug) => work.find((entry) => entry.slug === slug))
+  .filter((entry) => entry !== undefined);
+
+const gymProblems = [
+  "Your Facebook page is doing the job a website should be doing",
+  "Nobody can find your class schedule without messaging you first",
+  "There's no obvious way to book a trial session",
+  "People can't tell what it costs, so they don't ask",
+  "It doesn't work properly on a phone, which is where everyone looks",
+  "Your Google listing sends people somewhere that doesn't sell the place",
+];
+
+const gymIncluded = [
+  "Class schedule that's easy to read on a phone",
+  "One-tap WhatsApp booking",
+  "Free trial session as the main call to action",
+  "Coach and instructor profiles",
+  "Membership and pricing page",
+  "Google Maps and directions",
+  "Google reviews and testimonials",
+  "Instagram feed",
+  "Photo and video galleries",
+  "Google Business Profile setup and analytics",
+];
+
+const process = [
+  { n: "01", title: "Discover", copy: "A short call about your business and your customers." },
+  { n: "02", title: "Design", copy: "A real direction — type, colour, layout — before a line of code." },
+  { n: "03", title: "Build", copy: "Fast, responsive, tested on real devices." },
+  { n: "04", title: "Launch", copy: "Deployed, connected to your domain, handed over in plain English." },
+];
+
+const faqs = [
+  { q: "Do I need to give you all the content?", a: "No. I can write the copy, and if your photos aren't great I'll tell you honestly and point you at someone who can shoot the space properly." },
+  { q: "Can it work with the booking system I already use?", a: "Usually yes. Tell me what you're on and I'll either integrate it or link to it cleanly." },
+  { q: "How long does it take?", a: "Depends on the size of the site, but you'll have a clear timeline and a fixed price before any work starts." },
+  { q: "What does it cost?", a: "Every gym is different, so every project is quoted individually. Tell me what you need and I'll come back with a fixed number." },
+  { q: "Do you only work with gyms?", a: "No, I build for all kinds of small businesses. Fitness is just where a lot of my recent work has been." },
+];
+---
+
+<BaseLayout
+  title="Websites for Gyms & Fitness Studios | Matthew Denton"
+  description="Websites for South African gyms, studios and coaches. Built to turn someone scrolling on their phone into a booked first session."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden border-b border-surface-border">
+    <div class="container-page pb-14 pt-14 sm:pb-20 sm:pt-20 lg:pt-24">
+      <p class="eyebrow animate-fade-up">Websites for gyms and fitness studios</p>
+      <h1 class="mt-5 max-w-3xl font-display text-4xl font-semibold leading-[1.08] sm:text-6xl lg:text-[4.75rem] lg:leading-[1.05] animate-fade-up" style="animation-delay: 60ms;">
+        Turn people looking for a gym into people booking a session.
+      </h1>
+      <p class="mt-6 max-w-xl text-lg text-paper/75 sm:text-xl animate-fade-up" style="animation-delay: 120ms;">
+        Most people decide on a gym at 9pm, on their phone, comparing three options. Your website is where that decision gets made. I build sites for South African gyms and studios that make the first session easy to book.
+      </p>
+      <div class="mt-8 flex flex-col gap-4 sm:flex-row animate-fade-up" style="animation-delay: 180ms;">
+        <a href="/contact" class="btn-primary">
+          Get a free homepage mockup
+        </a>
+        <a href="#gym-work" class="btn-outline">
+          See gym work
+        </a>
+      </div>
+      <p class="mt-7 font-mono text-xs uppercase tracking-widish text-muted animate-fade-up" style="animation-delay: 240ms;">
+        Built sites for TNT Fitness (Bothasig) and Nautical Aerial &amp; Fitness (Melkbosstrand).
+      </p>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="border-b border-surface-border bg-ink-alt">
+    <div class="container-page py-14 sm:py-20">
+      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+        <div>
+          <p class="eyebrow">The problem</p>
+          <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">Why most gym websites lose members.</h2>
+        </div>
+        <div>
+          <ul class="space-y-3">
+            {gymProblems.map((item) => (
+              <li class="flex items-start gap-3 text-lg text-paper/85">
+                <span class="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p class="mt-5 text-lg font-semibold text-paper">
+            Your gym is probably better than your website makes it look. That's the part I fix.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="border-b border-surface-border">
+    <div class="container-page py-14 sm:py-20">
+      <p class="eyebrow">What's included</p>
+      <h2 class="mt-3 max-w-lg text-3xl font-semibold sm:text-4xl">Built around how people actually choose a gym.</h2>
+
+      <ul class="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+        {gymIncluded.map((item) => (
+          <li class="flex items-start gap-3 text-lg text-paper/85">
+            <span class="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section id="gym-work" class="scroll-mt-20 border-b border-surface-border bg-ink-alt">
+    <div class="container-page py-14 sm:py-20">
+      <p class="eyebrow">Case studies</p>
+      <h2 class="mt-3 max-w-lg text-3xl font-semibold sm:text-4xl">Real gyms, real sites.</h2>
+
+      <div class="mt-10 grid gap-8 sm:grid-cols-2">
+        {gymWork.map((entry, i) => entry && <WorkCard entry={entry} priority={i === 0} />)}
+      </div>
+    </div>
+  </section>
+
+  <Testimonials
+    testimonials={GYM_TESTIMONIALS}
+    eyebrow="What gym owners say"
+    heading="Don't just take my word for it."
+  />
+
+  <!-- PROCESS -->
+  <section class="border-b border-surface-border bg-ink-alt">
+    <div class="container-page py-14 sm:py-20">
+      <p class="eyebrow">How it works</p>
+      <h2 class="mt-3 max-w-lg text-3xl font-semibold sm:text-4xl">Four stages. No surprises.</h2>
+
+      <div class="mt-10 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+        {process.map((step) => (
+          <div class="flex gap-4 lg:flex-col lg:gap-3">
+            <span class="font-display text-2xl font-semibold text-accent">{step.n}</span>
+            <div>
+              <h3 class="font-display text-lg font-semibold">{step.title}</h3>
+              <p class="mt-1 max-w-xs text-base leading-relaxed text-paper/70 sm:text-sm">{step.copy}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="border-b border-surface-border">
+    <div class="container-page py-14 sm:py-20">
+      <p class="eyebrow">Common questions</p>
+      <h2 class="mt-3 max-w-lg text-3xl font-semibold sm:text-4xl">Before you ask.</h2>
+
+      <div class="mt-8 divide-y divide-surface-border border-t border-surface-border sm:mt-10">
+        {faqs.map((item) => (
+          <details class="group py-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-semibold text-paper marker:content-none">
+              {item.q}
+              <span class="flex-shrink-0 text-2xl leading-none text-accent transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-3 max-w-2xl text-base leading-relaxed text-paper/75">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    heading="Want to see what your gym's site could look like?"
+    body="Tell me the name of your gym and I'll put together a free homepage mockup using your own photos. No charge, no obligation. If you like it, we talk. If you don't, keep it."
+  />
+</BaseLayout>

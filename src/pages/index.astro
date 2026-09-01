@@ -2,8 +2,10 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ProjectSpotlight from "@/components/ProjectSpotlight.astro";
 import CtaBand from "@/components/CtaBand.astro";
+import Testimonials from "@/components/Testimonials.astro";
 import { getCollection } from "astro:content";
 import { SITE } from "@/lib/site";
+import { TESTIMONIALS } from "@/data/testimonials";
 
 const work = (await getCollection("work")).sort((a, b) => a.data.order - b.data.order);
 const [primaryWork, secondaryWork] = work;
@@ -85,7 +87,7 @@ const whatAGoodSiteDoes = [
 ];
 
 const faqs = [
-  { q: "How much does a website cost?", a: `Every project starts from ${SITE.startingPrice} and is quoted individually based on what you actually need — there are no fixed packages.` },
+  { q: "How much does a website cost?", a: "Every project is quoted individually. What it costs depends on how many pages you need, whether you need copy written, and whether there's anything custom like a booking system or an online store. Tell me what you're after and I'll give you a fixed price before any work starts, so there are no surprises." },
   { q: "How long does it take?", a: "It depends on the scope, but I'll give you a clear timeline before any work starts." },
   { q: "Do I need to provide the content?", a: "Not necessarily — I can write the copy for you, or work with what you already have." },
   { q: "Do you provide hosting and a domain?", a: "I'll help you get set up with both, or work with what you already have." },
@@ -118,7 +120,7 @@ const faqs = [
         </a>
       </div>
       <p class="mt-7 font-mono text-xs uppercase tracking-widish text-muted animate-fade-up" style="animation-delay: 240ms;">
-        Websites from {SITE.startingPrice} &middot; {SITE.locationLine} &middot; Replies within a day
+        {SITE.locationLine} Replies within a day.
       </p>
     </div>
   </section>
@@ -153,10 +155,7 @@ const faqs = [
         ))}
       </ul>
 
-      <div class="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-        <p class="font-display text-2xl font-semibold text-paper">
-          From {SITE.startingPrice}
-        </p>
+      <div class="mt-9">
         <a href="/contact" class="btn-primary">{SITE.ctaLabel}</a>
       </div>
       <p class="mt-2 text-sm text-muted">{SITE.pricingLine}</p>
@@ -196,6 +195,9 @@ const faqs = [
         <div>
           <p class="eyebrow">Selected work</p>
           <h2 class="mt-3 text-4xl font-semibold sm:text-5xl">Real sites, for real businesses.</h2>
+          <p class="mt-4 max-w-xl text-base text-paper/70 sm:text-lg">
+            Recent work has been heavy on fitness: gyms, studios and coaches. If that's you, there's a page <a href="/gyms" class="link-underline text-paper/85">specifically for that</a>.
+          </p>
         </div>
         <a href="/work" class="btn-ghost hidden sm:inline-flex">All work</a>
       </div>
@@ -208,6 +210,8 @@ const faqs = [
       <a href="/work" class="btn-outline mt-14 inline-flex sm:hidden">All work</a>
     </div>
   </section>
+
+  <Testimonials testimonials={TESTIMONIALS} />
 
   <!-- SHOPIFY ECOMMERCE — secondary service -->
   <section class="border-b border-surface-border bg-ink-alt">
@@ -242,10 +246,7 @@ const faqs = [
         </div>
 
         <div class="card p-6 sm:p-8">
-          <p class="font-display text-2xl font-semibold text-paper">From {SITE.shopifyStartingPrice}</p>
-          <p class="mt-1 text-sm text-muted">Every store is quoted individually — bigger catalogues or custom functionality cost more.</p>
-
-          <ul class="mt-6 grid gap-x-6 gap-y-3 sm:grid-cols-2">
+          <ul class="grid gap-x-6 gap-y-3 sm:grid-cols-2">
             {shopifyIncluded.map((item) => (
               <li class="flex items-start gap-3 text-base text-paper/85">
                 <span class="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
@@ -290,14 +291,11 @@ const faqs = [
         ))}
       </ul>
 
-      <div class="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-        <p class="font-display text-2xl font-semibold text-paper">
-          From {SITE.webAppStartingPrice}
-        </p>
+      <div class="mt-9">
         <a href="/contact" class="btn-primary">Let's scope your project</a>
       </div>
       <p class="mt-2 text-sm text-muted">
-        Every project is quoted individually — a simple calculator costs less than a booking system with a database, so this is a starting point, not a fixed price.
+        Scope varies a lot, so every application is quoted after a short conversation about what it needs to do.
       </p>
     </div>
   </section>

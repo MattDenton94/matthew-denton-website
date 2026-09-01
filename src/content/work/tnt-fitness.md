@@ -16,9 +16,9 @@ gallery:
   - src: "/images/work/tnt-fitness-mobile.png"
     alt: "The TNT Fitness homepage on a mobile viewport."
 accent: "ember"
-featured: false
+featured: true
 isPlaceholder: false
-order: 2
+order: 1
 ---
 
 ## What the gym needed

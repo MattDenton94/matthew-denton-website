@@ -16,9 +16,9 @@ gallery:
   - src: "/images/work/nafts-pricing.jpg"
     alt: "The pricing section, with drop-in, weekly, unlimited and private-session tiers, and a highlighted best-value card."
 accent: "ember"
-featured: true
+featured: false
 isPlaceholder: false
-order: 1
+order: 2
 ---
 
 ## What she needed

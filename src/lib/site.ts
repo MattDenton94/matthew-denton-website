@@ -5,17 +5,12 @@ export const SITE = {
   name: "Matthew Denton",
   brand: "Denton Web",
   role: "Freelance Web Designer & Developer",
-  tagline: "Professional websites for South African small businesses, from R2,000.",
+  tagline: "Professional websites for South African small businesses. Designed to turn visitors into calls, WhatsApp messages and customers.",
   location: "South Africa",
   locationLine: "Based in South Africa. Open to clients everywhere.",
-  startingPrice: "R2,000",
-  pricingLine: "Every project is quoted individually, starting from R2,000 — no fixed packages.",
-  shopifyStartingPrice: "R2,500",
-  webAppStartingPrice: "R3,500",
+  pricingLine: "Every project is scoped and quoted individually around what your business actually needs.",
   ctaLabel: "Get My Website",
   replyPromise: "I'll reply within a day.",
-
-  url: "https://matthew-denton-vercel.vercel.app",
 
   email: "mattdenton94@gmail.com",
 
