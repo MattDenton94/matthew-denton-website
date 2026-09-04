@@ -2,10 +2,11 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ProjectSpotlight from "@/components/ProjectSpotlight.astro";
 import CtaBand from "@/components/CtaBand.astro";
-import Testimonials from "@/components/Testimonials.astro";
+// Testimonials component/data are ready but not wired in — no real quotes yet.
+// import Testimonials from "@/components/Testimonials.astro";
 import { getCollection } from "astro:content";
 import { SITE } from "@/lib/site";
-import { TESTIMONIALS } from "@/data/testimonials";
+// import { TESTIMONIALS } from "@/data/testimonials";
 
 const work = (await getCollection("work")).sort((a, b) => a.data.order - b.data.order);
 const [primaryWork, secondaryWork] = work;
@@ -211,7 +212,7 @@ const faqs = [
     </div>
   </section>
 
-  <Testimonials testimonials={TESTIMONIALS} />
+  {/* <Testimonials testimonials={TESTIMONIALS} /> — re-enable once real client quotes are in. */}
 
   <!-- SHOPIFY ECOMMERCE — secondary service -->
   <section class="border-b border-surface-border bg-ink-alt">
