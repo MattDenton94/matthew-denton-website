@@ -1,0 +1,198 @@
+---
+interface Props {
+  variant: 'harlan' | 'pearls' | 'tnt' | 'nafts' | 'nectra';
+  class?: string;
+  label?: string;
+}
+const { variant, class: cls = '', label } = Astro.props;
+const urls: Record<string, string> = {
+  harlan: 'harlan.co.za',
+  pearls: 'creativepearls.co.za',
+  tnt: 'tntfitness',
+  nafts: 'nafts.co.za',
+  nectra: 'nectra.co.za',
+};
+---
+<figure class={`mock mock-${variant} ${cls}`} aria-label={label ?? `Preview of ${urls[variant]}`}>
+  <div class="bar" aria-hidden="true">
+    <span class="dots"><i></i><i></i><i></i></span>
+    <span class="url">{urls[variant]}</span>
+  </div>
+  <div class="screen" aria-hidden="true">
+    {variant === 'harlan' && (
+      <div class="h">
+        <div class="h-top"><span class="h-logo">HARLAN</span><span class="h-nav">Bracelets · Pendants · Gifts</span></div>
+        <div class="h-hero">
+          <p class="h-kicker">316L stainless steel</p>
+          <p class="h-title">Steel you never have to take off.</p>
+          <span class="h-btn">Shop bracelets</span>
+        </div>
+        <div class="h-grid">
+          {[['Box', 'R179'], ['Figaro', 'R199'], ['Heavy Cuban', 'R249']].map(([n, p], i) => (
+            <div class="h-card">
+              <div class={`h-chain c${i}`}>{Array.from({ length: 7 }).map(() => <b></b>)}</div>
+              <span class="h-name">The {n}</span>
+              <span class="h-price">{p}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {variant === 'pearls' && (
+      <div class="p">
+        <div class="p-top"><span class="p-logo">Creative Pearls</span><span class="p-nav">Earrings · Necklaces · Bracelets</span></div>
+        <div class="p-hero">
+          <div class="p-copy">
+            <p class="p-title">20 Years.<br /><em>One Pair of Hands.</em></p>
+            <p class="p-sub">Handmade in Cape Town. From R120.</p>
+            <span class="p-btn">Shop the collection</span>
+          </div>
+          <div class="p-strand">
+            {Array.from({ length: 9 }).map((_, i) => <b style={`--i:${i}`}></b>)}
+          </div>
+        </div>
+      </div>
+    )}
+
+    {variant === 'tnt' && (
+      <div class="t">
+        <div class="t-top"><span class="t-logo">TNT<em>FITNESS</em></span><span class="t-wa">WhatsApp</span></div>
+        <p class="t-title">Box. Defend.<br /><span>Get fit.</span></p>
+        <div class="t-board">
+          {['MON', 'TUE', 'WED', 'THU', 'FRI'].map((d, i) => (
+            <div class="t-row"><span>{d}</span><i style={`width:${[70, 48, 82, 55, 66][i]}%`}></i></div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {variant === 'nafts' && (
+      <div class="n">
+        <div class="n-top"><span class="n-logo">Nautical <em>Aerial</em> &amp; Fitness</span><span class="n-nav">About · Classes · Pricing · Gallery</span></div>
+        <div class="n-hero">
+          <div class="n-copy">
+            <p class="n-title">Aerial Fitness, <em>Reimagined</em></p>
+            <p class="n-sub">For every body, every age, every stage.</p>
+            <div class="n-btns"><span class="n-b1">Book on WhatsApp</span><span class="n-b2">Explore Classes</span></div>
+          </div>
+        </div>
+        <p class="n-for">Pole · Aerial Hoop · Silks · Hammock · Private 1-on-1</p>
+      </div>
+    )}
+
+    {variant === 'nectra' && (
+      <div class="x">
+        <div class="x-top"><span class="x-logo">nectra</span><span class="x-nav">Free delivery</span></div>
+        <div class="x-hero">
+          <div>
+            <p class="x-title">MagFold Pro</p>
+            <p class="x-sub">Foldable magnetic wireless power bank</p>
+            <span class="x-btn">Buy now</span>
+          </div>
+          <div class="x-dev"><i></i><b></b></div>
+        </div>
+      </div>
+    )}
+  </div>
+</figure>
+
+<style>
+  .mock {
+    margin: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 24px 48px -24px rgba(10, 14, 30, 0.35);
+    container-type: inline-size;
+    width: 100%;
+    max-width: 100%;
+  }
+  .mock, .mock * { text-decoration: none; }
+  .bar { display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: var(--surface-2); border-bottom: 1px solid var(--line); }
+  .dots { display: flex; gap: 5px; }
+  .dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--line); display: block; }
+  .url { font-family: var(--f-mono); font-size: 11px; color: var(--muted); background: var(--surface); border-radius: 6px; padding: 2px 10px; flex: 1; max-width: 60%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .screen { aspect-ratio: 16 / 10.5; position: relative; overflow: hidden; }
+  .screen > div { position: absolute; inset: 0; padding: 4.5cqw 5.5cqw; display: flex; flex-direction: column; }
+
+  /* Harlan */
+  .h { background: radial-gradient(120% 80% at 80% 0%, #1b2233 0%, #0a0d14 60%); color: #e9ecf2; gap: 3.2cqw; }
+  .h-top { display: flex; justify-content: space-between; align-items: center; }
+  .h-logo { font-family: var(--f-display); font-weight: 700; letter-spacing: 0.34em; font-size: 3.2cqw; }
+  .h-nav { font-size: 2.1cqw; color: #8c96aa; }
+  .h-kicker { font-family: var(--f-mono); font-size: 1.9cqw; letter-spacing: .14em; text-transform: uppercase; color: #8c96aa; }
+  .h-title { font-family: var(--f-display); font-weight: 600; font-size: 6cqw; line-height: 1.02; letter-spacing: -0.02em; max-width: 16ch; margin: 1cqw 0 2.2cqw; }
+  .h-btn { display: inline-block; background: #e9ecf2; color: #0a0d14; font-weight: 700; font-size: 2.1cqw; padding: 1.3cqw 2.6cqw; border-radius: 99px; }
+  .h-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2cqw; margin-top: auto; }
+  .h-card { background: #121724; border: 1px solid #222a3b; border-radius: 1.4cqw; padding: 2cqw; display: grid; gap: .6cqw; }
+  .h-name { font-size: 1.9cqw; color: #c3c9d6; }
+  .h-price { font-family: var(--f-mono); font-size: 2cqw; color: #fff; }
+  .h-chain { display: flex; justify-content: center; align-items: center; height: 7cqw; }
+  .h-chain b { width: 3.1cqw; height: 2cqw; border: .55cqw solid #c9ced8; border-radius: 1cqw; margin-inline: -.35cqw; background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,.35)); }
+  .h-chain.c1 b:nth-child(even) { width: 2cqw; }
+  .h-chain.c2 b { border-width: .8cqw; height: 2.6cqw; width: 3.6cqw; }
+
+  /* Creative Pearls */
+  .p { background: #f8f1ec; color: #3a2c2a; gap: 2cqw; }
+  .p-top { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #e7d8cf; padding-bottom: 2cqw; }
+  .p-logo { font-family: 'Playfair Display', Georgia, serif; font-size: 3.4cqw; font-style: italic; }
+  .p-nav { font-size: 2cqw; color: #8d7670; }
+  .p-hero { display: grid; grid-template-columns: 1.15fr 1fr; gap: 3cqw; align-items: center; flex: 1; }
+  .p-title { font-family: 'Playfair Display', Georgia, serif; font-size: 5.6cqw; line-height: 1.05; }
+  .p-title em { color: #9a6b5c; }
+  .p-sub { font-size: 2.2cqw; color: #8d7670; margin: 1.6cqw 0 2.4cqw; }
+  .p-btn { display: inline-block; border: 1px solid #3a2c2a; font-size: 2cqw; padding: 1.2cqw 2.4cqw; letter-spacing: .06em; text-transform: uppercase; }
+  .p-strand { position: relative; height: 100%; min-height: 30cqw; }
+  .p-strand b {
+    position: absolute; width: 6.4cqw; height: 6.4cqw; border-radius: 50%;
+    background: radial-gradient(circle at 32% 30%, #fff 0 12%, #f5ece6 30%, #d9c7bd 70%, #b79f94 100%);
+    box-shadow: 0 .6cqw 1.2cqw rgba(90,60,50,.18);
+    left: calc(50% + cos(calc(var(--i) * 20deg + 10deg)) * 15cqw - 3.2cqw);
+    top: calc(12% + sin(calc(var(--i) * 20deg + 10deg)) * 20cqw);
+  }
+
+  /* TNT */
+  .t { background: #0b0b0b; color: #f3f3f3; gap: 2.4cqw; }
+  .t-top { display: flex; justify-content: space-between; align-items: center; }
+  .t-logo { font-family: 'Oswald', 'Arial Narrow', sans-serif; font-weight: 700; font-size: 3.6cqw; letter-spacing: .04em; }
+  .t-logo em { font-style: normal; color: #e0262b; margin-left: .6cqw; }
+  .t-wa { background: #e0262b; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 2cqw; padding: 1cqw 2.2cqw; text-transform: uppercase; letter-spacing: .06em; }
+  .t-title { font-family: 'Oswald', 'Arial Narrow', sans-serif; font-weight: 700; font-size: 8.4cqw; line-height: .95; text-transform: uppercase; }
+  .t-title span { color: #e0262b; }
+  .t-board { display: grid; gap: 1.2cqw; margin-top: auto; border-top: .5cqw solid #e0262b; padding-top: 2cqw; }
+  .t-row { display: grid; grid-template-columns: 7cqw 1fr; align-items: center; gap: 2cqw; font-family: 'Oswald', sans-serif; font-size: 2.1cqw; color: #9b9b9b; }
+  .t-row i { height: 1.6cqw; background: repeating-linear-gradient(90deg, #2a2a2a 0 8cqw, #1a1a1a 8cqw 9cqw); display: block; }
+  .t-row:nth-child(3) i { background: #e0262b; }
+
+  /* NAFTS */
+  .n { background: #f4efe6; color: #1c1c1c; gap: 0; padding: 0 !important; }
+  .n-top { display: flex; justify-content: space-between; align-items: center; padding: 2.4cqw 4cqw; }
+  .n-logo { font-family: 'Playfair Display', Georgia, serif; font-size: 3cqw; color: #1f4f9c; }
+  .n-logo em { font-style: italic; }
+  .n-nav { font-size: 1.9cqw; color: #555; }
+  .n-hero { position: relative; flex: 1; display: grid; grid-template-columns: 1fr; align-items: end; gap: 2cqw; padding: 3cqw 4cqw; background: linear-gradient(90deg, rgba(10,10,10,.85), rgba(10,10,10,.2)), radial-gradient(60% 90% at 78% 40%, #8a8a8a 0%, #3a3a3a 50%, #151515 100%); color: #fff; }
+  .n-copy { display: grid; gap: 1.6cqw; padding-bottom: 1cqw; max-width: 60%; }
+  .n-title { font-family: 'Playfair Display', Georgia, serif; font-size: 7cqw; line-height: 1.02; }
+  .n-title em { font-style: italic; }
+  .n-sub { font-size: 2.1cqw; color: #d6d6d6; }
+  .n-btns { display: flex; gap: 1.4cqw; flex-wrap: wrap; }
+  .n-b1, .n-b2 { font-size: 1.9cqw; font-weight: 600; padding: 1.1cqw 2.2cqw; border-radius: 99px; }
+  .n-b1 { background: #1f4f9c; color: #fff; }
+  .n-b2 { border: 1px solid #fff; }
+  .n-for { font-family: var(--f-mono); font-size: 1.8cqw; color: #444; padding: 2cqw 4cqw; }
+
+  /* Nectra */
+  .x { background: linear-gradient(180deg, #f6f7fb, #e9ecf6); color: #141726; gap: 3cqw; }
+  .x-top { display: flex; justify-content: space-between; align-items: center; }
+  .x-logo { font-family: var(--f-display); font-weight: 800; font-size: 3.6cqw; letter-spacing: -0.03em; }
+  .x-nav { font-family: var(--f-mono); font-size: 1.8cqw; background: #141726; color: #fff; padding: .8cqw 1.8cqw; border-radius: 99px; }
+  .x-hero { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 3cqw; flex: 1; }
+  .x-title { font-family: var(--f-display); font-size: 7.4cqw; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+  .x-sub { font-size: 2.3cqw; color: #5b6177; margin: 1.4cqw 0 2.6cqw; }
+  .x-btn { display: inline-block; background: #ff6b3d; color: #fff; font-weight: 700; font-size: 2.2cqw; padding: 1.4cqw 3cqw; border-radius: 99px; }
+  .x-dev { position: relative; height: 30cqw; }
+  .x-dev i { position: absolute; inset: 8% 22% 8% 18%; background: linear-gradient(145deg, #2b2f45, #0f1120); border-radius: 3cqw; transform: rotate(-8deg); box-shadow: 0 2cqw 4cqw rgba(20,23,38,.35); }
+  .x-dev b { position: absolute; width: 11cqw; height: 11cqw; border-radius: 50%; border: .8cqw solid #ff6b3d; left: 36%; top: 30%; transform: rotate(-8deg); }
+</style>

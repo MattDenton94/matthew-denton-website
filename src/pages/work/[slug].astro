@@ -1,114 +1,125 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import CtaBand from "@/components/CtaBand.astro";
-import { getCollection, type CollectionEntry } from "astro:content";
+import Base from '../../layouts/Base.astro';
+import Mockup from '../../components/Mockup.astro';
+import Phone from '../../components/Phone.astro';
+import Post from '../../components/Post.astro';
+import Desktop from '../../components/Desktop.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { projects } from '../../data/site';
 
-export async function getStaticPaths() {
-  const work = await getCollection("work");
-  return work.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+export function getStaticPaths() {
+  return projects.map((p) => ({ params: { slug: p.slug }, props: { p } }));
 }
-
-interface Props {
-  entry: CollectionEntry<"work">;
-}
-
-const { entry } = Astro.props;
-const { title, client, summary, year, services, liveUrl, coverImage, coverImageAlt, gallery } = entry.data;
-const { Content } = await entry.render();
-const isRepoLink = liveUrl?.includes("github.com");
+const { p } = Astro.props;
+const i = projects.findIndex((x) => x.slug === p.slug);
+const next = projects[(i + 1) % projects.length];
+const external = p.url?.startsWith('http');
+const lead = p.shots?.[0]?.kind === 'desktop' ? p.shots.slice(0, 1) : p.shots?.slice(0, 2);
 ---
-
-<BaseLayout title={title} description={summary}>
-  <section class="border-b border-surface-border">
-    <div class="container-page pb-8 pt-10 sm:pb-10 sm:pt-14">
-      <a href="/work" class="btn-ghost mb-6 inline-flex text-sm">&larr; All work</a>
-      <p class="eyebrow">{client} &middot; {year}</p>
-      <h1 class="mt-3 max-w-3xl font-display text-4xl font-semibold sm:text-5xl lg:text-6xl">{title}</h1>
-      <p class="mt-4 max-w-2xl text-lg text-paper/75 sm:text-xl">{summary}</p>
-    </div>
-  </section>
-
-  <section class="border-b border-surface-border bg-ink-alt">
-    <div class="container-page py-6 sm:py-8">
-      <div class="overflow-hidden rounded-2xl border border-surface-border">
-        <img src={coverImage} alt={coverImageAlt} class="w-full object-cover object-top" />
+<Base title={`${p.name} | Work | Matthew Denton`} description={p.summary}>
+  <article>
+    <header class="section cs-head">
+      <div class="wrap cs-grid">
+        <div class="cs-copy">
+          <p class="eyebrow"><a href="/work">Work</a> / {p.tag}</p>
+          <h1>{p.name}</h1>
+          <p class="lede">{p.summary}</p>
+          <ul class="chips">{p.services.map((s) => <li class="chip">{s}</li>)}</ul>
+          {p.url && (
+            <a class="btn btn-ghost" href={p.url} target={external ? '_blank' : undefined} rel="noopener">{p.urlLabel} <span aria-hidden="true">↗</span></a>
+          )}
+        </div>
+        {lead ? (
+          <div class={`lead lead-${p.mock}`}>
+            {lead.map((sh, i) => sh.kind === 'phone'
+              ? <Phone src={sh.src} alt={sh.alt} crop eager class={`l${i}`} />
+              : sh.kind === 'desktop' ? <Desktop src={sh.src} alt={sh.alt} eager />
+              : <Post src={sh.src} alt={sh.alt} eager class={`l${i}`} />)}
+          </div>
+        ) : <Mockup variant={p.mock} />}
       </div>
-      <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
-        <ul class="flex flex-wrap gap-2">
-          {services.map((s) => (
-            <li class="rounded-full border border-surface-border px-3 py-1 font-mono text-[0.65rem] uppercase tracking-widish text-muted">
-              {s}
-            </li>
-          ))}
-        </ul>
-        {liveUrl && (
-          <a href={liveUrl} target="_blank" rel="noopener noreferrer" class="link-underline text-sm font-semibold text-paper">
-            {isRepoLink ? "View repository" : "Visit live site"} &nearr;
-          </a>
-        )}
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <section class="border-b border-surface-border">
-    <div class="container-page py-12 sm:py-16">
-      <div class="prose-case mx-auto max-w-prose">
-        <Content />
-      </div>
-    </div>
-  </section>
+    <section class="wrap facts-wrap">
+      <dl class="facts">
+        {p.facts.map((f) => (<div><dt>{f.label}</dt><dd>{f.value}</dd></div>))}
+        <div><dt>Where</dt><dd>{p.place}</dd></div>
+      </dl>
+    </section>
 
-  {gallery.length > 0 && (
-    <section class="border-b border-surface-border bg-ink-alt">
-      <div class="container-page py-12 sm:py-16">
-        <p class="eyebrow">More of the build</p>
-        <div class="mt-6 grid gap-6 sm:grid-cols-2">
-          {gallery.map((img) => (
-            <div class="overflow-hidden rounded-2xl border border-surface-border">
-              <img src={img.src} alt={img.alt} loading="lazy" class="w-full object-cover object-top" />
-            </div>
-          ))}
+    <section class="section">
+      <div class="wrap body">
+        <div class="brief">
+          <p class="eyebrow">The brief</p>
+          <p class="big">{p.brief}</p>
+        </div>
+        <div class="built">
+          <p class="eyebrow">What I did</p>
+          <ul>
+            {p.built.map((b) => (<li><h2>{b.title}</h2><p>{b.body}</p></li>))}
+          </ul>
         </div>
       </div>
     </section>
-  )}
 
-  <CtaBand />
-</BaseLayout>
+    {p.shots && (
+      <section class="gallery-sec">
+        <div class="wrap">
+          <p class="eyebrow">Up close</p>
+          <div class="gallery">
+            {p.shots.map((sh) => (
+              <figure class={`g-item ${sh.kind === 'desktop' ? 'wide' : ''}`}>
+                {sh.kind === 'phone' ? <Phone src={sh.src} alt={sh.alt} /> : sh.kind === 'desktop' ? <Desktop src={sh.src} alt={sh.alt} /> : <Post src={sh.src} alt={sh.alt} />}
+                <figcaption>{sh.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
 
-<style is:global>
-  .prose-case h2 {
-    @apply mt-10 font-display text-2xl font-semibold sm:text-3xl;
-  }
-  .prose-case h2:first-child {
-    @apply mt-0;
-  }
-  .prose-case h2:last-of-type {
-    @apply text-paper/85 text-xl sm:text-2xl;
-  }
-  .prose-case p {
-    @apply mt-4 text-lg leading-relaxed text-paper/80;
-  }
-  .prose-case h2:last-of-type + p {
-    @apply text-base text-paper/65;
-  }
-  .prose-case ul {
-    @apply mt-4 space-y-3;
-  }
-  .prose-case li {
-    @apply relative pl-5 text-lg leading-relaxed text-paper/80;
-  }
-  .prose-case li::before {
-    content: "";
-    @apply absolute left-0 top-[0.65em] h-1.5 w-1.5 rounded-full bg-accent;
-  }
-  .prose-case strong {
-    @apply text-paper;
-  }
-  .prose-case code {
-    @apply whitespace-nowrap rounded bg-surface-raised px-1.5 py-0.5 font-mono text-[0.82em] text-accent;
-  }
+    <nav class="wrap next" aria-label="Next project">
+      <a href={`/work/${next.slug}`}><span class="eyebrow">Next project</span><strong>{next.name} <span aria-hidden="true">→</span></strong></a>
+    </nav>
+  </article>
+  <CtaBand title={`Want something like ${p.name}?`} />
+</Base>
+<style>
+  .cs-head { padding-bottom: clamp(32px, 4vw, 56px); }
+  .cs-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+  .cs-copy { display: grid; gap: 22px; justify-items: start; }
+  .eyebrow a { text-decoration: none; }
+  .eyebrow a:hover { color: var(--ink); }
+  h1 { font-size: var(--step-4); }
+  @media (max-width: 900px) { .cs-grid { grid-template-columns: 1fr; } }
+  .lead { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 2.5vw, 28px); align-items: center; padding: clamp(20px, 3vw, 36px); border-radius: var(--radius); max-width: 100%; }
+  .lead-harlan { background: linear-gradient(160deg, #2a2720, #141310); }
+  .lead-nafts { background: linear-gradient(160deg, #1b2740, #0b1020); }
+  .lead-tnt { background: linear-gradient(160deg, #3a1414, #111); grid-template-columns: 1fr; }
+  .lead-pearls { background: linear-gradient(160deg, #efe3d4, #d9c3a8); }
+  .lead :global(.l0) { transform: rotate(-2deg); }
+  .lead :global(.l1) { transform: rotate(2deg) translateY(16px); }
+  .gallery-sec { padding-bottom: clamp(56px, 7vw, 96px); }
+  .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: 20px; align-items: start; }
+  .g-item { margin: 0; display: grid; gap: 14px; max-width: 360px; }
+  .g-item.wide { max-width: none; grid-column: 1 / -1; }
+  .g-item figcaption { color: var(--muted); font-size: .95rem; }
+  .facts { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin: 0; }
+  .facts div { background: var(--surface); padding: 18px 20px; }
+  .facts dt { font-family: var(--f-mono); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .facts dd { margin: 4px 0 0; font-family: var(--f-display); font-weight: 600; font-size: 1.15rem; }
+  @media (max-width: 900px) { .facts { grid-template-columns: repeat(2, 1fr); } .facts div:last-child { grid-column: 1 / -1; } }
+  .body { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+  .brief { display: grid; gap: 16px; position: sticky; top: 100px; }
+  .big { font-family: var(--f-display); font-size: var(--step-1); line-height: 1.4; font-weight: 500; letter-spacing: -0.01em; }
+  .built { display: grid; gap: 16px; }
+  .built ul { list-style: none; margin: 0; padding: 0; }
+  .built li { display: grid; gap: 8px; padding-block: 22px; border-top: 1px solid var(--line); }
+  .built h2 { font-size: var(--step-1); letter-spacing: -0.015em; }
+  .built p { color: var(--muted); max-width: 60ch; }
+  @media (max-width: 860px) { .body { grid-template-columns: 1fr; } .brief { position: static; } }
+  .next { padding-bottom: clamp(56px, 7vw, 96px); }
+  .next a { display: grid; gap: 6px; text-decoration: none; border-top: 2px solid var(--ink); padding-top: 18px; }
+  .next strong { font-family: var(--f-display); font-size: var(--step-3); letter-spacing: -0.03em; }
+  .next a:hover strong { color: var(--accent); }
 </style>

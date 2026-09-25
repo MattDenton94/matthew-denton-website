@@ -1,0 +1,13 @@
+---
+interface Props { src: string; alt: string; class?: string; label?: string; eager?: boolean }
+const { src, alt, class: cls = '', label, eager = false } = Astro.props;
+---
+<figure class={`post ${cls}`}>
+  <img src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+  {label && <figcaption class="mono">{label}</figcaption>}
+</figure>
+<style>
+  .post { margin: 0; position: relative; width: 100%; max-width: 100%; border-radius: 14px; overflow: hidden; box-shadow: 0 30px 60px -28px rgba(10,14,30,.55); background: #111; }
+  .post img { width: 100%; height: auto; display: block; aspect-ratio: 4 / 5; object-fit: cover; }
+  figcaption { position: absolute; left: 10px; top: 10px; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; background: var(--mark); color: var(--mark-ink); padding: 4px 8px; border-radius: 5px; }
+</style>

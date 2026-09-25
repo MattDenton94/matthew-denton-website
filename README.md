@@ -1,41 +1,31 @@
-# matthewdenton.co.za
+# matthew-denton.vercel.app (redesign)
 
-Matthew Denton's freelance web design & development site — built with [Astro](https://astro.build), Tailwind CSS, and TypeScript.
+Astro 5 static site. Fonts are self-hosted, so no Google Fonts call.
 
-## Stack
+## Run it
 
-- **Astro** (static output) for pages, layouts and content collections
-- **Tailwind CSS** for styling, with a custom design system (see `tailwind.config.mjs`)
-- **@fontsource** self-hosted fonts (Fraunces, Inter, IBM Plex Mono) — no external font CDN
-- **@astrojs/sitemap** for automatic sitemap generation
+    npm install
+    npm run dev      # http://localhost:4321
+    npm run build    # outputs to dist/
 
-## Project structure
+## Deploy (replacing your current site)
 
-```
-src/
-  components/   Header, Footer, WorkCard, ProjectSpotlight, CtaBand, Logo, WhatsAppFloat
-  content/work/ Case study markdown files (NAFTS, TNT Fitness, Nectra)
-  layouts/      BaseLayout.astro — head, SEO, header/footer wrapper
-  lib/site.ts   Site-wide config: name, contact details, nav links, pricing
-  pages/        index, work/, about, contact, small-business-websites, 404
-public/
-  images/       Static assets, including case study screenshots
-```
+1. In your existing repo, delete the old `src/` and `public/` folders (keep `.git`).
+2. Copy everything from this folder in (`src/`, `public/`, `package.json`, `astro.config.mjs`, `.gitignore`).
+3. `npm install`, then `npm run build` to check it builds.
+4. Commit and push. Vercel redeploys automatically.
 
-## Local development
+If you move to your own domain later, change `site` in `astro.config.mjs`.
 
-```bash
-npm install
-npm run dev       # http://localhost:4321
-npm run build     # type-check + production build to dist/
-npm run preview   # serve the production build locally
-```
+## Where to edit things
 
-## Content still needed before launch
+- `src/data/site.ts`: all your content. Contact details, the six services, every project/case study, tools, client names and FAQs. Add a new project here and its page is created automatically at /work/<slug>.
+- `src/components/Mockup.astro`: the drawn browser previews of each project. When you have real screenshots, drop them in `public/work/` and swap the `<Mockup>` for an `<img>`.
+- `src/styles/global.css`: colours, fonts and spacing (the tokens at the top).
 
-- Real testimonial quotes, if/when added to the homepage
-- A live URL for the Nectra case study, if there is one to link to (`src/content/work/nectra.md`)
+## Pages
 
-## Deployment
+/, /work, /work/harlan, /work/creative-pearls, /work/tnt-fitness, /work/nafts, /work/nectra, /services, /about, /contact, /gyms, 404.
+Old URLs /work/tnt-fitness, /work/nafts and /gyms still work.
 
-Static output (`output: "static"` in `astro.config.mjs`), deployable to any static host. When connecting this repo to Vercel, note that its only branch is `claude/freelance-web-design-site-ufbnu7` — there is no `main` — so the Production Branch / environment branch tracking must point at that branch explicitly.
+The contact form has no backend: it opens WhatsApp (or email) with the enquiry pre-typed.

@@ -1,0 +1,16 @@
+---
+interface Props { src: string; alt: string; class?: string; crop?: boolean; eager?: boolean }
+const { src, alt, class: cls = '', crop = false, eager = false } = Astro.props;
+---
+<figure class={`phone ${crop ? 'crop' : ''} ${cls}`}>
+  <img src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+</figure>
+<style>
+  .phone {
+    margin: 0; background: #0c0d10; padding: 7px; border-radius: 30px;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.06) inset, 0 30px 60px -28px rgba(10,14,30,.55);
+    width: 100%; max-width: 100%;
+  }
+  .phone img { width: 100%; height: auto; border-radius: 23px; display: block; }
+  .phone.crop img { aspect-ratio: 9 / 16; object-fit: cover; object-position: top; }
+</style>

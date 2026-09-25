@@ -1,27 +1,22 @@
 {
-  "name": "matthew-denton-website",
-  "type": "module",
+  "name": "matthew-denton-site",
   "version": "1.0.0",
-  "private": true,
+  "description": "",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "check": "astro check"
+    "build": "astro build",
+    "preview": "astro preview"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/tailwind": "^5.1.4",
-    "@fontsource-variable/fraunces": "^5.3.0",
-    "@fontsource-variable/inter": "^5.3.0",
-    "@fontsource/ibm-plex-mono": "^5.3.0",
-    "astro": "^5.2.5",
-    "tailwindcss": "^3.4.17"
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/figtree": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/oswald": "^5.3.0",
+    "@fontsource/playfair-display": "^5.3.0",
+    "astro": "^5.18.2"
   },
-  "devDependencies": {
-    "@astrojs/check": "^0.9.4",
-    "typescript": "^5.7.3"
-  }
+  "type": "module"
 }

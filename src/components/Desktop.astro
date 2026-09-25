@@ -1,0 +1,14 @@
+---
+interface Props { src: string; alt: string; class?: string; eager?: boolean }
+const { src, alt, class: cls = '', eager = false } = Astro.props;
+---
+<figure class={`desk ${cls}`}>
+  <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+  <img src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+</figure>
+<style>
+  .desk { margin: 0; width: 100%; max-width: 100%; border-radius: 12px; overflow: hidden; background: #0e0e10; border: 1px solid #26262b; box-shadow: 0 30px 60px -28px rgba(10,14,30,.55); }
+  .bar { display: flex; gap: 5px; padding: 8px 10px; background: #1a1a1e; border-bottom: 1px solid #26262b; }
+  .bar i { width: 8px; height: 8px; border-radius: 50%; background: #3a3a40; display: block; }
+  img { width: 100%; height: auto; display: block; }
+</style>

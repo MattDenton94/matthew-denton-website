@@ -1,0 +1,124 @@
+---
+import '@fontsource-variable/bricolage-grotesque/opsz.css';
+import '@fontsource-variable/figtree/index.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
+import '@fontsource/playfair-display/500.css';
+import '@fontsource/playfair-display/500-italic.css';
+import '@fontsource/oswald/600.css';
+import '@fontsource/oswald/700.css';
+import '../styles/global.css';
+import { contact, wa } from '../data/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+const {
+  title,
+  description = 'Websites, Shopify stores, ads, Canva design and AI automations for small businesses. One person in Cape Town, working with clients anywhere.',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const links = [
+  { href: '/work', label: 'Work' },
+  { href: '/services', label: 'Services' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+];
+const isActive = (href: string) => path === href || path.startsWith(href + '/');
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en-ZA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ProfessionalService',
+      name: 'Matthew Denton',
+      url: Astro.site?.toString(),
+      email: contact.email,
+      telephone: '+' + contact.whatsappNumber,
+      areaServed: 'Worldwide',
+      address: { '@type': 'PostalAddress', addressLocality: 'Cape Town', addressCountry: 'ZA' },
+      sameAs: [contact.linkedin],
+    })} />
+  </head>
+  <body>
+    <a href="#main" class="skip">Skip to content</a>
+    <header class="nav" id="nav">
+      <div class="wrap nav-inner">
+        <a href="/" class="brand" aria-label="Matthew Denton, home">
+          <span class="brand-dot" aria-hidden="true">MD</span>
+          <span>Matthew Denton</span>
+        </a>
+        <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav-links">Menu</button>
+        <ul class="nav-links" id="nav-links">
+          {links.map((l) => (
+            <li><a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a></li>
+          ))}
+          <li><a class="btn btn-primary" href={wa()} target="_blank" rel="noopener">WhatsApp me</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer-grid">
+        <div style="display:grid;gap:8px;max-width:38ch">
+          <a href="/" class="brand"><span class="brand-dot" aria-hidden="true">MD</span><span>Matthew Denton</span></a>
+          <p>Websites, stores, ads, design and automations for small businesses. {contact.location}.</p>
+        </div>
+        <div style="display:grid;gap:10px">
+          <ul>
+            <li><a href="/work">Work</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/gyms">For gyms</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+          <ul class="mono" style="font-size:.85rem">
+            <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
+            <li><a href={wa()} target="_blank" rel="noopener">WhatsApp {contact.whatsappDisplay}</a></li>
+            <li><a href={contact.linkedin} target="_blank" rel="noopener">LinkedIn</a></li>
+          </ul>
+          <p class="mono" style="font-size:.8rem">&copy; {year} Matthew Denton</p>
+        </div>
+      </div>
+    </footer>
+
+    <style is:global>
+      .skip { position: absolute; left: -9999px; top: 8px; z-index: 100; background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 8px; }
+      .skip:focus { left: 8px; }
+    </style>
+    <script>
+      const nav = document.getElementById('nav');
+      const onScroll = () => nav?.classList.toggle('scrolled', window.scrollY > 8);
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      const btn = document.getElementById('menu-btn');
+      const list = document.getElementById('nav-links');
+      btn?.addEventListener('click', () => {
+        const open = list?.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(!!open));
+        btn.textContent = open ? 'Close' : 'Menu';
+      });
+    </script>
+  </body>
+</html>

@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://matthew-denton.vercel.app/sitemap-index.xml

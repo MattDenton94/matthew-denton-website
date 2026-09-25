@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import WaIcon from '../components/WaIcon.astro';
+import { services, wa } from '../data/site';
+
+const detail: Record<string, { who: string; example: string }> = {
+  websites: { who: 'Service businesses, gyms, studios, trades and anyone whose customers find them on Google and message on WhatsApp.', example: 'TNT Fitness: a single page where every button opens a pre-filled WhatsApp booking message.' },
+  shopify: { who: 'Brands starting to sell online, or stores that get visits but not sales.', example: 'Harlan: my own store, with Yoco and PayFast, courier delivery and a second-bracelet-half-price offer.' },
+  tools: { who: 'Businesses running on WhatsApp threads and spreadsheets that are starting to creak.', example: 'Quote calculators, booking forms, stock and profit trackers, simple client portals.' },
+  ads: { who: 'Businesses with a product or service that sells, and a site that is ready to take the traffic.', example: 'Creative Pearls: product-led Meta ads that work without the owner on camera.' },
+  design: { who: "Anyone who needs to look consistent and doesn't have a designer on call.", example: 'Logos, stickers and packaging for Creative Pearls; ad creative and social templates for Harlan.' },
+  automations: { who: 'Owners answering the same questions and doing the same admin every day.', example: 'New enquiries auto-logged in a Google Sheet with an instant reply, or product descriptions drafted by AI in your brand voice.' },
+};
+---
+<Base title="Services | Matthew Denton" description="Websites, Shopify stores, custom tools, Meta and Google ads, Canva design and AI automations for small businesses.">
+  <section class="section">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Services</p>
+        <h1>Build it, grow it, then let it run itself.</h1>
+        <p class="lede">Six things I do for small businesses. Pick one or pick them all. Every project is quoted individually after a quick chat.</p>
+      </div>
+      <div class="list">
+        {services.map((s, i) => (
+          <article class="row" id={s.slug}>
+            <div class="row-l">
+              <span class="grp mono">{s.group}</span>
+              <h2>{s.title}</h2>
+            </div>
+            <div class="row-r">
+              <p class="big">{s.line}</p>
+              <div class="cols">
+                <div><h3>Includes</h3><ul>{s.items.map((it) => <li>{it}</li>)}</ul></div>
+                <div><h3>Good fit for</h3><p>{detail[s.slug].who}</p></div>
+                <div><h3>For example</h3><p>{detail[s.slug].example}</p></div>
+              </div>
+              <a class="ask" href={wa(`Hi Matt, I'm interested in ${s.title.toLowerCase()}. Here's a bit about my business: `)} target="_blank" rel="noopener"><WaIcon /> Ask about {s.title.toLowerCase()}</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <CtaBand />
+</Base>
+<style>
+  h1 { font-size: var(--step-4); }
+  .list { border-top: 2px solid var(--ink); }
+  .row { display: grid; grid-template-columns: 1fr 2fr; gap: clamp(20px, 4vw, 64px); padding-block: clamp(32px, 4vw, 52px); border-bottom: 1px solid var(--line); scroll-margin-top: 90px; }
+  .row-l { display: grid; gap: 12px; align-content: start; }
+  .grp { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+  h2 { font-size: var(--step-3); }
+  .row-r { display: grid; gap: 24px; }
+  .big { font-family: var(--f-display); font-size: var(--step-1); line-height: 1.4; font-weight: 500; }
+  .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  h3 { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
+  .cols p, .cols ul { color: var(--muted); font-size: .97rem; }
+  .cols ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
+  .ask { display: inline-flex; align-items: center; gap: 8px; font-weight: 650; color: var(--accent); text-decoration: none; justify-self: start; }
+  .ask svg { width: 18px; height: 18px; }
+  .ask:hover { text-decoration: underline; }
+  @media (max-width: 860px) { .row { grid-template-columns: 1fr; } .cols { grid-template-columns: 1fr; } }
+</style>

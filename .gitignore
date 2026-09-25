@@ -1,22 +1,7 @@
-# build output
-dist/
-
-# generated types
-.astro/
-
-# dependencies
-node_modules/
-
-# logs
-npm-debug.log*
-
-# environment variables
+node_modules
+dist
+.astro
 .env
 .env.production
-
-# macOS-specific files
 .DS_Store
-
-# editor
-.vscode/*
-!.vscode/extensions.json
+npm-debug.log*

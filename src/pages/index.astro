@@ -1,360 +1,274 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import ProjectSpotlight from "@/components/ProjectSpotlight.astro";
-import CtaBand from "@/components/CtaBand.astro";
-// Testimonials component/data are ready but not wired in — no real quotes yet.
-// import Testimonials from "@/components/Testimonials.astro";
-import { getCollection } from "astro:content";
-import { SITE } from "@/lib/site";
-// import { TESTIMONIALS } from "@/data/testimonials";
+import Base from '../layouts/Base.astro';
+import Mockup from '../components/Mockup.astro';
+import Phone from '../components/Phone.astro';
+import Post from '../components/Post.astro';
+import Desktop from '../components/Desktop.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import WaIcon from '../components/WaIcon.astro';
+import { services, projects, clients, faqs, tools, wa } from '../data/site';
 
-const work = (await getCollection("work")).sort((a, b) => a.data.order - b.data.order);
-const [primaryWork, secondaryWork] = work;
-
-const capabilities = [
-  { n: "01", label: "Look professional", copy: "Your website is often the first impression a potential customer gets of your business. It should look like it." },
-  { n: "02", label: "Get found", copy: "A properly structured site gives people another way to discover your business — before they've even called." },
-  { n: "03", label: "Get contacted", copy: "WhatsApp, contact forms, maps and booking links — all built around making it easy to reach you." },
-  { n: "04", label: "Work with a real person", copy: "You deal directly with me, start to finish. No agency middleman." },
-];
-
-const webApps = [
-  "Pricing & quote calculators",
-  "Booking & scheduling",
-  "Client portals",
-  "Internal tools & dashboards",
-];
-
-const webAppExamples = [
-  {
-    src: "/images/work/webapp-budget-dashboard.jpg",
-    alt: "A personal budget tracker — income, expenses, balance and savings rate, with an add-transaction form and spending by category.",
-    label: "Personal budget tracker",
-  },
-  {
-    src: "/images/work/webapp-profit-tracker-summary.jpg",
-    alt: "A daily profit tracker built for Nectra's DTC store — a monthly summary table of revenue, ad spend, expenses, profit and margin.",
-    label: "Nectra — profit tracker",
-  },
-  {
-    src: "/images/work/webapp-travel-explorer.jpg",
-    alt: "A travel and visa-requirement explorer, with country cards showing visa status, best time to visit and nightly rates.",
-    label: "Travel & visa explorer",
-  },
-];
-
-const shopifyIncluded = [
-  "Shopify store setup",
-  "Responsive design",
-  "Product & collection setup",
-  "Payment & shipping setup",
-  "Essential store pages",
-  "Mobile optimisation",
-  "Analytics setup",
-  "Launch assistance",
-];
-
-const problems = [
-  "Looks outdated next to your competitors",
-  "Doesn't work properly on a phone",
-  "Makes it hard for someone to actually contact you",
-  "Doesn't explain clearly what you do",
-  "Makes a good business look smaller than it is",
-];
-
-const included = [
-  "Custom design & build",
-  "Mobile-optimised",
-  "WhatsApp integration",
-  "Contact form",
-  "Google Maps",
-  "Social links",
-  "Analytics setup",
-  "Domain connection",
-];
-
-const process = [
-  { n: "01", title: "Discover", copy: "A short call about your business and your customers." },
-  { n: "02", title: "Design", copy: "A real direction — type, colour, layout — before a line of code." },
-  { n: "03", title: "Build", copy: "Fast, responsive, tested on real devices." },
-  { n: "04", title: "Launch", copy: "Deployed, connected to your domain, handed over in plain English." },
-];
-
-const whatAGoodSiteDoes = [
-  "Looks professional",
-  "Explains the business clearly",
-  "Works properly, on every device",
-  "Makes it easy to get in touch",
-];
-
-const faqs = [
-  { q: "How much does a website cost?", a: "Every project is quoted individually. What it costs depends on how many pages you need, whether you need copy written, and whether there's anything custom like a booking system or an online store. Tell me what you're after and I'll give you a fixed price before any work starts, so there are no surprises." },
-  { q: "How long does it take?", a: "It depends on the scope, but I'll give you a clear timeline before any work starts." },
-  { q: "Do I need to provide the content?", a: "Not necessarily — I can write the copy for you, or work with what you already have." },
-  { q: "Do you provide hosting and a domain?", a: "I'll help you get set up with both, or work with what you already have." },
-  { q: "Can you update my existing website?", a: "Yes — depending on what it's built on, I can update it directly, or tell you honestly if a rebuild is the better option." },
-  { q: "Can I pay in instalments?", a: "Talk to me about what works for you — payment terms can usually be arranged." },
-  { q: "Do you only work with local businesses?", a: "No, I work with businesses everywhere and reply within a day, wherever you're based." },
+const harlan = projects.find((p) => p.slug === 'harlan')!;
+const grid = projects.filter((p) => ['creative-pearls', 'tnt-fitness', 'nafts'].includes(p.slug));
+const steps = [
+  { t: 'Talk', d: "A quick call or WhatsApp chat about your business, your customers and what's getting in the way." },
+  { t: 'Plan', d: 'A clear scope, price and timeline in writing. You see the direction before anything gets built.' },
+  { t: 'Build', d: 'I design, build and set things up, sharing progress as I go so there are no surprises.' },
+  { t: 'Launch and grow', d: 'We go live, I show you how it works, and I stay on hand for changes, ads and new ideas.' },
 ];
 ---
-
-<BaseLayout
-  title="Matthew Denton"
-  description={SITE.tagline}
->
+<Base title="Matthew Denton | Websites, stores, ads and automations for small businesses">
   <!-- HERO -->
-  <section class="relative overflow-hidden border-b border-surface-border">
-    <div class="container-page pb-14 pt-14 sm:pb-20 sm:pt-20 lg:pt-24">
-      <p class="eyebrow animate-fade-up">{SITE.role}</p>
-      <h1 class="mt-5 max-w-3xl font-display text-4xl font-semibold leading-[1.08] sm:text-6xl lg:text-[4.75rem] lg:leading-[1.05] animate-fade-up" style="animation-delay: 60ms;">
-        Your business is better than your <span class="text-accent">website</span> makes it look.
-      </h1>
-      <p class="mt-6 max-w-xl text-lg text-paper/75 sm:text-xl animate-fade-up" style="animation-delay: 120ms;">
-        Professional websites for small businesses, designed to turn visitors into calls, WhatsApp messages and customers.
-      </p>
-      <div class="mt-8 flex flex-col gap-4 sm:flex-row animate-fade-up" style="animation-delay: 180ms;">
-        <a href="/contact" class="btn-primary">
-          {SITE.ctaLabel}
-        </a>
-        <a href="#work" class="btn-outline">
-          See the work
-        </a>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">One-person studio · Cape Town · Clients anywhere</p>
+        <h1>Your business is <span class="mark">better</span> than your website makes it look.</h1>
+        <p class="lede">I'm Matt. I build websites and Shopify stores, run your ads, design your brand in Canva and set up AI automations, so small businesses look as good online as they are in real life.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href={wa()} target="_blank" rel="noopener"><WaIcon /> WhatsApp me</a>
+          <a class="btn btn-ghost" href="/work">See the work</a>
+        </div>
+        <p class="hero-note mono">Replies within a day · Quotes are free</p>
       </div>
-      <p class="mt-7 font-mono text-xs uppercase tracking-widish text-muted animate-fade-up" style="animation-delay: 240ms;">
-        {SITE.locationLine} Replies within a day.
-      </p>
-    </div>
-  </section>
-
-  <!-- CAPABILITIES -->
-  <section class="border-b border-surface-border bg-ink-alt">
-    <div class="container-page py-12 sm:py-16">
-      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-        {capabilities.map((c) => (
-          <div class="border-t border-surface-border pt-5">
-            <p class="font-mono text-xs text-accent">{c.n}</p>
-            <h3 class="mt-2 font-display text-xl font-semibold">{c.label}</h3>
-            <p class="mt-2 text-base leading-relaxed text-paper/70 sm:text-sm">{c.copy}</p>
-          </div>
-        ))}
+      <div class="stack" aria-label="Recent projects">
+        <a href="/work/tnt-fitness" class="s s3" aria-label="TNT Fitness website"><Desktop src="/work/tnt-schedule.webp" alt="TNT Fitness weekly schedule" eager /></a>
+        <a href="/work/creative-pearls" class="s s2" aria-label="Creative Pearls website"><Phone src="/work/pearls-home.webp" alt="Creative Pearls homepage on a phone" crop eager /></a>
+        <a href="/work/harlan" class="s s1" aria-label="Harlan store"><Phone src="/work/harlan-home.webp" alt="Harlan homepage on a phone" crop eager /></a>
+        <a href="/work/harlan" class="s s4" aria-label="Harlan Meta ad"><Post src="/work/harlan-ad.webp" alt="Harlan Meta ad: Payday. Treat the wrist." label="Ad I designed" eager /></a>
+        <span class="stack-tag mono">Harlan, my own store <span aria-hidden="true">↗</span></span>
       </div>
     </div>
   </section>
 
-  <!-- OFFER -->
-  <section class="border-b border-surface-border">
-    <div class="container-page py-14 sm:py-20">
-      <p class="eyebrow">What's included</p>
-      <h2 class="mt-3 max-w-lg text-3xl font-semibold sm:text-4xl">Everything a small business actually needs.</h2>
+  <!-- CLIENT STRIP -->
+  <section class="strip" aria-label="Clients">
+    <div class="wrap strip-inner">
+      <span class="eyebrow">Working with</span>
+      <ul>{clients.map((c) => <li>{c}</li>)}</ul>
+    </div>
+  </section>
 
-      <ul class="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
-        {included.map((item) => (
-          <li class="flex items-start gap-3 text-lg text-paper/85">
-            <span class="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
-            {item}
-          </li>
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">What I do</p>
+        <h2>Everything a small business needs online, from one person you can actually reach.</h2>
+        <p class="lede">No agency hand-offs and no juggling four freelancers. Start with one thing, add the rest when you're ready.</p>
+      </div>
+      <div class="svc-grid">
+        {services.map((s) => (
+          <article class="svc" id={s.slug}>
+            <div class="svc-top"><span class={`grp grp-${s.group.toLowerCase()}`}>{s.group}</span></div>
+            <h3>{s.title}</h3>
+            <p>{s.line}</p>
+            <ul>{s.items.map((i) => <li>{i}</li>)}</ul>
+          </article>
         ))}
+      </div>
+      <p class="svc-more"><a href="/services">More on each service <span aria-hidden="true">→</span></a></p>
+    </div>
+  </section>
+
+  <!-- HARLAN FEATURE -->
+  <section class="own">
+    <div class="wrap own-grid">
+      <div class="own-copy">
+        <p class="eyebrow on-band">My own brand</p>
+        <h2>I don't just build stores. I run one.</h2>
+        <p>{harlan.summary}</p>
+        <dl class="own-facts">
+          {harlan.facts.map((f) => (<div><dt>{f.label}</dt><dd>{f.value}</dd></div>))}
+        </dl>
+        <div class="btn-row">
+          <a class="btn btn-light" href="/work/harlan">How I built Harlan</a>
+          <a class="btn btn-line" href="https://harlan.co.za" target="_blank" rel="noopener">Visit harlan.co.za <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="own-visual">
+        <Phone src="/work/harlan-home.webp" alt="Harlan homepage on a phone" crop class="ov-phone" />
+        <Post src="/work/harlan-ad.webp" alt="Harlan Meta ad: Payday. Treat the wrist. Second bracelet half price." label="Meta ad" class="ov-post" />
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="head head-row">
+        <div>
+          <p class="eyebrow">Client work</p>
+          <h2>Recent projects</h2>
+        </div>
+        <a class="btn btn-ghost" href="/work">All work</a>
+      </div>
+      <div class="work-grid">
+        {grid.map((p) => <ProjectCard p={p} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section class="section-tight tools">
+    <div class="wrap tools-grid">
+      <div class="head" style="margin:0">
+        <p class="eyebrow">Tools and automations</p>
+        <h2>If you do it every week, it can probably run itself.</h2>
+        <p class="lede">Before web work I led teams in AI data operations, so automations and small web tools are home ground. A few I've built:</p>
+      </div>
+      <ul class="tool-list">
+        {tools.map((t) => (<li><strong>{t.name}</strong><span>{t.line}</span></li>))}
+        <li class="tool-ask"><strong>Your turn</strong><span>Tell me the task that eats your week. I'll tell you if it can be automated, and roughly what it would take.</span></li>
       </ul>
-
-      <div class="mt-9">
-        <a href="/contact" class="btn-primary">{SITE.ctaLabel}</a>
-      </div>
-      <p class="mt-2 text-sm text-muted">{SITE.pricingLine}</p>
-    </div>
-  </section>
-
-  <!-- PROBLEM -->
-  <section class="border-b border-surface-border bg-ink-alt">
-    <div class="container-page py-14 sm:py-20">
-      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-        <div>
-          <p class="eyebrow">The problem</p>
-          <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">Does your website actually help your business?</h2>
-        </div>
-        <div>
-          <p class="text-lg leading-relaxed text-paper/75">
-            A lot of small business websites quietly work against the business behind them. Yours might be one of them if it:
-          </p>
-          <ul class="mt-5 space-y-3">
-            {problems.map((item) => (
-              <li class="flex items-start gap-3 text-lg text-paper/85">
-                <span class="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
-                {item}
-              </li>
-            ))}
-          </ul>
-          <p class="mt-5 text-lg font-semibold text-paper">That's what I fix.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PORTFOLIO — the visual centre of the page -->
-  <section id="work" class="scroll-mt-20 border-b border-surface-border">
-    <div class="container-page py-16 sm:py-24">
-      <div class="mb-12 flex items-end justify-between gap-6 sm:mb-16">
-        <div>
-          <p class="eyebrow">Selected work</p>
-          <h2 class="mt-3 text-4xl font-semibold sm:text-5xl">Real sites, for real businesses.</h2>
-          <p class="mt-4 max-w-xl text-base text-paper/70 sm:text-lg">
-            Recent work has been heavy on fitness: gyms, studios and coaches. If that's you, there's a page <a href="/gyms" class="link-underline text-paper/85">specifically for that</a>.
-          </p>
-        </div>
-        <a href="/work" class="btn-ghost hidden sm:inline-flex">All work</a>
-      </div>
-
-      <div class="space-y-20 sm:space-y-24">
-        {primaryWork && <ProjectSpotlight entry={primaryWork} variant="bleed" index={1} />}
-        {secondaryWork && <ProjectSpotlight entry={secondaryWork} variant="framed" index={2} />}
-      </div>
-
-      <a href="/work" class="btn-outline mt-14 inline-flex sm:hidden">All work</a>
-    </div>
-  </section>
-
-  {/* <Testimonials testimonials={TESTIMONIALS} /> — re-enable once real client quotes are in. */}
-
-  <!-- SHOPIFY ECOMMERCE — secondary service -->
-  <section class="border-b border-surface-border bg-ink-alt">
-    <div class="container-page py-14 sm:py-20">
-      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-20">
-        <div>
-          <p class="eyebrow">Shopify ecommerce</p>
-          <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">Need an online store?</h2>
-          <p class="mt-4 text-lg leading-relaxed text-paper/75">
-            I can build you a clean, professional Shopify store — easy for customers to browse, buy and pay on, without the cost of a huge ecommerce project.
-          </p>
-
-          <p class="mt-4 text-base text-paper/70">
-            Need something more custom instead? I also build fully bespoke websites — <a href="#work" class="link-underline text-paper/80">see the work</a>.
-          </p>
-        </div>
-
-        <div class="card p-6 sm:p-8">
-          <ul class="grid gap-x-6 gap-y-3 sm:grid-cols-2">
-            {shopifyIncluded.map((item) => (
-              <li class="flex items-start gap-3 text-base text-paper/85">
-                <span class="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
-                {item}
-              </li>
-            ))}
-          </ul>
-
-          <a href="/contact" class="btn-primary mt-7 inline-flex">Start your Shopify store</a>
-
-          <p class="mt-4 text-xs text-muted">
-            Shopify's own subscription, payment fees, your domain and any paid themes/apps aren't included — I'll help you set those up, but they're billed directly by Shopify.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WEB APPLICATIONS — secondary service -->
-  <section class="border-b border-surface-border">
-    <div class="container-page py-14 sm:py-20">
-      <p class="eyebrow">Web applications</p>
-      <h2 class="mt-3 max-w-lg text-3xl font-semibold sm:text-4xl">Sometimes you need more than a website.</h2>
-      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-paper/75">
-        Some businesses need something a website alone can't do — a quote calculator, a booking system, a client portal, a simple internal tool. I build small, focused web applications too — no unnecessary complexity, just something that works.
-      </p>
-
-      <div class="mt-6 grid gap-4 sm:grid-cols-3">
-        {webAppExamples.map((ex) => (
-          <div class="overflow-hidden rounded-xl border border-surface-border bg-surface">
-            <img src={ex.src} alt={ex.alt} loading="lazy" class="aspect-[4/3] w-full object-cover object-top" />
-            <p class="p-3 text-sm font-semibold text-paper">{ex.label}</p>
-          </div>
-        ))}
-      </div>
-
-      <ul class="mt-6 flex flex-wrap gap-2">
-        {webApps.map((item) => (
-          <li class="rounded-full border border-surface-border px-3 py-1 font-mono text-[0.65rem] uppercase tracking-widish text-muted">
-            {item}
-          </li>
-        ))}
-      </ul>
-
-      <div class="mt-9">
-        <a href="/contact" class="btn-primary">Let's scope your project</a>
-      </div>
-      <p class="mt-2 text-sm text-muted">
-        Scope varies a lot, so every application is quoted after a short conversation about what it needs to do.
-      </p>
     </div>
   </section>
 
   <!-- PROCESS -->
-  <section class="border-b border-surface-border bg-ink-alt">
-    <div class="container-page py-14 sm:py-20">
-      <p class="eyebrow">How it works</p>
-      <h2 class="mt-3 max-w-lg text-3xl font-semibold sm:text-4xl">Four stages. No surprises.</h2>
-
-      <div class="mt-10 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-        {process.map((step) => (
-          <div class="flex gap-4 lg:flex-col lg:gap-3">
-            <span class="font-display text-2xl font-semibold text-accent">{step.n}</span>
-            <div>
-              <h3 class="font-display text-lg font-semibold">{step.title}</h3>
-              <p class="mt-1 max-w-xs text-base leading-relaxed text-paper/70 sm:text-sm">{step.copy}</p>
-            </div>
-          </div>
+  <section class="section process">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">How it works</p>
+        <h2>Simple, in four steps.</h2>
+      </div>
+      <ol class="steps">
+        {steps.map((s, i) => (
+          <li><span class="num mono">{String(i + 1).padStart(2, '0')}</span><h3>{s.t}</h3><p>{s.d}</p></li>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW I WORK -->
-  <section class="border-b border-surface-border">
-    <div class="container-page py-16 sm:py-24">
-      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-        <div>
-          <p class="eyebrow">How I work</p>
-          <h2 class="mt-3 text-4xl font-semibold sm:text-5xl">No templates. No jargon. No bloat.</h2>
-        </div>
-        <div class="space-y-6">
-          <p class="text-lg leading-relaxed text-paper/75">
-            Most small businesses don't need a giant agency process — a discovery workshop, a stakeholder deck, a team of six. They need a website that:
-          </p>
-          <ul class="space-y-3">
-            {whatAGoodSiteDoes.map((item) => (
-              <li class="flex items-start gap-3 text-lg text-paper/85">
-                <span class="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
-                {item}
-              </li>
-            ))}
-          </ul>
-          <p class="text-lg font-semibold text-paper">
-            I build that.
-          </p>
-          <p class="text-base text-paper/70">
-            You talk to me. I build it — no hand-offs, no account manager, no agency theatre.
-          </p>
-        </div>
-      </div>
+      </ol>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="border-b border-surface-border bg-ink-alt">
-    <div class="container-page py-14 sm:py-20">
-      <p class="eyebrow">Common questions</p>
-      <h2 class="mt-3 max-w-lg text-3xl font-semibold sm:text-4xl">Before you ask.</h2>
-
-      <div class="mt-8 divide-y divide-surface-border border-t border-surface-border sm:mt-10">
-        {faqs.map((item) => (
-          <details class="group py-5">
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-semibold text-paper marker:content-none">
-              {item.q}
-              <span class="flex-shrink-0 text-2xl leading-none text-accent transition-transform group-open:rotate-45">+</span>
-            </summary>
-            <p class="mt-3 max-w-2xl text-base leading-relaxed text-paper/75">{item.a}</p>
-          </details>
+  <section class="section faq">
+    <div class="wrap faq-grid">
+      <div class="head">
+        <p class="eyebrow">Questions</p>
+        <h2>Good to know</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((f) => (
+          <details><summary>{f.q}</summary><p>{f.a}</p></details>
         ))}
       </div>
     </div>
   </section>
 
   <CtaBand />
-</BaseLayout>
+</Base>
+
+<style>
+  /* Hero */
+  .hero { padding-block: clamp(40px, 6vw, 88px) clamp(56px, 7vw, 100px); overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+  .hero-copy { display: grid; gap: 24px; }
+  h1 { font-size: var(--step-4); font-weight: 750; letter-spacing: -0.028em; font-variation-settings: 'opsz' 72; }
+  .hero-note { font-size: .8rem; color: var(--muted); }
+
+  .stack { position: relative; aspect-ratio: 1 / 0.95; max-width: 100%; }
+  .s { text-decoration: none; position: absolute; display: block; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+  .s3 { left: 0; top: 4%; width: 66%; transform: rotate(-4deg); z-index: 1; }
+  .s2 { left: 10%; top: 26%; width: 30%; transform: rotate(-5deg); z-index: 2; }
+  .s1 { right: 4%; top: 0; width: 34%; transform: rotate(3deg); z-index: 3; }
+  .s4 { left: 38%; bottom: 0; width: 32%; transform: rotate(-2deg); z-index: 4; }
+  .stack:hover .s1 { transform: rotate(5deg) translate(4%, -2%); }
+  .stack:hover .s2 { transform: rotate(-8deg) translate(-6%, 2%); }
+  .stack:hover .s3 { transform: rotate(-6deg) translate(-3%, -4%); }
+  .stack:hover .s4 { transform: rotate(0deg) translate(2%, 3%); }
+  .stack-tag { position: absolute; right: 0; bottom: 14%; z-index: 5; font-size: .75rem; background: var(--mark); color: var(--mark-ink); padding: 5px 10px; border-radius: 6px; transform: rotate(-2deg); }
+  @media (prefers-reduced-motion: no-preference) {
+    .s { animation: deal .9s cubic-bezier(.2,.7,.2,1) both; }
+    .s2 { animation-delay: .1s; }
+    .s1 { animation-delay: .2s; }
+    .s4 { animation-delay: .3s; }
+    @keyframes deal { from { translate: 0 40px; opacity: 0.001; } to { translate: 0 0; opacity: 1; } }
+  }
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .stack { max-width: 560px; width: 100%; margin-inline: auto; }
+  }
+
+  /* Strip */
+  .strip { border-block: 1px solid var(--line); }
+  .strip-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px; padding-block: 20px; }
+  .strip ul { display: flex; flex-wrap: wrap; gap: 8px 32px; list-style: none; margin: 0; padding: 0; font-family: var(--f-display); font-weight: 600; font-size: 1.15rem; letter-spacing: -0.01em; }
+
+  /* Services */
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .svc { background: var(--surface); padding: clamp(22px, 3vw, 34px); display: grid; gap: 12px; align-content: start; }
+  .svc h3 { font-size: var(--step-2); }
+  .svc p { color: var(--muted); }
+  .svc ul { list-style: none; padding: 0; margin: 6px 0 0; display: grid; gap: 6px; font-size: .95rem; }
+  .svc li { padding-left: 18px; position: relative; }
+  .svc li::before { content: ''; position: absolute; left: 0; top: .62em; width: 8px; height: 2px; background: var(--accent); }
+  .grp { font-family: var(--f-mono); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; padding: 3px 8px; border-radius: 5px; }
+  .grp-build { background: var(--accent-soft); color: var(--accent); }
+  .grp-grow { background: var(--mark); color: var(--mark-ink); }
+  .grp-automate { background: var(--ink); color: var(--bg); }
+  .svc-more { margin-top: 20px; }
+  .svc-more a { font-weight: 650; color: var(--accent); text-decoration: none; }
+  .svc-more a:hover { text-decoration: underline; }
+  @media (max-width: 960px) { .svc-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px) { .svc-grid { grid-template-columns: 1fr; } }
+
+  /* Own brand */
+  .own { background: var(--band); color: var(--band-ink); padding-block: clamp(64px, 9vw, 120px); }
+  .own-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+  .own-copy { display: grid; gap: 22px; }
+  .own h2 { font-size: var(--step-3); }
+  .own p { color: var(--band-muted); max-width: 48ch; }
+  .on-band { color: var(--band-muted); }
+  .own-facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 24px; margin: 4px 0; }
+  .own-facts div { border-top: 1px solid color-mix(in srgb, var(--band-ink) 18%, transparent); padding-top: 10px; }
+  .own-facts dt { font-family: var(--f-mono); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--band-muted); }
+  .own-facts dd { margin: 2px 0 0; font-family: var(--f-display); font-size: 1.25rem; font-weight: 600; }
+  .btn-light { background: var(--band-ink); color: var(--band); }
+  .btn-line { border-color: color-mix(in srgb, var(--band-ink) 30%, transparent); color: var(--band-ink); }
+  .btn-line:hover { border-color: var(--band-ink); }
+  .own-visual { display: grid; grid-template-columns: 0.8fr 1fr; gap: clamp(16px, 3vw, 32px); align-items: center; }
+  .own-visual :global(.ov-phone) { transform: rotate(-2deg); }
+  .own-visual :global(.ov-post) { transform: rotate(2deg) translateY(24px); }
+  @media (max-width: 900px) { .own-grid { grid-template-columns: 1fr; } }
+
+  /* Work */
+  .head-row { display: flex; justify-content: space-between; align-items: end; gap: 16px; max-width: none; flex-wrap: wrap; }
+  .head-row > div { display: grid; gap: 16px; }
+  .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 3vw, 40px); }
+  @media (max-width: 960px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px) { .work-grid { grid-template-columns: 1fr; } }
+
+  /* Tools */
+  .tools { background: var(--surface); border-block: 1px solid var(--line); }
+  .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+  .tools h2 { font-size: var(--step-3); }
+  .tool-list { list-style: none; margin: 0; padding: 0; display: grid; }
+  .tool-list li { display: grid; gap: 4px; padding-block: 18px; border-bottom: 1px solid var(--line); }
+  .tool-list li:first-child { padding-top: 0; }
+  .tool-list strong { font-family: var(--f-display); font-size: 1.3rem; font-weight: 650; letter-spacing: -0.015em; }
+  .tool-list span { color: var(--muted); }
+  .tool-ask strong { color: var(--accent); }
+  .tool-ask { border-bottom: 0 !important; }
+  @media (max-width: 860px) { .tools-grid { grid-template-columns: 1fr; } }
+
+  /* Process */
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(20px, 3vw, 36px); counter-reset: s; }
+  .steps li { display: grid; gap: 10px; align-content: start; border-top: 2px solid var(--ink); padding-top: 18px; }
+  .num { color: var(--accent); font-size: .85rem; }
+  .steps h3 { font-size: var(--step-1); }
+  .steps p { color: var(--muted); }
+  @media (max-width: 900px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .steps { grid-template-columns: 1fr; } }
+
+  /* FAQ */
+  .faq { padding-top: 0; }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(24px, 5vw, 72px); align-items: start; }
+  .faq-list { border-top: 1px solid var(--line); }
+  details { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; list-style: none; padding: 20px 40px 20px 0; font-family: var(--f-display); font-weight: 600; font-size: var(--step-1); letter-spacing: -0.015em; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; position: absolute; right: 4px; top: 50%; translate: 0 -50%; font-family: var(--f-mono); font-size: 1.3rem; color: var(--accent); transition: rotate .2s ease; }
+  details[open] summary::after { rotate: 45deg; }
+  details p { color: var(--muted); padding-bottom: 22px; max-width: 62ch; }
+  @media (max-width: 860px) { .faq-grid { grid-template-columns: 1fr; } }
+</style>

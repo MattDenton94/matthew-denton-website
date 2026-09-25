@@ -1,124 +1,85 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import { SITE, waLink } from "@/lib/site";
+import Base from '../layouts/Base.astro';
+import WaIcon from '../components/WaIcon.astro';
+import { contact, wa, services } from '../data/site';
 ---
-
-<BaseLayout
-  title="Contact"
-  description="Start a website project — message on WhatsApp, send an email, or use the form."
-  hideWhatsAppFloat
->
-  <section class="border-b border-surface-border">
-    <div class="container-page py-12 sm:py-16">
-      <p class="eyebrow">Contact</p>
-      <h1 class="mt-3 max-w-2xl text-4xl font-semibold sm:text-5xl lg:text-6xl">
-        Tell me about the business, not just the website.
-      </h1>
-      <p class="mt-5 max-w-xl text-lg text-paper/75">
-        The more I understand about what you do and who you're trying to reach, the faster I can tell you honestly whether — and how — I can help.
-      </p>
+<Base title="Contact | Matthew Denton" description="Message Matthew Denton on WhatsApp or email about a website, Shopify store, ads, Canva design or AI automation.">
+  <section class="section">
+    <div class="wrap grid">
+      <div class="left">
+        <p class="eyebrow">Contact</p>
+        <h1>Let's talk about your business.</h1>
+        <p class="lede">WhatsApp is quickest. Fill this in and it opens a message to me with everything already typed out.</p>
+        <dl class="ways">
+          <div><dt>WhatsApp</dt><dd><a href={wa()} target="_blank" rel="noopener">{contact.whatsappDisplay}</a></dd></div>
+          <div><dt>Email</dt><dd><a href={`mailto:${contact.email}`}>{contact.email}</a></dd></div>
+          <div><dt>Based in</dt><dd>{contact.location}. Working with clients anywhere.</dd></div>
+        </dl>
+      </div>
+      <form class="form" id="enquiry" novalidate>
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required /></div>
+        <div class="field"><label for="f-biz">Business name and website (if you have one)</label><input id="f-biz" name="business" placeholder="e.g. Creative Pearls, creativepearls.co.za" /></div>
+        <fieldset class="field">
+          <legend>What do you need help with?</legend>
+          <div class="opts">
+            {services.map((s) => (
+              <label class="opt"><input type="checkbox" name="need" value={s.title} /><span>{s.title}</span></label>
+            ))}
+            <label class="opt"><input type="checkbox" name="need" value="Not sure yet" /><span>Not sure yet</span></label>
+          </div>
+        </fieldset>
+        <div class="field"><label for="f-msg">Tell me a bit more</label><textarea id="f-msg" name="message" rows="5" placeholder="What does your business do, and what's not working right now?"></textarea></div>
+        <p class="err" id="f-err" hidden>Please add your name so I know who I'm talking to.</p>
+        <button class="btn btn-primary" type="submit"><WaIcon /> Send on WhatsApp</button>
+        <p class="hint">Prefer email? <a id="f-mail" href={`mailto:${contact.email}`}>Send it by email instead</a>.</p>
+      </form>
     </div>
   </section>
-
-  <section class="border-b border-surface-border bg-ink-alt">
-    <div class="container-page grid gap-14 py-14 sm:py-16 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
-      <div class="card order-2 p-6 sm:p-10 lg:order-1">
-        <h2 class="font-display text-2xl font-semibold">{SITE.ctaLabel}</h2>
-        <p class="mt-2 text-base text-paper/70">
-          This opens a pre-filled email in your own mail app — nothing is sent through this website.
-        </p>
-
-        <form id="contact-form" class="mt-8 space-y-6" novalidate>
-          <div class="grid gap-6 sm:grid-cols-2">
-            <div>
-              <label for="name" class="font-mono text-xs uppercase tracking-label text-muted">Name</label>
-              <input id="name" name="name" type="text" required autocomplete="name"
-                class="mt-2 w-full rounded-lg border border-surface-border bg-ink px-4 py-3 text-paper placeholder:text-muted/60 focus:border-accent focus:outline-none" />
-            </div>
-            <div>
-              <label for="email" class="font-mono text-xs uppercase tracking-label text-muted">Email</label>
-              <input id="email" name="email" type="email" required autocomplete="email"
-                class="mt-2 w-full rounded-lg border border-surface-border bg-ink px-4 py-3 text-paper placeholder:text-muted/60 focus:border-accent focus:outline-none" />
-            </div>
-          </div>
-
-          <div>
-            <label for="business" class="font-mono text-xs uppercase tracking-label text-muted">Business name</label>
-            <input id="business" name="business" type="text" autocomplete="organization"
-              class="mt-2 w-full rounded-lg border border-surface-border bg-ink px-4 py-3 text-paper placeholder:text-muted/60 focus:border-accent focus:outline-none" />
-          </div>
-
-          <div>
-            <label for="message" class="font-mono text-xs uppercase tracking-label text-muted">What do you need?</label>
-            <textarea id="message" name="message" rows="5" required
-              placeholder="What your business does, what the site needs to achieve, and any deadline."
-              class="mt-2 w-full rounded-lg border border-surface-border bg-ink px-4 py-3 text-paper placeholder:text-muted/60 focus:border-accent focus:outline-none"></textarea>
-          </div>
-
-          <button type="submit" class="btn-primary w-full sm:w-auto">
-            Send
-          </button>
-          <p id="form-fallback" class="hidden text-sm text-accent" role="status"></p>
-        </form>
-      </div>
-
-      <div class="order-1 space-y-8 lg:order-2">
-        <div>
-          <p class="eyebrow">Prefer to talk directly?</p>
-          <a href={`mailto:${SITE.email}`} class="mt-3 block font-display text-xl font-semibold text-paper hover:text-accent">
-            {SITE.email}
-          </a>
-          <a href={waLink("Hi Matthew, I'd like to talk about a website.")} class="mt-2 block text-base text-paper/70 hover:text-accent">
-            or message on WhatsApp
-          </a>
-        </div>
-        <div>
-          <p class="eyebrow">Availability</p>
-          <p class="mt-3 text-base text-paper/80">{SITE.locationLine}</p>
-        </div>
-        <div>
-          <p class="eyebrow">Pricing</p>
-          <p class="mt-3 text-base text-paper/80">{SITE.pricingLine}</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</BaseLayout>
-
-<script is:inline define:vars={{ email: SITE.email }}>
-  const form = document.getElementById("contact-form");
-  const fallback = document.getElementById("form-fallback");
-
-  form?.addEventListener("submit", (e) => {
+</Base>
+<script define:vars={{ number: contact.whatsappNumber, email: contact.email }}>
+  const form = document.getElementById('enquiry');
+  const err = document.getElementById('f-err');
+  const build = () => {
+    const d = new FormData(form);
+    const needs = d.getAll('need').join(', ') || 'Not sure yet';
+    return `Hi Matt, I'm ${d.get('name')}.` +
+      (d.get('business') ? `\nBusiness: ${d.get('business')}` : '') +
+      `\nLooking for help with: ${needs}` +
+      (d.get('message') ? `\n\n${d.get('message')}` : '');
+  };
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const data = new FormData(form);
-    const name = String(data.get("name") || "").trim();
-    const senderEmail = String(data.get("email") || "").trim();
-    const business = String(data.get("business") || "").trim();
-    const message = String(data.get("message") || "").trim();
-
-    if (!name || !senderEmail || !message) {
-      if (fallback) {
-        fallback.textContent = "Please fill in your name, email and a short message.";
-        fallback.classList.remove("hidden");
-      }
-      return;
-    }
-
-    const subject = `New project enquiry from ${name}`;
-    const bodyLines = [
-      business && `Business: ${business}`,
-      `Reply-to: ${senderEmail}`,
-      "",
-      message,
-    ].filter(Boolean);
-
-    const mailto = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
-    window.location.href = mailto;
-
-    if (fallback) {
-      fallback.textContent = "Opening your email app… if nothing happens, email me directly instead.";
-      fallback.classList.remove("hidden");
-    }
+    if (!String(new FormData(form).get('name') || '').trim()) { err.hidden = false; form.querySelector('#f-name').focus(); return; }
+    err.hidden = true;
+    window.open(`https://wa.me/${number}?text=${encodeURIComponent(build())}`, '_blank', 'noopener');
+  });
+  document.getElementById('f-mail').addEventListener('click', (e) => {
+    if (!String(new FormData(form).get('name') || '').trim()) return;
+    e.preventDefault();
+    location.href = `mailto:${email}?subject=${encodeURIComponent('Project enquiry')}&body=${encodeURIComponent(build())}`;
   });
 </script>
+<style>
+  .grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+  @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+  .left { display: grid; gap: 22px; }
+  h1 { font-size: var(--step-4); }
+  .ways { display: grid; gap: 14px; margin: 8px 0 0; }
+  .ways div { border-top: 1px solid var(--line); padding-top: 12px; }
+  .ways dt { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .ways dd { margin: 2px 0 0; font-weight: 600; font-size: 1.1rem; overflow-wrap: anywhere; }
+  .form { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(20px, 3vw, 36px); display: grid; gap: 20px; }
+  .field { display: grid; gap: 8px; border: 0; padding: 0; margin: 0; min-width: 0; }
+  label, legend { font-weight: 600; font-size: .95rem; padding: 0; }
+  input:not([type=checkbox]), textarea { font: inherit; color: var(--ink); background: var(--bg); border: 1.5px solid var(--line); border-radius: 10px; padding: 12px 14px; width: 100%; }
+  input:focus, textarea:focus { outline: none; border-color: var(--accent); }
+  .opts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .opt { position: relative; }
+  .opt input { position: absolute; opacity: 0; }
+  .opt span { display: inline-block; border: 1.5px solid var(--line); border-radius: 999px; padding: 8px 14px; font-weight: 550; cursor: pointer; font-size: .92rem; }
+  .opt input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .opt input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .btn { justify-self: start; border: 0; cursor: pointer; }
+  .err { color: #c2261d; font-weight: 600; }
+  .hint { color: var(--muted); font-size: .92rem; }
+</style>
