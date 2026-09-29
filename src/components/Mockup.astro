@@ -69,15 +69,12 @@ const urls: Record<string, string> = {
 
     {variant === 'nafts' && (
       <div class="n">
-        <div class="n-top"><span class="n-logo">Nautical <em>Aerial</em> &amp; Fitness</span><span class="n-nav">About · Classes · Pricing · Gallery</span></div>
+        <div class="n-top"><span class="n-logo">Nautical</span><span class="n-nav">Classes · Pricing · Book</span></div>
         <div class="n-hero">
-          <div class="n-copy">
-            <p class="n-title">Aerial Fitness, <em>Reimagined</em></p>
-            <p class="n-sub">For every body, every age, every stage.</p>
-            <div class="n-btns"><span class="n-b1">Book on WhatsApp</span><span class="n-b2">Explore Classes</span></div>
-          </div>
+          <svg class="n-fig" viewBox="0 0 120 120"><circle cx="60" cy="54" r="38" fill="none" stroke="currentColor" stroke-width="3" /><line x1="60" y1="0" x2="60" y2="16" stroke="currentColor" stroke-width="2" /><circle cx="58" cy="40" r="6" fill="currentColor" /><path d="M58 46 L50 70 L66 88 M54 56 L78 44 M50 70 L34 80" stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none" /></svg>
+          <p class="n-title">Aerial &amp; fitness,<br /><em>properly</em> taught.</p>
         </div>
-        <p class="n-for">Pole · Aerial Hoop · Silks · Hammock · Private 1-on-1</p>
+        <p class="n-for">For every body · Active ageing · Pre &amp; post-natal · Rehab</p>
       </div>
     )}
 
@@ -167,21 +164,15 @@ const urls: Record<string, string> = {
   .t-row:nth-child(3) i { background: #e0262b; }
 
   /* NAFTS */
-  .n { background: #f4efe6; color: #1c1c1c; gap: 0; padding: 0 !important; }
-  .n-top { display: flex; justify-content: space-between; align-items: center; padding: 2.4cqw 4cqw; }
-  .n-logo { font-family: 'Playfair Display', Georgia, serif; font-size: 3cqw; color: #1f4f9c; }
-  .n-logo em { font-style: italic; }
-  .n-nav { font-size: 1.9cqw; color: #555; }
-  .n-hero { position: relative; flex: 1; display: grid; grid-template-columns: 1fr; align-items: end; gap: 2cqw; padding: 3cqw 4cqw; background: linear-gradient(90deg, rgba(10,10,10,.85), rgba(10,10,10,.2)), radial-gradient(60% 90% at 78% 40%, #8a8a8a 0%, #3a3a3a 50%, #151515 100%); color: #fff; }
-  .n-copy { display: grid; gap: 1.6cqw; padding-bottom: 1cqw; max-width: 60%; }
-  .n-title { font-family: 'Playfair Display', Georgia, serif; font-size: 7cqw; line-height: 1.02; }
-  .n-title em { font-style: italic; }
-  .n-sub { font-size: 2.1cqw; color: #d6d6d6; }
-  .n-btns { display: flex; gap: 1.4cqw; flex-wrap: wrap; }
-  .n-b1, .n-b2 { font-size: 1.9cqw; font-weight: 600; padding: 1.1cqw 2.2cqw; border-radius: 99px; }
-  .n-b1 { background: #1f4f9c; color: #fff; }
-  .n-b2 { border: 1px solid #fff; }
-  .n-for { font-family: var(--f-mono); font-size: 1.8cqw; color: #444; padding: 2cqw 4cqw; }
+  .n { background: linear-gradient(160deg, #0f2a2e 0%, #0a1416 70%); color: #e6efee; gap: 2cqw; }
+  .n-top { display: flex; justify-content: space-between; align-items: center; }
+  .n-logo { font-family: 'Playfair Display', Georgia, serif; font-size: 3.3cqw; letter-spacing: .02em; }
+  .n-nav { font-size: 2cqw; color: #7fa3a1; }
+  .n-hero { display: grid; grid-template-columns: 1fr 1.3fr; align-items: center; gap: 3cqw; flex: 1; }
+  .n-fig { color: #5fc2b9; width: 100%; max-height: 38cqw; }
+  .n-title { font-family: var(--f-display); font-size: 6cqw; font-weight: 600; line-height: 1.02; letter-spacing: -0.02em; }
+  .n-title em { font-family: 'Playfair Display', Georgia, serif; font-weight: 500; color: #5fc2b9; }
+  .n-for { font-family: var(--f-mono); font-size: 1.8cqw; color: #7fa3a1; border-top: 1px solid #214246; padding-top: 2cqw; }
 
   /* Nectra */
   .x { background: linear-gradient(180deg, #f6f7fb, #e9ecf6); color: #141726; gap: 3cqw; }

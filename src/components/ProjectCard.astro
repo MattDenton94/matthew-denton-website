@@ -1,16 +1,14 @@
 ---
 import Mockup from './Mockup.astro';
 import Phone from './Phone.astro';
-import Desktop from './Desktop.astro';
 import type { Project } from '../data/site';
 interface Props { p: Project }
 const { p } = Astro.props;
 const phone = p.shots?.find((s) => s.kind === 'phone');
-const desk = !phone ? p.shots?.find((s) => s.kind === 'desktop') : undefined;
 ---
 <a class="pcard" href={`/work/${p.slug}`}>
   <div class={`stage stage-${p.mock}`}>
-    {phone ? <div class="ph"><Phone src={phone.src} alt={phone.alt} /></div> : desk ? <div class="mk"><Desktop src={desk.src} alt={desk.alt} /></div> : <div class="mk"><Mockup variant={p.mock} /></div>}
+    {phone ? <div class="ph"><Phone src={phone.src} alt={phone.alt} /></div> : <div class="mk"><Mockup variant={p.mock} /></div>}
   </div>
   <div class="pc-body">
     <div class="pc-meta"><span class={`tag ${p.tag === 'My own brand' ? 'own' : ''}`}>{p.tag}</span><span class="mono">{p.year}</span></div>
@@ -23,8 +21,6 @@ const desk = !phone ? p.shots?.find((s) => s.kind === 'desktop') : undefined;
   .pcard { display: grid; gap: 18px; text-decoration: none; color: inherit; align-content: start; }
   .stage { position: relative; aspect-ratio: 4 / 3; border-radius: var(--radius); overflow: hidden; background: var(--surface-2); border: 1px solid var(--line); max-width: 100%; }
   .stage-harlan { background: linear-gradient(160deg, #2a2720, #141310); border-color: #2a2720; }
-  .stage-nafts { background: linear-gradient(160deg, #1b2740, #0b1020); border-color: #1b2740; }
-  .stage-tnt { background: linear-gradient(160deg, #3a1414, #111); border-color: #2a1a1a; }
   .stage-pearls { background: linear-gradient(160deg, #efe3d4, #d9c3a8); border-color: #e3d3bf; }
   .ph { position: absolute; left: 50%; top: 9%; width: 52%; translate: -50% 0; transition: transform .4s cubic-bezier(.2,.7,.2,1); }
   .mk { position: absolute; inset: 9% 7% auto 7%; transition: transform .4s cubic-bezier(.2,.7,.2,1); }

@@ -3,7 +3,6 @@ import Base from '../layouts/Base.astro';
 import Mockup from '../components/Mockup.astro';
 import Phone from '../components/Phone.astro';
 import Post from '../components/Post.astro';
-import Desktop from '../components/Desktop.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import CtaBand from '../components/CtaBand.astro';
 import WaIcon from '../components/WaIcon.astro';
@@ -33,7 +32,7 @@ const steps = [
         <p class="hero-note mono">Replies within a day · Quotes are free</p>
       </div>
       <div class="stack" aria-label="Recent projects">
-        <a href="/work/tnt-fitness" class="s s3" aria-label="TNT Fitness website"><Desktop src="/work/tnt-schedule.webp" alt="TNT Fitness weekly schedule" eager /></a>
+        <a href="/work/tnt-fitness" class="s s3" aria-label="TNT Fitness website"><Mockup variant="tnt" /></a>
         <a href="/work/creative-pearls" class="s s2" aria-label="Creative Pearls website"><Phone src="/work/pearls-home.webp" alt="Creative Pearls homepage on a phone" crop eager /></a>
         <a href="/work/harlan" class="s s1" aria-label="Harlan store"><Phone src="/work/harlan-home.webp" alt="Harlan homepage on a phone" crop eager /></a>
         <a href="/work/harlan" class="s s4" aria-label="Harlan Meta ad"><Post src="/work/harlan-ad.webp" alt="Harlan Meta ad: Payday. Treat the wrist." label="Ad I designed" eager /></a>

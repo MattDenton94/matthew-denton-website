@@ -63,7 +63,7 @@ export const services: Service[] = [
   },
 ];
 
-export type Shot = { src: string; alt: string; kind: 'phone' | 'post' | 'desktop'; caption: string };
+export type Shot = { src: string; alt: string; kind: 'phone' | 'post'; caption: string };
 
 export type Project = {
   slug: string;
@@ -183,11 +183,6 @@ export const projects: Project[] = [
     url: 'https://github.com/MattDenton94/TNT_Fitness',
     urlLabel: 'View the code',
     mock: 'tnt',
-    shots: [
-      { src: '/work/tnt-schedule.webp', alt: 'TNT Fitness weekly schedule table in black and red: morning and evening sessions Monday to Friday with the focus for each day', kind: 'desktop', caption: 'The training board. Morning and evening sessions and the focus for each day, readable at a glance.' },
-      { src: '/work/tnt-pricing.webp', alt: 'TNT Fitness pricing: R1,200 best-value unlimited with nutrition mentoring, fitness class options from R85 drop-in, and self-defence only at R550', kind: 'desktop', caption: 'Pricing grouped by decision, a best-value pick, and a R85 first session to lower the barrier.' },
-      { src: '/work/tnt-classes.webp', alt: 'TNT Fitness classes and services grid: boxing fitness, strength and conditioning, fat loss, beginner-friendly training, self-defence, workshops, vital signs assessments and community hikes', kind: 'desktop', caption: 'Classes and services. Eight offers, each explained in a line.' },
-    ],
     brief:
       'TNT needed a site built to convert: a link coaches could share that turns into bookings. No CMS to maintain and nothing for the owners to manage.',
     built: [
@@ -201,11 +196,7 @@ export const projects: Project[] = [
       },
       {
         title: 'Pricing by decision, not by grid',
-        body: 'A best-value unlimited plan up top, then fitness classes and self-defence as separate choices, and a R85 first session for anyone unsure where to start.',
-      },
-      {
-        title: 'A schedule like the gym wall',
-        body: 'A red-and-black training board with morning and evening times and the focus for each day. On mobile it turns into cards.',
+        body: 'Options grouped by what a member is actually deciding, with a schedule that turns into cards on mobile.',
       },
       {
         title: 'Fast and findable',
@@ -232,29 +223,20 @@ export const projects: Project[] = [
     url: 'https://www.nafts.co.za/',
     urlLabel: 'nafts.co.za',
     mock: 'nafts',
-    shots: [
-      { src: '/work/nafts-home.webp', alt: 'Nautical Aerial & Fitness homepage on a phone: black and white pole photo, headline "Aerial Fitness, Reimagined" and a Book on WhatsApp button', kind: 'phone', caption: 'Homepage hero. Real studio photography, the blue italic accent and booking one tap away.' },
-      { src: '/work/nafts-specialties.webp', alt: 'Specialties section listing youth and kids aerial, active ageing, pre and post-natal, weight control, mobility, rehab support and chronic condition management', kind: 'phone', caption: 'Specialties. Every kind of client sees themselves before they see a price.' },
-      { src: '/work/nafts-contact.webp', alt: 'Contact and booking section with a Google map of the Melkbosstrand studio and studio hours', kind: 'phone', caption: 'Contact and booking. Map, address and hours, with WhatsApp always in reach.' },
-    ],
     brief:
       'The studio needed to show real credentials and premium positioning, and speak to more than young, flexible people: older clients, active agers, pre and post-natal clients and rehab patients too.',
     built: [
       {
         title: 'Real photos, not stock',
-        body: 'Black-and-white studio photography on deep navy, with one italic word in blue: "Aerial Fitness, Reimagined".',
+        body: 'A duotone hero and teal-toned apparatus photography, with an italic accent word in the headline.',
       },
       {
-        title: 'Specialties, up front',
-        body: 'Youth and kids, active ageing, pre and post-natal, mobility and rehab support, listed plainly so each visitor sees themselves before they see a price.',
+        title: '"Who this is for", up front',
+        body: 'The About section lists every audience plainly, so each visitor sees themselves before they see a price.',
       },
       {
         title: 'Simple pricing, clear best value',
         body: 'Six cards with one marked best value, and every call to action routed to WhatsApp.',
-      },
-      {
-        title: 'Easy to find and visit',
-        body: 'A contact section with the map, address and studio hours, plus a floating WhatsApp button on every screen.',
       },
     ],
     facts: [

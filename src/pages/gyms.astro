@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import Desktop from '../components/Desktop.astro';
-import Phone from '../components/Phone.astro';
+import Mockup from '../components/Mockup.astro';
 import CtaBand from '../components/CtaBand.astro';
 import WaIcon from '../components/WaIcon.astro';
 import { wa } from '../data/site';
@@ -25,8 +24,8 @@ const points = [
         <div class="btn-row"><a class="btn btn-primary" href={wa(msg)} target="_blank" rel="noopener"><WaIcon /> Chat about your gym</a><a class="btn btn-ghost" href="/work/tnt-fitness">See TNT Fitness</a></div>
       </div>
       <div class="pair">
-        <a href="/work/tnt-fitness" class="m1"><Desktop src="/work/tnt-pricing.webp" alt="TNT Fitness pricing section" eager /></a>
-        <a href="/work/nafts" class="m2"><Phone src="/work/nafts-home.webp" alt="Nautical Aerial & Fitness homepage" crop eager /></a>
+        <a href="/work/tnt-fitness" class="m1"><Mockup variant="tnt" /></a>
+        <a href="/work/nafts" class="m2"><Mockup variant="nafts" /></a>
       </div>
     </div>
   </section>
@@ -43,9 +42,7 @@ const points = [
   .copy { display: grid; gap: 22px; }
   h1 { font-size: var(--step-3); }
   .pair { position: relative; aspect-ratio: 1 / .8; max-width: 100%; }
-  .pair a { text-decoration: none; position: absolute; display: block; }
-  .m1 { width: 78%; }
-  .m2 { width: 32%; }
+  .pair a { text-decoration: none; position: absolute; width: 80%; display: block; }
   .m1 { left: 0; top: 0; transform: rotate(-4deg); }
   .m2 { right: 0; bottom: 0; transform: rotate(3deg); }
   @media (max-width: 860px) { .top { grid-template-columns: 1fr; } }
