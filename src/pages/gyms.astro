@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import Desktop from '../components/Desktop.astro';
+import Mockup from '../components/Mockup.astro';
+import Phone from '../components/Phone.astro';
+import CtaBand from '../components/CtaBand.astro';
+import WaIcon from '../components/WaIcon.astro';
+import { wa } from '../data/site';
+const msg = "Hi Matt, I run a gym/studio and I'd like to chat about a website.";
+const points = [
+  { t: 'Bookings on WhatsApp', d: 'Every button opens a pre-filled message, so a prospect goes from Instagram to a trial class in two taps.' },
+  { t: 'Timetable that works on a phone', d: 'Your schedule turns into clean cards on mobile, easy to update without logging into anything.' },
+  { t: 'Found on Google Maps', d: 'Hours, address and classes marked up so Google shows them properly, plus your Google Business Profile set up.' },
+  { t: 'Pricing people understand', d: 'Memberships and packages laid out by what a member is actually deciding, with one clear best value.' },
+  { t: 'Looks like your gym', d: 'Your real photos and your real vibe. A boxing gym should not look like a pilates studio.' },
+  { t: 'Ads and automations when ready', d: 'Meta ads for new-member drives, and automatic replies and reminders so leads never go cold.' },
+];
+---
+<Base title="Websites for gyms and studios | Matthew Denton" description="Websites for gyms, boxing clubs, pilates, aerial and dance studios that turn Instagram followers into booked trial classes.">
+  <section class="section">
+    <div class="wrap top">
+      <div class="copy">
+        <p class="eyebrow">For gyms and studios</p>
+        <h1>A site your coaches can text to anyone, and trust it'll get them booked.</h1>
+        <p class="lede">I've built for a boxing gym and an aerial studio in Cape Town. I know what members look for, and what makes them message.</p>
+        <div class="btn-row"><a class="btn btn-primary" href={wa(msg)} target="_blank" rel="noopener"><WaIcon /> Chat about your gym</a><a class="btn btn-ghost" href="/work/tnt-fitness">See TNT Fitness</a></div>
+      </div>
+      <div class="pair">
+        <a href="/work/tnt-fitness" class="m1"><Mockup variant="tnt" /></a>
+        <a href="/work/nafts" class="m2"><Phone src="/work/nafts-home.webp" alt="Nautical Aerial & Fitness homepage" crop eager /></a>
+      </div>
+    </div>
+  </section>
+  <section class="section-tight pts">
+    <div class="wrap">
+      <div class="head"><p class="eyebrow">What you get</p><h2 class="h2">Built for how gyms actually get members</h2></div>
+      <div class="grid">{points.map((p) => (<div><h3>{p.t}</h3><p>{p.d}</p></div>))}</div>
+    </div>
+  </section>
+  <CtaBand title="Want more trial classes booked?" message={msg} />
+</Base>
+<style>
+  .top { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+  .copy { display: grid; gap: 22px; }
+  h1 { font-size: var(--step-3); }
+  .pair { position: relative; aspect-ratio: 1 / .8; max-width: 100%; }
+  .pair a { text-decoration: none; position: absolute; display: block; }
+  .m1 { width: 78%; }
+  .m2 { width: 32%; }
+  .m1 { left: 0; top: 0; transform: rotate(-4deg); }
+  .m2 { right: 0; bottom: 0; transform: rotate(3deg); }
+  @media (max-width: 860px) { .top { grid-template-columns: 1fr; } }
+  .pts { background: var(--surface); border-block: 1px solid var(--line); }
+  .h2 { font-size: var(--step-3); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .grid div { border-top: 2px solid var(--ink); padding-top: 16px; display: grid; gap: 8px; align-content: start; }
+  .grid h3 { font-size: var(--step-1); }
+  .grid p { color: var(--muted); }
+  @media (max-width: 860px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .grid { grid-template-columns: 1fr; } }
+</style>
