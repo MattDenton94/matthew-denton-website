@@ -17,7 +17,7 @@ interface Props {
 }
 const {
   title,
-  description = 'Websites, Shopify stores, ads, Canva design and AI automations for small businesses. One person in Cape Town, working with clients anywhere.',
+  description = 'Web designer for gyms and martial arts schools, plus Shopify stores, ads and automations. Based in Cape Town, working with clients in the US and South Africa.',
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -52,7 +52,7 @@ const year = new Date().getFullYear();
       url: Astro.site?.toString(),
       email: contact.email,
       telephone: '+' + contact.whatsappNumber,
-      areaServed: 'Worldwide',
+      areaServed: ['US', 'ZA'],
       address: { '@type': 'PostalAddress', addressLocality: 'Cape Town', addressCountry: 'ZA' },
       sameAs: [contact.linkedin],
     })} />
@@ -83,7 +83,7 @@ const year = new Date().getFullYear();
       <div class="wrap footer-grid">
         <div style="display:grid;gap:8px;max-width:38ch">
           <a href="/" class="brand"><span class="brand-dot" aria-hidden="true">MD</span><span>Matthew Denton</span></a>
-          <p>Websites, stores, ads, design and automations for small businesses. {contact.location}.</p>
+          <p>Web design for gyms and martial arts schools, plus stores, ads and automations. Based in Cape Town, working with clients in the US and South Africa.</p>
         </div>
         <div style="display:grid;gap:10px">
           <ul>

@@ -5,10 +5,10 @@ import Mockup from '../components/Mockup.astro';
 import Phone from '../components/Phone.astro';
 import CtaBand from '../components/CtaBand.astro';
 import WaIcon from '../components/WaIcon.astro';
-import { wa } from '../data/site';
+import { wa, mail } from '../data/site';
 const msg = "Hi Matt, I run a gym/studio and I'd like to chat about a website.";
 const points = [
-  { t: 'Bookings on WhatsApp', d: 'Every button opens a pre-filled message, so a prospect goes from Instagram to a trial class in two taps.' },
+  { t: 'Booking in two taps', d: 'Every button goes straight to how you take bookings: a booking app, a form, text or WhatsApp. A prospect goes from Instagram to a trial class in two taps.' },
   { t: 'Timetable that works on a phone', d: 'Your schedule turns into clean cards on mobile, easy to update without logging into anything.' },
   { t: 'Found on Google Maps', d: 'Hours, address and classes marked up so Google shows them properly, plus your Google Business Profile set up.' },
   { t: 'Pricing people understand', d: 'Memberships and packages laid out by what a member is actually deciding, with one clear best value.' },
@@ -16,14 +16,14 @@ const points = [
   { t: 'Ads and automations when ready', d: 'Meta ads for new-member drives, and automatic replies and reminders so leads never go cold.' },
 ];
 ---
-<Base title="Websites for gyms and studios | Matthew Denton" description="Websites for gyms, boxing clubs, pilates, aerial and dance studios that turn Instagram followers into booked trial classes.">
+<Base title="Websites for gyms and martial arts schools | Matthew Denton" description="Websites for gyms, boxing clubs, martial arts schools and fitness studios that turn Instagram followers into booked trial classes. Working with gyms in the US and South Africa.">
   <section class="section">
     <div class="wrap top">
       <div class="copy">
-        <p class="eyebrow">For gyms and studios</p>
+        <p class="eyebrow">For gyms, martial arts schools and studios</p>
         <h1>A site your coaches can text to anyone, and trust it'll get them booked.</h1>
-        <p class="lede">I've built for a boxing gym and an aerial studio in Cape Town. I know what members look for, and what makes them message.</p>
-        <div class="btn-row"><a class="btn btn-primary" href={wa(msg)} target="_blank" rel="noopener"><WaIcon /> Chat about your gym</a><a class="btn btn-ghost" href="/work/tnt-fitness">See TNT Fitness</a></div>
+        <p class="lede">I've built sites for a boxing and self-defence gym and an aerial fitness studio. I know what members look for, and what makes them reach out. Based in Cape Town, working with gyms in the US and South Africa.</p>
+        <div class="btn-row"><a class="btn btn-primary" href={mail()}>Get a free site review</a><a class="btn btn-ghost" href={wa(msg)} target="_blank" rel="noopener"><WaIcon /> WhatsApp me</a></div>
       </div>
       <div class="pair">
         <a href="/work/tnt-fitness" class="m1"><Mockup variant="tnt" /></a>

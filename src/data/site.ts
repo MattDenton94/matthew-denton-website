@@ -7,6 +7,9 @@ export const contact = {
   location: 'Cape Town, South Africa',
 };
 
+export const mail = (subject = 'Free site review', body = "Hi Matt,\n\nI run [gym name] in [city]. Our website is [link]. Could you take a look?\n\nThanks,") =>
+  `mailto:${contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
 export const wa = (text = "Hi Matt, I found your site and I'd like to chat about a project.") =>
   `https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent(text)}`;
 
@@ -309,7 +312,7 @@ export const tools = [
   { name: 'Travel explorer', line: 'Search, filter and save destinations in a clean little web app.' },
 ];
 
-export const clients = ['Creative Pearls', 'TNT Fitness', 'Nautical Aerial & Fitness'];
+export const clients = ['TNT Fitness', 'Nautical Aerial & Fitness', 'Creative Pearls'];
 
 export const faqs = [
   {
@@ -333,8 +336,8 @@ export const faqs = [
     a: "It helps, but you don't have to. I can write the copy, design graphics in Canva and tell you exactly which photos to take on your phone.",
   },
   {
-    q: 'Do you only work in Cape Town?',
-    a: "I'm based in Cape Town and happy to meet locally, but everything works over WhatsApp and video calls, so I work with clients anywhere.",
+    q: 'Do you work with gyms in the US?',
+    a: "Yes. I'm based in Cape Town and work with gyms in the US and South Africa. Everything runs over email, video calls and WhatsApp. Cape Town is 6 to 9 hours ahead of the US, so calls fit easily into your morning.",
   },
   {
     q: 'Can I pay in instalments?',
