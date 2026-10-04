@@ -17,7 +17,7 @@ interface Props {
 }
 const {
   title,
-  description = 'Web designer for gyms and martial arts schools, plus Shopify stores, ads and automations. Based in Cape Town, working with clients in the US and South Africa.',
+  description = 'Websites, Shopify stores, ads, Canva design and AI automations for small businesses. Based in Cape Town, working with clients in the US and South Africa.',
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -83,14 +83,13 @@ const year = new Date().getFullYear();
       <div class="wrap footer-grid">
         <div style="display:grid;gap:8px;max-width:38ch">
           <a href="/" class="brand"><span class="brand-dot" aria-hidden="true">MD</span><span>Matthew Denton</span></a>
-          <p>Web design for gyms and martial arts schools, plus stores, ads and automations. Based in Cape Town, working with clients in the US and South Africa.</p>
+          <p>Websites, stores, ads, design and automations for small businesses. Based in Cape Town, working with clients in the US and South Africa.</p>
         </div>
         <div style="display:grid;gap:10px">
           <ul>
             <li><a href="/work">Work</a></li>
             <li><a href="/services">Services</a></li>
             <li><a href="/about">About</a></li>
-            <li><a href="/gyms">For gyms</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
           <ul class="mono" style="font-size:.85rem">

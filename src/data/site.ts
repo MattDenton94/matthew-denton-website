@@ -7,7 +7,7 @@ export const contact = {
   location: 'Cape Town, South Africa',
 };
 
-export const mail = (subject = 'Free site review', body = "Hi Matt,\n\nI run [gym name] in [city]. Our website is [link]. Could you take a look?\n\nThanks,") =>
+export const mail = (subject = 'Free site review', body = "Hi Matt,\n\nI run [business name] in [city]. Our website is [link]. Could you take a look?\n\nThanks,") =>
   `mailto:${contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
 export const wa = (text = "Hi Matt, I found your site and I'd like to chat about a project.") =>
@@ -336,8 +336,8 @@ export const faqs = [
     a: "It helps, but you don't have to. I can write the copy, design graphics in Canva and tell you exactly which photos to take on your phone.",
   },
   {
-    q: 'Do you work with gyms in the US?',
-    a: "Yes. I'm based in Cape Town and work with gyms in the US and South Africa. Everything runs over email, video calls and WhatsApp. Cape Town is 6 to 9 hours ahead of the US, so calls fit easily into your morning.",
+    q: 'Do you work with businesses outside South Africa?',
+    a: "Yes. I'm based in Cape Town and work with businesses in the US and South Africa. Everything runs over email, video calls and WhatsApp. Cape Town is 6 to 9 hours ahead of the US, so calls fit easily into your morning.",
   },
   {
     q: 'Can I pay in instalments?',
