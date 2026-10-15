@@ -91,46 +91,54 @@ export const projects: Project[] = [
   {
     slug: 'harlan',
     name: 'Harlan',
-    kind: "Men's steel jewellery store",
+    kind: "Women's jewellery gifting brand",
     tag: 'My own brand',
     year: '2026',
     place: 'South Africa, nationwide',
     summary:
-      'My own jewellery brand, built and run end to end. The store, the brand, the product photos, the offers and the ads are all mine, so every tactic I sell to clients gets tested with my own money first.',
-    services: ['Shopify', 'Brand', 'Canva design', 'Meta ads'],
+      'My own gifting brand, built and run end to end. One product, the Build Your Gift Box: she gets three pieces of jewellery, gift-boxed with a personal note. The store, the builder, the numbers and the ads are all mine, so every tactic I sell to clients gets tested with my own money first.',
+    services: ['Shopify', 'Custom builder', 'Brand', 'Meta ads'],
     url: 'https://harlan.co.za',
     urlLabel: 'harlan.co.za',
     mock: 'harlan',
     shots: [
-      { src: '/work/harlan-home.webp', alt: 'Harlan homepage on a phone: "Steel you never have to take off." with Shop bracelets and Shop necklaces buttons', kind: 'phone', caption: 'Homepage. The promise, the proof points and two clear paths into the shop.' },
-      { src: '/work/harlan-ad.webp', alt: 'Harlan Meta ad: two steel bracelets on a wrist in a car, headline "Payday. Treat the wrist." Second bracelet half price, R298.50 for both', kind: 'post', caption: 'Meta ad made in Canva. A payday hook, a real wrist and the offer in one line.' },
-      { src: '/work/harlan-trust.webp', alt: 'Harlan trust section: 316L steel, posted from Cape Town, 30-day returns, answered by Matt on WhatsApp, Yoco and PayFast logos', kind: 'phone', caption: 'Trust block. Every reason a first-time buyer hesitates, answered before checkout.' },
+      { src: '/work/harlan-gift-home.webp', alt: 'Harlan homepage on a phone: "The gift she\'ll never take off." above an open pink gift box holding a necklace, bracelet and hoops, with a Build Her Box button', kind: 'phone', caption: 'Homepage. One promise, one button, and every section leads to the builder.' },
+      { src: '/work/harlan-gift-builder.webp', alt: 'Harlan Build Your Gift Box page: step 1, choose 3 pieces, with 2 of 3 slots filled and cards for necklaces, bracelets and earrings, then step 2, choose her box in pink, white or black', kind: 'phone', caption: 'The builder. Tap three pieces, watch the slots fill, then pick her box colour.' },
+      { src: '/work/harlan-gift-checkout.webp', alt: 'Harlan builder steps 3 and 4: a live preview of the handwritten gift note, delivery options for standard, express and by a date, and an Add to cart R798 button', kind: 'phone', caption: 'The note and delivery. A live card preview, and a total that updates with every choice.' },
     ],
     brief:
-      "Cheap jewellery tarnishes, and South African shoppers have learned not to trust online stores they have never heard of. Harlan had to look established from day one, sell to men buying for themselves and to women buying gifts, and make a R179 bracelet feel like a considered buy.",
+      'Most jewellery stores make the buyer do all the work: browse dozens of products, guess what she would like, then work out how to wrap it. Harlan sells one thing instead, the finished gift. The site had to make choosing feel easy and personal on a phone, look premium enough to give, and keep a R699 box profitable on paid traffic.',
     built: [
       {
-        title: 'A brand with one clear promise',
-        body: 'The name, logo and tagline all point at one idea: 316L stainless steel you can wear in the shower, the gym and the sea. "Steel you never have to take off."',
+        title: 'One product, one path',
+        body: 'The whole store is the Build Your Gift Box. No product pages in the menu and no browsing: every button, occasion and piece on the homepage leads straight to the builder.',
       },
       {
-        title: 'A Shopify store set up for how locals buy',
-        body: 'Yoco and PayFast checkout, The Courier Guy delivery, 30-day returns and a WhatsApp line for questions, so a first-time buyer has no reason to hesitate.',
+        title: 'A custom step-by-step builder',
+        body: 'A custom Shopify theme section, mobile first. Pick 3 of 11 pieces with a live counter and slots that fill as you tap, choose a pink, white or black box, write a free note with a live card preview, then choose delivery. The add to cart button shows the running total and stays locked until the box is complete.',
       },
       {
-        title: 'Offers that grow the basket',
-        body: 'Buy a bracelet, get the second at 50% off, and free delivery on any two items. Sets and gift options give the gift buyer an easy yes.',
+        title: 'Delivery upsells that are honest',
+        body: 'Standard delivery is free. Express (+R99) and a guaranteed date (+R149, with a date picker that skips Sundays) are hidden add-on products that go into the cart with the box, and come out with it if the box is removed.',
       },
       {
-        title: 'Product photography and ad creative',
-        body: 'Steel on black for the catalogue, real wrist shots for lifestyle, and Meta ads designed in Canva, like "Payday. Treat the wrist." with the second-bracelet offer built in.',
+        title: 'Every choice lands on the order',
+        body: 'Pieces, box colour, note, sender and delivery date are saved on the order itself, so packing a box takes one glance and nothing gets lost between checkout and courier.',
+      },
+      {
+        title: 'Numbers worked out before the first ad',
+        body: 'Cost per box, breakeven cost per sale and a target cost per sale were set before spending a rand on Meta ads. Any ad set that spends three times the target without a sale gets switched off.',
+      },
+      {
+        title: 'A brand built for gifting',
+        body: 'Cream, champagne and dusty rose, elegant serif headings and one line that sums it up: "Because you deserve it, beautiful." Yoco, PayFast, free nationwide delivery and 30-day returns answer every reason to hesitate.',
       },
     ],
     facts: [
       { label: 'Platform', value: 'Shopify' },
-      { label: 'Payments', value: 'Yoco, PayFast' },
-      { label: 'Delivery', value: 'Posted from Cape Town' },
-      { label: 'Prices from', value: 'R179' },
+      { label: 'Product', value: 'One gift box' },
+      { label: 'Price', value: 'R699' },
+      { label: 'Delivery', value: 'Free, nationwide' },
     ],
   },
   {

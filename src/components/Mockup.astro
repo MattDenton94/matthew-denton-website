@@ -21,19 +21,15 @@ const urls: Record<string, string> = {
   <div class="screen" aria-hidden="true">
     {variant === 'harlan' && (
       <div class="h">
-        <div class="h-top"><span class="h-logo">HARLAN</span><span class="h-nav">Bracelets · Pendants · Gifts</span></div>
+        <div class="h-top"><span class="h-logo">HARLAN</span><span class="h-nav">Build Your Box · Occasions · Reviews</span></div>
         <div class="h-hero">
-          <p class="h-kicker">316L stainless steel</p>
-          <p class="h-title">Steel you never have to take off.</p>
-          <span class="h-btn">Shop bracelets</span>
+          <p class="h-kicker">The gift box, built by you</p>
+          <p class="h-title">The gift she'll <em>never</em> take off.</p>
+          <span class="h-btn">Build Her Box</span>
         </div>
         <div class="h-grid">
-          {[['Box', 'R179'], ['Figaro', 'R199'], ['Heavy Cuban', 'R249']].map(([n, p], i) => (
-            <div class="h-card">
-              <div class={`h-chain c${i}`}>{Array.from({ length: 7 }).map(() => <b></b>)}</div>
-              <span class="h-name">The {n}</span>
-              <span class="h-price">{p}</span>
-            </div>
+          {['Pick 3 pieces', 'Choose her box', 'Add your note'].map((n, i) => (
+            <div class="h-card"><b>{i + 1}</b><span class="h-name">{n}</span></div>
           ))}
         </div>
       </div>
@@ -118,21 +114,19 @@ const urls: Record<string, string> = {
   .screen > div { position: absolute; inset: 0; padding: 4.5cqw 5.5cqw; display: flex; flex-direction: column; }
 
   /* Harlan */
-  .h { background: radial-gradient(120% 80% at 80% 0%, #1b2233 0%, #0a0d14 60%); color: #e9ecf2; gap: 3.2cqw; }
+  .h { background: radial-gradient(110% 80% at 50% 100%, #f3e3d6 0%, #faf5ee 65%); color: #3b2f2c; gap: 3cqw; }
   .h-top { display: flex; justify-content: space-between; align-items: center; }
-  .h-logo { font-family: var(--f-display); font-weight: 700; letter-spacing: 0.34em; font-size: 3.2cqw; }
-  .h-nav { font-size: 2.1cqw; color: #8c96aa; }
-  .h-kicker { font-family: var(--f-mono); font-size: 1.9cqw; letter-spacing: .14em; text-transform: uppercase; color: #8c96aa; }
-  .h-title { font-family: var(--f-display); font-weight: 600; font-size: 6cqw; line-height: 1.02; letter-spacing: -0.02em; max-width: 16ch; margin: 1cqw 0 2.2cqw; }
-  .h-btn { display: inline-block; background: #e9ecf2; color: #0a0d14; font-weight: 700; font-size: 2.1cqw; padding: 1.3cqw 2.6cqw; border-radius: 99px; }
+  .h-logo { font-family: 'Playfair Display', Georgia, serif; letter-spacing: 0.34em; font-size: 3cqw; }
+  .h-nav { font-size: 2cqw; color: #8a7a72; }
+  .h-hero { text-align: center; }
+  .h-kicker { font-size: 1.8cqw; letter-spacing: .18em; text-transform: uppercase; color: #8a7a72; }
+  .h-title { font-family: 'Playfair Display', Georgia, serif; font-size: 5.6cqw; line-height: 1.05; max-width: 18ch; margin: 1.2cqw auto 2.4cqw; }
+  .h-title em { color: #b27474; }
+  .h-btn { display: inline-block; background: #c98f8f; color: #fff; font-size: 2cqw; letter-spacing: .12em; text-transform: uppercase; padding: 1.3cqw 3.2cqw; border-radius: 99px; }
   .h-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2cqw; margin-top: auto; }
-  .h-card { background: #121724; border: 1px solid #222a3b; border-radius: 1.4cqw; padding: 2cqw; display: grid; gap: .6cqw; }
-  .h-name { font-size: 1.9cqw; color: #c3c9d6; }
-  .h-price { font-family: var(--f-mono); font-size: 2cqw; color: #fff; }
-  .h-chain { display: flex; justify-content: center; align-items: center; height: 7cqw; }
-  .h-chain b { width: 3.1cqw; height: 2cqw; border: .55cqw solid #c9ced8; border-radius: 1cqw; margin-inline: -.35cqw; background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,.35)); }
-  .h-chain.c1 b:nth-child(even) { width: 2cqw; }
-  .h-chain.c2 b { border-width: .8cqw; height: 2.6cqw; width: 3.6cqw; }
+  .h-card { background: #fff; border: 1px solid #eadccb; border-radius: 1.4cqw; padding: 1.8cqw; display: flex; align-items: center; gap: 1.4cqw; }
+  .h-card b { width: 3.4cqw; height: 3.4cqw; border-radius: 50%; border: 1px solid #c98f8f; color: #b27474; display: grid; place-items: center; font-size: 1.8cqw; font-weight: 600; flex: none; }
+  .h-name { font-size: 1.9cqw; }
 
   /* Creative Pearls */
   .p { background: #f8f1ec; color: #3a2c2a; gap: 2cqw; }
