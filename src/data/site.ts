@@ -183,7 +183,7 @@ export const projects: Project[] = [
     slug: 'tnt-fitness',
     name: 'TNT Fitness',
     kind: 'Boxing, strength and self-defence',
-    tag: 'Client',
+    tag: 'Ongoing client',
     year: '2026',
     summary:
       'A full rebuild for a training studio. Real members, real results and real coaches, built to turn a scroll into a booked first session.',
@@ -216,8 +216,8 @@ export const projects: Project[] = [
     slug: 'nafts',
     name: 'Nautical Aerial & Fitness',
     kind: 'Aerial and fitness studio',
-    tag: 'Client',
-    year: '2023',
+    tag: 'Ongoing client',
+    year: '2026',
     summary:
       'An editorial site built around real photography, with a specialty for every kind of client, so a serious studio stops looking like a hobby class.',
     lesson: 'Every visitor sees herself in the list before she sees a price.',
@@ -241,7 +241,7 @@ export const projects: Project[] = [
     facts: [
       { label: 'Look', value: 'Editorial' },
       { label: 'Booking', value: 'WhatsApp' },
-      { label: 'Year', value: '2023' },
+      { label: 'Year', value: '2026' },
     ],
   },
 ];
