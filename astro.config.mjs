@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://matthew-denton.vercel.app',
+  site: 'https://matthewdenton.co.za',
   trailingSlash: 'ignore',
-  redirects: { '/gyms': '/' },
+  redirects: { '/gyms': '/', '/work/nectra': '/work' },
 });

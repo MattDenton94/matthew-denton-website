@@ -1,70 +1,70 @@
+/* Treatment-room palette: porcelain, deep green-black ink, clinical teal, skin blush. */
 :root {
-  --bg: #eef0f3;
+  --bg: #f6f7f5;
   --surface: #ffffff;
-  --surface-2: #e4e7ec;
-  --ink: #12151b;
-  --muted: #586070;
-  --line: #d3d8e0;
-  --accent: #2340f0;
+  --surface-2: #eceeeb;
+  --ink: #18211f;
+  --muted: #5b6563;
+  --line: #dbe0dd;
+  --accent: #23665e;
   --accent-ink: #ffffff;
-  --accent-soft: #dfe4ff;
-  --mark: #ffd84a;
-  --mark-ink: #12151b;
-  --band: #12151b;
-  --band-ink: #eef0f3;
-  --band-muted: #9aa1ae;
+  --accent-soft: #dcebe7;
+  --blush: #ecdcd4;
+  --blush-ink: #5a3b30;
+  --band: #18211f;
+  --band-ink: #eef1ef;
+  --band-muted: #a4afac;
 
-  --f-display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', 'Arial Narrow', system-ui, sans-serif;
+  --f-display: 'Schibsted Grotesk Variable', 'Schibsted Grotesk', system-ui, sans-serif;
   --f-body: 'Figtree Variable', 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --f-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 
   --step--1: clamp(0.82rem, 0.8rem + 0.1vw, 0.9rem);
   --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.1rem);
   --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.45rem);
   --step-2: clamp(1.5rem, 1.3rem + 1vw, 2.1rem);
   --step-3: clamp(2rem, 1.6rem + 2vw, 3.2rem);
-  --step-4: clamp(2.6rem, 1.8rem + 4.2vw, 5.4rem);
+  --step-4: clamp(2.5rem, 1.7rem + 4vw, 5rem);
 
   --gutter: clamp(16px, 4vw, 40px);
   --max: 1200px;
-  --radius: 14px;
+  --radius: 18px;
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --bg: #0d0f13;
-    --surface: #161920;
-    --surface-2: #1d2129;
-    --ink: #e8ebf0;
-    --muted: #9aa1ae;
-    --line: #272c36;
-    --accent: #7d90ff;
-    --accent-ink: #0d0f13;
-    --accent-soft: #1d2340;
-    --mark: #f0c93a;
-    --mark-ink: #12151b;
-    --band: #161920;
-    --band-ink: #e8ebf0;
-    --band-muted: #9aa1ae;
+    --bg: #101514;
+    --surface: #171d1c;
+    --surface-2: #1e2625;
+    --ink: #e9eeec;
+    --muted: #9eaaa7;
+    --line: #29322f;
+    --accent: #6fbcb1;
+    --accent-ink: #0c1211;
+    --accent-soft: #1b302d;
+    --blush: #3a2c27;
+    --blush-ink: #f1d9cf;
+    --band: #171d1c;
+    --band-ink: #e9eeec;
+    --band-muted: #9eaaa7;
     color-scheme: dark;
   }
 }
 :root[data-theme='dark'] {
-  --bg: #0d0f13;
-  --surface: #161920;
-  --surface-2: #1d2129;
-  --ink: #e8ebf0;
-  --muted: #9aa1ae;
-  --line: #272c36;
-  --accent: #7d90ff;
-  --accent-ink: #0d0f13;
-  --accent-soft: #1d2340;
-  --mark: #f0c93a;
-  --mark-ink: #12151b;
-  --band: #161920;
-  --band-ink: #e8ebf0;
-  --band-muted: #9aa1ae;
+  --bg: #101514;
+  --surface: #171d1c;
+  --surface-2: #1e2625;
+  --ink: #e9eeec;
+  --muted: #9eaaa7;
+  --line: #29322f;
+  --accent: #6fbcb1;
+  --accent-ink: #0c1211;
+  --accent-soft: #1b302d;
+  --blush: #3a2c27;
+  --blush-ink: #f1d9cf;
+  --band: #171d1c;
+  --band-ink: #e9eeec;
+  --band-muted: #9eaaa7;
   color-scheme: dark;
 }
 
@@ -84,8 +84,8 @@ img, svg { max-width: 100%; display: block; }
 a { color: inherit; }
 h1, h2, h3, h4 {
   font-family: var(--f-display);
-  line-height: 1.02;
-  letter-spacing: -0.025em;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
   margin: 0;
   text-wrap: balance;
   font-weight: 700;
@@ -98,20 +98,12 @@ p { margin: 0; text-wrap: pretty; }
 .section-tight { padding-block: clamp(48px, 6vw, 80px); }
 
 .eyebrow {
-  font-family: var(--f-mono);
-  font-size: 0.76rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
+  font-family: var(--f-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent);
 }
 .lede { font-size: var(--step-1); color: var(--muted); max-width: 38ch; line-height: 1.5; }
-.mark {
-  background: linear-gradient(transparent 12%, var(--mark) 12%, var(--mark) 88%, transparent 88%);
-  color: var(--mark-ink);
-  padding-inline: 0.08em;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
 
 .head { display: grid; gap: 16px; margin-bottom: clamp(32px, 5vw, 56px); max-width: 760px; }
 .head h2 { font-size: var(--step-3); }
@@ -143,7 +135,7 @@ p { margin: 0; text-wrap: pretty; }
 .nav.scrolled { border-bottom-color: var(--line); }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--f-display); font-weight: 700; font-size: 1.12rem; letter-spacing: -0.02em; }
-.brand-dot { width: 30px; height: 30px; border-radius: 9px; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-size: 0.78rem; font-weight: 800; letter-spacing: 0; }
+.brand-dot { width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-size: 0.78rem; font-weight: 800; letter-spacing: 0; }
 .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
 .nav-links a { text-decoration: none; font-weight: 550; color: var(--muted); font-size: 0.97rem; }
 .nav-links a:hover, .nav-links a[aria-current='page'] { color: var(--ink); }
@@ -160,7 +152,7 @@ p { margin: 0; text-wrap: pretty; }
 
 /* Chips */
 .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
-.chip { font-family: var(--f-mono); font-size: 0.74rem; letter-spacing: 0.02em; border: 1px solid var(--line); border-radius: 999px; padding: 5px 11px; color: var(--muted); background: var(--surface); }
+.chip { font-size: 0.82rem; font-weight: 550; border: 1px solid var(--line); border-radius: 999px; padding: 5px 11px; color: var(--muted); background: var(--surface); }
 
 /* Footer */
 .footer { border-top: 1px solid var(--line); padding-block: 40px 56px; color: var(--muted); font-size: 0.95rem; }
@@ -168,7 +160,7 @@ p { margin: 0; text-wrap: pretty; }
 .footer a { text-decoration: none; }
 .footer a:hover { color: var(--ink); }
 .footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px 20px; }
-.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.num { font-variant-numeric: tabular-nums; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }

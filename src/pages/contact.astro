@@ -1,36 +1,39 @@
 ---
 import Base from '../layouts/Base.astro';
 import WaIcon from '../components/WaIcon.astro';
-import { contact, wa, services } from '../data/site';
+import { contact, wa } from '../data/site';
+const needs = ['The free audit', 'More enquiries from ads', 'UGC and ad creative', 'A new website', 'A CRM', 'Not sure yet'];
+const audit = ['I message your clinic like a new client and time the reply', 'I try to book a consult from my phone', 'I look at your website, Instagram and any ads you are running', 'You get a short video of what I found and what I would fix first'];
 ---
-<Base title="Contact | Matthew Denton" description="Message Matthew Denton on WhatsApp or email about a website, Shopify store, ads, Canva design or AI automation.">
+<Base title="Contact | Matthew Denton" description="Request a free missed-bookings audit for your aesthetic clinic.">
   <section class="section">
     <div class="wrap grid">
       <div class="left">
-        <p class="eyebrow">Contact</p>
-        <h1>Let's talk about your business.</h1>
-        <p class="lede">WhatsApp is quickest. Fill this in and it opens a message to me with everything already typed out.</p>
+        <p class="eyebrow">Free audit</p>
+        <h1>See where your bookings slip away.</h1>
+        <p class="lede">Tell me about your clinic and I'll do the audit within a few working days.</p>
+        <ol class="audit">{audit.map((a) => <li>{a}</li>)}</ol>
         <dl class="ways">
           <div><dt>WhatsApp</dt><dd><a href={wa()} target="_blank" rel="noopener">{contact.whatsappDisplay}</a></dd></div>
           <div><dt>Email</dt><dd><a href={`mailto:${contact.email}`}>{contact.email}</a></dd></div>
-          <div><dt>Based in</dt><dd>{contact.location}. Working with clients anywhere.</dd></div>
+          <div><dt>Where</dt><dd>Remote, working with clinics anywhere</dd></div>
         </dl>
       </div>
       <form class="form" id="enquiry" novalidate>
         <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required /></div>
-        <div class="field"><label for="f-biz">Business name and website (if you have one)</label><input id="f-biz" name="business" placeholder="e.g. Creative Pearls, creativepearls.co.za" /></div>
+        <div class="field"><label for="f-biz">Clinic name</label><input id="f-biz" name="business" autocomplete="organization" /></div>
+        <div class="field"><label for="f-web">Website or Instagram</label><input id="f-web" name="web" placeholder="yourclinic.com or @yourclinic" /></div>
         <fieldset class="field">
-          <legend>What do you need help with?</legend>
+          <legend>What would help most?</legend>
           <div class="opts">
-            {services.map((s) => (
-              <label class="opt"><input type="checkbox" name="need" value={s.title} /><span>{s.title}</span></label>
+            {needs.map((n, i) => (
+              <label class="opt"><input type="checkbox" name="need" value={n} checked={i === 0} /><span>{n}</span></label>
             ))}
-            <label class="opt"><input type="checkbox" name="need" value="Not sure yet" /><span>Not sure yet</span></label>
           </div>
         </fieldset>
-        <div class="field"><label for="f-msg">Tell me a bit more</label><textarea id="f-msg" name="message" rows="5" placeholder="What does your business do, and what's not working right now?"></textarea></div>
-        <p class="err" id="f-err" hidden>Please add your name so I know who I'm talking to.</p>
-        <button class="btn btn-primary" type="submit"><WaIcon /> Send on WhatsApp</button>
+        <div class="field"><label for="f-msg">Anything else? (optional)</label><textarea id="f-msg" name="message" rows="5" placeholder="Which treatments matter most to you, and what's getting in the way of more bookings?"></textarea></div>
+        <p class="err" id="f-err" hidden>Add your name so I know who I'm talking to.</p>
+        <button class="btn btn-primary" type="submit"><WaIcon /> Request the audit on WhatsApp</button>
         <p class="hint">Prefer email? <a id="f-mail" href={`mailto:${contact.email}`}>Send it by email instead</a>.</p>
       </form>
     </div>
@@ -43,8 +46,9 @@ import { contact, wa, services } from '../data/site';
     const d = new FormData(form);
     const needs = d.getAll('need').join(', ') || 'Not sure yet';
     return `Hi Matt, I'm ${d.get('name')}.` +
-      (d.get('business') ? `\nBusiness: ${d.get('business')}` : '') +
-      `\nLooking for help with: ${needs}` +
+      (d.get('business') ? `\nClinic: ${d.get('business')}` : '') +
+      (d.get('web') ? `\nWebsite or Instagram: ${d.get('web')}` : '') +
+      `\nInterested in: ${needs}` +
       (d.get('message') ? `\n\n${d.get('message')}` : '');
   };
   form.addEventListener('submit', (e) => {
@@ -56,17 +60,19 @@ import { contact, wa, services } from '../data/site';
   document.getElementById('f-mail').addEventListener('click', (e) => {
     if (!String(new FormData(form).get('name') || '').trim()) return;
     e.preventDefault();
-    location.href = `mailto:${email}?subject=${encodeURIComponent('Project enquiry')}&body=${encodeURIComponent(build())}`;
+    location.href = `mailto:${email}?subject=${encodeURIComponent('Free audit request')}&body=${encodeURIComponent(build())}`;
   });
 </script>
 <style>
   .grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
   @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
   .left { display: grid; gap: 22px; }
-  h1 { font-size: var(--step-4); }
+  h1 { font-size: var(--step-3); }
   .ways { display: grid; gap: 14px; margin: 8px 0 0; }
   .ways div { border-top: 1px solid var(--line); padding-top: 12px; }
-  .ways dt { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .ways dt { font-size: .85rem; font-weight: 600; color: var(--muted); }
+  .audit { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; color: var(--muted); }
+  .audit li::marker { color: var(--accent); font-weight: 700; }
   .ways dd { margin: 2px 0 0; font-weight: 600; font-size: 1.1rem; overflow-wrap: anywhere; }
   .form { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(20px, 3vw, 36px); display: grid; gap: 20px; }
   .field { display: grid; gap: 8px; border: 0; padding: 0; margin: 0; min-width: 0; }

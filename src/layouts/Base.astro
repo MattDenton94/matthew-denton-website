@@ -1,12 +1,6 @@
 ---
-import '@fontsource-variable/bricolage-grotesque/opsz.css';
+import '@fontsource-variable/schibsted-grotesk/index.css';
 import '@fontsource-variable/figtree/index.css';
-import '@fontsource/jetbrains-mono/400.css';
-import '@fontsource/jetbrains-mono/500.css';
-import '@fontsource/playfair-display/500.css';
-import '@fontsource/playfair-display/500-italic.css';
-import '@fontsource/oswald/600.css';
-import '@fontsource/oswald/700.css';
 import '../styles/global.css';
 import { contact, wa } from '../data/site';
 
@@ -17,14 +11,14 @@ interface Props {
 }
 const {
   title,
-  description = 'Websites, Shopify stores, ads, Canva design and AI automations for small businesses. Based in Cape Town, working with clients in the US and South Africa.',
+  description = 'Websites, custom CRMs, Meta ads and UGC for aesthetic clinics. One system that turns enquiries into booked consults, and booked consults into returning clients.',
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const links = [
+  { href: '/services', label: 'The system' },
   { href: '/work', label: 'Work' },
-  { href: '/services', label: 'Services' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -32,7 +26,7 @@ const isActive = (href: string) => path === href || path.startsWith(href + '/');
 const year = new Date().getFullYear();
 ---
 <!doctype html>
-<html lang="en-ZA">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -52,8 +46,8 @@ const year = new Date().getFullYear();
       url: Astro.site?.toString(),
       email: contact.email,
       telephone: '+' + contact.whatsappNumber,
-      areaServed: ['US', 'ZA'],
-      address: { '@type': 'PostalAddress', addressLocality: 'Cape Town', addressCountry: 'ZA' },
+      areaServed: 'Worldwide',
+      description: 'Websites, custom CRMs, Meta ads and UGC for aesthetic clinics.',
       sameAs: [contact.linkedin],
     })} />
   </head>
@@ -70,7 +64,7 @@ const year = new Date().getFullYear();
           {links.map((l) => (
             <li><a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a></li>
           ))}
-          <li><a class="btn btn-primary" href={wa()} target="_blank" rel="noopener">WhatsApp me</a></li>
+          <li><a class="btn btn-primary" href="/contact">Get the free audit</a></li>
         </ul>
       </div>
     </header>
@@ -83,21 +77,21 @@ const year = new Date().getFullYear();
       <div class="wrap footer-grid">
         <div style="display:grid;gap:8px;max-width:38ch">
           <a href="/" class="brand"><span class="brand-dot" aria-hidden="true">MD</span><span>Matthew Denton</span></a>
-          <p>Websites, stores, ads, design and automations for small businesses. Based in Cape Town, working with clients in the US and South Africa.</p>
+          <p>Websites, custom CRMs, Meta ads and UGC for aesthetic clinics. Working with clinics anywhere, remotely.</p>
         </div>
         <div style="display:grid;gap:10px">
           <ul>
+            <li><a href="/services">The system</a></li>
             <li><a href="/work">Work</a></li>
-            <li><a href="/services">Services</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
-          <ul class="mono" style="font-size:.85rem">
+          <ul style="font-size:.92rem">
             <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
             <li><a href={wa()} target="_blank" rel="noopener">WhatsApp {contact.whatsappDisplay}</a></li>
             <li><a href={contact.linkedin} target="_blank" rel="noopener">LinkedIn</a></li>
           </ul>
-          <p class="mono" style="font-size:.8rem">&copy; {year} Matthew Denton</p>
+          <p style="font-size:.85rem">&copy; {year} Matthew Denton</p>
         </div>
       </div>
     </footer>

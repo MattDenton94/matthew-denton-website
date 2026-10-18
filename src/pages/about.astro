@@ -1,68 +1,70 @@
 ---
 import Base from '../layouts/Base.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { contact } from '../data/site';
 const path = [
-  { when: '2016 to 2020', what: 'Advanced Life Support paramedic', why: 'Calm under pressure, and used to explaining complicated things simply.' },
-  { when: 'Next', what: 'Team lead in AI data operations', why: 'Led annotation and quality teams at Invisible Technologies, then advanced annotation work at FyxerAI. This is where the automation side comes from.' },
-  { when: 'Along the way', what: 'Café owner and property', why: 'I know what it feels like to be the small business owner doing everything at once.' },
-  { when: 'Now', what: 'Websites, stores, ads and automations', why: 'Building for clients, and running my own brands Harlan and Nectra.' },
+  { when: '2016 to 2020', what: 'Advanced Life Support paramedic', why: 'Four years in emergency care. Clinical language, consent, calm under pressure and an instinct for how patients feel.' },
+  { when: 'Then', what: 'Team lead in AI operations', why: 'Led data and quality teams at Invisible Technologies and FyxerAI. Systems, automation and checking the details twice.' },
+  { when: 'Along the way', what: 'Café owner', why: 'I know what it is like to run the business and work in it on the same day.' },
+  { when: 'Now', what: 'Booking systems for aesthetic clinics', why: 'Ads, content, websites and custom CRMs, plus my own brand Harlan, where I test everything first.' },
 ];
 const principles = [
-  { t: 'Built to bring in customers', d: 'Good looks are the start. Every page is laid out to turn a visitor into a message, a booking or a sale.' },
-  { t: 'Fast on a real connection', d: 'Lean code and sized images, so it loads quickly on a phone with average mobile data.' },
-  { t: 'Tested on my own money first', d: "The ad setups, offers and store structures I recommend are the ones I use on my own stores." },
-  { t: 'Straight answers', d: "If something isn't worth your money, I'll say so. If I'm not the right person for the job, I'll tell you who is." },
+  { t: 'Measured on bookings', d: 'Not likes, reach or traffic. If it does not lead to a booked consult, it does not go in the report as a win.' },
+  { t: 'Honest advertising', d: "No promised results, no misleading before-and-afters. Nothing I'd be uncomfortable seeing your name on." },
+  { t: 'Tested with my own money', d: 'The ad setups and offers I recommend are ones I have run on my own brand first.' },
+  { t: 'You deal with me', d: "No account managers. The person who builds your system is the person who answers your message." },
 ];
 ---
-<Base title="About | Matthew Denton" description="Matthew Denton: former paramedic and AI operations team lead, now building websites, stores, ads and automations for small businesses in Cape Town and beyond.">
+<Base title="About | Matthew Denton" description="Former paramedic and AI operations team lead, now building ads, websites and custom CRMs for aesthetic clinics.">
   <section class="section">
     <div class="wrap top">
       <div class="head" style="margin:0">
         <p class="eyebrow">About</p>
-        <h1>I build what I'd want built for my own business. Because I have my own businesses.</h1>
+        <h1>A former paramedic who builds booking systems for clinics.</h1>
       </div>
       <div class="intro">
-        <p class="lede">I'm Matt Denton, based in Cape Town. I work directly with small business owners on the things that get them customers online: the website or store, the ads, the design and the admin that should run on its own.</p>
-        <p>There's no agency and no account manager. You message me, I do the work, and you can reach me on WhatsApp at <span class="mono">{contact.whatsappDisplay}</span>.</p>
+        <!-- Headshot goes here: add /public/matt.webp and uncomment the line below. -->
+        <!-- <img class="portrait" src="/matt.webp" alt="Matthew Denton" width="480" height="600" /> -->
+        <p class="lede">I'm Matt Denton. I help aesthetic clinics fill their consult diaries with one joined-up system: Meta ads, UGC, a website built to book, and a CRM coded around how the clinic works.</p>
+        <p>I chose clinics because I understand them. I have worked in healthcare, I know what is at stake when someone trusts you with their face, and I know the results here can be measured in bookings, not guesses.</p>
       </div>
     </div>
   </section>
 
   <section class="section-tight path-sec">
     <div class="wrap">
-      <p class="eyebrow">How I got here</p>
+      <h2 class="h2">How I got here</h2>
       <ol class="path">
-        {path.map((p) => (<li><span class="mono when">{p.when}</span><h2>{p.what}</h2><p>{p.why}</p></li>))}
+        {path.map((p) => (<li><span class="when">{p.when}</span><h3>{p.what}</h3><p>{p.why}</p></li>))}
       </ol>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap">
-      <div class="head"><p class="eyebrow">How I work</p><h2 class="h2">Four things you can count on</h2></div>
+      <div class="head"><h2 class="h2">What you can count on</h2></div>
       <div class="pr">
         {principles.map((p) => (<div><h3>{p.t}</h3><p>{p.d}</p></div>))}
       </div>
     </div>
   </section>
-  <CtaBand title="Let's see if I can help." />
+  <CtaBand />
 </Base>
 <style>
   h1 { font-size: var(--step-3); }
-  .top { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: end; }
+  .top { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: end; }
   .intro { display: grid; gap: 16px; }
   .intro p:not(.lede) { color: var(--muted); }
+  .portrait { width: 100%; max-width: 360px; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); }
   @media (max-width: 860px) { .top { grid-template-columns: 1fr; } }
   .path-sec { background: var(--surface); border-block: 1px solid var(--line); }
-  .path { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+  .h2 { font-size: var(--step-3); }
+  .path { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
   .path li { display: grid; gap: 8px; align-content: start; border-top: 2px solid var(--ink); padding-top: 16px; }
-  .when { font-size: .78rem; color: var(--accent); }
-  .path h2 { font-size: var(--step-1); letter-spacing: -0.015em; }
+  .when { font-size: .85rem; font-weight: 650; color: var(--accent); }
+  .path h3 { font-size: var(--step-1); letter-spacing: -0.015em; }
   .path p { color: var(--muted); font-size: .97rem; }
   @media (max-width: 900px) { .path { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 540px) { .path { grid-template-columns: 1fr; } }
-  .h2 { font-size: var(--step-3); }
   .pr { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
   .pr div { background: var(--surface); padding: clamp(22px, 3vw, 34px); display: grid; gap: 8px; align-content: start; }
   .pr h3 { font-size: var(--step-1); }

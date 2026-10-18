@@ -1,64 +1,101 @@
 ---
 import Base from '../layouts/Base.astro';
 import CtaBand from '../components/CtaBand.astro';
-import WaIcon from '../components/WaIcon.astro';
-import { services, wa } from '../data/site';
-
-const detail: Record<string, { who: string; example: string }> = {
-  websites: { who: 'Service businesses, shops, studios, trades and anyone whose customers find them on Google and message on WhatsApp.', example: 'TNT Fitness: a single page where every button opens a pre-filled WhatsApp booking message.' },
-  shopify: { who: 'Brands starting to sell online, or stores that get visits but not sales.', example: 'Harlan: my own store, with Yoco and PayFast, courier delivery and a second-bracelet-half-price offer.' },
-  tools: { who: 'Businesses running on WhatsApp threads and spreadsheets that are starting to creak.', example: 'Quote calculators, booking forms, stock and profit trackers, simple client portals.' },
-  ads: { who: 'Businesses with a product or service that sells, and a site that is ready to take the traffic.', example: 'Creative Pearls: product-led Meta ads that work without the owner on camera.' },
-  design: { who: "Anyone who needs to look consistent and doesn't have a designer on call.", example: 'Logos, stickers and packaging for Creative Pearls; ad creative and social templates for Harlan.' },
-  automations: { who: 'Owners answering the same questions and doing the same admin every day.', example: 'New enquiries auto-logged in a Google Sheet with an instant reply, or product descriptions drafted by AI in your brand voice.' },
-};
+import CrmBoard from '../components/CrmBoard.astro';
+import { system, metrics } from '../data/site';
+const crm = system.find((s) => s.slug === 'crm')!;
+const flow = [
+  { t: 'She sees your ad', d: 'A real client talking about her experience, not a stock photo and a discount.' },
+  { t: 'She lands on the treatment page', d: 'Every question answered: what happens, downtime, aftercare, who will treat her.' },
+  { t: 'She enquires at 22:41', d: 'The CRM replies in seconds with answers and a booking link, even while you sleep.' },
+  { t: 'She books and gets reminded', d: 'Confirmation straight away, reminders before the day, so the consult actually happens.' },
+  { t: 'She comes back', d: 'When her next treatment is due, she gets a nudge from you. Not from the clinic down the road.' },
+];
 ---
-<Base title="Services | Matthew Denton" description="Websites, Shopify stores, custom tools, Meta and Google ads, Canva design and AI automations for small businesses.">
-  <section class="section">
+<Base title="The system | Matthew Denton" description="Meta ads, UGC, a website built to book and a custom CRM for aesthetic clinics, working together to turn enquiries into booked consults.">
+  <section class="section top">
     <div class="wrap">
       <div class="head">
-        <p class="eyebrow">Services</p>
-        <h1>Build it, grow it, then let it run itself.</h1>
-        <p class="lede">Six things I do for small businesses. Pick one or pick them all. Every project is quoted individually after a quick chat.</p>
+        <p class="eyebrow">The system</p>
+        <h1>Ads, content, website and CRM. Built as one.</h1>
+        <p class="lede">Most clinics have these handled by four different people who never talk to each other. Here they're designed together, so every enquiry has a path to the treatment chair.</p>
       </div>
-      <div class="list">
-        {services.map((s, i) => (
-          <article class="row" id={s.slug}>
-            <div class="row-l">
-              <span class="grp mono">{s.group}</span>
-              <h2>{s.title}</h2>
-            </div>
-            <div class="row-r">
-              <p class="big">{s.line}</p>
-              <div class="cols">
-                <div><h3>Includes</h3><ul>{s.items.map((it) => <li>{it}</li>)}</ul></div>
-                <div><h3>Good fit for</h3><p>{detail[s.slug].who}</p></div>
-                <div><h3>For example</h3><p>{detail[s.slug].example}</p></div>
-              </div>
-              <a class="ask" href={wa(`Hi Matt, I'm interested in ${s.title.toLowerCase()}. Here's a bit about my business: `)} target="_blank" rel="noopener"><WaIcon /> Ask about {s.title.toLowerCase()}</a>
-            </div>
-          </article>
-        ))}
+    </div>
+  </section>
+
+  <section class="section-tight journey">
+    <div class="wrap">
+      <h2 class="h2">What happens to one enquiry</h2>
+      <ol class="flow">
+        {flow.map((f, i) => (<li><span class="n num">{i + 1}</span><h3>{f.t}</h3><p>{f.d}</p></li>))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap list">
+      {system.map((s) => (
+        <article class="row" id={s.slug}>
+          <h2>{s.title}</h2>
+          <div class="row-r">
+            <p class="big">{s.line}</p>
+            <p>{s.detail}</p>
+            <ul>{s.items.map((it) => <li>{it}</li>)}</ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-tight crm-sec">
+    <div class="wrap crm-grid">
+      <div class="head" style="margin:0">
+        <p class="eyebrow">The CRM, up close</p>
+        <h2 class="h2">Custom coded around your clinic.</h2>
+        <p>{crm.detail}</p>
+        <p>You decide the rules: which treatments need a consult first, how long before a top-up is due, who gets alerted when a high-value enquiry comes in. The CRM follows them.</p>
       </div>
+      <CrmBoard />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="head"><p class="eyebrow">Monthly report</p><h2 class="h2">The six numbers you'll see every month</h2></div>
+      <dl class="metrics">{metrics.map((m) => (<div><dt>{m.name}</dt><dd>{m.note}</dd></div>))}</dl>
     </div>
   </section>
   <CtaBand />
 </Base>
 <style>
-  h1 { font-size: var(--step-4); }
+  .top { padding-bottom: clamp(24px, 3vw, 40px); }
+  h1 { font-size: var(--step-4); max-width: 16ch; }
+  .h2 { font-size: var(--step-3); }
+  .journey { background: var(--surface); border-block: 1px solid var(--line); }
+  .flow { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+  .flow li { display: grid; gap: 8px; align-content: start; border-top: 2px solid var(--accent); padding-top: 14px; }
+  .n { color: var(--accent); font-weight: 700; }
+  .flow h3 { font-size: 1.1rem; letter-spacing: -0.015em; }
+  .flow p { color: var(--muted); font-size: .95rem; }
+  @media (max-width: 1000px) { .flow { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .flow { grid-template-columns: 1fr; } }
   .list { border-top: 2px solid var(--ink); }
-  .row { display: grid; grid-template-columns: 1fr 2fr; gap: clamp(20px, 4vw, 64px); padding-block: clamp(32px, 4vw, 52px); border-bottom: 1px solid var(--line); scroll-margin-top: 90px; }
-  .row-l { display: grid; gap: 12px; align-content: start; }
-  .grp { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
-  h2 { font-size: var(--step-3); }
-  .row-r { display: grid; gap: 24px; }
-  .big { font-family: var(--f-display); font-size: var(--step-1); line-height: 1.4; font-weight: 500; }
-  .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  h3 { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
-  .cols p, .cols ul { color: var(--muted); font-size: .97rem; }
-  .cols ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
-  .ask { display: inline-flex; align-items: center; gap: 8px; font-weight: 650; color: var(--accent); text-decoration: none; justify-self: start; }
-  .ask svg { width: 18px; height: 18px; }
-  .ask:hover { text-decoration: underline; }
-  @media (max-width: 860px) { .row { grid-template-columns: 1fr; } .cols { grid-template-columns: 1fr; } }
+  .row { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(20px, 4vw, 64px); padding-block: clamp(32px, 4vw, 52px); border-bottom: 1px solid var(--line); scroll-margin-top: 90px; }
+  .row h2 { font-size: var(--step-2); }
+  .row-r { display: grid; gap: 16px; }
+  .row-r > p:not(.big) { color: var(--muted); max-width: 62ch; }
+  .big { font-family: var(--f-display); font-size: var(--step-1); line-height: 1.4; font-weight: 500; letter-spacing: -0.01em; }
+  .row ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .row li { font-size: .9rem; font-weight: 550; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 12px; }
+  @media (max-width: 860px) { .row { grid-template-columns: 1fr; } }
+  .crm-sec { background: var(--accent-soft); }
+  .crm-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(32px, 5vw, 64px); align-items: center; }
+  .crm-grid p:not(.eyebrow) { color: var(--muted); }
+  @media (max-width: 960px) { .crm-grid { grid-template-columns: 1fr; } }
+  .metrics { margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 28px; }
+  .metrics div { border-top: 1px solid var(--line); padding-block: 16px 20px; }
+  .metrics dt { font-family: var(--f-display); font-weight: 700; font-size: 1.2rem; }
+  .metrics dd { margin: 2px 0 0; color: var(--muted); }
+  @media (max-width: 800px) { .metrics { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .metrics { grid-template-columns: 1fr; } }
 </style>
