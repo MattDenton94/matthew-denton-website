@@ -17,16 +17,13 @@ const principles = [
 <Base title="About | Matthew Denton" description="Former paramedic and AI operations team lead, now building ads, websites and custom CRMs for aesthetic clinics.">
   <section class="section">
     <div class="wrap top">
-      <div class="head" style="margin:0">
+      <div class="intro">
         <p class="eyebrow">About</p>
         <h1>A former paramedic who builds booking systems for clinics.</h1>
-      </div>
-      <div class="intro">
-        <!-- Headshot goes here: add /public/matt.webp and uncomment the line below. -->
-        <!-- <img class="portrait" src="/matt.webp" alt="Matthew Denton" width="480" height="600" /> -->
         <p class="lede">I'm Matt Denton. I help aesthetic clinics fill their consult diaries with one joined-up system: Meta ads, UGC, a website built to book, and a CRM coded around how the clinic works.</p>
         <p>I chose clinics because I understand them. I have worked in healthcare, I know what is at stake when someone trusts you with their face, and I know the results here can be measured in bookings, not guesses.</p>
       </div>
+      <img class="portrait" src="/matt.webp" alt="Matthew Denton" width="720" height="960" />
     </div>
   </section>
 
@@ -51,10 +48,11 @@ const principles = [
 </Base>
 <style>
   h1 { font-size: var(--step-3); }
-  .top { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: end; }
-  .intro { display: grid; gap: 16px; }
-  .intro p:not(.lede) { color: var(--muted); }
-  .portrait { width: 100%; max-width: 360px; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); }
+  .top { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+  .intro { display: grid; gap: 18px; }
+  .intro p:not(.lede):not(.eyebrow) { color: var(--muted); }
+  .portrait { width: 100%; max-width: 400px; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radius); justify-self: end; }
+  @media (max-width: 860px) { .portrait { justify-self: start; max-width: 320px; } }
   @media (max-width: 860px) { .top { grid-template-columns: 1fr; } }
   .path-sec { background: var(--surface); border-block: 1px solid var(--line); }
   .h2 { font-size: var(--step-3); }

@@ -90,6 +90,7 @@ const others = projects.filter((p) => p.slug !== 'harlan');
   <section class="section why">
     <div class="wrap why-grid">
       <div class="why-copy">
+        <img class="why-photo" src="/matt.webp" alt="Matthew Denton" width="720" height="960" loading="lazy" />
         <p class="eyebrow">Why me</p>
         <h2>I've worked in healthcare. I know what it means when a client trusts you with their face.</h2>
       </div>
@@ -149,30 +150,21 @@ const others = projects.filter((p) => p.slug !== 'harlan');
 
 <style>
   /* Hero */
-  /* Background: clinic treatment room by Marios Gkortsilas on Unsplash (Unsplash License).
-     https://unsplash.com/photos/a-room-with-a-desk-and-a-chair--i6kaig732w
-     The overlay keeps the headline readable on the left and lets the room show through behind the CRM board. */
+  /* Background: the clinic treatment room photo sits on the right and fades into the page on the left,
+     so the headline stays clean and the room shows behind the CRM board. */
   .hero {
-    --photo: url('https://images.unsplash.com/photo-1665231795856-769fb08a90bc?auto=format&fit=crop&w=2000&q=70');
     padding-block: clamp(36px, 6vw, 88px) clamp(56px, 7vw, 104px);
     background:
-      linear-gradient(180deg, transparent 70%, var(--bg) 100%),
-      linear-gradient(90deg,
-        color-mix(in srgb, var(--bg) 95%, transparent) 0%,
-        color-mix(in srgb, var(--bg) 86%, transparent) 42%,
-        color-mix(in srgb, var(--bg) 45%, transparent) 100%),
-      var(--photo) center 40% / cover no-repeat,
+      linear-gradient(180deg, transparent 75%, var(--bg) 100%),
+      linear-gradient(90deg, var(--bg) 0%, var(--bg) 43%, color-mix(in srgb, var(--bg) 72%, transparent) 54%, color-mix(in srgb, var(--bg) 20%, transparent) 74%, transparent 100%),
+      url('/clinic-room.webp') right 0 top 22% / 58% auto no-repeat,
       var(--bg);
   }
   @media (max-width: 960px) {
     .hero {
-      --photo: url('https://images.unsplash.com/photo-1665231795856-769fb08a90bc?auto=format&fit=crop&w=1000&q=65');
       background:
-        linear-gradient(180deg,
-          color-mix(in srgb, var(--bg) 82%, transparent) 0%,
-          color-mix(in srgb, var(--bg) 90%, transparent) 55%,
-          var(--bg) 100%),
-        var(--photo) center top / cover no-repeat,
+        linear-gradient(180deg, color-mix(in srgb, var(--bg) 78%, transparent) 0%, color-mix(in srgb, var(--bg) 92%, transparent) 50%, var(--bg) 100%),
+        url('/clinic-room-sm.webp') 20% 80% / cover no-repeat,
         var(--bg);
     }
   }
@@ -219,13 +211,13 @@ const others = projects.filter((p) => p.slug !== 'harlan');
   @media (max-width: 520px) { .metrics { grid-template-columns: 1fr; } }
 
   /* Why */
-  .why { background: var(--band); color: var(--band-ink); }
-  .why .eyebrow { color: color-mix(in srgb, var(--accent) 60%, var(--band-ink)); }
+  .why { background: #f2ebe5; border-block: 1px solid #e6dcd4; }
   .why-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
-  .why-copy { display: grid; gap: 16px; }
+  .why-copy { display: grid; gap: 16px; justify-items: start; }
+  .why-photo { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; object-position: center 22%; margin-bottom: 8px; }
   .why h2 { font-size: var(--step-3); }
-  .why-body { display: grid; gap: 18px; color: var(--band-muted); font-size: var(--step-1); line-height: 1.5; }
-  .why-body a { color: var(--band-ink); }
+  .why-body { display: grid; gap: 18px; color: #5e534e; font-size: var(--step-1); line-height: 1.5; }
+  .why-body a { color: var(--ink); }
   @media (max-width: 860px) { .why-grid { grid-template-columns: 1fr; } }
 
   /* Work */
