@@ -1,8 +1,8 @@
 export const contact = {
   name: 'Matthew Denton',
   email: 'mattdenton94@gmail.com',
-  whatsappDisplay: '+27 76 413 3052',
-  whatsappNumber: '27764133052',
+  whatsappDisplay: '+27 60 802 6755',
+  whatsappNumber: '27608026755',
   linkedin: 'https://www.linkedin.com/in/matthew-denton94',
 };
 
