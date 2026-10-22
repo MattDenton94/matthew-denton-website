@@ -4,6 +4,7 @@ import CrmBoard from '../components/CrmBoard.astro';
 import Phone from '../components/Phone.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import CtaBand from '../components/CtaBand.astro';
+import Proof from '../components/Proof.astro';
 import { pains, system, metrics, projects, faqs } from '../data/site';
 
 const harlan = projects.find((p) => p.slug === 'harlan')!;
@@ -23,9 +24,21 @@ const others = projects.filter((p) => p.slug !== 'harlan');
         </div>
         <p class="hero-note">The audit shows you where bookings slip away today. It's free, and yours to keep.</p>
       </div>
-      <CrmBoard />
+      <div class="board-wrap">
+        <CrmBoard />
+        <div class="toast" aria-hidden="true">
+          <span class="toast-dot"></span>
+          <div class="toast-body">
+            <span class="toast-tag">Example</span>
+            <span class="toast-t">New enquiry: laser consult</span>
+            <span class="toast-s">Replied in 38 s, booked Thu 10:00</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
+
+  <Proof />
 
   <!-- PAINS -->
   <section class="section pains">
@@ -148,8 +161,49 @@ const others = projects.filter((p) => p.slug !== 'harlan');
   <CtaBand />
 </Base>
 
+<script>
+  const toast = document.querySelector<HTMLElement>('.toast');
+  const msgs = [
+    ['New enquiry: laser consult', 'Replied in 38 s, booked Thu 10:00'],
+    ['Instagram DM: skin booster price?', 'Answered in 41 s, consult booked'],
+    ['Rebooking reminder: anti-wrinkle top-up', 'Client confirmed Tue 14:30'],
+    ['Missed call at 19:12', 'Text-back sent, booked Sat 09:30'],
+  ];
+  if (toast) {
+    const t = toast.querySelector('.toast-t')!;
+    const s = toast.querySelector('.toast-s')!;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let i = 0;
+    const show = () => {
+      t.textContent = msgs[i][0];
+      s.textContent = msgs[i][1];
+      toast.classList.add('show');
+      i = (i + 1) % msgs.length;
+    };
+    if (reduce) { show(); }
+    else {
+      setTimeout(show, 2200);
+      setInterval(() => {
+        toast.classList.remove('show');
+        setTimeout(show, 600);
+      }, 5200);
+    }
+  }
+</script>
+
 <style>
   /* Hero */
+  /* Live enquiry toast over the CRM board */
+  .board-wrap { position: relative; }
+  .toast { position: absolute; left: clamp(-28px, -2vw, -12px); bottom: -70px; z-index: 2; display: flex; gap: 12px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px 12px 14px; box-shadow: 0 24px 48px -24px color-mix(in srgb, var(--ink) 45%, transparent); max-width: 290px; opacity: 0; translate: 0 12px; transition: opacity .45s ease, translate .45s ease; pointer-events: none; }
+  .toast.show { opacity: 1; translate: 0 0; }
+  .toast-dot { flex: none; width: 10px; height: 10px; margin-top: 6px; border-radius: 50%; background: #2fa36b; box-shadow: 0 0 0 4px color-mix(in srgb, #2fa36b 20%, transparent); }
+  .toast-body { display: grid; gap: 1px; line-height: 1.35; }
+  .toast-tag { font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .toast-t { font-family: var(--f-display); font-weight: 700; font-size: .98rem; letter-spacing: -0.01em; }
+  .toast-s { font-size: .88rem; color: var(--accent); font-weight: 600; }
+  @media (max-width: 960px) { .toast { left: 12px; bottom: -78px; max-width: calc(100% - 24px); } .hero { padding-bottom: 112px; } }
+
   /* Background: the clinic treatment room photo sits on the right and fades into the page on the left,
      so the headline stays clean and the room shows behind the CRM board. */
   .hero {
