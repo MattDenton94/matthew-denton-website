@@ -249,7 +249,7 @@ export const projects: Project[] = [
 export const faqs = [
   {
     q: 'Do you only work with aesthetic clinics?',
-    a: 'Yes. Medical aesthetics, skin and laser clinics, and injectors running their own practice. Focusing on one kind of business means I already know your treatments, your clients and the rules your ads have to follow.',
+    a: 'No. My main focus is medical aesthetics, skin and laser clinics, and injectors running their own practice. I also build websites and booking systems for businesses in other industries, including fitness, event planning, fashion and more.',
   },
   {
     q: 'Can my ads show before-and-after photos?',
