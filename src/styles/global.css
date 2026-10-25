@@ -103,7 +103,11 @@ body { background-image: radial-gradient(1200px 600px at 85% -10%, rgba(79,209,1
 .nav.scrolled { border-bottom-color: var(--line); }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--f-display); font-weight: 700; font-size: 1.12rem; letter-spacing: -0.02em; }
-.brand-dot { width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-size: 0.78rem; font-weight: 800; letter-spacing: 0; }
+.brand { color: var(--ink); }
+.brand .wordmark { display: block; height: 22px; width: auto; }
+.brand .dot { transform-box: fill-box; transform-origin: center; transition: transform .3s cubic-bezier(.3,1.6,.5,1); }
+.brand:hover .dot { transform: scale(1.5); }
+.brand-foot .wordmark { height: 26px; margin-bottom: 6px; }
 .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
 .nav-links a { text-decoration: none; font-weight: 550; color: var(--muted); font-size: 0.97rem; }
 .nav-links a:hover, .nav-links a[aria-current='page'] { color: var(--ink); }
