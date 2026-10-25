@@ -12,15 +12,15 @@ interface Props {
 }
 const {
   title,
-  description = 'Websites, custom CRMs, Meta ads and UGC for aesthetic clinics. One system that turns enquiries into booked consults, and booked consults into returning clients.',
+  description = 'Matthew Denton builds custom websites, booking systems, CRMs, back offices, logos, branding and Meta ads for businesses of every kind. Cape Town based, working anywhere.',
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const links = [
-  { href: '/services', label: 'The system' },
+  { href: '/#services', label: 'Services' },
   { href: '/work', label: 'Work' },
-  { href: '/about', label: 'About' },
+  { href: '/#about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
 const isActive = (href: string) => path === href || path.startsWith(href + '/');
@@ -48,11 +48,13 @@ const year = new Date().getFullYear();
       email: contact.email,
       telephone: '+' + contact.whatsappNumber,
       areaServed: 'Worldwide',
-      description: 'Websites, custom CRMs, Meta ads and UGC for aesthetic clinics.',
+      description: 'Custom websites, booking systems, CRMs, back offices, branding and Meta ads.',
       sameAs: [contact.linkedin],
     })} />
   </head>
   <body>
+    <div class="loader" id="loader" aria-hidden="true"><span class="ld-mark">MD</span><span class="ld-n num" id="ld-n">0%</span><span class="ld-bar"><i id="ld-bar"></i></span></div>
+    <div class="glow" id="glow" aria-hidden="true"></div>
     <a href="#main" class="skip">Skip to content</a>
     <header class="nav" id="nav">
       <div class="wrap nav-inner">
@@ -65,7 +67,7 @@ const year = new Date().getFullYear();
           {links.map((l) => (
             <li><a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a></li>
           ))}
-          <li><a class="btn btn-primary" href="/contact">Get the free audit</a></li>
+          <li><a class="btn btn-primary" href="/contact">Start a project</a></li>
         </ul>
       </div>
     </header>
@@ -78,13 +80,13 @@ const year = new Date().getFullYear();
       <div class="wrap footer-grid">
         <div style="display:grid;gap:8px;max-width:38ch">
           <a href="/" class="brand"><span class="brand-dot" aria-hidden="true">MD</span><span>Matthew Denton</span></a>
-          <p>Websites, custom CRMs, Meta ads and UGC for aesthetic clinics. Working with clinics anywhere, remotely.</p>
+          <p>Custom websites, booking systems, CRMs, back offices, branding and Meta ads. Based in Cape Town, working with businesses anywhere.</p>
         </div>
         <div style="display:grid;gap:10px">
           <ul>
-            <li><a href="/services">The system</a></li>
+            <li><a href="/#services">Services</a></li>
             <li><a href="/work">Work</a></li>
-            <li><a href="/about">About</a></li>
+            <li><a href="/#about">About</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
           <ul style="font-size:.92rem">
@@ -100,25 +102,76 @@ const year = new Date().getFullYear();
     <a class="wa-float" href={wa()} target="_blank" rel="noopener" aria-label={`Chat on WhatsApp, ${contact.whatsappDisplay}`}><WaIcon /></a>
 
     <style is:global>
-      .wa-float { position: fixed; right: clamp(16px, 3vw, 28px); bottom: clamp(16px, 3vw, 28px); z-index: 60; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: #25d366; color: #fff; box-shadow: 0 14px 30px -10px rgba(24,33,31,.45); transition: transform .2s ease; }
+      .wa-float { position: fixed; right: clamp(16px, 3vw, 28px); bottom: clamp(16px, 3vw, 28px); z-index: 60; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: #25d366; color: #fff; box-shadow: 0 14px 30px -10px rgba(0,0,0,.6); transition: transform .2s ease; }
       .wa-float svg { width: 30px; height: 30px; }
       .wa-float:hover { transform: scale(1.06); }
       .wa-float::after { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid #25d366; opacity: 0; animation: wa-pulse 1.8s ease-out 3.5s 2; }
       @keyframes wa-pulse { 0% { opacity: .7; transform: scale(1); } 100% { opacity: 0; transform: scale(1.55); } }
       html.reveal-on [data-reveal] { opacity: 0; translate: 0 22px; transition: opacity .7s ease, translate .7s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0ms); }
       html.reveal-on [data-reveal].in { opacity: 1; translate: 0 0; }
+      .loader { position: fixed; inset: 0; z-index: 200; background: var(--bg); display: none; place-items: center; align-content: center; gap: 14px; transition: opacity .5s ease, visibility .5s; }
+      html.loading .loader { display: grid; }
+      .loader.done { opacity: 0; visibility: hidden; }
+      .ld-mark { width: 54px; height: 54px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font: 800 1.1rem var(--f-display); justify-self: center; }
+      .ld-n { font: 600 .95rem var(--f-body); color: var(--muted); text-align: center; letter-spacing: .1em; }
+      .ld-bar { width: 140px; height: 2px; background: var(--line); border-radius: 2px; overflow: hidden; justify-self: center; }
+      .ld-bar i { display: block; height: 100%; width: 0; background: var(--accent); }
+      .glow { position: fixed; left: 0; top: 0; width: 520px; height: 520px; margin: -260px 0 0 -260px; border-radius: 50%; pointer-events: none; z-index: 0; background: radial-gradient(circle, rgba(79,209,184,.09), transparent 62%); opacity: 0; transition: opacity .4s ease; will-change: transform; }
+      .glow.on { opacity: 1; }
+      main, .footer { position: relative; z-index: 1; }
       .skip { position: absolute; left: -9999px; top: 8px; z-index: 100; background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 8px; }
       .skip:focus { left: 8px; }
     </style>
+    <script is:inline>
+      (function () {
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var seen = false; try { seen = sessionStorage.getItem('md-loaded') === '1'; } catch (e) {}
+        if (!reduce && !seen && location.pathname === '/') document.documentElement.classList.add('loading');
+      })();
+    </script>
     <script>
+      // Intro loader: counts to 100% once per visit, on the home page only.
+      if (document.documentElement.classList.contains('loading')) {
+        const n = document.getElementById('ld-n');
+        const bar = document.getElementById('ld-bar');
+        const loader = document.getElementById('loader');
+        const t0 = performance.now();
+        const dur = 1100;
+        const step = (t: number) => {
+          const p = Math.min(1, (t - t0) / dur);
+          const v = Math.round((1 - Math.pow(1 - p, 2)) * 100);
+          if (n) n.textContent = v + '%';
+          if (bar) bar.style.width = v + '%';
+          if (p < 1) requestAnimationFrame(step);
+          else {
+            loader?.classList.add('done');
+            setTimeout(() => document.documentElement.classList.remove('loading'), 500);
+            try { sessionStorage.setItem('md-loaded', '1'); } catch (e) {}
+            window.dispatchEvent(new Event('md:ready'));
+          }
+        };
+        requestAnimationFrame(step);
+      } else {
+        requestAnimationFrame(() => window.dispatchEvent(new Event('md:ready')));
+      }
+      // Soft glow that follows the cursor on desktop.
+      const glow = document.getElementById('glow');
+      if (glow && window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        let x = 0, y = 0, raf = 0;
+        window.addEventListener('pointermove', (e) => {
+          x = e.clientX; y = e.clientY;
+          glow.classList.add('on');
+          if (!raf) raf = requestAnimationFrame(() => { glow.style.transform = `translate(${x}px, ${y}px)`; raf = 0; });
+        }, { passive: true });
+      }
       // Gentle scroll reveal: sections and list items ease up as they come into view.
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
-        const items = Array.from(document.querySelectorAll<HTMLElement>('.steps > li, .pain-list > li, .work-grid > *, .metrics > div, .faq-list > details, .proof .stat'));
+        const items = Array.from(document.querySelectorAll<HTMLElement>('.svc-grid > *, .logo-wall > *, .proc > li, .work-grid > *, .stat, .faq-list > details, .vals > *'));
         items.forEach((el) => {
           const siblings = Array.from(el.parentElement?.children || []);
           el.style.setProperty('--d', `${Math.min(siblings.indexOf(el), 5) * 90}ms`);
         });
-        const blocks = Array.from(document.querySelectorAll<HTMLElement>('main .section .wrap > *, main .cta-band .wrap > *'))
+        const blocks = Array.from(document.querySelectorAll<HTMLElement>('main .section .wrap > *, main .cta-band .wrap > *, main [data-r]'))
           .filter((el) => !items.some((it) => el.contains(it)));
         const targets = [...blocks, ...items];
         const vh = window.innerHeight;

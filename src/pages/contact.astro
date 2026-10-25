@@ -2,38 +2,38 @@
 import Base from '../layouts/Base.astro';
 import WaIcon from '../components/WaIcon.astro';
 import { contact, wa } from '../data/site';
-const needs = ['The free audit', 'More enquiries from ads', 'UGC and ad creative', 'A new website', 'A CRM', 'Not sure yet'];
-const audit = ['I message your clinic like a new client and time the reply', 'I try to book a consult from my phone', 'I look at your website, Instagram and any ads you are running', 'You get a short video of what I found and what I would fix first'];
+const needs = ['Website', 'Booking system', 'CRM', 'Back office', 'Online store', 'Logo and branding', 'Meta ads', 'Ad creative', 'Not sure yet'];
+const audit = ['Tell me about your business and what you need', 'We have a quick chat on WhatsApp or a call', 'You get a clear plan and a fixed quote in writing', 'A 50% deposit and we start building'];
 ---
-<Base title="Contact | Matthew Denton" description="Request a free missed-bookings audit for your aesthetic clinic.">
+<Base title="Contact | Matthew Denton" description="Start a project with Matthew Denton: custom websites, booking systems, CRMs, back offices, branding and Meta ads.">
   <section class="section">
     <div class="wrap grid">
       <div class="left">
-        <p class="eyebrow">Free audit</p>
-        <h1>See where your bookings slip away.</h1>
-        <p class="lede">Tell me about your clinic and I'll do the audit within a few working days.</p>
+        <p class="eyebrow">Start a project</p>
+        <h1>Tell me what you want to build.</h1>
+        <p class="lede">Fill this in and it opens WhatsApp with your message ready to send. I reply personally, usually the same day.</p>
         <ol class="audit">{audit.map((a) => <li>{a}</li>)}</ol>
         <dl class="ways">
           <div><dt>WhatsApp</dt><dd><a href={wa()} target="_blank" rel="noopener">{contact.whatsappDisplay}</a></dd></div>
           <div><dt>Email</dt><dd><a href={`mailto:${contact.email}`}>{contact.email}</a></dd></div>
-          <div><dt>Where</dt><dd>Remote, working with clinics anywhere</dd></div>
+          <div><dt>Where</dt><dd>Cape Town, working with businesses anywhere</dd></div>
         </dl>
       </div>
       <form class="form" id="enquiry" novalidate>
         <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required /></div>
-        <div class="field"><label for="f-biz">Clinic name</label><input id="f-biz" name="business" autocomplete="organization" /></div>
-        <div class="field"><label for="f-web">Website or Instagram</label><input id="f-web" name="web" placeholder="yourclinic.com or @yourclinic" /></div>
+        <div class="field"><label for="f-biz">Business name</label><input id="f-biz" name="business" autocomplete="organization" /></div>
+        <div class="field"><label for="f-web">Website or Instagram</label><input id="f-web" name="web" placeholder="yourbusiness.com or @yourbusiness" /></div>
         <fieldset class="field">
-          <legend>What would help most?</legend>
+          <legend>What do you need?</legend>
           <div class="opts">
             {needs.map((n, i) => (
-              <label class="opt"><input type="checkbox" name="need" value={n} checked={i === 0} /><span>{n}</span></label>
+              <label class="opt"><input type="checkbox" name="need" value={n} checked={false} /><span>{n}</span></label>
             ))}
           </div>
         </fieldset>
-        <div class="field"><label for="f-msg">Anything else? (optional)</label><textarea id="f-msg" name="message" rows="5" placeholder="Which treatments matter most to you, and what's getting in the way of more bookings?"></textarea></div>
+        <div class="field"><label for="f-msg">Anything else? (optional)</label><textarea id="f-msg" name="message" rows="5" placeholder="What does your business do, and what would you like this to help with?"></textarea></div>
         <p class="err" id="f-err" hidden>Add your name so I know who I'm talking to.</p>
-        <button class="btn btn-primary" type="submit"><WaIcon /> Request the audit on WhatsApp</button>
+        <button class="btn btn-primary" type="submit"><WaIcon /> Send on WhatsApp</button>
         <p class="hint">Prefer email? <a id="f-mail" href={`mailto:${contact.email}`}>Send it by email instead</a>.</p>
       </form>
     </div>
@@ -46,9 +46,9 @@ const audit = ['I message your clinic like a new client and time the reply', 'I 
     const d = new FormData(form);
     const needs = d.getAll('need').join(', ') || 'Not sure yet';
     return `Hi Matt, I'm ${d.get('name')}.` +
-      (d.get('business') ? `\nClinic: ${d.get('business')}` : '') +
+      (d.get('business') ? `\nBusiness: ${d.get('business')}` : '') +
       (d.get('web') ? `\nWebsite or Instagram: ${d.get('web')}` : '') +
-      `\nInterested in: ${needs}` +
+      `\nI need: ${needs}` +
       (d.get('message') ? `\n\n${d.get('message')}` : '');
   };
   form.addEventListener('submit', (e) => {
@@ -60,7 +60,7 @@ const audit = ['I message your clinic like a new client and time the reply', 'I 
   document.getElementById('f-mail').addEventListener('click', (e) => {
     if (!String(new FormData(form).get('name') || '').trim()) return;
     e.preventDefault();
-    location.href = `mailto:${email}?subject=${encodeURIComponent('Free audit request')}&body=${encodeURIComponent(build())}`;
+    location.href = `mailto:${email}?subject=${encodeURIComponent('New project enquiry')}&body=${encodeURIComponent(build())}`;
   });
 </script>
 <style>
@@ -84,8 +84,10 @@ const audit = ['I message your clinic like a new client and time the reply', 'I 
   .opt input { position: absolute; opacity: 0; }
   .opt span { display: inline-block; border: 1.5px solid var(--line); border-radius: 999px; padding: 8px 14px; font-weight: 550; cursor: pointer; font-size: .92rem; }
   .opt input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .opt span { transition: border-color .2s, background .2s; }
+  .opt span:hover { border-color: var(--accent); }
   .opt input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 2px; }
   .btn { justify-self: start; border: 0; cursor: pointer; }
-  .err { color: #c2261d; font-weight: 600; }
+  .err { color: #ff8a7a; font-weight: 600; }
   .hint { color: var(--muted); font-size: .92rem; }
 </style>

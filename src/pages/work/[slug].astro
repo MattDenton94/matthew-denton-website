@@ -51,7 +51,7 @@ const lead = p.shots.slice(0, 2);
         <div class="brief">
           <p class="eyebrow">The brief</p>
           <p class="big">{p.brief}</p>
-          <p class="lesson"><strong>For clinics:</strong> {p.lesson}</p>
+          <p class="lesson"><strong>The takeaway:</strong> {p.lesson}</p>
         </div>
         <div class="built">
           <p class="eyebrow">What I did</p>
@@ -126,7 +126,7 @@ const lead = p.shots.slice(0, 2);
   .built p { color: var(--muted); max-width: 60ch; }
   @media (max-width: 860px) { .body { grid-template-columns: 1fr; } .brief { position: static; } }
   .next { padding-bottom: clamp(56px, 7vw, 96px); }
-  .next a { display: grid; gap: 6px; text-decoration: none; border-top: 2px solid var(--ink); padding-top: 18px; }
+  .next a { display: grid; gap: 6px; text-decoration: none; border-top: 2px solid var(--accent); padding-top: 18px; }
   .next strong { font-family: var(--f-display); font-size: var(--step-3); letter-spacing: -0.03em; }
   .next a:hover strong { color: var(--accent); }
 </style>

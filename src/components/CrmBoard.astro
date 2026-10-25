@@ -1,26 +1,26 @@
 ---
-/* A small, coded picture of the clinic CRM. One card moves once on load:
+/* A small, coded picture of a custom booking system and CRM. One card moves once on load:
    a late-night enquiry gets an instant reply and lands in an open consult slot. */
 const enquiries = [
-  { n: 'Sophie M.', t: 'Skin consult', s: 'Website', w: '18:02' },
-  { n: 'Priya S.', t: 'Laser hair removal', s: 'Facebook', w: '16:47' },
+  { n: 'Sophie M.', t: 'Website quote', s: 'Website', w: '18:02' },
+  { n: 'Priya S.', t: 'Jumping castle, Saturday', s: 'Facebook', w: '16:47' },
 ];
 const booked = [
-  { n: 'Laura P.', t: 'Anti-wrinkle, 3 areas', w: 'Thu 11:30' },
-  { n: 'Amira K.', t: 'Microneedling', w: 'Fri 09:00' },
+  { n: 'Laura P.', t: 'Intro boxing session', w: 'Thu 11:30' },
+  { n: 'Amira K.', t: 'Au pair interview', w: 'Fri 09:00' },
 ];
 const rebook = [
-  { n: 'Jess T.', t: 'Anti-wrinkle top-up', w: 'Due in 6 days' },
+  { n: 'Jess T.', t: 'Party hire balance', w: 'Due in 6 days' },
   { n: 'Naledi R.', t: 'Laser session 4 of 6', w: 'Due today' },
-  { n: 'Chloe B.', t: 'Skin booster', w: 'Reminder sent' },
+  { n: 'Chloe B.', t: 'Gift box reorder', w: 'Reminder sent' },
 ];
 ---
-<figure class="crm" aria-label="Example of the clinic CRM: a new enquiry at 22:41 gets an automatic reply and is booked into a consult on Thursday at 10:00">
+<figure class="crm" aria-label="Example of a custom booking system and CRM: a new enquiry at 22:41 gets an automatic reply and is booked into a call on Thursday at 10:00">
   <div class="crm-top" aria-hidden="true">
-    <span class="crm-name">Clinic CRM</span>
+    <span class="crm-name"><span class="live"></span>Your business, one system</span>
     <span class="crm-stats">
-      <span><b class="num">38 s</b> average first reply</span>
-      <span><b class="num">14</b> consults this week</span>
+      <span><b class="num">38 s</b> first reply</span>
+      <span><b class="num">14</b> bookings this week</span>
     </span>
   </div>
   <div class="cols" aria-hidden="true">
@@ -32,33 +32,34 @@ const rebook = [
       ))}
     </div>
     <div class="col">
-      <p class="col-h">Consults booked</p>
+      <p class="col-h">Booked</p>
       <div class="slot-open"><span>Thu 10:00 open</span></div>
       {booked.map((c) => (
         <div class="card"><span class="who">{c.n}</span><span class="what">{c.t}</span><span class="meta when">{c.w}</span></div>
       ))}
     </div>
     <div class="col col-3">
-      <p class="col-h">Due to rebook</p>
+      <p class="col-h">Follow up</p>
       {rebook.map((c) => (
         <div class="card"><span class="who">{c.n}</span><span class="what">{c.t}</span><span class="meta due">{c.w}</span></div>
       ))}
     </div>
     <div class="card mover">
       <span class="who">Nadia K.</span>
-      <span class="what">Lip filler</span>
+      <span class="what">Logo and website</span>
       <span class="meta m1">Instagram, 22:41</span>
       <span class="meta m2">Auto-reply sent, 22:41</span>
-      <span class="meta m3 when">Consult Thu 10:00</span>
+      <span class="meta m3 when">Call booked Thu 10:00</span>
     </div>
   </div>
-  <figcaption>Example board. Your CRM is built around your own treatments and team.</figcaption>
+  <figcaption>Example board. Every system is built around your own business.</figcaption>
 </figure>
 
 <style>
-  .crm { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 40px 80px -48px color-mix(in srgb, var(--ink) 55%, transparent); overflow: hidden; }
+  .crm { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 40px 100px -40px rgba(0,0,0,.8), 0 0 0 1px rgba(79,209,184,.08); overflow: hidden; }
   .crm-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 14px 18px; border-bottom: 1px solid var(--line); }
-  .crm-name { font-family: var(--f-display); font-weight: 700; letter-spacing: -0.01em; }
+  .crm-name { font-family: var(--f-display); font-weight: 700; letter-spacing: -0.01em; display: inline-flex; align-items: center; gap: 8px; }
+  .live { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
   .crm-stats { display: flex; gap: 16px; flex-wrap: wrap; font-size: .82rem; color: var(--muted); }
   .crm-stats b { color: var(--ink); font-weight: 700; }
 

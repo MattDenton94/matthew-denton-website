@@ -4,13 +4,13 @@ import ProjectCard from '../../components/ProjectCard.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { projects } from '../../data/site';
 ---
-<Base title="Work | Matthew Denton" description="Harlan, Creative Pearls, TNT Fitness and Nautical Aerial & Fitness: booking flows, websites and ads for businesses that sell on trust.">
+<Base title="Work | Matthew Denton" description="Websites, booking flows, branding and ads for Harlan, Creative Pearls, TNT Fitness, Nautical Aerial & Fitness and more.">
   <section class="section">
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Work</p>
-        <h1>Built for businesses that sell on trust.</h1>
-        <p class="lede">My own brand, and clients in beauty and wellness. Different products, same job: make a stranger comfortable enough to book.</p>
+        <h1>Recent work.</h1>
+        <p class="lede">My own brand and clients across fitness, jewellery and more. Different businesses, same job: look the part and turn visitors into customers.</p>
       </div>
       <div class="grid">
         {projects.map((p) => <ProjectCard p={p} />)}

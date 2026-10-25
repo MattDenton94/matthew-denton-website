@@ -1,19 +1,21 @@
-/* Treatment-room palette: porcelain, deep green-black ink, clinical teal, skin blush. */
+/* Dark studio palette: near-black green, soft white ink, bright teal accent. */
 :root {
-  --bg: #f6f7f5;
-  --surface: #ffffff;
-  --surface-2: #eceeeb;
-  --ink: #18211f;
-  --muted: #5b6563;
-  --line: #dbe0dd;
-  --accent: #23665e;
-  --accent-ink: #ffffff;
-  --accent-soft: #dcebe7;
-  --blush: #ecdcd4;
-  --blush-ink: #5a3b30;
-  --band: #18211f;
-  --band-ink: #eef1ef;
-  --band-muted: #a4afac;
+  --bg: #090b0a;
+  --bg-2: #0e1211;
+  --surface: #121716;
+  --surface-2: #1a201f;
+  --ink: #eef2f0;
+  --muted: #98a4a0;
+  --line: rgba(255, 255, 255, 0.09);
+  --accent: #4fd1b8;
+  --accent-deep: #23665e;
+  --accent-ink: #04201b;
+  --accent-soft: rgba(79, 209, 184, 0.12);
+  --blush: #3a2a25;
+  --blush-ink: #f0c3b3;
+  --band: #4fd1b8;
+  --band-ink: #04201b;
+  --band-muted: #0d4a40;
 
   --f-display: 'Schibsted Grotesk Variable', 'Schibsted Grotesk', system-ui, sans-serif;
   --f-body: 'Figtree Variable', 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -28,7 +30,7 @@
   --gutter: clamp(16px, 4vw, 40px);
   --max: 1200px;
   --radius: 18px;
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -84,6 +86,9 @@ p { margin: 0; text-wrap: pretty; }
 .btn-primary { background: var(--accent); color: var(--accent-ink); }
 .btn-ghost { border-color: var(--line); color: var(--ink); background: transparent; }
 .btn-ghost:hover { border-color: var(--ink); }
+.btn-primary:hover { box-shadow: 0 10px 30px -10px rgba(79,209,184,.6); }
+::selection { background: var(--accent); color: var(--accent-ink); }
+body { background-image: radial-gradient(1200px 600px at 85% -10%, rgba(79,209,184,.07), transparent 60%); }
 .btn svg { width: 18px; height: 18px; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
 

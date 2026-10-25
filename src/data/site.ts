@@ -6,88 +6,52 @@ export const contact = {
   linkedin: 'https://www.linkedin.com/in/matthew-denton94',
 };
 
-export const wa = (text = "Hi Matt, I run an aesthetic clinic and I'd like to talk about getting more consults booked.") =>
+export const wa = (text = "Hi Matt, I'd like to chat about a project for my business.") =>
   `https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent(text)}`;
 
-export const auditMsg =
-  "Hi Matt, I'd like the free missed-bookings audit.\n\nClinic name:\nWebsite:\nInstagram:";
+export const projectMsg =
+  "Hi Matt, I'd like a quote.\n\nBusiness name:\nWhat I need:\nWebsite or Instagram:";
 
-/* ---------- The pains: what clinic owners recognise ---------- */
-export const pains = [
-  {
-    msg: 'Hi, how much is lip filler?',
-    time: '22:41',
-    status: 'Seen. Answered at 11:20 the next morning.',
-    point: 'Most enquiries arrive after hours. By the time someone replies, she has booked with the clinic that answered first.',
-  },
-  {
-    msg: 'Can I come in on Saturday?',
-    time: '14:06',
-    status: 'Booked. Never arrived.',
-    point: 'No-shows cost you a chair, a practitioner and an hour. One reminder at the right time saves most of them.',
-  },
-  {
-    msg: 'Loved my results! See you soon',
-    time: '4 months ago',
-    status: 'No message since.',
-    point: 'Tox wears off in three to four months. If nobody reminds her, someone else gets the top-up.',
-  },
-  {
-    msg: '❤️ 248 likes',
-    time: 'Boosted post',
-    status: '0 consults booked.',
-    point: 'Likes are not bookings. Ads should be judged on one number: what each booked consult cost you.',
-  },
+/* ---------- What I build ---------- */
+export type Service = { slug: string; icon: string; title: string; line: string; items: string[] };
+
+export const services: Service[] = [
+  { slug: 'websites', icon: 'browser', title: 'Custom websites', line: 'Hand-coded, fast and built to turn visitors into enquiries. No templates that look like everyone else.', items: ['Designed around your brand', 'Fast on every phone', 'Easy for you to update'] },
+  { slug: 'booking', icon: 'calendar', title: 'Booking systems', line: 'Clients book and pay on your own site, at any hour, without phoning or messaging first.', items: ['Your services and prices', 'Live availability', 'Automatic confirmations'] },
+  { slug: 'crm', icon: 'users', title: 'CRMs', line: 'Every lead, client and conversation in one place, with reminders so nobody gets forgotten.', items: ['Pipeline you can drag', 'Follow-up reminders', 'Built for your team'] },
+  { slug: 'back-office', icon: 'grid', title: 'Back offices and dashboards', line: 'The admin side of your business, finally in one system instead of ten spreadsheets.', items: ['Orders, stock and staff', 'Reports at a glance', 'Logins for your team'] },
+  { slug: 'stores', icon: 'bag', title: 'Online stores', line: 'Shopify and custom shops that look premium and make checking out effortless.', items: ['Shopify or custom', 'Bundles and gift flows', 'Payments set up'] },
+  { slug: 'branding', icon: 'pen', title: 'Logos and branding', line: 'A logo, colours and type that make a small business look established from day one.', items: ['Logo and variations', 'Colours and fonts', 'Social and print files'] },
+  { slug: 'ads', icon: 'target', title: 'Meta ads', line: 'Facebook and Instagram campaigns measured on enquiries and sales, not likes.', items: ['Campaign setup', 'Pixel and tracking', 'Monthly results'] },
+  { slug: 'creative', icon: 'play', title: 'Ad creative and UGC', line: 'Scroll-stopping images and short videos that feel real, made for your ads and socials.', items: ['Scripts and hooks', 'Edited video cuts', 'Fresh creative monthly'] },
 ];
 
-/* ---------- The system ---------- */
-export type Part = {
-  slug: string;
-  title: string;
-  line: string;
-  detail: string;
-  items: string[];
-};
-
-export const system: Part[] = [
-  {
-    slug: 'ads',
-    title: 'Meta ads that book consults',
-    line: 'Campaigns built around your treatments, written to pass Meta review and measured on booked consults, not clicks.',
-    detail: 'I plan offers around the treatments with the best margin and the easiest first yes, write ad copy that stays inside Meta\'s rules on health and appearance claims, and track every lead from the ad through to the treatment chair.',
-    items: ['Campaign setup and testing', 'Copy that passes ad review', 'Pixel and conversion tracking', 'Cost per booked consult, every month'],
-  },
-  {
-    slug: 'content',
-    title: 'UGC and ad creative',
-    line: 'Short videos and images that feel like a real client talking, because that is what stops the scroll.',
-    detail: 'Real people talking about how they felt before and after their treatment, filmed in your clinic or by creators. I script them, brief them and cut them into ads, so you are not relying on before-and-after photos that Meta often rejects.',
-    items: ['Scripts and shot lists', 'Client and creator videos', 'Edited ad cuts in every format', 'Fresh creative before ads tire'],
-  },
-  {
-    slug: 'website',
-    title: 'A website built to book',
-    line: 'Treatment pages that answer the questions clients are too shy to ask, with booking one tap away on every screen.',
-    detail: 'Every treatment gets its own page: what it is, who it suits, what to expect on the day, downtime, aftercare and the practitioner who does it. Each page ends in a consult booking or a WhatsApp message, and every visit is tracked.',
-    items: ['A page for every treatment', 'Practitioner profiles and credentials', 'Consult booking on every page', 'Fast, clean and easy to update'],
-  },
-  {
-    slug: 'crm',
-    title: 'A CRM built for your clinic',
-    line: 'Custom coded around how your clinic actually works, so every enquiry gets answered, booked, reminded and rebooked.',
-    detail: 'Not an off-the-shelf tool you have to bend to fit. I build it around your treatments, your team and your booking rules. Every enquiry from Instagram, Facebook, WhatsApp and your website lands in one place, and the follow-ups run on their own.',
-    items: ['Every enquiry in one inbox', 'Instant replies, day and night', 'Reminders that cut no-shows', 'Rebooking prompts per treatment'],
-  },
+/* ---------- How a project runs ---------- */
+export const process = [
+  { t: 'Chat', d: 'A quick call or WhatsApp about your business, what is slowing you down and what you want to build.' },
+  { t: 'Plan and quote', d: 'A clear scope and a fixed price in writing, so you know exactly what you are getting before anything starts.' },
+  { t: 'Build', d: 'I design and build it, and you see progress along the way. Two rounds of changes are included.' },
+  { t: 'Launch and grow', d: 'It goes live, I show you how to use it, and I stay on to support it, add features and run your ads.' },
 ];
 
-/* What the monthly report tracks. */
-export const metrics = [
-  { name: 'Enquiries', note: 'From every channel, counted once' },
-  { name: 'Time to first reply', note: 'Because speed decides who gets the booking' },
-  { name: 'Consults booked', note: 'Straight from the CRM, not estimated' },
-  { name: 'Show rate', note: 'Booked consults that actually arrived' },
-  { name: 'Cost per booked consult', note: 'Ad spend divided by real bookings' },
-  { name: 'Clients rebooked', note: 'Who came back when their next treatment was due' },
+/* ---------- Clients ---------- */
+export type Client = { name: string; industry: string; logo: string; bg: string; wide?: boolean; mark?: string; fallback?: string };
+export const clients: Client[] = [
+  { name: 'TNT Fitness', industry: 'Fitness', logo: '/clients/tnt.webp', bg: '#121110', wide: true },
+  { name: 'Party Starters', industry: 'Events and party hire', logo: '/clients/party-starters.webp', bg: '#ffffff' },
+  { name: 'Nautical Aerial & Fitness', industry: 'Fitness', logo: '/clients/nautical.webp', bg: '#2a4560' },
+  { name: 'Adamant Aesthetics', industry: 'Skin and laser clinic', logo: 'https://www.adamantaesthetics.co.za/wp-content/uploads/2023/09/Adamant-Aesthetics-2048x365.png', bg: '#d4917c', wide: true },
+  { name: 'Harlan', industry: 'Jewellery', logo: '/clients/harlan.webp', bg: '#fbf7f2', wide: true },
+  { name: 'My Au Pairs', industry: 'Childcare agency', logo: '/clients/my-au-pairs.svg', bg: '#eef3f7', mark: 'My Au Pairs' },
+  { name: 'Creative Pearls', industry: 'Handmade jewellery', logo: '/clients/creative-pearls.webp', bg: '#ffffff' },
+];
+
+/* ---------- Numbers (keep these real) ---------- */
+export const stats = [
+  { value: 6, prefix: '', suffix: '', label: 'Active clients right now' },
+  { value: 30, prefix: 'R', suffix: 'k+', label: 'In client sales generated' },
+  { value: 7, prefix: '', suffix: '', label: 'Brands built and grown' },
+  { value: 5, prefix: '', suffix: '', label: 'Industries served' },
 ];
 
 /* ---------- Work ---------- */
@@ -123,14 +87,14 @@ export const projects: Project[] = [
     year: '2026',
     summary:
       'My own brand. A guided build-your-box experience where the customer picks three pieces, a box, a note and a delivery date. I run the site, the offer and the Meta ads with my own money.',
-    lesson: 'Every ad tactic I recommend to a clinic has been tested on my own budget first.',
+    lesson: 'Every ad tactic I recommend has been tested on my own budget first.',
     services: ['Shopify', 'Guided booking flow', 'Meta ads', 'Creative'],
     url: 'https://harlan.co.za',
     urlLabel: 'harlan.co.za',
     tone: 'harlan',
     shots: [
       { src: '/work/harlan-home.webp', alt: 'Harlan homepage on a phone: "The gift she\'ll never take off." with a Build Her Box button', kind: 'phone', caption: 'One promise, one button. The visitor knows exactly what to do next.' },
-      { src: '/work/harlan-builder.webp', alt: 'Harlan gift builder step one: Choose her 3 pieces, with filters and product cards', kind: 'phone', caption: 'A guided, step-by-step flow. The same thinking makes a consult booking feel easy.' },
+      { src: '/work/harlan-builder.webp', alt: 'Harlan gift builder step one: Choose her 3 pieces, with filters and product cards', kind: 'phone', caption: 'A guided, step-by-step flow. The same thinking makes any booking feel easy.' },
       { src: '/work/harlan-occasions.webp', alt: 'Harlan Shop by Occasion section with cards for her birthday, anniversary, for Mom and more', kind: 'phone', caption: 'Shop by occasion. People see their own reason for buying before they see a product.' },
     ],
     results: [],
@@ -138,7 +102,7 @@ export const projects: Project[] = [
       'A gift is a considered purchase from a brand the buyer has never heard of. Harlan had to feel personal and trustworthy from the first screen, and turn ad traffic into a finished gift box in a few taps.',
     built: [
       { title: 'A guided flow instead of a catalogue', body: 'Pick three pieces, choose the box, add a note, choose delivery speed and a date. Each step asks one question, so nobody gets stuck choosing.' },
-      { title: 'Organised around the customer\'s reason', body: 'Birthday, anniversary, for Mom, just because. Visitors start from their own situation, the same way a client starts from her concern, not a product list.' },
+      { title: 'Organised around the customer\'s reason', body: 'Birthday, anniversary, for Mom, just because. Visitors start from their own situation, not a product list.' },
       { title: 'Ads I pay for myself', body: 'Meta campaigns, creative and offers tested on my own money and measured on purchases, not reach.' },
     ],
     facts: [
@@ -203,7 +167,7 @@ export const projects: Project[] = [
     built: [
       { title: 'Real people from the first second', body: 'The hero is members training at dusk, with one line: "You won\'t leave the same." Times and the first-session price sit right under it.' },
       { title: 'A results board', body: 'Before-and-after results from nine members next to reviews in their own words. Proof beats promises.' },
-      { title: 'Practitioners up front', body: 'The coaches are introduced by name, with their experience, so a nervous first-timer knows who will look after her.' },
+      { title: 'Practitioners up front', body: 'The coaches are introduced by name, with their experience, so a nervous first-timer knows who will look after them.' },
       { title: 'Booking everywhere', body: 'A sticky booking bar on every screen, plus a direct message button to the owner.' },
     ],
     facts: [
@@ -235,7 +199,7 @@ export const projects: Project[] = [
       'The studio needed to show real credentials and premium positioning, and speak to more than young, flexible people: older clients, pre and post-natal clients and rehab patients too.',
     built: [
       { title: 'Real photos, not stock', body: 'Black-and-white studio photography on deep navy, so the work speaks for itself.' },
-      { title: 'Specialties up front', body: 'Active ageing, pre and post-natal, mobility and rehab support listed plainly, the way a clinic lists concerns before treatments.' },
+      { title: 'Specialties up front', body: 'Active ageing, pre and post-natal, mobility and rehab support listed plainly, so every kind of client sees herself first.' },
       { title: 'Simple pricing', body: 'Clear cards with one marked best value, and every button leads to a booking.' },
     ],
     facts: [
@@ -248,31 +212,27 @@ export const projects: Project[] = [
 
 export const faqs = [
   {
-    q: 'Do you only work with aesthetic clinics?',
-    a: 'No. My main focus is medical aesthetics, skin and laser clinics, and injectors running their own practice. I also build websites and booking systems for businesses in other industries, including fitness, event planning, fashion and more.',
+    q: 'Do you only work with certain industries?',
+    a: 'No. I work with businesses of every kind: fitness studios, event and party hire, childcare agencies, jewellery brands, beauty and skin clinics and more. If you have customers to win and admin to simplify, I can help.',
   },
   {
-    q: 'Can my ads show before-and-after photos?',
-    a: 'Meta restricts them, and health and appearance claims are reviewed closely. Depending on where you practise, your professional body may have its own advertising rules too. I write around both, and lean on client stories and UGC that sell without breaking either.',
-  },
-  {
-    q: 'Why a custom CRM instead of an off-the-shelf one?',
-    a: "Off-the-shelf tools make you change how your clinic works to fit them. I build the CRM around your treatments, your team and your booking rules, so it does exactly what you need and nothing you'll never use.",
+    q: 'Why custom-built instead of a template?',
+    a: 'Templates make you bend your business to fit them, and they look like everyone else. I build around how you actually work, so it does exactly what you need, loads fast and looks like your brand, not a theme.',
   },
   {
     q: 'Do I have to take everything?',
-    a: "No. Some clinics start with the CRM because their enquiries are already coming in and getting lost. Others start with ads. The free audit shows where the biggest leak is, and that's usually the best place to start.",
+    a: 'No. Some clients start with a logo or a website, others with a booking system or ads. Start with what will make the biggest difference now and add the rest when you are ready.',
   },
   {
-    q: 'How will I know it is working?',
-    a: 'You get a monthly report built from the CRM: enquiries, time to first reply, consults booked, show rate, cost per booked consult and clients rebooked. Real numbers from your own bookings.',
-  },
-  {
-    q: 'Where are you based?',
-    a: "I work remotely with clinics wherever they are. Everything runs over video calls, email and WhatsApp, and I'll fit calls around your clinic hours.",
+    q: 'How long does a project take?',
+    a: 'Most websites take two to four weeks once I have your content. Systems like CRMs and back offices depend on what they need to do. You get a timeline with your quote.',
   },
   {
     q: 'How much does it cost?',
-    a: "It depends on how many treatments, locations and channels you have, so every clinic gets its own quote after the audit. You'll see the scope and the price in writing before anything starts.",
+    a: 'Every business is different, so every project gets a fixed quote after a short chat. You see the scope and the price in writing before anything starts, with a 50% deposit to begin.',
+  },
+  {
+    q: 'Where are you based?',
+    a: 'Cape Town, South Africa, and I work with businesses anywhere. Everything runs over WhatsApp, calls and email, and you deal with me directly from start to finish.',
   },
 ];

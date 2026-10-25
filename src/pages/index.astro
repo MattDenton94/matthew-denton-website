@@ -4,113 +4,148 @@ import CrmBoard from '../components/CrmBoard.astro';
 import Phone from '../components/Phone.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import CtaBand from '../components/CtaBand.astro';
-import Proof from '../components/Proof.astro';
-import { pains, system, metrics, projects, faqs } from '../data/site';
+import Icon from '../components/Icon.astro';
+import { services, process, clients, stats, projects, faqs } from '../data/site';
 
 const harlan = projects.find((p) => p.slug === 'harlan')!;
 const others = projects.filter((p) => p.slug !== 'harlan');
+const words = ['custom websites', 'booking systems', 'CRMs', 'back offices', 'brands and logos', 'Meta ads'];
+const marquee = ['Websites', 'Booking systems', 'CRMs', 'Back offices', 'Online stores', 'Logos', 'Branding', 'Meta ads', 'UGC'];
+const path = [
+  { when: '2016 to 2020', what: 'Advanced Life Support paramedic', why: 'Four years in emergency care taught me to stay calm, think in systems and look after people properly.' },
+  { when: 'Then', what: 'Team lead in AI operations', why: 'Led data and quality teams at Invisible Technologies and FyxerAI. Process, automation and getting the details right.' },
+  { when: 'Along the way', what: 'Café owner', why: 'I have run a business and worked in it on the same day, so I build tools for how small businesses really work.' },
+  { when: 'Now', what: 'Building for businesses', why: 'Websites, systems, brands and ads for clients across five industries, plus my own brand, Harlan.' },
+];
+const values = [
+  { t: 'You deal with me', d: 'No account managers or handovers. The person who builds it is the person who answers your WhatsApp.' },
+  { t: 'Built, not templated', d: 'Every site and system is coded around your business, so it looks like you and works the way you work.' },
+  { t: 'Measured on results', d: 'Enquiries, bookings and sales. Not likes, not reach.' },
+  { t: 'Tested on my own money', d: 'I run my own brands, so the ads and offers I recommend have been tried with my own budget first.' },
+];
 ---
-<Base title="Matthew Denton | More booked consults for aesthetic clinics">
+<Base title="Matthew Denton | Custom websites, systems, branding and Meta ads">
   <!-- HERO -->
   <section class="hero">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow">For aesthetic and skin clinics</p>
-        <h1>Turn every enquiry into a booked consult.</h1>
-        <p class="lede">Meta ads, UGC, a website and a CRM built for your clinic, working as one system. Every enquiry gets an answer in seconds, a consult in the diary, and a reminder when the next treatment is due.</p>
+    <div class="hero-bg" aria-hidden="true">
+      <span class="orb o1"></span><span class="orb o2"></span><span class="grid-lines"></span>
+    </div>
+    <div class="wrap hero-inner">
+      <p class="avail" data-h="1"><span class="pulse"></span>Taking on new projects</p>
+      <h1 class="h-title">
+        <span class="ln" data-h="2"><span>I build</span></span>
+        <span class="ln rot-ln" data-h="3">
+          <span class="rot" aria-live="off">
+            {words.map((w, i) => <span class={`w ${i === 0 ? 'on' : ''}`}>{w}</span>)}
+          </span>
+          <span class="sr-only">custom websites, booking systems, CRMs, back offices, brands and Meta ads</span>
+        </span>
+        <span class="ln" data-h="4"><span>that grow your business.</span></span>
+      </h1>
+      <div class="hero-foot" data-h="5">
+        <p class="lede">One person, start to finish. Design, code, branding and ads, built around how your business actually works, so you look the part and your enquiries turn into paying customers.</p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="/contact">Get the free audit</a>
-          <a class="btn btn-ghost" href="#system">See how it works</a>
-        </div>
-        <p class="hero-note">The audit shows you where bookings slip away today. It's free, and yours to keep.</p>
-      </div>
-      <div class="board-wrap">
-        <CrmBoard />
-        <div class="toast" aria-hidden="true">
-          <span class="toast-dot"></span>
-          <div class="toast-body">
-            <span class="toast-tag">Example</span>
-            <span class="toast-t">New enquiry: laser consult</span>
-            <span class="toast-s">Replied in 38 s, booked Thu 10:00</span>
-          </div>
+          <a class="btn btn-primary btn-big magnet" href="/contact">Start a project <Icon name="arrow" /></a>
+          <a class="btn btn-ghost btn-big" href="/work">See my work</a>
         </div>
       </div>
     </div>
+    <div class="ticker" aria-hidden="true">
+      <div class="tk-track">{[...marquee, ...marquee].map((m) => <span>{m}<i>✦</i></span>)}</div>
+      <div class="tk-track">{[...marquee, ...marquee].map((m) => <span>{m}<i>✦</i></span>)}</div>
+    </div>
   </section>
 
-  <Proof />
+  <!-- CLIENTS -->
+  <section class="section clients" aria-labelledby="clients-h">
+    <div class="wrap">
+      <div class="head head-row">
+        <div>
+          <p class="eyebrow">Clients</p>
+          <h2 id="clients-h">Trusted by businesses across five industries.</h2>
+        </div>
+        <p class="lede sm">Fitness, events, childcare, jewellery and skin care. Different customers, same goal: look the part and get more bookings.</p>
+      </div>
+      <ul class="logo-wall">
+        {clients.map((c) => (
+          <li class={`logo-tile ${c.wide ? 'wide' : ''}`} style={`--tile:${c.bg}`}>
+            <div class="lt-inner" data-name={c.name}>
+              <img src={c.logo} alt={`${c.name} logo`} loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+              {c.mark && <span class="lt-mark">{c.mark}</span>}
+            </div>
+            <span class="lt-cap"><b>{c.name}</b>{c.industry}</span>
+          </li>
+        ))}
+        <li class="logo-tile wide next-tile">
+          <a href="/contact" class="nt-inner">
+            <span class="nt-plus" aria-hidden="true">+</span>
+            <span class="nt-t">Your business next?</span>
+            <span class="nt-s">Let's build something you're proud to show off.</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-  <!-- PAINS -->
-  <section class="section pains">
+  <!-- STATS -->
+  <section class="stats-sec" aria-label="Numbers">
+    <div class="wrap">
+      <dl class="stats">
+        {stats.map((s) => (
+          <div class="stat">
+            <dt>{s.label}</dt>
+            <dd class="num">{s.prefix}<span class="count" data-to={s.value}>{s.value}</span>{s.suffix}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services" aria-labelledby="svc-h">
     <div class="wrap">
       <div class="head">
-        <p class="eyebrow">Sound familiar?</p>
-        <h2>Most clinics don't have a lead problem. They have a follow-up problem.</h2>
-        <p class="lede">The enquiries are coming in. They're just leaking out between the first message and the second treatment.</p>
+        <p class="eyebrow">What I build</p>
+        <h2 id="svc-h">Everything your business needs to look good and run smoothly.</h2>
+        <p class="lede">Pick one thing or the whole lot. It all works together because the same person builds it.</p>
       </div>
-      <ul class="pain-list">
-        {pains.map((p) => (
-          <li class="pain">
-            <div class="thread" aria-hidden="true">
-              <span class="bubble">{p.msg}</span>
-              <span class="stamp num">{p.time}</span>
-              <span class="status">{p.status}</span>
-            </div>
-            <p>{p.point}</p>
+      <ul class="svc-grid">
+        {services.map((s, i) => (
+          <li class="svc">
+            <span class="svc-n num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="svc-ic"><Icon name={s.icon} /></span>
+            <h3>{s.title}</h3>
+            <p>{s.line}</p>
+            <ul class="svc-items">{s.items.map((it) => <li>{it}</li>)}</ul>
           </li>
         ))}
       </ul>
     </div>
   </section>
 
-  <!-- SYSTEM -->
-  <section class="section system" id="system">
-    <div class="wrap">
-      <div class="head">
-        <p class="eyebrow">The system</p>
-        <h2>One system, from first scroll to second treatment.</h2>
-        <p class="lede">Four parts built to work together, so nothing falls between your ads, your inbox and your diary.</p>
+  <!-- SYSTEMS SHOWCASE -->
+  <section class="section systems">
+    <div class="wrap sys-grid">
+      <div class="sys-copy">
+        <p class="eyebrow">Systems</p>
+        <h2>Stop running your business from WhatsApp and spreadsheets.</h2>
+        <p class="lede">I build booking systems, CRMs and back offices around the way you already work. Enquiries get answered, bookings land in the diary, and nothing falls through the cracks.</p>
+        <ul class="ticks">
+          <li>Every enquiry from your website, Instagram, Facebook and WhatsApp in one place</li>
+          <li>Instant replies and reminders that run on their own</li>
+          <li>Your services, staff, prices and rules, not someone else's template</li>
+        </ul>
       </div>
-      <ol class="steps">
-        {system.map((s, i) => (
-          <li>
-            <span class="step-n num">{i + 1}</span>
-            <h3>{s.title}</h3>
-            <p>{s.line}</p>
-            <ul>{s.items.map((it) => <li>{it}</li>)}</ul>
-          </li>
-        ))}
-      </ol>
-      <p class="more"><a href="/services">How each part works</a></p>
-    </div>
-  </section>
-
-  <!-- REPORT -->
-  <section class="section report">
-    <div class="wrap"><div class="report-grid">
-      <div class="head" style="margin:0">
-        <p class="eyebrow">How you'll know it's working</p>
-        <h2>Judged on bookings, not likes.</h2>
-        <p class="lede">Every month you get the numbers that decide whether your chairs are full, pulled straight from your CRM.</p>
-      </div>
-      <dl class="metrics">
-        {metrics.map((m) => (<div><dt>{m.name}</dt><dd>{m.note}</dd></div>))}
-      </dl>
-    </div></div>
-  </section>
-
-  <!-- WHY ME -->
-  <section class="section why">
-    <div class="wrap why-grid">
-      <div class="why-copy">
-        <img class="why-photo" src="/matt.webp" alt="Matthew Denton" width="720" height="960" loading="lazy" />
-        <p class="eyebrow">Why me</p>
-        <h2>I've worked in healthcare. I know what it means when a client trusts you with their face.</h2>
-      </div>
-      <div class="why-body">
-        <p>Before this I spent four years as an Advanced Life Support paramedic. I understand clinical language, consent and patient trust, and why a clinic can't promise results in an ad. I'll never write anything you'd be uncomfortable putting your name to.</p>
-        <p>I also run my own brand, <a href="/work/harlan">Harlan</a>. Every ad tactic I'd use for your clinic has been tested with my own money first.</p>
-        <p>And you deal with me directly. No account managers and no handovers. The person who builds your system is the person who answers your message.</p>
+      <div class="board-wrap" data-r>
+        <CrmBoard />
+        <div class="toast" aria-hidden="true">
+          <span class="toast-dot"></span>
+          <div class="toast-body">
+            <span class="toast-tag">Example</span>
+            <span class="toast-t">New enquiry: website quote</span>
+            <span class="toast-s">Replied in 38 s, call booked Thu 10:00</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -120,18 +155,17 @@ const others = projects.filter((p) => p.slug !== 'harlan');
     <div class="wrap">
       <div class="head head-row">
         <div>
-          <p class="eyebrow">Work</p>
-          <h2>Built for businesses that sell on trust.</h2>
+          <p class="eyebrow">Selected work</p>
+          <h2>Recent builds.</h2>
         </div>
-        <a class="btn btn-ghost" href="/work">All work</a>
+        <a class="btn btn-ghost" href="/work">All work <Icon name="arrow" /></a>
       </div>
       <a class="feature" href="/work/harlan">
         <div class="feature-copy">
           <span class="tag">My own brand</span>
           <h3>{harlan.name}</h3>
           <p>{harlan.summary}</p>
-          <p class="lesson">{harlan.lesson}</p>
-          <span class="link">How I built Harlan</span>
+          <span class="link">How I built Harlan <Icon name="arrow" /></span>
         </div>
         <div class="feature-shots">
           {harlan.shots.slice(0, 2).map((sh, i) => <Phone src={sh.src} alt={sh.alt} crop class={`fs fs${i}`} />)}
@@ -140,6 +174,46 @@ const others = projects.filter((p) => p.slug !== 'harlan');
       <div class="work-grid">
         {others.map((p) => <ProjectCard p={p} />)}
       </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section process">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">How it works</p>
+        <h2>From first message to live, without the headaches.</h2>
+      </div>
+      <ol class="proc">
+        {process.map((s, i) => (
+          <li><span class="proc-n num">{String(i + 1).padStart(2, '0')}</span><h3>{s.t}</h3><p>{s.d}</p></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about" id="about" aria-labelledby="about-h">
+    <div class="wrap about-grid">
+      <div class="about-photo" data-r>
+        <img src="/matt.webp" alt="Matthew Denton" width="720" height="960" loading="lazy" />
+        <span class="ph-tag">Matthew Denton<br /><small>Cape Town, South Africa</small></span>
+      </div>
+      <div class="about-copy">
+        <p class="eyebrow">About me</p>
+        <h2 id="about-h">Hi, I'm Matt. I build things that make businesses easier to run and easier to buy from.</h2>
+        <p class="lede">I'm a developer and designer from Cape Town. I build custom websites, booking systems, CRMs and back offices, design logos and brands, and run Meta ads, all under one roof.</p>
+        <p>My path here wasn't typical. I spent four years as an Advanced Life Support paramedic, led data and quality teams in AI operations, and owned a café. Each of those taught me something I bring to every project: stay calm, think in systems, and never forget there is a real person on the other side of the screen.</p>
+        <p>Today I work with fitness studios, party hire companies, childcare agencies, jewellery brands and skin clinics, and I run my own brand, <a href="/work/harlan">Harlan</a>, where I test everything with my own money first.</p>
+        <ol class="path">
+          {path.map((p) => (<li><span class="when">{p.when}</span><b>{p.what}</b><span class="why">{p.why}</span></li>))}
+        </ol>
+      </div>
+    </div>
+    <div class="wrap">
+      <ul class="vals">
+        {values.map((v) => (<li><h3>{v.t}</h3><p>{v.d}</p></li>))}
+      </ul>
     </div>
   </section>
 
@@ -162,144 +236,290 @@ const others = projects.filter((p) => p.slug !== 'harlan');
 </Base>
 
 <script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Hero entrance, after the intro loader.
+  const start = () => document.documentElement.classList.add('hero-in');
+  if (document.documentElement.classList.contains('loading')) window.addEventListener('md:ready', start, { once: true });
+  else start();
+
+  // Rotating word in the headline.
+  const ws = Array.from(document.querySelectorAll<HTMLElement>('.rot .w'));
+  if (ws.length && !reduce) {
+    let i = 0;
+    setInterval(() => {
+      const cur = ws[i];
+      i = (i + 1) % ws.length;
+      cur.classList.remove('on');
+      cur.classList.add('off');
+      ws[i].classList.remove('off');
+      ws[i].classList.add('on');
+      setTimeout(() => cur.classList.remove('off'), 700);
+    }, 2400);
+  }
+
+  // Count-up numbers.
+  const counts = document.querySelectorAll<HTMLElement>('.count');
+  if (!reduce && 'IntersectionObserver' in window) {
+    counts.forEach((el) => (el.textContent = '0'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const el = e.target as HTMLElement;
+        io.unobserve(el);
+        const to = Number(el.dataset.to || 0);
+        const t0 = performance.now();
+        const tick = (t: number) => {
+          const p = Math.min(1, (t - t0) / 1700);
+          el.textContent = String(Math.round(to * (1 - Math.pow(1 - p, 3))));
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.6 });
+    counts.forEach((el) => io.observe(el));
+  }
+
+  // Spotlight that follows the pointer across service cards and logo tiles.
+  document.querySelectorAll<HTMLElement>('.svc, .logo-tile').forEach((card) => {
+    card.addEventListener('pointermove', (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      card.style.setProperty('--my', `${e.clientY - r.top}px`);
+    });
+  });
+
+  // Magnetic primary button.
+  if (!reduce && window.matchMedia('(pointer: fine)').matches) {
+    document.querySelectorAll<HTMLElement>('.magnet').forEach((b) => {
+      b.addEventListener('pointermove', (e) => {
+        const r = b.getBoundingClientRect();
+        b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.18}px, ${(e.clientY - r.top - r.height / 2) * 0.3}px)`;
+      });
+      b.addEventListener('pointerleave', () => (b.style.transform = ''));
+    });
+  }
+
+  // Live enquiry toast on the systems board.
   const toast = document.querySelector<HTMLElement>('.toast');
   const msgs = [
-    ['New enquiry: laser consult', 'Replied in 38 s, booked Thu 10:00'],
-    ['Instagram DM: skin booster price?', 'Answered in 41 s, consult booked'],
-    ['Rebooking reminder: anti-wrinkle top-up', 'Client confirmed Tue 14:30'],
+    ['New enquiry: website quote', 'Replied in 38 s, call booked Thu 10:00'],
+    ['Instagram DM: jumping castle for Saturday?', 'Answered in 41 s, deposit paid'],
+    ['Booking reminder sent', 'Client confirmed Tue 14:30'],
     ['Missed call at 19:12', 'Text-back sent, booked Sat 09:30'],
   ];
   if (toast) {
     const t = toast.querySelector('.toast-t')!;
     const s = toast.querySelector('.toast-s')!;
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let i = 0;
-    const show = () => {
-      t.textContent = msgs[i][0];
-      s.textContent = msgs[i][1];
-      toast.classList.add('show');
-      i = (i + 1) % msgs.length;
-    };
-    if (reduce) { show(); }
+    const show = () => { t.textContent = msgs[i][0]; s.textContent = msgs[i][1]; toast.classList.add('show'); i = (i + 1) % msgs.length; };
+    if (reduce) show();
     else {
-      setTimeout(show, 2200);
-      setInterval(() => {
-        toast.classList.remove('show');
-        setTimeout(show, 600);
-      }, 5200);
+      const io = new IntersectionObserver((en) => {
+        if (!en[0].isIntersecting) return;
+        io.disconnect();
+        setTimeout(show, 1200);
+        setInterval(() => { toast.classList.remove('show'); setTimeout(show, 600); }, 5200);
+      }, { threshold: 0.4 });
+      io.observe(toast.parentElement!);
     }
   }
+
+  // Logo fallback: if a remote logo fails, show the name instead.
+  document.querySelectorAll<HTMLImageElement>('.logo-tile img').forEach((img) => {
+    const fail = () => { img.closest('.logo-tile')?.classList.add('no-img'); };
+    if (img.complete && img.naturalWidth === 0) fail();
+    img.addEventListener('error', fail);
+  });
 </script>
 
 <style>
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
   /* Hero */
-  /* Live enquiry toast over the CRM board */
-  .board-wrap { position: relative; }
-  .toast { position: absolute; left: clamp(-28px, -2vw, -12px); bottom: -70px; z-index: 2; display: flex; gap: 12px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px 12px 14px; box-shadow: 0 24px 48px -24px color-mix(in srgb, var(--ink) 45%, transparent); max-width: 290px; opacity: 0; translate: 0 12px; transition: opacity .45s ease, translate .45s ease; pointer-events: none; }
+  .hero { position: relative; overflow: hidden; padding-block: clamp(48px, 7vw, 104px) 0; min-height: calc(100svh - 68px); display: flex; flex-direction: column; justify-content: space-between; gap: clamp(48px, 7vw, 96px); }
+  .hero-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+  .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .55; }
+  .o1 { width: 46vw; height: 46vw; right: -10vw; top: -14vw; background: radial-gradient(circle, rgba(79,209,184,.5), transparent 65%); animation: float1 16s ease-in-out infinite alternate; }
+  .o2 { width: 34vw; height: 34vw; left: -12vw; bottom: -10vw; background: radial-gradient(circle, rgba(35,102,94,.6), transparent 65%); animation: float2 20s ease-in-out infinite alternate; }
+  @keyframes float1 { to { transform: translate(-8vw, 10vw) scale(1.1); } }
+  @keyframes float2 { to { transform: translate(10vw, -6vw) scale(1.15); } }
+  .grid-lines { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%); }
+  .hero-inner { position: relative; z-index: 1; display: grid; gap: clamp(22px, 3vw, 34px); }
+  .avail { display: inline-flex; align-items: center; gap: 10px; justify-self: start; font-size: .9rem; font-weight: 600; color: var(--ink); border: 1px solid var(--line); background: rgba(255,255,255,.03); padding: 8px 14px; border-radius: 999px; }
+  .pulse { width: 8px; height: 8px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 0 0 rgba(61,220,132,.6); animation: pulse 2s infinite; }
+  @keyframes pulse { 70% { box-shadow: 0 0 0 10px rgba(61,220,132,0); } 100% { box-shadow: 0 0 0 0 rgba(61,220,132,0); } }
+  .h-title { font-size: clamp(2.3rem, 0.9rem + 7vw, 6.4rem); font-weight: 750; letter-spacing: -0.045em; line-height: .98; max-width: none; display: grid; }
+  .ln { display: block; overflow: hidden; padding-bottom: .06em; }
+  .ln > span:not(.rot):not(.sr-only) { display: inline-block; }
+  .rot { position: relative; display: inline-grid; color: var(--accent); font-size: min(1em, 10.4vw); }
+  .rot .w { grid-area: 1 / 1; white-space: nowrap; transform: translateY(105%); opacity: 0; transition: transform .7s cubic-bezier(.2,.8,.2,1), opacity .7s ease; }
+  .rot .w.on { transform: translateY(0); opacity: 1; }
+  .rot .w.off { transform: translateY(-105%); opacity: 0; }
+  .hero-foot { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(24px, 4vw, 64px); align-items: end; margin-top: 8px; }
+  .hero-foot .lede { max-width: 52ch; }
+  .hero-foot .btn-row { justify-content: flex-end; }
+  .btn-big { padding: 17px 28px; font-size: 1.05rem; }
+  .btn :global(.icon) { width: 18px; height: 18px; }
+  @media (max-width: 860px) { .hero-foot { grid-template-columns: 1fr; } .hero-foot .btn-row { justify-content: flex-start; } }
+
+  /* Hero entrance */
+  @media (prefers-reduced-motion: no-preference) {
+    :global(html:not(.hero-in)) [data-h] { opacity: 0; transform: translateY(28px); }
+    [data-h] { transition: opacity .9s ease, transform .9s cubic-bezier(.2,.8,.2,1); }
+    [data-h="2"] { transition-delay: .08s; } [data-h="3"] { transition-delay: .16s; } [data-h="4"] { transition-delay: .24s; } [data-h="5"] { transition-delay: .4s; }
+  }
+
+  .ticker { position: relative; z-index: 1; border-block: 1px solid var(--line); padding-block: 18px; display: flex; overflow: hidden; background: rgba(255,255,255,.015); }
+  .tk-track { display: flex; flex-shrink: 0; gap: 36px; padding-right: 36px; animation: slide 40s linear infinite; }
+  .tk-track span { display: inline-flex; align-items: center; gap: 36px; font-family: var(--f-display); font-weight: 700; font-size: clamp(1.1rem, .9rem + 1vw, 1.7rem); letter-spacing: -0.02em; color: var(--muted); white-space: nowrap; }
+  .tk-track i { font-style: normal; color: var(--accent); font-size: .8em; }
+  @keyframes slide { to { transform: translateX(-100%); } }
+
+  /* Heads */
+  .head-row { display: flex; justify-content: space-between; align-items: end; gap: 16px 40px; max-width: none; flex-wrap: wrap; }
+  .head-row > div { display: grid; gap: 16px; max-width: 760px; }
+  .lede.sm { font-size: var(--step-0); max-width: 42ch; }
+
+  /* Clients */
+  .clients { padding-bottom: clamp(40px, 6vw, 72px); }
+  .logo-wall { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(12px, 1.6vw, 18px); }
+  .logo-tile { position: relative; display: grid; grid-template-rows: 1fr auto; border-radius: var(--radius); overflow: hidden; background: var(--surface); border: 1px solid var(--line); transition: transform .4s cubic-bezier(.2,.8,.2,1), border-color .3s; }
+  .logo-tile.wide { grid-column: span 2; }
+  .logo-tile:hover { transform: translateY(-6px); border-color: rgba(79,209,184,.35); }
+  .lt-inner { background: var(--tile); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; min-height: clamp(150px, 15vw, 200px); padding: clamp(18px, 3vw, 32px); position: relative; overflow: hidden; }
+  .lt-inner::after { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.22) 50%, transparent 70%); transform: translateX(-120%); transition: transform .9s ease; pointer-events: none; }
+  .logo-tile:hover .lt-inner::after { transform: translateX(120%); }
+  .lt-inner img { max-width: min(82%, 340px); max-height: 120px; width: auto; height: auto; object-fit: contain; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+  .logo-tile:hover .lt-inner img { transform: scale(1.05); }
+  .lt-mark { font-family: Georgia, 'Times New Roman', serif; font-weight: 700; font-size: 1.35rem; color: #1e4e6e; letter-spacing: -0.01em; }
+  .logo-tile:not(.wide) .lt-inner img { max-height: 130px; }
+  .logo-tile[style*='#ffffff'] .lt-inner img, .logo-tile[style*='#fbf7f2'] .lt-inner img { max-height: 110px; }
+  .lt-cap { display: flex; justify-content: space-between; gap: 10px; padding: 12px 16px; font-size: .85rem; color: var(--muted); border-top: 1px solid var(--line); }
+  .lt-cap b { color: var(--ink); font-weight: 650; }
+  .no-img .lt-inner img { display: none; }
+  .no-img .lt-inner::before { content: attr(data-name); font-family: var(--f-display); font-weight: 750; font-size: 1.6rem; color: #fff; letter-spacing: -0.02em; }
+  .next-tile { border-style: dashed; border-color: rgba(79,209,184,.35); background: transparent; }
+  .nt-inner { display: grid; place-content: center; justify-items: center; gap: 8px; text-align: center; min-height: 100%; padding: clamp(24px, 3vw, 36px); text-decoration: none; color: var(--ink); grid-row: 1 / -1; }
+  .nt-plus { width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; font-size: 1.8rem; color: var(--accent-ink); background: var(--accent); transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+  .next-tile:hover .nt-plus { transform: rotate(90deg) scale(1.08); }
+  .nt-t { font-family: var(--f-display); font-weight: 750; font-size: var(--step-2); letter-spacing: -0.03em; }
+  .nt-s { color: var(--muted); }
+  @media (max-width: 900px) { .logo-wall { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .lt-inner { min-height: 120px; padding: 16px; } .lt-inner img { max-height: 80px !important; } .lt-cap { flex-direction: column; gap: 2px; padding: 10px 12px; font-size: .8rem; } .lt-mark { font-size: 1rem; } }
+
+  /* Stats */
+  .stats-sec { padding-block: clamp(24px, 4vw, 48px) clamp(56px, 8vw, 104px); }
+  .stats { margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .stat { background: var(--bg-2); padding: clamp(22px, 3vw, 36px); display: flex; flex-direction: column-reverse; gap: 8px; }
+  .stat dd { margin: 0; font-family: var(--f-display); font-weight: 750; font-size: clamp(2.6rem, 1.4rem + 3.6vw, 4.4rem); line-height: 1; letter-spacing: -0.045em; background: linear-gradient(180deg, #fff, var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .stat dt { color: var(--muted); font-weight: 550; }
+  @media (max-width: 860px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+
+  /* Services */
+  .svc-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(12px, 1.6vw, 18px); }
+  .svc { position: relative; display: grid; gap: 12px; align-content: start; padding: clamp(22px, 2.4vw, 30px); border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); overflow: hidden; transition: transform .4s cubic-bezier(.2,.8,.2,1), border-color .3s; isolation: isolate; }
+  .svc::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), rgba(79,209,184,.14), transparent 60%); opacity: 0; transition: opacity .3s; }
+  .svc:hover { transform: translateY(-6px); border-color: rgba(79,209,184,.35); }
+  .svc:hover::before { opacity: 1; }
+  .svc-n { position: absolute; top: 18px; right: 20px; font-size: .8rem; color: var(--muted); font-weight: 600; }
+  .svc-ic { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); margin-bottom: 6px; transition: transform .4s cubic-bezier(.2,.8,.2,1); }
+  .svc:hover .svc-ic { transform: rotate(-8deg) scale(1.08); }
+  .svc-ic :global(.icon) { width: 24px; height: 24px; }
+  .svc h3 { font-size: 1.3rem; letter-spacing: -0.02em; }
+  .svc p { color: var(--muted); font-size: .97rem; }
+  .svc-items { list-style: none; margin: 4px 0 0; padding: 12px 0 0; border-top: 1px solid var(--line); display: grid; gap: 6px; font-size: .9rem; color: var(--ink); }
+  .svc-items li { padding-left: 16px; position: relative; }
+  .svc-items li::before { content: ''; position: absolute; left: 0; top: .62em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  @media (max-width: 1080px) { .svc-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .svc-grid { grid-template-columns: 1fr; } }
+
+  /* Systems */
+  .systems { background: var(--bg-2); border-block: 1px solid var(--line); }
+  .sys-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(40px, 6vw, 88px); align-items: center; }
+  .sys-copy { display: grid; gap: 20px; }
+  .sys-copy h2 { font-size: var(--step-3); }
+  .ticks { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 12px; }
+  .ticks li { position: relative; padding-left: 32px; }
+  .ticks li::before { content: '✓'; position: absolute; left: 0; top: 1px; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: .75rem; font-weight: 800; background: var(--accent-soft); color: var(--accent); }
+  @media (max-width: 960px) { .sys-grid { grid-template-columns: 1fr; } }
+  .board-wrap { position: relative; padding-bottom: 60px; }
+  .toast { position: absolute; left: clamp(-28px, -2vw, -12px); bottom: 0; z-index: 2; display: flex; gap: 12px; align-items: flex-start; background: var(--surface-2); border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px 12px 14px; box-shadow: 0 24px 48px -20px rgba(0,0,0,.8); max-width: 300px; opacity: 0; translate: 0 12px; transition: opacity .45s ease, translate .45s ease; pointer-events: none; }
   .toast.show { opacity: 1; translate: 0 0; }
-  .toast-dot { flex: none; width: 10px; height: 10px; margin-top: 6px; border-radius: 50%; background: #2fa36b; box-shadow: 0 0 0 4px color-mix(in srgb, #2fa36b 20%, transparent); }
+  .toast-dot { flex: none; width: 10px; height: 10px; margin-top: 6px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 0 4px rgba(61,220,132,.18); }
   .toast-body { display: grid; gap: 1px; line-height: 1.35; }
   .toast-tag { font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
   .toast-t { font-family: var(--f-display); font-weight: 700; font-size: .98rem; letter-spacing: -0.01em; }
   .toast-s { font-size: .88rem; color: var(--accent); font-weight: 600; }
-  @media (max-width: 960px) { .toast { left: 12px; bottom: -78px; max-width: calc(100% - 24px); } .hero { padding-bottom: 112px; } }
-
-  /* Background: the clinic treatment room photo sits on the right and fades into the page on the left,
-     so the headline stays clean and the room shows behind the CRM board. */
-  .hero {
-    padding-block: clamp(36px, 6vw, 88px) clamp(56px, 7vw, 104px);
-    background:
-      linear-gradient(180deg, transparent 75%, var(--bg) 100%),
-      linear-gradient(90deg, var(--bg) 0%, var(--bg) 43%, color-mix(in srgb, var(--bg) 72%, transparent) 54%, color-mix(in srgb, var(--bg) 20%, transparent) 74%, transparent 100%),
-      url('/clinic-room.webp') right 0 top 22% / 58% auto no-repeat,
-      var(--bg);
-  }
-  @media (max-width: 960px) {
-    .hero {
-      background:
-        linear-gradient(180deg, color-mix(in srgb, var(--bg) 78%, transparent) 0%, color-mix(in srgb, var(--bg) 92%, transparent) 50%, var(--bg) 100%),
-        url('/clinic-room-sm.webp') 20% 80% / cover no-repeat,
-        var(--bg);
-    }
-  }
-  .hero-grid { display: grid; grid-template-columns: 1fr 1.08fr; gap: clamp(32px, 5vw, 64px); align-items: center; }
-  .hero-copy { display: grid; gap: 22px; }
-  h1 { font-size: var(--step-4); font-weight: 750; letter-spacing: -0.035em; max-width: 13ch; }
-  .hero-note { font-size: .9rem; color: var(--muted); max-width: 44ch; }
-  @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } }
-
-  /* Pains */
-  .pains { background: var(--surface); border-block: 1px solid var(--line); }
-  .pain-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(28px, 4vw, 56px) clamp(24px, 4vw, 64px); }
-  .pain { display: grid; gap: 14px; align-content: start; }
-  .thread { display: grid; grid-template-columns: auto 1fr; align-items: end; gap: 6px 10px; justify-items: start; }
-  .bubble { background: var(--bg); border: 1px solid var(--line); border-radius: 18px 18px 18px 4px; padding: 10px 14px; font-weight: 550; max-width: 30ch; }
-  .stamp { font-size: .78rem; color: var(--muted); padding-bottom: 4px; }
-  .status { grid-column: 1 / -1; font-size: .85rem; font-weight: 650; color: var(--blush-ink); background: var(--blush); border-radius: 999px; padding: 3px 10px; }
-  .pain p { color: var(--muted); max-width: 52ch; }
-  @media (max-width: 760px) { .pain-list { grid-template-columns: 1fr; } }
-
-  /* System */
-  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(20px, 3vw, 32px); }
-  .steps > li { display: grid; gap: 12px; align-content: start; border-top: 2px solid var(--ink); padding-top: 18px; }
-  .step-n { width: 30px; height: 30px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; font-weight: 700; font-size: .9rem; }
-  .steps h3 { font-size: var(--step-1); letter-spacing: -0.02em; }
-  .steps p { color: var(--muted); }
-  .steps ul { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 6px; font-size: .95rem; }
-  .steps ul li { padding-left: 16px; position: relative; }
-  .steps ul li::before { content: ''; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-  .more { margin-top: 28px; }
-  .more a { font-weight: 650; color: var(--accent); }
-  @media (max-width: 1000px) { .steps { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
-
-  /* Report */
-  .report { padding-top: 0; }
-  .report-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(32px, 5vw, 72px); align-items: start; background: var(--accent-soft); border-radius: var(--radius); padding: clamp(24px, 5vw, 64px); }
-  .report h2 { color: var(--ink); }
-  .metrics { margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 28px; }
-  .metrics div { border-top: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); padding-block: 14px 18px; }
-  .metrics dt { font-family: var(--f-display); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.015em; }
-  .metrics dd { margin: 2px 0 0; color: var(--muted); font-size: .95rem; }
-  @media (max-width: 900px) { .report-grid { grid-template-columns: 1fr; } }
-  @media (max-width: 520px) { .metrics { grid-template-columns: 1fr; } }
-
-  /* Why */
-  .why { background: #f2ebe5; border-block: 1px solid #e6dcd4; }
-  .why-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
-  .why-copy { display: grid; gap: 16px; justify-items: start; }
-  .why-photo { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; object-position: center 22%; margin-bottom: 8px; }
-  .why h2 { font-size: var(--step-3); }
-  .why-body { display: grid; gap: 18px; color: #5e534e; font-size: var(--step-1); line-height: 1.5; }
-  .why-body a { color: var(--ink); }
-  @media (max-width: 860px) { .why-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 960px) { .toast { left: 12px; max-width: calc(100% - 24px); } }
 
   /* Work */
-  .head-row { display: flex; justify-content: space-between; align-items: end; gap: 16px; max-width: none; flex-wrap: wrap; }
-  .head-row > div { display: grid; gap: 16px; max-width: 760px; }
-  .feature { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; text-decoration: none; background: #f4ece6; color: #3f3330; border-radius: var(--radius); padding: clamp(24px, 4vw, 56px); margin-bottom: clamp(40px, 5vw, 64px); overflow: hidden; }
+  .feature { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; text-decoration: none; background: linear-gradient(135deg, #1d1715, #120f0e); border: 1px solid var(--line); color: var(--ink); border-radius: var(--radius); padding: clamp(24px, 4vw, 56px); margin-bottom: clamp(40px, 5vw, 64px); overflow: hidden; transition: border-color .3s; }
+  .feature:hover { border-color: rgba(79,209,184,.35); }
   .feature-copy { display: grid; gap: 14px; justify-items: start; }
-  .feature h3 { font-size: var(--step-3); color: #3f3330; }
-  .feature p { color: #6b5a55; max-width: 46ch; }
-  .feature .lesson { color: #3f3330; font-weight: 600; }
+  .feature h3 { font-size: var(--step-3); }
+  .feature p { color: var(--muted); max-width: 46ch; }
   .tag { font-size: .82rem; font-weight: 650; padding: 4px 10px; border-radius: 999px; background: #a5676b; color: #fff; }
-  .link { font-weight: 650; text-decoration: underline; text-underline-offset: 4px; }
+  .link { display: inline-flex; align-items: center; gap: 8px; font-weight: 650; color: var(--accent); }
+  .link :global(.icon) { width: 18px; height: 18px; transition: transform .25s; }
+  .feature:hover .link :global(.icon) { transform: translateX(4px); }
   .feature-shots { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 2vw, 24px); align-items: start; }
+  .feature-shots :global(.fs) { transition: transform .6s cubic-bezier(.2,.8,.2,1); }
   .feature-shots :global(.fs1) { margin-top: 36px; }
+  .feature:hover .feature-shots :global(.fs0) { transform: translateY(-10px) rotate(-1.5deg); }
+  .feature:hover .feature-shots :global(.fs1) { transform: translateY(-4px) rotate(1.5deg); }
   .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 3vw, 40px); }
   @media (max-width: 860px) { .feature { grid-template-columns: 1fr; } }
   @media (max-width: 960px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 620px) { .work-grid { grid-template-columns: 1fr; } }
 
+  /* Process */
+  .process { padding-top: 0; }
+  .proc { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2vw, 24px); counter-reset: p; }
+  .proc li { position: relative; display: grid; gap: 10px; align-content: start; padding-top: 26px; border-top: 1px solid var(--line); }
+  .proc li::before { content: ''; position: absolute; left: 0; top: -1px; height: 2px; width: 0; background: var(--accent); transition: width 1s cubic-bezier(.2,.8,.2,1) var(--d, 0ms); }
+  .proc :global(li.in)::before, :global(html:not(.reveal-on)) .proc li::before { width: 100%; }
+  .proc-n { font-family: var(--f-display); font-weight: 750; font-size: 2.4rem; letter-spacing: -0.04em; color: var(--accent); line-height: 1; }
+  .proc h3 { font-size: var(--step-1); letter-spacing: -0.02em; }
+  .proc p { color: var(--muted); }
+  @media (max-width: 900px) { .proc { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .proc { grid-template-columns: 1fr; } }
+
+  /* About */
+  .about { background: var(--bg-2); border-block: 1px solid var(--line); }
+  .about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(36px, 6vw, 88px); align-items: start; }
+  .about-photo { position: sticky; top: 100px; border-radius: calc(var(--radius) + 6px); overflow: hidden; border: 1px solid var(--line); }
+  .about-photo img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 20%; filter: grayscale(.15) contrast(1.05); transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
+  .about-photo:hover img { transform: scale(1.04); }
+  .ph-tag { position: absolute; left: 16px; bottom: 16px; background: rgba(9,11,10,.75); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); padding: 10px 14px; border-radius: 12px; font-family: var(--f-display); font-weight: 700; line-height: 1.25; }
+  .ph-tag small { font-family: var(--f-body); font-weight: 500; color: var(--muted); font-size: .82rem; }
+  .about-copy { display: grid; gap: 18px; }
+  .about-copy h2 { font-size: var(--step-3); }
+  .about-copy > p:not(.eyebrow):not(.lede) { color: var(--muted); }
+  .about-copy a { color: var(--accent); }
+  .path { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 0; border-left: 1px solid var(--line); }
+  .path li { position: relative; display: grid; gap: 2px; padding: 0 0 20px 22px; }
+  .path li::before { content: ''; position: absolute; left: -5px; top: 6px; width: 9px; height: 9px; border-radius: 50%; background: var(--bg-2); border: 2px solid var(--accent); }
+  .path li:last-child::before { background: var(--accent); }
+  .when { font-size: .8rem; font-weight: 650; color: var(--accent); text-transform: uppercase; letter-spacing: .06em; }
+  .path b { font-family: var(--f-display); font-size: 1.12rem; letter-spacing: -0.015em; }
+  .why { color: var(--muted); font-size: .95rem; }
+  .vals { list-style: none; margin: clamp(48px, 6vw, 80px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(12px, 1.6vw, 18px); }
+  .vals li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(20px, 2.4vw, 28px); display: grid; gap: 8px; align-content: start; }
+  .vals h3 { font-size: 1.15rem; letter-spacing: -0.015em; }
+  .vals p { color: var(--muted); font-size: .95rem; }
+  @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } .about-photo { position: relative; top: 0; max-width: 420px; } .vals { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .vals { grid-template-columns: 1fr; } }
+
   /* FAQ */
-  .faq { padding-top: 0; }
   .faq-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(24px, 5vw, 72px); align-items: start; }
   .faq-list { border-top: 1px solid var(--line); }
   details { border-bottom: 1px solid var(--line); }
-  summary { cursor: pointer; list-style: none; padding: 20px 40px 20px 0; font-family: var(--f-display); font-weight: 650; font-size: var(--step-1); letter-spacing: -0.015em; position: relative; }
+  summary { cursor: pointer; list-style: none; padding: 22px 44px 22px 0; font-family: var(--f-display); font-weight: 650; font-size: var(--step-1); letter-spacing: -0.015em; position: relative; transition: color .2s; }
+  summary:hover { color: var(--accent); }
   summary::-webkit-details-marker { display: none; }
-  summary::after { content: '+'; position: absolute; right: 4px; top: 50%; translate: 0 -50%; font-size: 1.4rem; color: var(--accent); transition: rotate .2s ease; }
-  details[open] summary::after { rotate: 45deg; }
+  summary::after { content: '+'; position: absolute; right: 4px; top: 50%; translate: 0 -50%; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; font-size: 1.2rem; color: var(--accent); transition: rotate .25s ease, background .25s; }
+  details[open] summary::after { rotate: 45deg; background: var(--accent-soft); }
   details p { color: var(--muted); padding-bottom: 22px; max-width: 62ch; }
   @media (max-width: 860px) { .faq-grid { grid-template-columns: 1fr; } }
 </style>
