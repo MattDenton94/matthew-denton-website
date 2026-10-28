@@ -35,15 +35,15 @@ export const process = [
 ];
 
 /* ---------- Clients ---------- */
-export type Client = { name: string; industry: string; logo: string; bg: string; wide?: boolean; mark?: string; fallback?: string };
+export type Client = { name: string; industry: string; logo: string; bg: string; wide?: boolean; mark?: string; fallback?: string; url?: string };
 export const clients: Client[] = [
-  { name: 'TNT Fitness', industry: 'Fitness', logo: '/clients/tnt.webp', bg: '#121110', wide: true },
-  { name: 'Party Starters', industry: 'Events and party hire', logo: '/clients/party-starters.webp', bg: '#ffffff' },
-  { name: 'Nautical Aerial & Fitness', industry: 'Fitness', logo: '/clients/nautical.webp', bg: '#2a4560' },
-  { name: 'Adamant Aesthetics', industry: 'Skin and laser clinic', logo: 'https://www.adamantaesthetics.co.za/wp-content/uploads/2023/09/Adamant-Aesthetics-2048x365.png', bg: '#d4917c', wide: true },
-  { name: 'Harlan', industry: 'Jewellery', logo: '/clients/harlan.webp', bg: '#fbf7f2', wide: true },
+  { name: 'TNT Fitness', industry: 'Fitness', logo: '/clients/tnt.webp', bg: '#121110', wide: true, url: 'https://tnt-fitness-ojru0r8zs-matt-517e.vercel.app' },
+  { name: 'Party Starters', industry: 'Events and party hire', logo: '/clients/party-starters.webp', bg: '#ffffff', url: 'https://www.partystarters.co.za' },
+  { name: 'Nautical Aerial & Fitness', industry: 'Fitness', logo: '/clients/nautical.webp', bg: '#2a4560', url: 'https://www.nafts.co.za' },
+  { name: 'Adamant Aesthetics', industry: 'Skin and laser clinic', logo: 'https://www.adamantaesthetics.co.za/wp-content/uploads/2023/09/Adamant-Aesthetics-2048x365.png', bg: '#d4917c', wide: true, url: 'https://www.adamantaesthetics.co.za' },
+  { name: 'Harlan', industry: 'Jewellery', logo: '/clients/harlan.webp', bg: '#fbf7f2', wide: true, url: 'https://harlan.co.za' },
   { name: 'My Au Pairs', industry: 'Childcare agency', logo: '/clients/my-au-pairs.svg', bg: '#eef3f7', mark: 'My Au Pairs' },
-  { name: 'Creative Pearls', industry: 'Handmade jewellery', logo: '/clients/creative-pearls.webp', bg: '#ffffff' },
+  { name: 'Creative Pearls', industry: 'Handmade jewellery', logo: '/clients/creative-pearls.webp', bg: '#ffffff', url: 'https://creativepearls.co.za' },
 ];
 
 /* ---------- Numbers (keep these real) ---------- */
@@ -62,14 +62,14 @@ export type Project = {
   slug: string;
   name: string;
   kind: string;
-  tag: 'My own brand' | 'Client' | 'Ongoing client';
+  tag: 'My own brand' | 'Client' | 'Ongoing client' | 'New client';
   year: string;
   summary: string;
   lesson: string;
   services: string[];
   url?: string;
   urlLabel?: string;
-  tone: 'harlan' | 'pearls' | 'tnt' | 'nafts';
+  tone: 'harlan' | 'pearls' | 'tnt' | 'nafts' | 'party' | 'babyboo';
   shots: Shot[];
   /* Leave empty until real numbers are in. Nothing renders while it is empty. */
   results: Result[];
@@ -110,6 +110,41 @@ export const projects: Project[] = [
       { label: 'Flow', value: '6 guided steps' },
       { label: 'Traffic', value: 'Meta ads' },
       { label: 'Run by', value: 'Me' },
+    ],
+  },
+  {
+    slug: 'party-starters',
+    name: 'Party Starters',
+    kind: 'Party hire, Cape Town',
+    tag: 'Client',
+    year: '2026',
+    summary:
+      'A custom website and full back office for a Cape Town party hire company. Customers build a party list and request a quote, and the team runs services, prices, photos and quote requests from their own admin portal.',
+    lesson: 'A website the owner runs herself, with every quote landing on her phone.',
+    services: ['Custom website', 'Back office', 'Quote system', 'Google reviews', 'SEO'],
+    url: 'https://www.partystarters.co.za',
+    urlLabel: 'partystarters.co.za',
+    tone: 'party',
+    shots: [
+      { src: '/work/ps-home.webp', alt: 'Party Starters homepage on a phone: "Making every EVENT unforgettable" in rainbow letters above a pink party setup', kind: 'phone', caption: 'Bright, branded and unmistakably theirs, with every service one tap away.' },
+      { src: '/work/ps-myparty.webp', alt: 'My Party quote list on a phone with two items, an estimated total and a Request my quote button', kind: 'phone', caption: 'My Party: customers build a list, see an estimate and request a quote. No checkout.' },
+      { src: '/work/ps-services.webp', alt: 'Party Starters services section with cards for jumping castles and slush machines and their starting prices', kind: 'phone', caption: 'Every service with its own photos, options and prices, all editable from the back office.' },
+      { src: '/work/ps-reviews.webp', alt: 'Party Starters Google reviews section showing a 5.0 rating and customer reviews', kind: 'phone', caption: 'Google reviews pulled in automatically, so new ones appear without lifting a finger.' },
+    ],
+    results: [],
+    brief:
+      'Party Starters had a WordPress site that was hard to find on Google and hard to update. They wanted to vet every booking before confirming it, show off their setups, and change photos and prices themselves without calling a developer.',
+    built: [
+      { title: 'A quote list instead of a checkout', body: 'Customers add castles, slush, popcorn, gelato and more to "My Party", choose flavours and options, and see an estimated total. Their request goes to the owner by email and WhatsApp so she can check availability before anything is booked.' },
+      { title: 'Their own back office', body: 'A private admin portal with its own login. From one place the team handles quote requests, keeps a client list, edits services, prices, packages and flavours, uploads photos, and updates the homepage announcement and Our Story page. Changes show on the live site straight away.' },
+      { title: 'Google reviews that update themselves', body: 'New Google reviews appear on the site automatically, with the option to hide any they would rather not feature.' },
+      { title: 'Built to be found', body: 'A page for every service with proper search data, and every old WordPress link redirected to its new page, so nothing they had built up on Google was lost.' },
+    ],
+    facts: [
+      { label: 'Platform', value: 'Custom build' },
+      { label: 'Back office', value: '8 admin sections' },
+      { label: 'Bookings', value: 'Quote requests' },
+      { label: 'Reviews', value: 'Auto from Google' },
     ],
   },
   {

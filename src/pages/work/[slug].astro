@@ -23,7 +23,7 @@ const lead = p.shots.slice(0, 2);
           <p class="lede">{p.summary}</p>
           <ul class="chips">{p.services.map((s) => <li class="chip">{s}</li>)}</ul>
           {p.url && (
-            <a class="btn btn-ghost" href={p.url} target={external ? '_blank' : undefined} rel="noopener">{p.urlLabel} <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-ghost" href={p.url} target={external ? '_blank' : undefined} rel="noopener">{p.urlLabel === 'View the site' ? 'Visit the site' : `Visit ${p.urlLabel}`} <span aria-hidden="true">↗</span></a>
           )}
         </div>
         <div class={`lead lead-${p.tone}`}>
@@ -97,6 +97,8 @@ const lead = p.shots.slice(0, 2);
   .lead-nafts { background: #17233a; }
   .lead-tnt { background: #2f1915; }
   .lead-pearls { background: #ece2d6; }
+  .lead-party { background: #f9d3e1; }
+  .lead-babyboo { background: #dff0f7; }
   .lesson { color: var(--muted); }
   .lesson strong { color: var(--accent); }
   .results-wrap { margin-top: 20px; }

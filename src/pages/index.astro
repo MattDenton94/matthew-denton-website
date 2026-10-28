@@ -7,8 +7,8 @@ import CtaBand from '../components/CtaBand.astro';
 import Icon from '../components/Icon.astro';
 import { services, process, clients, stats, projects, faqs } from '../data/site';
 
-const harlan = projects.find((p) => p.slug === 'harlan')!;
-const others = projects.filter((p) => p.slug !== 'harlan');
+const featured = projects.find((p) => p.slug === 'party-starters')!;
+const others = projects.filter((p) => p.slug !== 'party-starters');
 const words = ['custom websites', 'booking systems', 'CRMs', 'back offices', 'brands and logos', 'Meta ads'];
 const marquee = ['Websites', 'Booking systems', 'CRMs', 'Back offices', 'Online stores', 'Logos', 'Branding', 'Meta ads', 'UGC'];
 const path = [
@@ -69,11 +69,23 @@ const values = [
       <ul class="logo-wall">
         {clients.map((c) => (
           <li class={`logo-tile ${c.wide ? 'wide' : ''}`} style={`--tile:${c.bg}`}>
-            <div class="lt-inner" data-name={c.name}>
-              <img src={c.logo} alt={`${c.name} logo`} loading="lazy" decoding="async" referrerpolicy="no-referrer" />
-              {c.mark && <span class="lt-mark">{c.mark}</span>}
-            </div>
-            <span class="lt-cap"><b>{c.name}</b>{c.industry}</span>
+            {c.url ? (
+              <a class="lt-link" href={c.url} target="_blank" rel="noopener" aria-label={`Visit the ${c.name} website (opens in a new tab)`}>
+                <div class="lt-inner" data-name={c.name}>
+                  <img src={c.logo} alt={`${c.name} logo`} loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                  {c.mark && <span class="lt-mark">{c.mark}</span>}
+                </div>
+                <span class="lt-cap"><b>{c.name} <span class="lt-go" aria-hidden="true">↗</span></b><span>{c.industry}</span></span>
+              </a>
+            ) : (
+              <>
+                <div class="lt-inner" data-name={c.name}>
+                  <img src={c.logo} alt={`${c.name} logo`} loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                  {c.mark && <span class="lt-mark">{c.mark}</span>}
+                </div>
+                <span class="lt-cap"><b>{c.name}</b>{c.industry}</span>
+              </>
+            )}
           </li>
         ))}
         <li class="logo-tile wide next-tile">
@@ -160,17 +172,26 @@ const values = [
         </div>
         <a class="btn btn-ghost" href="/work">All work <Icon name="arrow" /></a>
       </div>
-      <a class="feature" href="/work/harlan">
+      <div class="feature">
         <div class="feature-copy">
-          <span class="tag">My own brand</span>
-          <h3>{harlan.name}</h3>
-          <p>{harlan.summary}</p>
-          <span class="link">How I built Harlan <Icon name="arrow" /></span>
+          <span class="tag">Featured build</span>
+          <h3>{featured.name}</h3>
+          <p>{featured.summary}</p>
+          <ul class="bo-list">
+            <li>Quote requests by email and WhatsApp</li>
+            <li>Admin portal with its own login</li>
+            <li>Services, prices and packages edited in-house</li>
+            <li>Photo uploads and Google reviews on autopilot</li>
+          </ul>
+          <div class="feature-links">
+            <a class="btn btn-primary" href={`/work/${featured.slug}`}>How I built it <Icon name="arrow" /></a>
+            <a class="btn btn-ghost" href={featured.url} target="_blank" rel="noopener">Visit {featured.urlLabel} <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
-        <div class="feature-shots">
-          {harlan.shots.slice(0, 2).map((sh, i) => <Phone src={sh.src} alt={sh.alt} crop class={`fs fs${i}`} />)}
-        </div>
-      </a>
+        <a class="feature-shots" href={`/work/${featured.slug}`} aria-label={`How I built ${featured.name}`}>
+          {featured.shots.slice(0, 2).map((sh, i) => <Phone src={sh.src} alt={sh.alt} crop class={`fs fs${i}`} />)}
+        </a>
+      </div>
       <div class="work-grid">
         {others.map((p) => <ProjectCard p={p} />)}
       </div>
@@ -204,7 +225,7 @@ const values = [
         <h2 id="about-h">Hi, I'm Matt. I build things that make businesses easier to run and easier to buy from.</h2>
         <p class="lede">I'm a developer and designer from Cape Town. I build custom websites, booking systems, CRMs and back offices, design logos and brands, and run Meta ads, all under one roof.</p>
         <p>My path here wasn't typical. I spent four years as an Advanced Life Support paramedic, led data and quality teams in AI operations, and owned a café. Each of those taught me something I bring to every project: stay calm, think in systems, and never forget there is a real person on the other side of the screen.</p>
-        <p>Today I work with fitness studios, party hire companies, childcare agencies, jewellery brands and skin clinics, and I run my own brand, <a href="/work/harlan">Harlan</a>, where I test everything with my own money first.</p>
+        <p>Today I work with fitness studios, party hire companies, childcare agencies, jewellery brands and skin clinics, and I run my own brands, <a href="/work/harlan">Harlan</a> and BabyBoo, where I test everything with my own money first.</p>
         <ol class="path">
           {path.map((p) => (<li><span class="when">{p.when}</span><b>{p.what}</b><span class="why">{p.why}</span></li>))}
         </ol>
@@ -397,6 +418,9 @@ const values = [
   .logo-tile[style*='#ffffff'] .lt-inner img, .logo-tile[style*='#fbf7f2'] .lt-inner img { max-height: 110px; }
   .lt-cap { display: flex; justify-content: space-between; gap: 10px; padding: 12px 16px; font-size: .85rem; color: var(--muted); border-top: 1px solid var(--line); }
   .lt-cap b { color: var(--ink); font-weight: 650; }
+  .lt-link { display: grid; grid-template-rows: 1fr auto; text-decoration: none; color: inherit; height: 100%; }
+  .lt-go { color: var(--accent); font-weight: 700; display: inline-block; transition: transform .3s; }
+  .logo-tile:hover .lt-go { transform: translate(3px, -3px); }
   .no-img .lt-inner img { display: none; }
   .no-img .lt-inner::before { content: attr(data-name); font-family: var(--f-display); font-weight: 750; font-size: 1.6rem; color: #fff; letter-spacing: -0.02em; }
   .next-tile { border-style: dashed; border-color: rgba(79,209,184,.35); background: transparent; }
@@ -454,7 +478,7 @@ const values = [
   @media (max-width: 960px) { .toast { left: 12px; max-width: calc(100% - 24px); } }
 
   /* Work */
-  .feature { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; text-decoration: none; background: linear-gradient(135deg, #1d1715, #120f0e); border: 1px solid var(--line); color: var(--ink); border-radius: var(--radius); padding: clamp(24px, 4vw, 56px); margin-bottom: clamp(40px, 5vw, 64px); overflow: hidden; transition: border-color .3s; }
+  .feature { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; text-decoration: none; background: linear-gradient(135deg, #2a1520, #120f10); border: 1px solid var(--line); color: var(--ink); border-radius: var(--radius); padding: clamp(24px, 4vw, 56px); margin-bottom: clamp(40px, 5vw, 64px); overflow: hidden; transition: border-color .3s; }
   .feature:hover { border-color: rgba(79,209,184,.35); }
   .feature-copy { display: grid; gap: 14px; justify-items: start; }
   .feature h3 { font-size: var(--step-3); }
@@ -463,12 +487,16 @@ const values = [
   .link { display: inline-flex; align-items: center; gap: 8px; font-weight: 650; color: var(--accent); }
   .link :global(.icon) { width: 18px; height: 18px; transition: transform .25s; }
   .feature:hover .link :global(.icon) { transform: translateX(4px); }
+  .bo-list { list-style: none; margin: 4px 0 6px; padding: 0; display: grid; gap: 8px; }
+  .bo-list li { position: relative; padding-left: 26px; color: var(--ink); }
+  .bo-list li::before { content: ''; position: absolute; left: 4px; top: .5em; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+  .feature-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
   .feature-shots { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 2vw, 24px); align-items: start; }
   .feature-shots :global(.fs) { transition: transform .6s cubic-bezier(.2,.8,.2,1); }
   .feature-shots :global(.fs1) { margin-top: 36px; }
   .feature:hover .feature-shots :global(.fs0) { transform: translateY(-10px) rotate(-1.5deg); }
   .feature:hover .feature-shots :global(.fs1) { transform: translateY(-4px) rotate(1.5deg); }
-  .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 3vw, 40px); }
+  .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(24px, 3vw, 40px); }
   @media (max-width: 860px) { .feature { grid-template-columns: 1fr; } }
   @media (max-width: 960px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 620px) { .work-grid { grid-template-columns: 1fr; } }

@@ -5,29 +5,42 @@ interface Props { p: Project }
 const { p } = Astro.props;
 const phone = p.shots.find((s) => s.kind === 'phone');
 ---
-<a class="pcard" href={`/work/${p.slug}`}>
-  <div class={`stage stage-${p.tone}`}>
-    {phone && <div class="ph"><Phone src={phone.src} alt={phone.alt} /></div>}
+<article class="pcard">
+  <a class="pc-main" href={`/work/${p.slug}`}>
+    <div class={`stage stage-${p.tone}`}>
+      {phone && <div class="ph"><Phone src={phone.src} alt={phone.alt} /></div>}
+    </div>
+    <div class="pc-body">
+      <div class="pc-meta"><span class="tag">{p.tag}</span><span class="num">{p.year}</span></div>
+      <h3>{p.name}</h3>
+      <p>{p.kind}. {p.lesson}</p>
+    </div>
+  </a>
+  <div class="pc-links">
+    <a href={`/work/${p.slug}`}>How I built it</a>
+    {p.url && <a class="visit" href={p.url} target="_blank" rel="noopener">Visit {p.urlLabel === 'View the site' ? 'the site' : p.urlLabel} <span aria-hidden="true">↗</span></a>}
   </div>
-  <div class="pc-body">
-    <div class="pc-meta"><span class="tag">{p.tag}</span><span class="num">{p.year}</span></div>
-    <h3>{p.name}</h3>
-    <p>{p.kind}. {p.lesson}</p>
-  </div>
-</a>
+</article>
 <style>
-  .pcard { display: grid; gap: 18px; text-decoration: none; color: inherit; align-content: start; }
+  .pcard { display: grid; gap: 14px; align-content: start; }
+  .pc-main { display: grid; gap: 18px; text-decoration: none; color: inherit; }
+  .pc-links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pc-links a { font-size: .9rem; font-weight: 600; text-decoration: none; padding: 9px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); transition: border-color .2s, background .2s; min-height: 44px; display: inline-flex; align-items: center; gap: 6px; }
+  .pc-links a:hover { border-color: var(--accent); }
+  .pc-links .visit { background: var(--accent-soft); border-color: rgba(79,209,184,.35); color: var(--accent); }
   .stage { position: relative; aspect-ratio: 4 / 3; border-radius: var(--radius); overflow: hidden; background: var(--surface-2); max-width: 100%; }
   .stage-harlan { background: #f4ece6; }
   .stage-nafts { background: #17233a; }
   .stage-tnt { background: #2f1915; }
   .stage-pearls { background: #ece2d6; }
+  .stage-party { background: #f9d3e1; }
+  .stage-babyboo { background: #dff0f7; }
   .ph { position: absolute; left: 50%; top: 9%; width: 50%; translate: -50% 0; transition: transform .4s cubic-bezier(.2,.7,.2,1); }
-  .pcard:hover .ph { transform: translateY(-8px); }
+  .pc-main:hover .ph { transform: translateY(-8px); }
   .pc-body { display: grid; gap: 8px; }
   .pc-meta { display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: .85rem; }
   h3 { font-size: var(--step-2); }
-  .pcard:hover h3 { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+  .pc-main:hover h3 { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
   p { color: var(--muted); }
   .tag { font-size: .8rem; font-weight: 650; padding: 3px 10px; border-radius: 999px; background: var(--surface-2); color: var(--ink); }
 </style>
