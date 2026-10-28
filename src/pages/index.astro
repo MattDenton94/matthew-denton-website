@@ -8,14 +8,14 @@ import Icon from '../components/Icon.astro';
 import { services, process, clients, stats, projects, faqs } from '../data/site';
 
 const featured = projects.find((p) => p.slug === 'party-starters')!;
-const others = projects.filter((p) => p.slug !== 'party-starters');
+const others = ['harlan', 'babyboo', 'creative-pearls', 'nafts'].map((slug) => projects.find((p) => p.slug === slug)!);
 const words = ['custom websites', 'booking systems', 'CRMs', 'back offices', 'brands and logos', 'Meta ads'];
 const marquee = ['Websites', 'Booking systems', 'CRMs', 'Back offices', 'Online stores', 'Logos', 'Branding', 'Meta ads', 'UGC'];
 const path = [
   { when: '2016 to 2020', what: 'Advanced Life Support paramedic', why: 'Four years in emergency care taught me to stay calm, think in systems and look after people properly.' },
   { when: 'Then', what: 'Team lead in AI operations', why: 'Led data and quality teams at Invisible Technologies and FyxerAI. Process, automation and getting the details right.' },
   { when: 'Along the way', what: 'Café owner', why: 'I have run a business and worked in it on the same day, so I build tools for how small businesses really work.' },
-  { when: 'Now', what: 'Building for businesses', why: 'Websites, systems, brands and ads for clients across five industries, plus my own brand, Harlan.' },
+  { when: 'Now', what: 'Building for businesses', why: 'Websites, systems, brands and ads for clients across six industries, plus my own brands, Harlan and BabyBoo.' },
 ];
 const values = [
   { t: 'You deal with me', d: 'No account managers or handovers. The person who builds it is the person who answers your WhatsApp.' },
@@ -62,9 +62,9 @@ const values = [
       <div class="head head-row">
         <div>
           <p class="eyebrow">Clients</p>
-          <h2 id="clients-h">Trusted by businesses across five industries.</h2>
+          <h2 id="clients-h">Trusted by businesses across six industries.</h2>
         </div>
-        <p class="lede sm">Fitness, events, childcare, jewellery and skin care. Different customers, same goal: look the part and get more bookings.</p>
+        <p class="lede sm">Fitness, events, childcare, jewellery, skin care and baby products. Different customers, same goal: look the part and get more bookings.</p>
       </div>
       <ul class="logo-wall">
         {clients.map((c) => (
@@ -88,7 +88,7 @@ const values = [
             )}
           </li>
         ))}
-        <li class="logo-tile wide next-tile">
+        <li class="logo-tile next-tile">
           <a href="/contact" class="nt-inner">
             <span class="nt-plus" aria-hidden="true">+</span>
             <span class="nt-t">Your business next?</span>
@@ -225,7 +225,7 @@ const values = [
         <h2 id="about-h">Hi, I'm Matt. I build things that make businesses easier to run and easier to buy from.</h2>
         <p class="lede">I'm a developer and designer from Cape Town. I build custom websites, booking systems, CRMs and back offices, design logos and brands, and run Meta ads, all under one roof.</p>
         <p>My path here wasn't typical. I spent four years as an Advanced Life Support paramedic, led data and quality teams in AI operations, and owned a café. Each of those taught me something I bring to every project: stay calm, think in systems, and never forget there is a real person on the other side of the screen.</p>
-        <p>Today I work with fitness studios, party hire companies, childcare agencies, jewellery brands and skin clinics, and I run my own brands, <a href="/work/harlan">Harlan</a> and BabyBoo, where I test everything with my own money first.</p>
+        <p>Today I work with fitness studios, party hire companies, childcare agencies, jewellery brands and skin clinics, and I run my own brands, <a href="/work/harlan">Harlan</a> and <a href="/work/babyboo">BabyBoo</a>, where I test everything with my own money first.</p>
         <ol class="path">
           {path.map((p) => (<li><span class="when">{p.when}</span><b>{p.what}</b><span class="why">{p.why}</span></li>))}
         </ol>
@@ -428,7 +428,10 @@ const values = [
   .nt-plus { width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; font-size: 1.8rem; color: var(--accent-ink); background: var(--accent); transition: transform .5s cubic-bezier(.2,.8,.2,1); }
   .next-tile:hover .nt-plus { transform: rotate(90deg) scale(1.08); }
   .nt-t { font-family: var(--f-display); font-weight: 750; font-size: var(--step-2); letter-spacing: -0.03em; }
-  .nt-s { color: var(--muted); }
+  .nt-s { color: var(--muted); font-size: .9rem; }
+  .next-tile .nt-t { font-size: 1.35rem; }
+  .next-tile .nt-plus { width: 44px; height: 44px; font-size: 1.5rem; }
+  .logo-tile:not(.wide) .lt-cap { flex-direction: column; gap: 2px; }
   @media (max-width: 900px) { .logo-wall { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 520px) { .lt-inner { min-height: 120px; padding: 16px; } .lt-inner img { max-height: 80px !important; } .lt-cap { flex-direction: column; gap: 2px; padding: 10px 12px; font-size: .8rem; } .lt-mark { font-size: 1rem; } }
 

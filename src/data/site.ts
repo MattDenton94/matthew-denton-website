@@ -43,6 +43,7 @@ export const clients: Client[] = [
   { name: 'Adamant Aesthetics', industry: 'Skin and laser clinic', logo: 'https://www.adamantaesthetics.co.za/wp-content/uploads/2023/09/Adamant-Aesthetics-2048x365.png', bg: '#d4917c', wide: true, url: 'https://www.adamantaesthetics.co.za' },
   { name: 'Harlan', industry: 'Jewellery', logo: '/clients/harlan.webp', bg: '#fbf7f2', wide: true, url: 'https://harlan.co.za' },
   { name: 'My Au Pairs', industry: 'Childcare agency', logo: '/clients/my-au-pairs.svg', bg: '#eef3f7', mark: 'My Au Pairs' },
+  { name: 'BabyBoo', industry: 'Baby products', logo: '/clients/babyboo.webp', bg: '#f8dde8', url: 'https://babyboo.co.za' },
   { name: 'Creative Pearls', industry: 'Handmade jewellery', logo: '/clients/creative-pearls.webp', bg: '#ffffff', url: 'https://creativepearls.co.za' },
 ];
 
@@ -50,8 +51,8 @@ export const clients: Client[] = [
 export const stats = [
   { value: 6, prefix: '', suffix: '', label: 'Active clients right now' },
   { value: 30, prefix: 'R', suffix: 'k+', label: 'In client sales generated' },
-  { value: 7, prefix: '', suffix: '', label: 'Brands built and grown' },
-  { value: 5, prefix: '', suffix: '', label: 'Industries served' },
+  { value: 8, prefix: '', suffix: '', label: 'Brands built and grown' },
+  { value: 6, prefix: '', suffix: '', label: 'Industries served' },
 ];
 
 /* ---------- Work ---------- */
@@ -109,6 +110,41 @@ export const projects: Project[] = [
       { label: 'Platform', value: 'Shopify' },
       { label: 'Flow', value: '6 guided steps' },
       { label: 'Traffic', value: 'Meta ads' },
+      { label: 'Run by', value: 'Me' },
+    ],
+  },
+  {
+    slug: 'babyboo',
+    name: 'BabyBoo',
+    kind: 'Baby products store',
+    tag: 'My own brand',
+    year: '2026',
+    summary:
+      'My second brand. A Shopify store for South African moms, built around a hands-free baby bottle, with bundles, a complete feeding set and a secure Payfast checkout. I run the store and the Meta ads myself.',
+    lesson: 'One hero product, one clear offer, and a store built to sell on a phone.',
+    services: ['Shopify', 'Branding', 'Bundles and upsells', 'Meta ads'],
+    url: 'https://babyboo.co.za',
+    urlLabel: 'babyboo.co.za',
+    tone: 'babyboo',
+    shots: [
+      { src: '/work/bb-home.webp', alt: 'BabyBoo homepage on a phone: a mom beside her baby using the hands-free bottle, headline "Feeding time, with a free hand"', kind: 'phone', caption: 'A real moment, one line, and the product in use before anything else.' },
+      { src: '/work/bb-product.webp', alt: 'BabyBoo Hands-Free Baby Bottle product section with price, savings badge and key benefits', kind: 'phone', caption: 'The hero product with its price, the saving and three reasons to buy.' },
+      { src: '/work/bb-bundle.webp', alt: 'BabyBoo complete feeding set offer: get all 4 for R1,499 and save R497', kind: 'phone', caption: 'A complete set that makes the bigger order the easy choice.' },
+      { src: '/work/bb-how.webp', alt: 'BabyBoo how it works section: order online, we pack and send, calmer feeds', kind: 'phone', caption: 'Three simple steps that answer "how does this work?" before anyone asks.' },
+    ],
+    results: [],
+    brief:
+      'A new brand with a product most moms have never seen. The store had to explain the bottle in seconds, earn the trust of strangers, and make the bigger order the obvious choice, all on a phone.',
+    built: [
+      { title: 'A homepage that sells the hero product', body: 'It opens on a real moment: a mom beside her baby, feeding hands-free. One line explains it, then straight into the bottle with its bundles.' },
+      { title: 'Bundles and a complete set', body: 'One, two or three bottles, plus a set of all four products with a free bottle brush, so a bigger order feels like the smart choice.' },
+      { title: 'Trust for a brand nobody knows yet', body: 'A secure Payfast checkout, a happy mom promise, honest delivery times and free delivery over R499, all shown where people decide.' },
+      { title: 'Brand and ads', body: 'A soft pastel brand made for moms, and Meta ads I run and pay for myself.' },
+    ],
+    facts: [
+      { label: 'Platform', value: 'Shopify' },
+      { label: 'Range', value: '4 products and a set' },
+      { label: 'Checkout', value: 'Payfast' },
       { label: 'Run by', value: 'Me' },
     ],
   },
