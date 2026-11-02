@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Compose stage</title>
+<!-- 1080x1920 stage driven frame by frame by compose.mjs via window.render(t). No CSS transitions: every frame is a pure function of t. -->
+<style>
+  @font-face { font-family: 'Schibsted'; src: url('/node_modules/@fontsource-variable/schibsted-grotesk/files/schibsted-grotesk-latin-wght-normal.woff2') format('woff2'); font-weight: 400 900; }
+  @font-face { font-family: 'Figtree'; src: url('/node_modules/@fontsource-variable/figtree/files/figtree-latin-wght-normal.woff2') format('woff2'); font-weight: 300 900; }
+  :root { --bg: #090b0a; --ink: #eef2f0; --muted: #98a4a0; --accent: #4fd1b8; --accent-ink: #04201b; --bad: #ff5a4e; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); color: var(--ink); font-family: 'Figtree', sans-serif; -webkit-font-smoothing: antialiased; }
+  .glow { position: absolute; inset: 0; background: radial-gradient(60% 35% at 50% 8%, rgba(79,209,184,.16), transparent 70%), radial-gradient(70% 40% at 50% 100%, rgba(79,209,184,.10), transparent 70%); }
+
+  .caption { position: absolute; left: 70px; right: 70px; top: 86px; height: 220px; display: flex; align-items: center; justify-content: center; text-align: center;
+    font-family: 'Schibsted'; font-weight: 800; font-size: 62px; line-height: 1.06; letter-spacing: -0.02em; }
+  .caption em { font-style: normal; color: var(--accent); }
+
+  .phone { position: absolute; left: 190px; top: 336px; width: 700px; height: 1546px; border-radius: 96px; background: #1b1f1e;
+    box-shadow: 0 0 0 3px #2a302e, 0 40px 120px rgba(0,0,0,.6); }
+  .screen { position: absolute; left: 20px; top: 20px; width: 660px; height: 1506px; border-radius: 78px; overflow: hidden; background: #fff; }
+  .status { position: absolute; left: 0; right: 0; top: 0; height: 78px; background: #fff; z-index: 8; display: flex; align-items: center; justify-content: space-between; padding: 8px 64px 0; font-weight: 700; font-size: 28px; color: #000; }
+  .status .ic { display: flex; gap: 10px; align-items: center; }
+  .status .ic b { display: inline-block; width: 44px; height: 22px; border-radius: 7px; border: 3px solid #000; position: relative; }
+  .status .ic b::after { content: ''; position: absolute; inset: 2px 8px 2px 2px; background: #000; border-radius: 3px; }
+  .content { position: absolute; left: 0; right: 0; top: 78px; height: 1428px; overflow: hidden; background: #fff; }
+  .notch { position: absolute; top: 14px; left: 50%; width: 190px; height: 54px; margin-left: -95px; border-radius: 30px; background: #000; z-index: 9; }
+  #before { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  #dim { position: absolute; inset: 0; background: #000; opacity: 0; }
+  #afterWrap { position: absolute; inset: 0; clip-path: inset(0 0 0 100%); }
+  #after { position: absolute; left: 0; top: 0; width: 390px; height: 844px; border: 0; transform-origin: 0 0; background: #fff; }
+  #wipe { position: absolute; top: -40px; bottom: -40px; width: 22px; background: var(--accent); box-shadow: 0 0 40px 10px rgba(79,209,184,.6); opacity: 0; }
+
+  .label { position: absolute; top: 290px; left: 0; right: 0; text-align: center; font-weight: 800; font-size: 26px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+  .callouts { position: absolute; left: 110px; right: 110px; top: 640px; display: grid; gap: 30px; }
+  .callout { display: flex; align-items: center; gap: 24px; padding: 30px 34px; border-radius: 30px; background: #fff; color: #121413;
+    font-weight: 800; font-size: 44px; line-height: 1.1; box-shadow: 0 24px 60px rgba(0,0,0,.45); opacity: 0; }
+  .callout i { flex: none; width: 64px; height: 64px; border-radius: 50%; background: var(--bad); color: #fff; display: grid; place-items: center; font-style: normal; font-size: 38px; }
+
+  #cta { position: absolute; inset: 0; z-index: 20; background: var(--bg); opacity: 0; display: flex; flex-direction: column; justify-content: center; padding: 0 90px; }
+  #cta .glow2 { position: absolute; inset: 0; background: radial-gradient(70% 45% at 30% 30%, rgba(79,209,184,.22), transparent 70%); }
+  #cta h2 { position: relative; font-family: 'Schibsted'; font-weight: 850; font-size: 92px; line-height: 1.02; letter-spacing: -0.03em; margin: 0 0 70px; }
+  #cta h2 em { font-style: normal; color: var(--accent); }
+  #cta .sig { position: relative; display: flex; flex-direction: column; gap: 22px; }
+  #cta .sig svg { width: 560px; height: auto; color: var(--ink); }
+  #cta .line { font-size: 46px; font-weight: 700; color: var(--muted); }
+  #cta .line b { color: var(--accent); font-weight: 800; }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="caption"><span id="caption"></span></div>
+<div class="label" id="label"></div>
+<div class="phone"><div class="screen" id="screen">
+  <div class="status"><span>9:41</span><span class="ic">●●●● <b></b></span></div>
+  <div class="content">
+    <img id="before" alt="">
+    <div id="dim"></div>
+    <div id="afterWrap"><iframe id="after" scrolling="no"></iframe></div>
+    <div id="wipe"></div>
+  </div>
+  <div class="notch"></div>
+</div></div>
+<div class="callouts" id="callouts"></div>
+<div id="cta"><div class="glow2"></div>
+  <h2 id="ctaH"></h2>
+  <div class="sig">
+    <div id="wm"></div>
+    <div class="line" id="ctaLine"></div>
+  </div>
+</div>
+
+<script>
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const easeOut = x => 1 - Math.pow(1 - x, 3);
+const easeInOut = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const back = x => { const c = 1.6; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const $ = id => document.getElementById(id);
+let S = null; // scene config from compose.mjs
+let frames = []; let afterMax = 0;
+
+window.setup = async (cfg) => {
+  S = cfg;
+  $('wm').innerHTML = cfg.wordmark;
+  $('ctaH').innerHTML = cfg.cta.headline;
+  $('ctaLine').innerHTML = cfg.cta.line;
+  $('callouts').innerHTML = cfg.callouts.map(c => `<div class="callout"><i>✕</i><span>${c}</span></div>`).join('');
+  // Preload and decode every before frame so swapping src is instant
+  frames = await Promise.all(cfg.beforeFrames.map(async src => { const i = new Image(); i.src = src; await i.decode().catch(() => {}); return src; }));
+  const f = $('after');
+  const scale = 660 / 390;
+  f.style.transform = `scale(${scale})`;
+  f.style.height = (1428 / scale) + 'px';
+  await new Promise(r => { f.onload = r; f.src = cfg.afterUrl; });
+  for (let i = 0; i < 200 && !f.contentWindow.__ready; i++) await new Promise(r => setTimeout(r, 50));
+  const doc = f.contentDocument.documentElement;
+  afterMax = Math.max(0, doc.scrollHeight - f.contentWindow.innerHeight);
+  await document.fonts.ready;
+  return { afterMax, frames: frames.length };
+};
+
+let lastSrc = '';
+window.render = async (t) => {
+  // Captions
+  let cap = '', capA = 1;
+  if (t < 3) { cap = S.captions.before; capA = easeOut(prog(t, 0, .5)); }
+  else if (t < 6) { cap = S.captions.callouts; capA = easeOut(prog(t, 3, 3.4)); }
+  else if (t < 11) { cap = S.captions.after; capA = easeOut(prog(t, 6.4, 6.9)); }
+  const c = $('caption');
+  if (c.dataset.k !== cap) { c.innerHTML = cap; c.dataset.k = cap; }
+  c.style.opacity = capA; c.style.transform = `translateY(${(1 - capA) * 24}px)`;
+
+  // Before: 0-3s plays the recorded scroll, then holds the last frame
+  const fi = Math.min(frames.length - 1, Math.floor(clamp(t, 0, 2.999) * 30));
+  const src = frames[Math.max(0, fi)] || '';
+  if (src && src !== lastSrc) { const img = $('before'); img.src = src; await img.decode().catch(() => {}); lastSrc = src; }
+  $('dim').style.opacity = t >= 3 && t < 6.8 ? .45 * easeOut(prog(t, 3, 3.4)) * (1 - prog(t, 6, 6.8)) : 0;
+
+  // Callouts 3-6s, staggered, out at ~5.9s
+  [...document.querySelectorAll('.callout')].forEach((el, i) => {
+    const start = 3.25 + i * 0.6;
+    const pin = back(prog(t, start, start + .45));
+    const pout = easeInOut(prog(t, 5.75, 6.05));
+    const a = clamp(prog(t, start, start + .25)) * (1 - pout);
+    el.style.opacity = a;
+    el.style.transform = `translateX(${(1 - pin) * (i % 2 ? 140 : -140)}px) scale(${.9 + .1 * clamp(pin, 0, 1.2)})`;
+  });
+
+  // Wipe 6.0-6.8s, then scroll the after template 7.0-10.8s
+  const w = easeInOut(prog(t, 6.0, 6.8));
+  $('afterWrap').style.clipPath = `inset(0 0 0 ${(1 - w) * 100}%)`;
+  const wipe = $('wipe');
+  wipe.style.left = `${(1 - w) * 660 - 11}px`;
+  wipe.style.opacity = t > 5.95 && t < 6.9 ? 1 - prog(t, 6.75, 6.9) : 0;
+  const sy = Math.round(afterMax * Math.min(1, 2800 / Math.max(afterMax, 1)) * easeInOut(prog(t, 7.0, 10.8)));
+  const win = $('after').contentWindow; if (win) win.scrollTo(0, sy);
+
+  $('label').textContent = t < 6 ? S.labels.before : S.labels.after;
+  $('label').style.opacity = t < 11 ? (t < 6 ? 1 - prog(t, 5.8, 6) : prog(t, 6.3, 6.6)) : 0;
+
+  // CTA 11-15s
+  const ca = easeOut(prog(t, 11, 11.5));
+  $('cta').style.opacity = ca;
+  $('ctaH').style.transform = `translateY(${(1 - easeOut(prog(t, 11.1, 11.8))) * 60}px)`;
+  $('ctaH').style.opacity = prog(t, 11.1, 11.6);
+  document.querySelector('#cta .sig').style.opacity = prog(t, 11.7, 12.2);
+  document.querySelector('#cta .sig').style.transform = `translateY(${(1 - easeOut(prog(t, 11.7, 12.3))) * 40}px)`;
+
+  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+};
+</script>
+</body>
+</html>

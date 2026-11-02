@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gym homepage (after)</title>
+<!--
+  Gym "after" homepage, filled from data.json.
+  Open as gym-after.html?data=/outreach/prospects/gyms/<slug>/data.json
+  Prices, plan names, coach names and coach photos are placeholders on purpose:
+  the real ones come from the gym, never from us.
+-->
+<style>
+  @font-face { font-family: 'Schibsted'; src: url('/node_modules/@fontsource-variable/schibsted-grotesk/files/schibsted-grotesk-latin-wght-normal.woff2') format('woff2'); font-weight: 400 900; }
+  @font-face { font-family: 'Figtree'; src: url('/node_modules/@fontsource-variable/figtree/files/figtree-latin-wght-normal.woff2') format('woff2'); font-weight: 300 900; }
+  :root {
+    --brand: #e4572e; --brand-ink: #fff; --brand-soft: #fde8e1; --brand-deep: #9c3418;
+    --bg: #f7f7f5; --surface: #fff; --ink: #121413; --muted: #626866; --line: #e6e7e4;
+    --r: 18px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Figtree', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, .display { font-family: 'Schibsted', system-ui, sans-serif; letter-spacing: -0.02em; margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { padding: 0 20px; }
+
+  /* Header */
+  header { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 12px 20px; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .logo { height: 34px; max-width: 150px; object-fit: contain; display: block; }
+  .wordmark { font-family: 'Schibsted'; font-weight: 800; font-size: 20px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 999px; font-weight: 700;
+    background: var(--brand); color: var(--brand-ink); padding: 12px 18px; font-size: 15px; border: 0; white-space: nowrap; }
+  .btn.sm { padding: 9px 14px; font-size: 14px; }
+  .btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+  .btn.block { width: 100%; padding: 16px; font-size: 17px; }
+
+  /* Hero */
+  .hero { position: relative; color: #fff; padding: 56px 20px 40px; min-height: 520px; display: flex; flex-direction: column; justify-content: flex-end;
+    background: radial-gradient(120% 80% at 100% 0%, var(--brand) 0%, transparent 60%), linear-gradient(160deg, var(--brand-deep), #0d0f0e 75%); overflow: hidden; }
+  .hero.has-img { background: #0d0f0e; }
+  .hero .bg { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: .55; }
+  .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.75)); }
+  .hero > * { position: relative; z-index: 1; }
+  .eyebrow { display: inline-flex; align-self: flex-start; gap: 8px; align-items: center; padding: 6px 12px; border-radius: 999px;
+    background: rgba(255,255,255,.14); font-size: 13px; font-weight: 600; margin-bottom: 16px; }
+  .hero h1 { font-size: 46px; line-height: .98; font-weight: 850; }
+  .hero p { font-size: 17px; line-height: 1.45; opacity: .88; margin: 14px 0 22px; }
+  .hero .ctas { display: grid; gap: 10px; }
+  .hero .btn.ghost { color: #fff; box-shadow: inset 0 0 0 2px rgba(255,255,255,.7); }
+
+  .chips { display: flex; gap: 8px; overflow: hidden; padding: 18px 20px; background: var(--surface); border-bottom: 1px solid var(--line); }
+  .chip { flex: none; padding: 8px 14px; border-radius: 999px; background: var(--brand-soft); color: var(--brand-deep); font-weight: 700; font-size: 14px; }
+
+  section { padding: 44px 0; }
+  .kicker { color: var(--brand-deep); font-weight: 800; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
+  section h2 { font-size: 32px; line-height: 1.05; font-weight: 800; margin-bottom: 10px; }
+  .lede { color: var(--muted); font-size: 16px; line-height: 1.5; margin: 0 0 22px; }
+
+  /* Timetable */
+  .days { display: flex; gap: 6px; margin-bottom: 14px; }
+  .day { flex: 1; text-align: center; padding: 10px 0; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); font-weight: 700; font-size: 13px; }
+  .day.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .slot { display: grid; grid-template-columns: 74px 1fr auto; align-items: center; gap: 12px; background: var(--surface);
+    border: 1px solid var(--line); border-radius: 14px; padding: 14px; margin-bottom: 8px; }
+  .slot .when { font-weight: 800; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  .slot .what { font-weight: 750; font-size: 16px; }
+  .slot .spots { font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .ph { display: inline-block; min-width: 46px; border-bottom: 2px dashed currentColor; opacity: .55; }
+  .note { font-size: 13px; color: var(--muted); margin-top: 10px; display: flex; gap: 6px; align-items: center; }
+
+  /* Memberships */
+  .plans { display: grid; gap: 12px; }
+  .plan { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 20px; }
+  .plan.pop { border: 2px solid var(--brand); position: relative; }
+  .plan.pop::before { content: attr(data-badge); position: absolute; top: -12px; left: 18px; background: var(--brand); color: var(--brand-ink);
+    font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 999px; }
+  .plan h3 { font-size: 19px; }
+  .price { font-family: 'Schibsted'; font-size: 34px; font-weight: 850; margin: 8px 0 12px; display: flex; align-items: baseline; gap: 6px; }
+  .price .ph { min-width: 70px; height: 30px; }
+  .price small { font-size: 15px; color: var(--muted); font-weight: 600; }
+  .plan ul { margin: 0 0 16px; padding: 0; list-style: none; color: var(--muted); font-size: 15px; line-height: 1.9; }
+  .plan li::before { content: '✓  '; color: var(--brand-deep); font-weight: 800; }
+
+  /* Coaches */
+  .coaches { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .coach .photo { aspect-ratio: 4/5; border-radius: 16px; background: repeating-linear-gradient(135deg, #ecedea 0 12px, #e3e4e0 12px 24px);
+    display: grid; place-items: center; color: #9a9f9c; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; position: relative; overflow: hidden; }
+  .coach .photo svg { width: 46%; opacity: .45; }
+  .coach .photo span { position: absolute; bottom: 10px; }
+  .coach b { display: block; margin-top: 10px; font-size: 16px; }
+  .coach small { color: var(--muted); font-size: 14px; }
+
+  /* Trial band */
+  .band { margin: 0 20px; border-radius: 24px; padding: 28px 22px; background: var(--ink); color: #fff; }
+  .band h2 { font-size: 30px; margin-bottom: 10px; }
+  .band p { opacity: .75; margin: 0 0 18px; line-height: 1.5; }
+
+  footer { padding: 36px 20px 120px; color: var(--muted); font-size: 14px; }
+  .sticky { position: fixed; left: 12px; right: 12px; bottom: 14px; z-index: 6; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    background: rgba(255,255,255,.94); backdrop-filter: blur(10px); padding: 8px; border-radius: 999px; box-shadow: 0 10px 30px rgba(0,0,0,.18); }
+  .sticky .btn { padding: 14px 10px; }
+  .sticky .btn.alt { background: var(--ink); color: #fff; }
+</style>
+</head>
+<body>
+<header>
+  <a id="brand" href="#"></a>
+  <a class="btn sm" href="#join">Join online</a>
+</header>
+
+<div class="hero" id="hero">
+  <div class="eyebrow">Book online, any time</div>
+  <h1 id="h1"></h1>
+  <p id="sub"></p>
+  <div class="ctas">
+    <a class="btn block" href="#join">Start your free trial</a>
+    <a class="btn ghost block" href="#timetable">See the timetable</a>
+  </div>
+</div>
+
+<div class="chips" id="chips"></div>
+
+<section id="timetable"><div class="wrap">
+  <div class="kicker">Class timetable</div>
+  <h2>Book your spot in seconds</h2>
+  <p class="lede">Pick a class, tap book, done. No calls, no WhatsApp back and forth.</p>
+  <div class="days" id="days"></div>
+  <div id="slots"></div>
+  <div class="note">⟳ Updates live from your booking system</div>
+</div></section>
+
+<section id="join" style="background:var(--surface)"><div class="wrap">
+  <div class="kicker">Memberships</div>
+  <h2>Choose how you train</h2>
+  <p class="lede">Clear options, signed up online in under two minutes.</p>
+  <div class="plans" id="plans"></div>
+</div></section>
+
+<section id="coaches"><div class="wrap">
+  <div class="kicker">Coaches</div>
+  <h2>Meet the team</h2>
+  <p class="lede" id="coachLede"></p>
+  <div class="coaches" id="coachGrid"></div>
+</div></section>
+
+<div class="band">
+  <h2>Your first class is on us</h2>
+  <p>Start your free trial online, pick a class from the timetable and come meet the coaches.</p>
+  <a class="btn block" href="#join">Start your free trial</a>
+</div>
+
+<footer id="foot"></footer>
+
+<div class="sticky">
+  <a class="btn alt" href="#timetable">Book a class</a>
+  <a class="btn" href="#join">Join online</a>
+</div>
+
+<script>
+(async () => {
+  const q = new URLSearchParams(location.search);
+  const dataUrl = q.get('data');
+  const d = dataUrl ? await fetch(dataUrl).then(r => r.json()) : { name: 'Your Gym', country: 'za', offerings: [] };
+  const base = dataUrl ? dataUrl.replace(/data\.json$/, '') : '';
+  const L = d.country === 'us'
+    ? { cur: '$', per: '/mo', personal: 'Personalized', programme: 'program', centre: 'center' }
+    : { cur: 'R', per: '/pm', personal: 'Personalised', programme: 'programme', centre: 'centre' };
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  // Brand colour, with readable ink and tints derived from it
+  const hex = (d.brandColour && d.brandColour.hex) || '#e4572e';
+  const rgb = hex.replace('#', '').match(/../g).map(h => parseInt(h, 16));
+  const lum = rgb.map(v => { v /= 255; return v <= .03928 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4; });
+  const Y = .2126 * lum[0] + .7152 * lum[1] + .0722 * lum[2];
+  const mix = (t, w) => '#' + rgb.map((v, i) => Math.round(v * (1 - w) + t[i] * w).toString(16).padStart(2, '0')).join('');
+  const root = document.documentElement.style;
+  root.setProperty('--brand', hex);
+  root.setProperty('--brand-ink', Y > .45 ? '#121413' : '#ffffff');
+  root.setProperty('--brand-soft', mix([255, 255, 255], .86));
+  root.setProperty('--brand-deep', Y > .3 ? mix([0, 0, 0], .55) : mix([0, 0, 0], .2));
+
+  const name = d.name || 'Your Gym';
+  document.title = name;
+  document.getElementById('brand').innerHTML = d.logo && d.logo.file
+    ? `<img class="logo" src="${base + d.logo.file}" alt="${esc(name)}">`
+    : `<span class="wordmark">${esc(name)}</span>`;
+  document.getElementById('h1').textContent = name;
+  const classes = (d.offerings || []).filter(Boolean);
+  document.getElementById('sub').textContent = classes.length
+    ? `${classes.slice(0, 3).join(', ')} and more. See the timetable, book a class and join online in minutes.`
+    : 'See the timetable, book a class and join online in minutes.';
+  if (d.ogImage && d.ogImage.file) {
+    const h = document.getElementById('hero'); h.classList.add('has-img');
+    h.insertAdjacentHTML('afterbegin', `<div class="bg" style="background-image:url('${base + d.ogImage.file}')"></div>`);
+  }
+
+  // Chips: detected classes only, else neutral feature labels
+  const chips = classes.length ? classes.slice(0, 8) : ['Book online', `${L.personal} coaching`, 'Free trial'];
+  document.getElementById('chips').innerHTML = chips.map(c => `<span class="chip">${esc(c)}</span>`).join('');
+
+  // Timetable: real class names from the site when found; times stay as placeholders
+  const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  document.getElementById('days').innerHTML = days.map((x, i) => `<div class="day${i === 0 ? ' on' : ''}">${x}</div>`).join('');
+  const parts = ['Morning', 'Midday', 'Evening', 'Evening'];
+  const list = classes.length ? classes : ['Class name', 'Class name', 'Class name', 'Class name'];
+  document.getElementById('slots').innerHTML = parts.map((p, i) => `
+    <div class="slot"><div class="when">${p}</div>
+      <div><div class="what">${esc(list[i % list.length])}</div><div class="spots"><span class="ph">&nbsp;</span> spots left</div></div>
+      <a class="btn sm" href="#">Book</a></div>`).join('');
+
+  // Memberships: placeholder names and prices, never invented ones
+  const perks = [['Book classes online', 'Cancel online anytime'], ['Unlimited class bookings', `${L.personal} ${L.programme}`, 'Free trial class'], ['Best value', 'Freeze online when you travel']];
+  document.getElementById('plans').innerHTML = [0, 1, 2].map(i => `
+    <div class="plan${i === 1 ? ' pop' : ''}" data-badge="Most popular">
+      <h3>Membership option ${i + 1}</h3>
+      <div class="price">${L.cur}<span class="ph">&nbsp;</span><small>${L.per}</small></div>
+      <ul>${perks[i].map(x => `<li>${x}</li>`).join('')}</ul>
+      <a class="btn block${i === 1 ? '' : ' ghost'}" href="#">Join online</a>
+    </div>`).join('');
+
+  // Coaches: placeholder photos and names
+  document.getElementById('coachLede').textContent = `Real coaches, real photos. Add your team here.`;
+  const sil = '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4.2"/><path d="M3.5 21c.6-4.4 4.1-7 8.5-7s7.9 2.6 8.5 7z"/></svg>';
+  document.getElementById('coachGrid').innerHTML = [0, 1, 2, 3].map(() => `
+    <div class="coach"><div class="photo">${sil}<span>Coach photo</span></div><b>Coach name</b><small>Speciality</small></div>`).join('');
+
+  document.getElementById('foot').innerHTML = `<b style="color:var(--ink)">${esc(name)}</b><br>© ${new Date().getFullYear()} ${esc(name)}`;
+
+  await document.fonts.ready;
+  await Promise.all([...document.images].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; })));
+  window.__ready = true;
+})();
+</script>
+</body>
+</html>
