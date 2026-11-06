@@ -40,10 +40,9 @@ export const clients: Client[] = [
   { name: 'TNT Fitness', industry: 'Fitness', logo: '/clients/tnt.webp', bg: '#121110', wide: true, url: 'https://tnt-fitness-ojru0r8zs-matt-517e.vercel.app' },
   { name: 'Party Starters', industry: 'Events and party hire', logo: '/clients/party-starters.webp', bg: '#ffffff', url: 'https://www.partystarters.co.za' },
   { name: 'Nautical Aerial & Fitness', industry: 'Fitness', logo: '/clients/nautical.webp', bg: '#2a4560', url: 'https://www.nafts.co.za' },
-  { name: 'Adamant Aesthetics', industry: 'Skin and laser clinic', logo: 'https://www.adamantaesthetics.co.za/wp-content/uploads/2023/09/Adamant-Aesthetics-2048x365.png', bg: '#d4917c', wide: true, url: 'https://www.adamantaesthetics.co.za' },
+  { name: 'Adamant Aesthetics', industry: 'Skin and laser clinic', logo: '/clients/adamant.webp', bg: '#faf6f2', wide: true, url: 'https://www.adamantaesthetics.co.za' },
   { name: 'Harlan', industry: 'Jewellery', logo: '/clients/harlan.webp', bg: '#fbf7f2', wide: true, url: 'https://harlan.co.za' },
-  { name: 'My Au Pairs', industry: 'Childcare agency', logo: '/clients/my-au-pairs.svg', bg: '#eef3f7', mark: 'My Au Pairs' },
-  { name: 'BabyBoo', industry: 'Baby products', logo: '/clients/babyboo.webp', bg: '#f8dde8', url: 'https://babyboo.co.za' },
+  { name: 'My Au Pairs', industry: 'Childcare agency', logo: '/clients/my-au-pairs.svg', bg: '#eef3f7', mark: 'My Au Pairs', url: 'https://myaupairs.myaupairs.workers.dev' },
   { name: 'Creative Pearls', industry: 'Handmade jewellery', logo: '/clients/creative-pearls.webp', bg: '#ffffff', url: 'https://creativepearls.co.za' },
 ];
 
@@ -51,8 +50,8 @@ export const clients: Client[] = [
 export const stats = [
   { value: 6, prefix: '', suffix: '', label: 'Active clients right now' },
   { value: 30, prefix: 'R', suffix: 'k+', label: 'In client sales generated' },
-  { value: 8, prefix: '', suffix: '', label: 'Brands built and grown' },
-  { value: 6, prefix: '', suffix: '', label: 'Industries served' },
+  { value: 7, prefix: '', suffix: '', label: 'Brands built and grown' },
+  { value: 5, prefix: '', suffix: '', label: 'Industries served' },
 ];
 
 /* ---------- Work ---------- */
@@ -70,7 +69,7 @@ export type Project = {
   services: string[];
   url?: string;
   urlLabel?: string;
-  tone: 'harlan' | 'pearls' | 'tnt' | 'nafts' | 'party' | 'babyboo';
+  tone: 'harlan' | 'pearls' | 'tnt' | 'nafts' | 'party' | 'adamant' | 'aupairs';
   shots: Shot[];
   /* Leave empty until real numbers are in. Nothing renders while it is empty. */
   results: Result[];
@@ -114,41 +113,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'babyboo',
-    name: 'BabyBoo',
-    kind: 'Baby products store',
-    tag: 'My own brand',
-    year: '2026',
-    summary:
-      'My second brand. A Shopify store for South African moms, built around a hands-free baby bottle, with bundles, a complete feeding set and a secure Payfast checkout. I run the store and the Meta ads myself.',
-    lesson: 'One hero product, one clear offer, and a store built to sell on a phone.',
-    services: ['Shopify', 'Branding', 'Bundles and upsells', 'Meta ads'],
-    url: 'https://babyboo.co.za',
-    urlLabel: 'babyboo.co.za',
-    tone: 'babyboo',
-    shots: [
-      { src: '/work/bb-home.webp', alt: 'BabyBoo homepage on a phone: a mom beside her baby using the hands-free bottle, headline "Feeding time, with a free hand"', kind: 'phone', caption: 'A real moment, one line, and the product in use before anything else.' },
-      { src: '/work/bb-product.webp', alt: 'BabyBoo Hands-Free Baby Bottle product section with price, savings badge and key benefits', kind: 'phone', caption: 'The hero product with its price, the saving and three reasons to buy.' },
-      { src: '/work/bb-bundle.webp', alt: 'BabyBoo complete feeding set offer: get all 4 for R1,499 and save R497', kind: 'phone', caption: 'A complete set that makes the bigger order the easy choice.' },
-      { src: '/work/bb-how.webp', alt: 'BabyBoo how it works section: order online, we pack and send, calmer feeds', kind: 'phone', caption: 'Three simple steps that answer "how does this work?" before anyone asks.' },
-    ],
-    results: [],
-    brief:
-      'A new brand with a product most moms have never seen. The store had to explain the bottle in seconds, earn the trust of strangers, and make the bigger order the obvious choice, all on a phone.',
-    built: [
-      { title: 'A homepage that sells the hero product', body: 'It opens on a real moment: a mom beside her baby, feeding hands-free. One line explains it, then straight into the bottle with its bundles.' },
-      { title: 'Bundles and a complete set', body: 'One, two or three bottles, plus a set of all four products with a free bottle brush, so a bigger order feels like the smart choice.' },
-      { title: 'Trust for a brand nobody knows yet', body: 'A secure Payfast checkout, a happy mom promise, honest delivery times and free delivery over R499, all shown where people decide.' },
-      { title: 'Brand and ads', body: 'A soft pastel brand made for moms, and Meta ads I run and pay for myself.' },
-    ],
-    facts: [
-      { label: 'Platform', value: 'Shopify' },
-      { label: 'Range', value: '4 products and a set' },
-      { label: 'Checkout', value: 'Payfast' },
-      { label: 'Run by', value: 'Me' },
-    ],
-  },
-  {
     slug: 'party-starters',
     name: 'Party Starters',
     kind: 'Party hire, Cape Town',
@@ -181,6 +145,76 @@ export const projects: Project[] = [
       { label: 'Back office', value: '8 admin sections' },
       { label: 'Bookings', value: 'Quote requests' },
       { label: 'Reviews', value: 'Auto from Google' },
+    ],
+  },
+  {
+    slug: 'adamant-aesthetics',
+    name: 'Adamant Aesthetics',
+    kind: 'Skin and laser clinic, Brackenfell',
+    tag: 'Client',
+    year: '2026',
+    summary:
+      'A full rebuild for a skin and laser clinic, with online booking built in. Clients choose their treatment and a time, the slot is held straight away, and the owner confirms personally. She runs bookings, treatments, prices and her before and after gallery from her own back office.',
+    lesson: 'Real prices, real results and booking in a few taps.',
+    services: ['Custom website', 'Online booking', 'Back office', 'SEO'],
+    url: 'https://www.adamantaesthetics.co.za',
+    urlLabel: 'adamantaesthetics.co.za',
+    tone: 'adamant',
+    shots: [
+      { src: '/work/ad-home.webp', alt: 'Adamant Aesthetics homepage on a phone: "Skin that feels truly cared for." with Book an appointment and See prices buttons', kind: 'phone', caption: 'A calm, premium first impression with booking and prices one tap away.' },
+      { src: '/work/ad-book.webp', alt: 'Adamant Aesthetics booking page on a phone with three steps: treatment, day and time, your details', kind: 'phone', caption: 'Online booking in three steps. The slot is held straight away and confirmed by the owner.' },
+      { src: '/work/ad-treatments.webp', alt: 'Adamant Aesthetics treatments section showing treatment cards with prices', kind: 'phone', caption: '11 treatments with real prices, durations and what each one treats.' },
+      { src: '/work/ad-results.webp', alt: 'Adamant Aesthetics before and after section showing chemical peel results', kind: 'phone', caption: 'Before and after results, managed by the clinic from the back office.' },
+    ],
+    results: [],
+    brief:
+      'Kerry-Ann runs her clinic on her own. Clients had to message to ask about prices and times, and her old site did little to build trust. She wanted a site that shows her work and prices honestly, takes bookings while she is with a client, and lets her stay in control of her diary.',
+    built: [
+      { title: 'Online booking, built in', body: 'Clients pick their treatments, a free day and time, and add their details. The slot is held straight away and Kerry-Ann confirms each booking personally by email. Payment happens at the clinic.' },
+      { title: 'Her own back office', body: 'A private admin area with its own login, where she manages bookings, treatments and prices, opening hours and time off, the before and after gallery, reviews and the text on the site.' },
+      { title: 'Prices and advice up front', body: 'Every treatment has its own card with its price, duration and what it treats, so clients arrive informed and ready to book.' },
+      { title: 'Proof that sells', body: 'Before and after results and client reviews sit right on the homepage, with WhatsApp a tap away on every page.' },
+    ],
+    facts: [
+      { label: 'Platform', value: 'Custom build' },
+      { label: 'Booking', value: 'Online, owner-confirmed' },
+      { label: 'Treatments', value: '11 with prices' },
+      { label: 'Back office', value: 'Owner-managed' },
+    ],
+  },
+  {
+    slug: 'my-au-pairs',
+    name: 'My Au Pairs & Nannies',
+    kind: 'Childcare agency, South Africa',
+    tag: 'Client',
+    year: '2026',
+    summary:
+      'A platform that connects South African families with verified au pairs and nannies. Caregivers create profiles, every check is shown with the date it was completed, and families browse for free and buy a Search Pass when they are ready to make contact.',
+    lesson: 'Trust you can see, and a business model built in.',
+    services: ['Web app', 'Accounts and profiles', 'Online payments', 'Back office'],
+    url: 'https://myaupairs.myaupairs.workers.dev',
+    urlLabel: 'View the site',
+    tone: 'aupairs',
+    shots: [
+      { src: '/work/map-home.webp', alt: 'My Au Pairs and Nannies homepage on a phone: "Exceptional childcare starts with exceptional people."', kind: 'phone', caption: 'A clear promise for families, with separate paths for au pairs and nannies.' },
+      { src: '/work/map-verified.webp', alt: 'Verified badge section listing ID verified, First Aid certificate, background cleared and references confirmed', kind: 'phone', caption: 'One Verified badge, with every check listed and dated on each profile.' },
+      { src: '/work/map-pricing.webp', alt: 'My Au Pairs pricing page: browse for free, Search Pass 30 days for R495 once-off', kind: 'phone', caption: 'Browse free, then pay once for a Search Pass to see contact details.' },
+      { src: '/work/map-search.webp', alt: 'Section for families with cards for finding an au pair or a nanny', kind: 'phone', caption: 'Families choose au pair or nanny and search with confidence.' },
+    ],
+    results: [],
+    brief:
+      'Steph wanted families to trust the caregivers they find, and to run the agency without a pile of admin. That meant real profiles, checks families could see for themselves, and a way to earn from the platform from day one, on a small budget.',
+    built: [
+      { title: 'Profiles with dated checks', body: 'Each nanny and au pair profile shows exactly what has been checked: ID, First Aid, background and references, each with the date it was completed.' },
+      { title: 'Accounts for families and caregivers', body: 'Caregivers sign up and build their profile. Families create a free account to browse every profile and its checklist.' },
+      { title: 'A paid Search Pass', body: 'Families pay once, online, to unlock phone numbers and email addresses for 30 days. It never renews automatically.' },
+      { title: 'A back office for the owner', body: 'Steph reviews caregivers and their checks before profiles go live, and manages the platform from her own admin area.' },
+    ],
+    facts: [
+      { label: 'Platform', value: 'Custom web app' },
+      { label: 'Accounts', value: 'Families and caregivers' },
+      { label: 'Payments', value: 'Search Pass, online' },
+      { label: 'Checks', value: 'Dated on every profile' },
     ],
   },
   {
