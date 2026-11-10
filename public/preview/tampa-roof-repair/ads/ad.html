@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#222}
+.ad{position:relative;overflow:hidden;color:#fff}
+.sq{width:1080px;height:1080px}.st{width:1080px;height:1920px}
+.navy{background:#0d1b2a}.orange{background:#ff6a13}.cream{background:#f6f3ee;color:#0d1b2a}
+.rain{position:absolute;inset:0;background-image:repeating-linear-gradient(105deg,rgba(158,199,232,.09) 0 3px,transparent 3px 64px)}
+h1{font-family:'Archivo';font-weight:900;letter-spacing:-.03em;line-height:.95}
+.logo{display:flex;align-items:center;gap:18px;font-family:'Archivo';font-weight:900;font-size:40px;letter-spacing:-.01em}
+.stars{color:#ffb400;letter-spacing:6px}
+.pill{display:inline-flex;align-items:center;gap:14px;border-radius:999px;font-weight:700}
+.skyline{position:absolute;left:0;right:0;bottom:0}
+</style></head><body>
+
+<!-- AD 1: feed square -->
+<div class="ad sq navy" id="ad1">
+  <div class="rain"></div>
+  <svg class="skyline" viewBox="0 0 1080 300" height="300" width="1080" preserveAspectRatio="none"><path d="M0 300V200l110-80 110 80v-20l150-110 150 110v30l100-70 100 70V110l130-85 130 85v190z" fill="#13263a"/><path d="M0 300v-50l150-90 150 90 80-45 80 45v-10l180-110 180 110v20l110-65 150 90v15z" fill="#1c3550"/></svg>
+  <div style="position:absolute;left:80px;top:80px" class="logo"><svg width="64" height="64" viewBox="0 0 42 42"><rect width="42" height="42" rx="10" fill="#ff6a13"/><path d="M8 23 21 11l13 12" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 21v10h16V21" fill="none" stroke="#fff" stroke-width="3.6" stroke-linejoin="round"/></svg>Tampa Roof Repair</div>
+  <div style="position:absolute;left:80px;top:250px;right:80px">
+    <h1 style="font-size:150px">Roof<br>leaking?</h1>
+    <h1 style="font-size:150px;color:#ff6a13;margin-top:10px">Fixed fast.</h1>
+    <p style="font-size:36px;color:#c9d6e2;margin-top:34px;max-width:820px;line-height:1.35">Leak repairs, missing shingles and storm damage across Tampa Bay.</p>
+  </div>
+  <div style="position:absolute;left:80px;right:80px;bottom:80px;display:flex;justify-content:space-between;align-items:center">
+    <div><div class="stars" style="font-size:40px">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div style="font-size:30px;font-weight:600;margin-top:6px">4.9 from 180+ Google reviews</div></div>
+    <div class="pill" style="background:#ff6a13;padding:28px 40px;font-size:36px">Free estimate &rarr;</div>
+  </div>
+</div>
+
+<!-- AD 2: story -->
+<div class="ad st orange" id="ad2">
+  <svg style="position:absolute;right:-120px;top:360px;opacity:.14" width="900" height="900" viewBox="0 0 42 42"><path d="M8 23 21 11l13 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 21v10h16V21" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></svg>
+  <div style="position:absolute;left:90px;top:210px" class="logo"><svg width="64" height="64" viewBox="0 0 42 42"><rect width="42" height="42" rx="10" fill="#0d1b2a"/><path d="M8 23 21 11l13 12" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 21v10h16V21" fill="none" stroke="#fff" stroke-width="3.6" stroke-linejoin="round"/></svg>Tampa Roof Repair</div>
+  <div style="position:absolute;left:90px;right:90px;top:340px">
+    <h1 style="font-size:122px;white-space:nowrap">Storm just hit?</h1>
+    <p style="font-family:'Archivo';font-weight:900;font-size:64px;color:#0d1b2a;margin-top:30px;line-height:1.05">Get it tarped before<br>the next rain.</p>
+    <div style="margin-top:64px;display:grid;gap:22px">
+      <div class="pill" style="background:#0d1b2a;padding:26px 36px;font-size:42px;width:max-content">&#10003;&nbsp; Emergency tarps</div>
+      <div class="pill" style="background:#0d1b2a;padding:26px 36px;font-size:42px;width:max-content">&#10003;&nbsp; Leak repairs</div>
+      <div class="pill" style="background:#0d1b2a;padding:26px 36px;font-size:42px;width:max-content">&#10003;&nbsp; Storm damage repairs</div>
+      <div class="pill" style="background:#0d1b2a;padding:26px 36px;font-size:42px;width:max-content">&#10003;&nbsp; Free estimates</div>
+    </div>
+  </div>
+  <div style="position:absolute;left:90px;right:90px;bottom:400px">
+    <div style="font-size:38px;font-weight:700"><span class="stars" style="color:#fff">&#9733;&#9733;&#9733;&#9733;&#9733;</span>&nbsp; 4.9 on Google</div>
+    <div style="font-family:'Archivo';font-weight:900;font-size:84px;margin-top:14px">813-413-5115</div>
+  </div>
+  <div style="position:absolute;left:90px;right:90px;bottom:260px;text-align:center;background:#fff;color:#ff6a13;border-radius:999px;padding:34px;font-weight:800;font-size:44px">Tap for a free estimate</div>
+</div>
+
+<!-- AD 3: review -->
+<div class="ad sq cream" id="ad3">
+  <div style="position:absolute;left:80px;top:60px;font-family:'Archivo';font-weight:900;font-size:360px;line-height:1;color:#ff6a13">&ldquo;</div>
+  <div style="position:absolute;left:80px;right:80px;top:300px">
+    <div class="stars" style="font-size:52px">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <h1 style="font-size:84px;line-height:1.04;margin-top:28px;letter-spacing:-.02em">They fixed the leak literally the next day. No waiting around.</h1>
+    <p style="font-size:34px;color:#5d6b78;margin-top:34px;font-weight:600">Rafael B., Google review</p>
+  </div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:200px;background:#0d1b2a;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 80px">
+    <div class="logo" style="font-size:36px"><svg width="58" height="58" viewBox="0 0 42 42"><rect width="42" height="42" rx="10" fill="#ff6a13"/><path d="M8 23 21 11l13 12" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 21v10h16V21" fill="none" stroke="#fff" stroke-width="3.6" stroke-linejoin="round"/></svg>Tampa Roof Repair</div>
+    <div style="text-align:right"><div style="font-size:28px;color:#9fb2c3;font-weight:600">4.9 &#9733; · 180+ reviews</div><div style="font-family:'Archivo';font-weight:900;font-size:44px">813-413-5115</div></div>
+  </div>
+</div>
+</body></html>

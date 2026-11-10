@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Tampa Roof Repair | Roof repairs, leaks and replacements in Tampa Bay</title>
+<meta name="description" content="Concept homepage for Tampa Roof Repair. Family-run Tampa Bay roofers: repairs, leak detection, inspections and replacements. 4.9 stars on Google.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--navy:#0d1b2a;--navy-2:#13263a;--navy-3:#1c3550;--ink:#0d1b2a;--paper:#f6f3ee;--white:#fff;--orange:#ff6a13;--orange-dk:#e2550a;--sky:#9ec7e8;--muted:#5d6b78;--line:#e3ddd3;--star:#ffb400}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:'Archivo','Inter',sans-serif;font-weight:900;line-height:1.02;letter-spacing:-.02em}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 1rem 'Inter';border-radius:12px;padding:15px 22px;text-decoration:none;border:0;cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-o{background:var(--orange);color:#fff}.btn-o:hover{background:var(--orange-dk)}
+.btn-w{background:#fff;color:var(--navy)}
+.btn-ghost{border:2px solid rgba(255,255,255,.35);color:#fff}
+.concept{background:#000;color:#bbb;text-align:center;font-size:.78rem;padding:7px 16px}
+.concept a{color:var(--orange);font-weight:700;text-decoration:none}
+.alert{background:var(--orange);color:#fff;text-align:center;font-weight:600;font-size:.9rem;padding:9px 16px}
+.alert a{font-weight:800}
+
+/* nav */
+nav{position:sticky;top:0;z-index:30;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:20px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo svg{flex:none}
+.logo b{font-family:'Archivo';font-weight:900;font-size:1.25rem;letter-spacing:-.01em;line-height:1}
+.logo small{display:block;font-size:.7rem;color:var(--sky);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
+.links{display:flex;gap:28px;font-weight:600;font-size:.92rem}
+.links a{text-decoration:none;opacity:.85}.links a:hover{opacity:1}
+.nav-call{display:flex;align-items:center;gap:14px}
+.nav-call .ph{font-weight:800;font-size:1.05rem;text-decoration:none}
+@media (max-width:980px){.links,.nav-call .ph{display:none}}
+@media (max-width:600px){.logo b{font-size:1.05rem}.logo small{display:none}nav .btn{padding:11px 14px;font-size:.9rem;white-space:nowrap}.hero{padding-top:44px}}
+
+/* hero */
+.hero{background:var(--navy);color:#fff;position:relative;overflow:hidden;padding:64px 0 120px}
+.hero .bg{position:absolute;inset:auto 0 0 0;height:260px;opacity:.9;pointer-events:none}
+.rain{position:absolute;inset:0;background-image:repeating-linear-gradient(105deg,rgba(158,199,232,.07) 0 2px,transparent 2px 46px);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.8rem,6vw,5.2rem)}
+.hero h1 span{color:var(--orange)}
+.hero p.lead{font-size:1.18rem;color:#c9d6e2;max-width:32em;margin:22px 0 30px}
+.proof{display:flex;flex-wrap:wrap;gap:22px;margin-top:34px;align-items:center}
+.proof .g{display:flex;align-items:center;gap:12px}
+.proof .g b{font-family:'Archivo';font-size:2.2rem;line-height:1}
+.stars{color:var(--star);letter-spacing:2px;font-size:1.05rem}
+.proof small{display:block;color:#9fb2c3;font-size:.82rem}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:8px 14px;font-size:.85rem;font-weight:600;color:#dbe5ee}
+
+.quote{background:#fff;color:var(--ink);border-radius:20px;padding:28px;box-shadow:0 40px 80px -30px rgba(0,0,0,.6)}
+.quote h2{font-size:1.7rem}
+.quote p.sub{color:var(--muted);font-size:.93rem;margin:6px 0 18px}
+.qf{display:grid;gap:12px}
+.qf .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.qf label{display:grid;gap:5px;font-size:.78rem;font-weight:700;color:#38475a}
+.qf input,.qf select{font:500 1rem 'Inter';padding:13px 14px;border:1.5px solid #d6dde5;border-radius:10px;background:#f8fafc;color:var(--ink);width:100%}
+.qf input:focus,.qf select:focus{outline:2px solid var(--orange);border-color:transparent}
+.issues{display:flex;flex-wrap:wrap;gap:8px}
+.issues input{display:none}
+.issues span{display:inline-block;border:1.5px solid #d6dde5;border-radius:999px;padding:8px 12px;font-size:.85rem;font-weight:600;cursor:pointer;background:#f8fafc}
+.issues input:checked+span{background:var(--navy);color:#fff;border-color:var(--navy)}
+.qf .btn{width:100%;padding:16px;font-size:1.05rem}
+.fine{font-size:.78rem;color:var(--muted);text-align:center}
+.done{display:none;text-align:center;padding:30px 10px}
+.done b{font-family:'Archivo';font-size:1.6rem;display:block;margin:10px 0 6px}
+@media (max-width:980px){.hero .wrap{grid-template-columns:1fr}.hero{padding-bottom:90px}}
+
+/* trust */
+.trust{margin-top:-58px;position:relative;z-index:2}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-radius:18px;box-shadow:0 24px 50px -30px rgba(13,27,42,.45);overflow:hidden}
+.t{padding:24px 22px;display:flex;gap:14px;align-items:flex-start;border-right:1px solid var(--line)}
+.t:last-child{border-right:0}
+.t .ic{flex:none;width:44px;height:44px;border-radius:12px;background:#fff1e8;display:grid;place-items:center}
+.t b{display:block;font-size:1rem}
+.t span{font-size:.86rem;color:var(--muted)}
+@media (max-width:900px){.trust .wrap{grid-template-columns:1fr 1fr}.t:nth-child(2){border-right:0}.t:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media (max-width:520px){.trust .wrap{grid-template-columns:1fr}.t{border-right:0;border-bottom:1px solid var(--line)}}
+
+section{padding:96px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.head h2{font-size:clamp(2.1rem,4.4vw,3.4rem);margin-top:10px;max-width:15em}
+.head p{color:var(--muted);max-width:30em}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.s{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:10px;transition:transform .15s,box-shadow .15s}
+.s:hover{transform:translateY(-3px);box-shadow:0 20px 40px -28px rgba(13,27,42,.5)}
+.s .ic{width:46px;height:46px;border-radius:12px;background:var(--navy);display:grid;place-items:center}
+.s h3{font-size:1.2rem;letter-spacing:-.01em}
+.s p{font-size:.9rem;color:var(--muted)}
+.s.feature{background:var(--orange);color:#fff;border-color:var(--orange)}
+.s.feature p{color:#fff3ea}.s.feature .ic{background:rgba(255,255,255,.18)}
+@media (max-width:980px){.svc{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.svc{grid-template-columns:1fr}}
+
+/* steps */
+.steps-sec{background:var(--navy);color:#fff}
+.steps-sec .head p{color:#a9bccd}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:st}
+.st{background:var(--navy-2);border:1px solid var(--navy-3);border-radius:18px;padding:28px}
+.st .n{font-family:'Archivo';font-size:3.2rem;color:var(--orange);line-height:1}
+.st h3{font-size:1.4rem;margin:14px 0 8px}
+.st p{color:#a9bccd;font-size:.95rem}
+@media (max-width:860px){.steps{grid-template-columns:1fr}}
+
+/* reviews */
+.rv-top{display:flex;align-items:center;gap:16px}
+.rv-top b{font-family:'Archivo';font-size:3.6rem;line-height:1}
+.rows{display:grid;gap:16px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.row{overflow:hidden}
+.track{display:flex;gap:16px;width:max-content;animation:sl 75s linear infinite}
+.row.r .track{animation-direction:reverse;animation-duration:85s}
+.row:hover .track{animation-play-state:paused}
+@keyframes sl{to{transform:translateX(calc(-50% - 8px))}}
+.rv{width:360px;flex:none;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.rv q{font-size:.97rem;quotes:none}
+.rv cite{font-style:normal;font-weight:700;font-size:.88rem;display:flex;align-items:center;gap:10px;margin-top:auto}
+.rv cite i{width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-style:normal;font-size:.85rem}
+.rv cite span{font-weight:500;color:var(--muted)}
+@media (max-width:600px){.rv{width:290px}}
+@media (prefers-reduced-motion:reduce){.track{animation:none}.row{overflow-x:auto}}
+
+/* storm */
+.storm{background:linear-gradient(120deg,#0d1b2a 0%,#1c3550 100%);color:#fff;border-radius:24px;padding:48px;display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center;position:relative;overflow:hidden}
+.storm h2{font-size:clamp(2rem,4vw,3rem)}
+.storm p{color:#c9d6e2;margin-top:12px}
+.storm .acts{display:flex;flex-direction:column;gap:12px;position:relative}
+@media (max-width:860px){.storm{grid-template-columns:1fr;padding:32px}}
+
+/* owner + areas */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.owner{background:#fff;border:1px solid var(--line);border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:16px}
+.owner .av{width:72px;height:72px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:'Archivo';font-size:1.6rem}
+.owner blockquote{font-family:'Archivo';font-weight:800;font-size:1.6rem;line-height:1.2;letter-spacing:-.01em}
+.owner span{color:var(--muted)}
+.areas{background:var(--navy);color:#fff;border-radius:20px;padding:36px}
+.areas h3{font-size:1.7rem;margin:10px 0 18px}
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.pills span{border:1px solid var(--navy-3);background:var(--navy-2);border-radius:999px;padding:9px 14px;font-weight:600;font-size:.92rem}
+@media (max-width:860px){.duo{grid-template-columns:1fr}}
+
+.final{text-align:center;padding:90px 0;background:var(--orange);color:#fff}
+.final h2{font-size:clamp(2.2rem,5vw,3.8rem)}
+.final p{font-size:1.15rem;margin:14px 0 28px;color:#fff3ea}
+.final .acts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.final .btn-w{color:var(--orange-dk)}
+footer{background:#08121c;color:#8ea2b5;padding:36px 0;font-size:.88rem}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer b{color:#fff}
+footer a{color:var(--orange);text-decoration:none}
+.callfab{position:fixed;right:16px;bottom:16px;z-index:40;display:none}
+@media (max-width:980px){.callfab{display:flex}}
+</style>
+</head>
+<body>
+<div class="concept">Concept preview made for Tampa Roof Repair by <a href="https://www.matthewdenton.co.za">Matthew Denton</a></div>
+<div class="alert">Storm damage or an active leak? Emergency tarps available. <a href="tel:+18134135115">Call 813-413-5115</a></div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">
+      <svg width="42" height="42" viewBox="0 0 42 42" aria-hidden="true"><rect width="42" height="42" rx="10" fill="#ff6a13"/><path d="M8 23 21 11l13 12" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 21v10h16V21" fill="none" stroke="#fff" stroke-width="3.6" stroke-linejoin="round"/></svg>
+      <span><b>Tampa Roof Repair</b><small>Licensed CCC1331776</small></span>
+    </a>
+    <div class="links"><a href="#services">Services</a><a href="#how">How it works</a><a href="#reviews">Reviews</a><a href="#areas">Areas</a></div>
+    <div class="nav-call"><a class="ph" href="tel:+18134135115">813-413-5115</a><a class="btn btn-o" href="#estimate">Free estimate</a></div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="rain"></div>
+  <svg class="bg" viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <path d="M0 260V170l90-60 90 60v-20l120-90 120 90v30l80-55 80 55V90l110-70 110 70v80l90-60 90 60v-30l130-80 130 80v40l70-45 60 40v65z" fill="#13263a"/>
+    <path d="M0 260v-40l120-70 120 70 60-35 60 35v-10l150-90 150 90v20l90-55 90 55v-30l120-75 120 75v35l110-65 110 65v35z" fill="#1c3550"/>
+  </svg>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow" style="color:#ffb27f">Local Tampa Bay roofers, led by owner Erik Emery</div>
+      <h1 style="margin-top:14px">Roof leaking? <span>We'll fix it fast.</span></h1>
+      <p class="lead">Repairs, leak detection, inspections and full replacements across Tampa Bay. Real crews, fair prices and a clean yard when we leave.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-o" href="#estimate">Get my free estimate</a>
+        <a class="btn btn-ghost" href="tel:+18134135115">Call 813-413-5115</a>
+      </div>
+      <div class="proof">
+        <div class="g"><b>4.9</b><div><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><small>180+ Google reviews</small></div></div>
+        <span class="chip">&#10003; Licensed &amp; insured</span>
+        <span class="chip">&#10003; Financing available</span>
+      </div>
+    </div>
+    <div class="quote" id="estimate">
+      <form class="qf" id="qf">
+        <div><h2>Free roof estimate</h2><p class="sub">Tell us what's going on. Erik's team will call you back to book a time.</p></div>
+        <label>What do you need?</label>
+        <div class="issues">
+          <label><input type="radio" name="issue" value="Leak" checked><span>Leak</span></label>
+          <label><input type="radio" name="issue" value="Missing shingles"><span>Missing shingles</span></label>
+          <label><input type="radio" name="issue" value="Storm damage"><span>Storm damage</span></label>
+          <label><input type="radio" name="issue" value="Inspection"><span>Inspection</span></label>
+          <label><input type="radio" name="issue" value="New roof"><span>New roof</span></label>
+        </div>
+        <div class="row">
+          <label>Name<input name="name" required autocomplete="name" placeholder="Your name"></label>
+          <label>Phone<input name="phone" required type="tel" autocomplete="tel" placeholder="(813) 555-0123"></label>
+        </div>
+        <div class="row">
+          <label>ZIP code<input name="zip" required inputmode="numeric" maxlength="5" placeholder="33617"></label>
+          <label>Roof type<select name="roof"><option>Shingle</option><option>Tile</option><option>Flat</option><option>Metal</option><option>Mobile home</option><option>Not sure</option></select></label>
+        </div>
+        <button class="btn btn-o" type="submit">Get my free estimate</button>
+        <p class="fine">No obligation. We never share your details.</p>
+      </form>
+      <div class="done" id="done"><svg width="56" height="56" viewBox="0 0 56 56"><circle cx="28" cy="28" r="28" fill="#e9f8ef"/><path d="m17 29 7 7 15-16" fill="none" stroke="#1f9d55" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Request received</b><span style="color:var(--muted)">In the live site this lands on Erik's phone straight away. For anything urgent, call 813-413-5115.</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="trust">
+  <div class="wrap">
+    <div class="t"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff6a13" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><b>Fast call-outs</b><span>Reviews mention next-day repairs</span></div></div>
+    <div class="t"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff6a13" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></div><div><b>Warranty backed</b><span>On almost all roof repairs</span></div></div>
+    <div class="t"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff6a13" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg></div><div><b>Financing</b><span>Spread the cost of a new roof</span></div></div>
+    <div class="t"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff6a13" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 20V9l6-5 6 5v11"/><path d="M10 20v-6h4v6"/></svg></div><div><b>Licensed</b><span>Florida license CCC1331776</span></div></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="head"><div><div class="eyebrow">What we do</div><h2>Every roof problem, one local crew.</h2></div><p>Homes, businesses and mobile homes across Tampa Bay. Shingle, tile, flat and metal.</p></div>
+    <div class="svc" id="svc"></div>
+  </div>
+</section>
+
+<section class="steps-sec" id="how">
+  <div class="wrap">
+    <div class="head"><div><div class="eyebrow">How it works</div><h2>From leak to fixed, without the runaround.</h2></div><p>Clear answers, a fair price up front, and your property cleaned up before we leave.</p></div>
+    <div class="steps">
+      <div class="st"><div class="n">01</div><h3>Tell us what's wrong</h3><p>Fill in the form or call. Snap a photo of the problem if you can.</p></div>
+      <div class="st"><div class="n">02</div><h3>Free inspection and estimate</h3><p>We come out, check the whole roof and give you a straight price. No pressure.</p></div>
+      <div class="st"><div class="n">03</div><h3>Fixed and cleaned up</h3><p>The work gets done on schedule and we sweep the roof, gutters and yard for nails.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="head"><div><div class="eyebrow">Reviews</div><h2>Tampa homeowners say it best.</h2></div><div class="rv-top"><b>4.9</b><div><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><br><span style="color:var(--muted)">180+ Google reviews</span></div></div></div>
+  </div>
+  <div class="rows">
+    <div class="row"><div class="track" id="r1"></div></div>
+    <div class="row r"><div class="track" id="r2"></div></div>
+  </div>
+</section>
+
+<div class="wrap" style="padding-bottom:96px">
+  <div class="storm">
+    <div><div class="eyebrow" style="color:#ffb27f">Storm season</div><h2 style="margin-top:10px">Storm just hit? Get it tarped before the next rain.</h2><p>Storm clean-up, emergency tarp installation and full storm damage repairs.</p></div>
+    <div class="acts"><a class="btn btn-o" href="tel:+18134135115">Call 813-413-5115</a><a class="btn btn-w" href="#estimate">Request a callback</a></div>
+  </div>
+</div>
+
+<section id="areas" style="padding-top:0">
+  <div class="wrap duo">
+    <div class="owner">
+      <div class="av">EE</div>
+      <blockquote>"We are committed to providing exceptional service with a quality price."</blockquote>
+      <span><b style="color:var(--ink)">Erik Emery</b>, Owner and Operator</span>
+    </div>
+    <div class="areas">
+      <div class="eyebrow" style="color:#ffb27f">Service areas</div>
+      <h3>Proudly serving Tampa Bay</h3>
+      <div class="pills"><span>Tampa</span><span>Brandon</span><span>Riverview</span><span>Clearwater</span><span>St. Petersburg</span><span>Plant City</span><span>Ruskin</span><span>and nearby</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="final">
+  <div class="wrap">
+    <h2>Don't let a small leak become a big bill.</h2>
+    <p>Free estimates across Tampa Bay. Financing available on new roofs.</p>
+    <div class="acts"><a class="btn btn-w" href="#estimate">Get my free estimate</a><a class="btn btn-ghost" href="tel:+18134135115">Call 813-413-5115</a></div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div><b>Tampa Roof Repair, LLC</b><br>Tampa, FL 33617 · 813-413-5115 · License CCC1331776</div>
+    <div>Concept by <a href="https://www.matthewdenton.co.za">matthewdenton.co.za</a></div>
+  </div>
+</footer>
+<a class="btn btn-o callfab" href="tel:+18134135115">Call now</a>
+
+<script>
+const SVC=[
+ ['Roof repair','Damaged, aging or worn roofs put right, with warranties on almost all repairs.','M4 13 12 6l8 7M7 11v8h10v-8',true],
+ ['Leak detection','Find the source and stop it before it becomes rot, mould or a ceiling repair.','M12 3c3 4 5 6.5 5 9a5 5 0 0 1-10 0c0-2.5 2-5 5-9z'],
+ ['Roof inspections','A full check of your roof with clear notes on what needs doing and what can wait.','M10 17a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm5-2 5 5'],
+ ['Roof replacement','Tear-off and new roof, often done in a couple of days, with the site cleaned daily.','M3 12 12 4l9 8M6 10v10h12V10M10 20v-5h4v5'],
+ ['Storm and tarps','Emergency tarps, storm clean-up and full storm damage repairs.','M7 15a4 4 0 0 1 .5-8A6 6 0 0 1 19 9a3 3 0 0 1-1 6zM11 15l-2 4m6-4-2 4'],
+ ['Flat and tile','Specialist repairs for flat, tile and low-slope roofs.','M3 8h18M3 13h18M3 18h18M8 8v5m8-5v5M12 13v5'],
+ ['Gutters and cleaning','Gutters that drain and a roof clear of debris, so it lasts longer.','M3 6h18l-2 4H5zM7 10v9m10-9v9'],
+ ['Commercial roofing','Inspections and repairs for business and multi-unit roofs.','M4 20V8h6v12M10 20V4h10v16M13 8h4m-4 4h4m-4 4h4']];
+document.getElementById('svc').innerHTML=SVC.map(([h,p,d,f])=>`<div class="s${f?' feature':''}"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg></div><h3>${h}</h3><p>${p}</p></div>`).join('');
+
+// Five-star Google reviews, quoted from Google Maps
+const R=[
+ ['Rafael Bokow','Diane and Erik responded immediately to our problem. They fixed the leak literally the next day. No waiting around. Amazing service.'],
+ ['Luis Torres','Great experience with Erik. Called them yesterday and came the next morning to repair some missing shingles. Great to work with and great pricing.'],
+ ['Karen Koncar','Crew arrived when expected, completed tear off and install in 2 days... Roof looks great and price was right!'],
+ ['Lynn Martinez','The repair was done fast and was reasonably priced. Everyone I dealt with was nice and professional.'],
+ ['Barry Ackerman','They used a quality product to do the job... They were also fair with the price and did a little extra to make me happy.'],
+ ['Roy Strunin','They were professional and provided outstanding service. They were on time, on budget and went the extra mile.'],
+ ['Richard K','Fast estimate, quick installation and at a great price. It could not have gone more smoothly.'],
+ ['Tim Doherty','Excellent service from start to finish, with exceptional communication and follow-up throughout the entire process.']];
+const card=([n,t])=>`<figure class="rv"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><q>"${t}"</q><cite><i>${n[0]}</i>${n} <span>· Google</span></cite></figure>`;
+const a=R.slice(0,4),b=R.slice(4);
+document.getElementById('r1').innerHTML=[...a,...a].map(card).join('');
+document.getElementById('r2').innerHTML=[...b,...b].map(card).join('');
+
+document.getElementById('qf').onsubmit=e=>{e.preventDefault();e.target.style.display='none';document.getElementById('done').style.display='block'};
+</script>
+</body>
+</html>
