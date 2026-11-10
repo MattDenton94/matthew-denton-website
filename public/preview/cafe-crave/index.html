@@ -399,10 +399,10 @@ const REVIEWS=[
  ['Khadija Rhoda','Favourite lunch/brunch date/cosy catch-up spot. It\u2019s intimate enough for a best friend chat session, roomy enough for a family sit-down.'],
  ['Isa Isaacs','A nice cosy restaurant that is fully halal and has a variety of food on the menu, from all day breakfast to burgers.']
 ];
-const card=([n,t])=>`<figure class="rv"><div class="s">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"${t}"</blockquote><cite><i>${n[0]}</i>${n} <span>· Google</span></cite></figure>`;
+const rvCard=([n,t])=>`<figure class="rv"><div class="s">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"${t}"</blockquote><cite><i>${n[0]}</i>${n} <span>· Google</span></cite></figure>`;
 const half=Math.ceil(REVIEWS.length/2),r1=REVIEWS.slice(0,half),r2=REVIEWS.slice(half);
-document.getElementById('rv1').innerHTML=[...r1,...r1].map(card).join('');
-document.getElementById('rv2').innerHTML=[...r2,...r2].map(card).join('');
+document.getElementById('rv1').innerHTML=[...r1,...r1].map(rvCard).join('');
+document.getElementById('rv2').innerHTML=[...r2,...r2].map(rvCard).join('');
 
 // Booking form: builds a WhatsApp message for the café
 let type='table';const card=document.getElementById('book-card'),form=document.getElementById('book-form');
