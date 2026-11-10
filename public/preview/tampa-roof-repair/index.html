@@ -152,10 +152,27 @@ section{padding:96px 0}
 .final p{font-size:1.15rem;margin:14px 0 28px;color:#fff3ea}
 .final .acts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .final .btn-w{color:var(--orange-dk)}
-footer{background:#08121c;color:#8ea2b5;padding:36px 0;font-size:.88rem}
-footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-footer b{color:#fff}
-footer a{color:var(--orange);text-decoration:none}
+footer{background:#08121c;color:#8ea2b5;font-size:.92rem}
+.f-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:40px;padding:64px 0 48px}
+.f-brand p{margin:16px 0 22px;max-width:22em;line-height:1.6}
+.f-call{display:inline-flex;flex-direction:column;background:var(--orange);color:#fff;border-radius:14px;padding:14px 20px;text-decoration:none}
+.f-call small{font-size:.75rem;font-weight:600;opacity:.9;text-transform:uppercase;letter-spacing:.08em}
+.f-call b{font-family:'Archivo';font-weight:900;font-size:1.5rem;letter-spacing:-.01em}
+footer h4{color:#fff;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;font-weight:700}
+footer ul{list-style:none;display:grid;gap:10px}
+footer ul a{text-decoration:none;color:#b7c6d4}footer ul a:hover{color:#fff}
+.f-contact li{display:flex;gap:10px;align-items:flex-start}
+.f-contact svg{flex:none;margin-top:3px}
+.social{display:flex;gap:10px;margin-top:20px}
+.social a{width:40px;height:40px;border-radius:10px;background:#13263a;display:grid;place-items:center;color:#fff}
+.social a:hover{background:var(--orange)}
+.badges{display:flex;flex-wrap:wrap;gap:10px;padding:22px 0;border-top:1px solid #16293c}
+.badges span{display:inline-flex;align-items:center;gap:8px;border:1px solid #1f3650;border-radius:999px;padding:8px 14px;font-size:.82rem;font-weight:600;color:#c9d6e2}
+.badges b{color:var(--star)}
+.f-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px 0 26px;border-top:1px solid #16293c;font-size:.82rem}
+.f-bot a{color:var(--orange);text-decoration:none}
+@media (max-width:980px){.f-top{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.f-top{grid-template-columns:1fr 1fr;gap:32px 20px}.f-brand,.f-top>div:last-child{grid-column:1/-1}}
 .callfab{position:fixed;right:16px;bottom:16px;z-index:40;display:none}
 @media (max-width:980px){.callfab{display:flex}}
 </style>
@@ -291,9 +308,56 @@ footer a{color:var(--orange);text-decoration:none}
 </div>
 
 <footer>
-  <div class="wrap">
-    <div><b>Tampa Roof Repair, LLC</b><br>Tampa, FL 33617 · 813-413-5115 · License CCC1331776</div>
-    <div>Concept by <a href="https://www.matthewdenton.co.za">matthewdenton.co.za</a></div>
+  <div class="wrap f-top">
+    <div class="f-brand">
+      <a class="logo" href="#top" style="color:#fff">
+        <svg width="42" height="42" viewBox="0 0 42 42" aria-hidden="true"><rect width="42" height="42" rx="10" fill="#ff6a13"/><path d="M8 23 21 11l13 12" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 21v10h16V21" fill="none" stroke="#fff" stroke-width="3.6" stroke-linejoin="round"/></svg>
+        <span><b>Tampa Roof Repair</b><small>Licensed CCC1331776</small></span>
+      </a>
+      <p>Roof repairs, leak detection, inspections and replacements for homes and businesses across Tampa Bay. Led by owner Erik Emery.</p>
+      <a class="f-call" href="tel:+18134135115"><small>Call or text</small><b>813-413-5115</b></a>
+      <div class="social">
+        <a href="https://www.facebook.com/RoofrepairTampa" aria-label="Facebook" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v9h4v-9h3l.5-4h-3.5V9c0-.6.4-1 1-1z"/></svg></a>
+        <a href="https://www.instagram.com/tamparoofrepair/" aria-label="Instagram" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="https://www.youtube.com/watch?v=zznThPXDwcc" aria-label="YouTube" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 8.2a3 3 0 0 0-2-2.1C18.2 5.6 12 5.6 12 5.6s-6.2 0-8 .5a3 3 0 0 0-2 2.1A31 31 0 0 0 1.6 12 31 31 0 0 0 2 15.8a3 3 0 0 0 2 2.1c1.8.5 8 .5 8 .5s6.2 0 8-.5a3 3 0 0 0 2-2.1 31 31 0 0 0 .4-3.8 31 31 0 0 0-.4-3.8zM10 15V9l5.2 3z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Roof repair</a></li>
+        <li><a href="#services">Leak detection</a></li>
+        <li><a href="#services">Roof inspections</a></li>
+        <li><a href="#services">Roof replacement</a></li>
+        <li><a href="#services">Storm damage and tarps</a></li>
+        <li><a href="#services">Commercial roofing</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Service areas</h4>
+      <ul>
+        <li><a href="#areas">Tampa</a></li><li><a href="#areas">Brandon</a></li><li><a href="#areas">Riverview</a></li><li><a href="#areas">Clearwater</a></li><li><a href="#areas">St. Petersburg</a></li><li><a href="#areas">Plant City</a></li><li><a href="#areas">Ruskin</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Get in touch</h4>
+      <ul class="f-contact">
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff6a13" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><a href="tel:+18134135115">813-413-5115</a></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff6a13" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Tampa, FL 33617</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff6a13" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4m8-4v4"/></svg><a href="#estimate">Book a free estimate</a></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff6a13" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg><a href="https://tamparoofrepair.com/financing-available/" target="_blank" rel="noopener">Financing available</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap badges">
+    <span><b>&#9733; 4.9</b> 180+ Google reviews</span>
+    <span>&#10003; Licensed &amp; insured</span>
+    <span>&#10003; Warranties on almost all repairs</span>
+    <span>&#10003; Free estimates</span>
+  </div>
+  <div class="wrap f-bot">
+    <span>&copy; 2026 Tampa Roof Repair, LLC. Florida roofing license CCC1331776.</span>
+    <span>Concept by <a href="https://www.matthewdenton.co.za">matthewdenton.co.za</a></span>
   </div>
 </footer>
 <a class="btn btn-o callfab" href="tel:+18134135115">Call now</a>
