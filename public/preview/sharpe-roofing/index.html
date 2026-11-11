@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sharpe Roofing | Roof replacement and repair in Tampa Bay since 2006</title>
+<meta name="description" content="Concept homepage for Sharpe Roofing, Odessa FL. GAF Master Elite roof replacements, repairs and free video inspections across Hillsborough, Pasco and Pinellas. 4.8 stars from 291 Google reviews.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--navy:#0c3263;--navy-2:#0a2850;--blue:#0581c7;--blue-dk:#026aa6;--sky:#eaf4fb;--sky-2:#d6eaf7;--ink:#0d1f33;--muted:#4f6275;--line:#d9e6f0;--sun:#f5a524;--star:#f5a524;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:#fff;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:'Outfit','Inter',sans-serif;font-weight:800;line-height:1.04;letter-spacing:-.02em}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-dk)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 1rem 'Inter';border-radius:999px;padding:15px 24px;text-decoration:none;border:0;cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-b{background:var(--blue-dk);color:#fff}.btn-b:hover{background:var(--navy)}
+.btn-n{background:var(--navy);color:#fff}
+.btn-line{border:2px solid var(--navy);color:var(--navy)}
+.btn-sun{background:var(--sun);color:var(--navy)}
+.btn-wl{border:2px solid rgba(255,255,255,.45);color:#fff}
+.concept{background:#06182f;color:#b9c7d6;text-align:center;font-size:.78rem;padding:7px 16px}
+.concept a{color:#7cc6f2;font-weight:700;text-decoration:none}
+
+/* top bar */
+.top{background:var(--navy);color:#dbe8f4;font-size:.88rem}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:9px 0}
+.top b{color:var(--sun)}
+.top a{font-weight:700;text-decoration:none;color:#fff}
+@media (max-width:700px){.top .hide-s{display:none}.top .wrap{justify-content:center;text-align:center}}
+
+/* nav */
+nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--navy)}
+.logo b{display:block;font-family:'Outfit';font-weight:800;font-size:1.3rem;letter-spacing:.02em;line-height:1}
+.logo small{display:block;font-size:.68rem;color:var(--blue-dk);font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-top:4px}
+.links{display:flex;gap:28px;font-weight:600;font-size:.94rem;color:var(--navy)}
+.links a{text-decoration:none}.links a:hover{color:var(--blue-dk)}
+.nav-r{display:flex;align-items:center;gap:16px}
+.nav-r .ph{font-weight:800;text-decoration:none;color:var(--navy);display:flex;flex-direction:column;line-height:1.1;text-align:right}
+.nav-r .ph small{font-size:.7rem;font-weight:600;color:var(--muted)}
+@media (max-width:1020px){.links,.nav-r .ph{display:none}}
+@media (max-width:600px){.logo b{font-size:1.08rem}.logo small{display:none}nav .btn{padding:11px 16px;font-size:.9rem;white-space:nowrap}}
+
+/* hero */
+.hero{background:linear-gradient(180deg,var(--sky) 0%,#fff 100%);position:relative;overflow:hidden;padding:64px 0 90px}
+.hero .lines{position:absolute;right:-80px;top:-40px;width:760px;opacity:.55;pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.7rem,5.6vw,4.9rem);color:var(--navy)}
+.hero h1 span{color:var(--blue-dk)}
+.hero p.lead{font-size:1.16rem;color:var(--muted);max-width:31em;margin:22px 0 30px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.proof{display:flex;flex-wrap:wrap;gap:28px;margin-top:36px;align-items:center}
+.proof .g{display:flex;align-items:center;gap:12px}
+.proof .g b{font-family:'Outfit';font-size:2.5rem;line-height:1;color:var(--navy)}
+.stars{color:var(--star);letter-spacing:2px;font-size:1.05rem}
+.proof small{display:block;color:var(--muted);font-size:.84rem;font-weight:600}
+.proof .sep{width:1px;height:42px;background:var(--line)}
+.proof .yr b{font-family:'Outfit';font-size:2.5rem;line-height:1;color:var(--navy);display:block}
+
+/* quote wizard */
+.quote{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 40px 80px -40px rgba(12,50,99,.45);position:relative}
+.quote .tag{position:absolute;top:-14px;left:28px;background:var(--sun);color:var(--navy);font-weight:800;font-size:.78rem;border-radius:999px;padding:6px 12px;letter-spacing:.02em}
+.quote h2{font-size:1.65rem;color:var(--navy)}
+.quote p.sub{color:var(--muted);font-size:.93rem;margin:6px 0 16px}
+.bar{display:flex;gap:6px;margin-bottom:18px}
+.bar i{flex:1;height:6px;border-radius:6px;background:var(--sky-2)}
+.bar i.on{background:var(--blue-dk)}
+.stepq{display:none;gap:12px}
+.stepq.on{display:grid}
+.stepq .q{font-weight:700;font-size:1rem;color:var(--navy)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opts span{display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);border-radius:14px;padding:13px 14px;font-weight:600;font-size:.93rem;cursor:pointer;background:#f7fbfe;height:100%}
+.opts span em{font-style:normal;font-size:1.2rem}
+.opts input:checked+span{border-color:var(--blue-dk);background:var(--sky);box-shadow:0 0 0 3px rgba(2,106,166,.15)}
+.opts input:focus-visible+span{outline:2px solid var(--blue-dk)}
+.fld{display:grid;gap:5px;font-size:.8rem;font-weight:700;color:#33475c}
+.fld input{font:500 1rem 'Inter';padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:#f7fbfe;color:var(--ink);width:100%}
+.fld input:focus{outline:2px solid var(--blue-dk);border-color:transparent}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.nav-q{display:flex;gap:10px;margin-top:4px}
+.nav-q .btn{flex:1;padding:15px}
+.back{background:#f0f5f9;color:var(--navy)}
+.fine{font-size:.78rem;color:var(--muted);text-align:center}
+.done{display:none;text-align:center;padding:26px 6px}
+.done b{font-family:'Outfit';font-size:1.6rem;display:block;margin:10px 0 6px;color:var(--navy)}
+@media (max-width:980px){.hero .wrap{grid-template-columns:1fr}}
+@media (max-width:420px){.opts,.two{grid-template-columns:1fr}}
+
+/* creds */
+.creds{border-block:1px solid var(--line);background:#fff}
+.creds .wrap{display:grid;grid-template-columns:repeat(5,1fr)}
+.cr{display:flex;align-items:center;gap:12px;padding:22px 16px;border-right:1px solid var(--line)}
+.cr:last-child{border-right:0}
+.cr .ic{flex:none;width:42px;height:42px;border-radius:50%;background:var(--sky);display:grid;place-items:center}
+.cr b{display:block;font-size:.95rem;color:var(--navy);line-height:1.2}
+.cr span{font-size:.8rem;color:var(--muted)}
+@media (max-width:1000px){.creds .wrap{grid-template-columns:repeat(3,1fr)}.cr:nth-child(3){border-right:0}.cr:nth-child(-n+3){border-bottom:1px solid var(--line)}}
+@media (max-width:600px){.creds .wrap{grid-template-columns:1fr 1fr}.cr{border-right:0!important;border-bottom:1px solid var(--line)}}
+
+section{padding:96px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.head h2{font-size:clamp(2.1rem,4.4vw,3.3rem);margin-top:10px;max-width:15em;color:var(--navy)}
+.head p{color:var(--muted);max-width:30em}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.s{border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:10px;background:#fff;transition:transform .15s,box-shadow .15s}
+.s:hover{transform:translateY(-3px);box-shadow:0 24px 44px -30px rgba(12,50,99,.5)}
+.s .ic{width:50px;height:50px;border-radius:14px;background:var(--sky);display:grid;place-items:center}
+.s h3{font-size:1.35rem;color:var(--navy)}
+.s p{font-size:.93rem;color:var(--muted)}
+.s a{margin-top:auto;font-weight:700;font-size:.9rem;color:var(--blue-dk);text-decoration:none}
+.s.big{background:var(--navy);border-color:var(--navy);color:#fff}
+.s.big h3{color:#fff}.s.big p{color:#c4d5e6}.s.big .ic{background:rgba(255,255,255,.1)}.s.big a{color:var(--sun)}
+@media (max-width:980px){.svc{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.svc{grid-template-columns:1fr}}
+
+/* offer */
+.offer{background:var(--navy);color:#fff;border-radius:28px;padding:44px 48px;display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center;position:relative;overflow:hidden}
+.offer .pct{font-family:'Outfit';font-weight:800;font-size:clamp(4rem,9vw,7rem);line-height:.85;color:var(--sun)}
+.offer .pct small{display:block;font-size:1.1rem;letter-spacing:.14em;color:#fff;margin-top:8px}
+.offer h2{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+.offer p{color:#c4d5e6;margin-top:10px}
+.offer .exp{display:inline-block;margin-top:14px;font-weight:700;font-size:.85rem;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 12px}
+@media (max-width:860px){.offer{grid-template-columns:1fr;padding:32px}}
+
+/* process */
+.proc{background:var(--sky)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative}
+.st{background:#fff;border-radius:20px;padding:26px;border:1px solid var(--line)}
+.st .n{width:44px;height:44px;border-radius:50%;background:var(--blue-dk);color:#fff;font-family:'Outfit';font-weight:800;display:grid;place-items:center;font-size:1.1rem}
+.st h3{font-size:1.25rem;margin:16px 0 8px;color:var(--navy)}
+.st p{color:var(--muted);font-size:.93rem}
+@media (max-width:980px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* reviews */
+.rv-top{display:flex;align-items:center;gap:16px}
+.rv-top b{font-family:'Outfit';font-size:3.6rem;line-height:1;color:var(--navy)}
+.rows{display:grid;gap:16px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.row{overflow:hidden}
+.track{display:flex;gap:16px;width:max-content;animation:sl 80s linear infinite}
+.row.r .track{animation-direction:reverse;animation-duration:90s}
+.row:hover .track{animation-play-state:paused}
+@keyframes sl{to{transform:translateX(calc(-50% - 8px))}}
+.rv{width:370px;flex:none;background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.rv q{font-size:.97rem;quotes:none}
+.rv cite{font-style:normal;font-weight:700;font-size:.88rem;display:flex;align-items:center;gap:10px;margin-top:auto;color:var(--navy)}
+.rv cite i{width:34px;height:34px;border-radius:50%;background:var(--sky);color:var(--blue-dk);display:grid;place-items:center;font-style:normal;font-size:.85rem;font-weight:800}
+.rv cite span{font-weight:500;color:var(--muted)}
+@media (max-width:600px){.rv{width:290px}}
+@media (prefers-reduced-motion:reduce){.track{animation:none}.row{overflow-x:auto}}
+
+/* storm + grant */
+.duo{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}
+.storm{background:linear-gradient(135deg,var(--blue-dk),var(--navy));color:#fff;border-radius:24px;padding:40px;position:relative;overflow:hidden}
+.storm h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin:10px 0 12px}
+.storm p{color:#d3e4f3;max-width:32em}
+.storm q{display:block;margin-top:22px;padding:18px 20px;background:rgba(255,255,255,.1);border-radius:16px;quotes:none;font-size:.95rem}
+.storm q b{display:block;margin-top:8px;font-size:.85rem;color:var(--sun)}
+.storm .eyebrow{color:#9fd4f5}
+.grant{background:#fff7e8;border:1px solid #f6dfb2;border-radius:24px;padding:40px;display:flex;flex-direction:column;gap:14px}
+.grant h3{font-size:1.8rem;color:var(--navy)}
+.grant p{color:#5b4a2c}
+.grant .eyebrow{color:#9a5b00}
+@media (max-width:900px){.duo{grid-template-columns:1fr}}
+
+/* team */
+.team{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.tm{border:1px solid var(--line);border-radius:20px;padding:24px;text-align:center;background:#fff}
+.tm .av{width:76px;height:76px;margin:0 auto 14px;border-radius:50%;background:linear-gradient(135deg,var(--sky-2),var(--sky));color:var(--navy);display:grid;place-items:center;font-family:'Outfit';font-weight:800;font-size:1.5rem}
+.tm b{display:block;color:var(--navy)}
+.tm span{font-size:.85rem;color:var(--muted)}
+.tm p{font-size:.85rem;color:var(--muted);margin-top:10px}
+@media (max-width:1000px){.team{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:620px){.team{grid-template-columns:1fr 1fr}}
+
+/* areas */
+.areas{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ar{background:var(--sky);border-radius:20px;padding:28px}
+.ar h3{font-size:1.4rem;color:var(--navy)}
+.ar p{color:var(--muted);font-size:.93rem;margin-top:6px}
+@media (max-width:800px){.areas{grid-template-columns:1fr}}
+
+.final{text-align:center;padding:96px 0;background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.final h2{font-size:clamp(2.2rem,5vw,3.8rem)}
+.final p{font-size:1.15rem;margin:14px 0 28px;color:#c4d5e6}
+.final .cta-row{justify-content:center}
+
+footer{background:#06182f;color:#9fb1c4;font-size:.92rem}
+.f-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:40px;padding:64px 0 48px}
+.f-brand .logo{color:#fff}.f-brand .logo small{color:#7cc6f2}
+.f-brand p{margin:16px 0 22px;max-width:22em;line-height:1.6}
+.f-call{display:inline-flex;flex-direction:column;background:var(--blue-dk);color:#fff;border-radius:16px;padding:14px 20px;text-decoration:none}
+.f-call small{font-size:.75rem;font-weight:600;opacity:.9;text-transform:uppercase;letter-spacing:.08em}
+.f-call b{font-family:'Outfit';font-weight:800;font-size:1.5rem}
+footer h4{color:#fff;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;font-weight:700}
+footer ul{list-style:none;display:grid;gap:10px}
+footer ul a{text-decoration:none;color:#c0cfdd}footer ul a:hover{color:#fff}
+.f-contact li{display:flex;gap:10px;align-items:flex-start}
+.f-contact svg{flex:none;margin-top:3px}
+.badges{display:flex;flex-wrap:wrap;gap:10px;padding:22px 0;border-top:1px solid #12294a}
+.badges span{display:inline-flex;align-items:center;gap:8px;border:1px solid #1d3a63;border-radius:999px;padding:8px 14px;font-size:.82rem;font-weight:600;color:#d3e0ec}
+.badges b{color:var(--sun)}
+.f-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px 0 26px;border-top:1px solid #12294a;font-size:.82rem}
+.f-bot a{color:#7cc6f2;text-decoration:none}
+@media (max-width:980px){.f-top{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.f-top{gap:32px 20px}.f-brand,.f-top>div:last-child{grid-column:1/-1}}
+.callfab{position:fixed;right:16px;bottom:16px;z-index:40;display:none;box-shadow:0 12px 30px -10px rgba(12,50,99,.6)}
+@media (max-width:1020px){.callfab{display:flex}}
+</style>
+</head>
+<body>
+<div class="concept">Concept preview made for Sharpe Roofing by <a href="https://www.matthewdenton.co.za">Matthew Denton</a></div>
+<div class="top"><div class="wrap"><span><b>November special:</b> 10% off roof replacements, ends November 30</span><span class="hide-s">Phones answered 24/7 &nbsp;·&nbsp; <a href="tel:+17273757055">727-375-7055</a></span></div></div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">
+      <svg width="46" height="46" viewBox="0 0 46 46" aria-hidden="true"><rect width="46" height="46" rx="12" fill="#0c3263"/><path d="M7 27 23 12l16 15" fill="none" stroke="#0581c7" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 23 23 14l10 9" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 26v9h16v-9" fill="none" stroke="#fff" stroke-width="3.4" stroke-linejoin="round"/></svg>
+      <span><b>SHARPE ROOFING</b><small>Serving Tampa Bay since 2006</small></span>
+    </a>
+    <div class="links"><a href="#services">Services</a><a href="#process">How it works</a><a href="#reviews">Reviews</a><a href="#team">Our team</a><a href="#areas">Areas</a></div>
+    <div class="nav-r"><a class="ph" href="tel:+17273757055"><small>Call anytime 24/7</small>727-375-7055</a><a class="btn btn-b" href="#quote">Free quote</a></div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <svg class="lines" viewBox="0 0 760 520" aria-hidden="true"><g fill="none" stroke="#bfdcf0" stroke-width="2"><path d="M40 300 380 40l340 260"/><path d="M90 330 380 108l290 222"/><path d="M140 360 380 176l240 184"/><path d="M190 390 380 244l190 146"/><path d="M240 420 380 312l140 108"/></g></svg>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">GAF Master Elite &nbsp;·&nbsp; BBB A+ &nbsp;·&nbsp; Odessa, FL</div>
+      <h1 style="margin-top:16px">Your new roof, <span>built for Florida storms.</span></h1>
+      <p class="lead">Roof replacements, repairs and free video inspections across Hillsborough, Pasco and Pinellas. A family team that has replaced thousands of Tampa Bay roofs since 2006.</p>
+      <div class="cta-row">
+        <a class="btn btn-b" href="#quote">Get my free quote</a>
+        <a class="btn btn-line" href="tel:+17273757055">Call 727-375-7055</a>
+      </div>
+      <div class="proof">
+        <div class="g"><b>4.8</b><div><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><small>291 Google reviews</small></div></div>
+        <span class="sep"></span>
+        <div class="yr"><b>2006</b><small>Local since</small></div>
+        <span class="sep"></span>
+        <div class="yr"><b>1,000s</b><small>Roofs replaced</small></div>
+      </div>
+    </div>
+
+    <div class="quote" id="quote">
+      <span class="tag">We reply within 24 hours</span>
+      <form id="qf">
+        <h2>Get your free roof quote</h2>
+        <p class="sub">Three quick steps. Includes a free video inspection of your roof.</p>
+        <div class="bar"><i class="on"></i><i></i><i></i></div>
+
+        <div class="stepq on" data-s="0">
+          <div class="q">What do you need?</div>
+          <div class="opts">
+            <label><input type="radio" name="need" value="New roof" checked><span><em>&#127968;</em>New roof</span></label>
+            <label><input type="radio" name="need" value="Repair"><span><em>&#128295;</em>Repair or leak</span></label>
+            <label><input type="radio" name="need" value="Storm damage"><span><em>&#127786;</em>Storm damage</span></label>
+            <label><input type="radio" name="need" value="Inspection"><span><em>&#127909;</em>Video inspection</span></label>
+          </div>
+        </div>
+
+        <div class="stepq" data-s="1">
+          <div class="q">What's on your roof now?</div>
+          <div class="opts">
+            <label><input type="radio" name="roof" value="Shingle" checked><span>Shingle</span></label>
+            <label><input type="radio" name="roof" value="Metal"><span>Metal</span></label>
+            <label><input type="radio" name="roof" value="Tile"><span>Tile</span></label>
+            <label><input type="radio" name="roof" value="Flat"><span>Flat or commercial</span></label>
+          </div>
+          <label class="fld">ZIP code<input name="zip" inputmode="numeric" maxlength="5" placeholder="33556"></label>
+        </div>
+
+        <div class="stepq" data-s="2">
+          <div class="q">Where should we send your quote?</div>
+          <label class="fld">Name<input name="name" autocomplete="name" placeholder="Your name"></label>
+          <div class="two">
+            <label class="fld">Phone<input name="phone" type="tel" autocomplete="tel" placeholder="(727) 555-0123"></label>
+            <label class="fld">Email<input name="email" type="email" autocomplete="email" placeholder="you@email.com"></label>
+          </div>
+        </div>
+
+        <div class="nav-q" style="margin-top:16px"><button type="button" class="btn back" id="bk" style="display:none">Back</button><button type="submit" class="btn btn-b" id="nx">Next</button></div>
+        <p class="fine" style="margin-top:10px">No obligation. Ask about financing and the November special.</p>
+      </form>
+      <div class="done" id="done"><svg width="56" height="56" viewBox="0 0 56 56"><circle cx="28" cy="28" r="28" fill="#e6f4ec"/><path d="m17 29 7 7 15-16" fill="none" stroke="#1f8a4c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Request received</b><span style="color:var(--muted)">In the live site this goes straight to the Sharpe office, with a reply inside 24 hours. For anything urgent, call 727-375-7055.</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="creds">
+  <div class="wrap">
+    <div class="cr"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#026aa6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></div><div><b>GAF Master Elite</b><span>Certified contractor</span></div></div>
+    <div class="cr"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#026aa6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg></div><div><b>BBB A+ rated</b><span>Better Business Bureau</span></div></div>
+    <div class="cr"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#026aa6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div><div><b>Licensed &amp; insured</b><span>Florida roofing contractor</span></div></div>
+    <div class="cr"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#026aa6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg></div><div><b>Easy financing</b><span>Spread the cost</span></div></div>
+    <div class="cr"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#026aa6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12 12 4l9 8M6 10v10h12V10"/></svg></div><div><b>All roof types</b><span>Shingle, metal, tile, flat</span></div></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="head"><div><div class="eyebrow">What we do</div><h2>Homes, businesses and everything in between.</h2></div><p>Residential, commercial and multifamily roofing, plus exterior work, all from one Bay Area team.</p></div>
+    <div class="svc" id="svc"></div>
+  </div>
+</section>
+
+<div class="wrap" style="padding-bottom:96px">
+  <div class="offer">
+    <div class="pct">10%<small>OFF</small></div>
+    <div><h2>November special on roof replacements.</h2><p>Book your free inspection this month and save 10% on a full replacement. Financing options available too.</p><span class="exp">Offer ends November 30</span></div>
+    <a class="btn btn-sun" href="#quote">Claim the special</a>
+  </div>
+</div>
+
+<section class="proc" id="process">
+  <div class="wrap">
+    <div class="head"><div><div class="eyebrow">How it works</div><h2>You're only a few steps from a new roof.</h2></div><p>No pushy sales. A consultant walks your roof, explains your options and gives you a clear price.</p></div>
+    <div class="steps">
+      <div class="st"><div class="n">1</div><h3>Request a quote</h3><p>Use the form or call. We reply to every request within 24 hours.</p></div>
+      <div class="st"><div class="n">2</div><h3>Free video inspection</h3><p>See exactly what we see on your roof, with no guesswork and no ladder for you.</p></div>
+      <div class="st"><div class="n">3</div><h3>Meet the Sharpe family</h3><p>Your consultant talks you through materials, timing and financing options.</p></div>
+      <div class="st"><div class="n">4</div><h3>Sign and we start</h3><p>Your new roof goes on, the site is cleaned daily, and your warranty arrives when it's done.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="head"><div><div class="eyebrow">Reviews</div><h2>291 neighbors can't all be wrong.</h2></div><div class="rv-top"><b>4.8</b><div><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><br><span style="color:var(--muted)">291 Google reviews</span></div></div></div>
+  </div>
+  <div class="rows">
+    <div class="row"><div class="track" id="r1"></div></div>
+    <div class="row r"><div class="track" id="r2"></div></div>
+  </div>
+</section>
+
+<div class="wrap duo" style="padding-bottom:96px">
+  <div class="storm">
+    <div class="eyebrow">Florida Home Storm Defense</div>
+    <h2>A roof that's ready before hurricane season, not after.</h2>
+    <p>Sharpe installs storm defense roofing systems built for Florida weather, and checks your roof after the big ones.</p>
+    <q>"A hurricane came through almost a year to the day that Sharpe Roofing replaced my roof. Multiple tree limbs fell on the roof. I called Sharpe Roofing to request an assessment..."<b>Wes Eaves, Google review</b></q>
+  </div>
+  <div class="grant">
+    <div class="eyebrow">Help with the cost</div>
+    <h3>Financing and the My Safe Florida Home program.</h3>
+    <p>A new roof is a big decision. Ask your consultant about easy financing, and whether your home qualifies for help through the My Safe Florida Home program.</p>
+    <p style="font-style:italic">"It was a big financial decision but with Mike's help and reassurance, and help from MSFH program, I have peace of mind." <b style="font-style:normal">Lisa Malerba</b></p>
+    <a class="btn btn-n" href="#quote" style="align-self:flex-start;margin-top:auto">Ask about financing</a>
+  </div>
+</div>
+
+<section id="team" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><div><div class="eyebrow">Our Sharpe family</div><h2>The people who'll actually be at your home.</h2></div><p>Local, long-serving and named in review after review.</p></div>
+    <div class="team">
+      <div class="tm"><div class="av">WE</div><b>West Edwards</b><span>President</span><p>25 years serving Tampa Bay homes.</p></div>
+      <div class="tm"><div class="av">JM</div><b>Jackson Murphy</b><span>Vice President</span><p>In the Tampa area for over 27 years.</p></div>
+      <div class="tm"><div class="av">AB</div><b>Abbey Byrd</b><span>VP of Administration</span><p>Keeps every job on track, start to finish.</p></div>
+      <div class="tm"><div class="av">MS</div><b>Mike Sandlin</b><span>Sales Consultant</span><p>Navy veteran who loves educating homeowners.</p></div>
+      <div class="tm"><div class="av">BE</div><b>Brooks Edwards</b><span>Sales Consultant</span><p>Leads the roof repair division.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="areas" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><div><div class="eyebrow">Service areas</div><h2>Proudly serving the Bay Area.</h2></div><p>Based in Odessa, working across three counties.</p></div>
+    <div class="areas">
+      <div class="ar"><h3>Hillsborough County</h3><p>Tampa, Lutz and the communities around them.</p></div>
+      <div class="ar"><h3>Pasco County</h3><p>Odessa, New Port Richey and north to the county line.</p></div>
+      <div class="ar"><h3>Pinellas County</h3><p>St. Pete, Clearwater and the beaches.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="final">
+  <div class="wrap">
+    <h2>Find out what your roof really needs.</h2>
+    <p>Free video inspection and quote. We reply within 24 hours.</p>
+    <div class="cta-row"><a class="btn btn-sun" href="#quote">Get my free quote</a><a class="btn btn-wl" href="tel:+17273757055">Call 727-375-7055</a></div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap f-top">
+    <div class="f-brand">
+      <a class="logo" href="#top">
+        <svg width="46" height="46" viewBox="0 0 46 46" aria-hidden="true"><rect width="46" height="46" rx="12" fill="#0a2850"/><path d="M7 27 23 12l16 15" fill="none" stroke="#0581c7" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 23 23 14l10 9" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 26v9h16v-9" fill="none" stroke="#fff" stroke-width="3.4" stroke-linejoin="round"/></svg>
+        <span><b>SHARPE ROOFING</b><small>Serving Tampa Bay since 2006</small></span>
+      </a>
+      <p>Residential, commercial and multifamily roofing across Hillsborough, Pasco and Pinellas. GAF Master Elite certified.</p>
+      <a class="f-call" href="tel:+17273757055"><small>Phones answered 24/7</small><b>727-375-7055</b></a>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Roof replacement</a></li>
+        <li><a href="#services">Roof repair</a></li>
+        <li><a href="#services">Free video inspection</a></li>
+        <li><a href="#services">Storm defense systems</a></li>
+        <li><a href="#services">Commercial roofing</a></li>
+        <li><a href="#services">Exterior services</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#team">Our team</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#process">How it works</a></li>
+        <li><a href="#areas">Service areas</a></li>
+        <li><a href="#quote">Financing</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Visit or call</h4>
+      <ul class="f-contact">
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7cc6f2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>11206 Challenger Ave<br>Odessa, FL 33556</span></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7cc6f2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><a href="tel:+17273757055">727-375-7055</a></li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7cc6f2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4m8-4v4"/></svg><a href="#quote">Book a free inspection</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap badges">
+    <span><b>&#9733; 4.8</b> 291 Google reviews</span>
+    <span>&#10003; GAF Master Elite</span>
+    <span>&#10003; BBB A+</span>
+    <span>&#10003; Licensed &amp; insured</span>
+    <span>&#10003; Since 2006</span>
+  </div>
+  <div class="wrap f-bot">
+    <span>&copy; 2026 Sharpe Roofing. Odessa, Florida.</span>
+    <span>Concept by <a href="https://www.matthewdenton.co.za">matthewdenton.co.za</a></span>
+  </div>
+</footer>
+<a class="btn btn-b callfab" href="tel:+17273757055">Call now</a>
+
+<script>
+const SVC=[
+ ['Roof replacement','Shingle, metal, tile and flat roofs, installed by a GAF Master Elite crew with a warranty on completion.','M3 12 12 4l9 8M6 10v10h12V10M10 20v-5h4v5',true],
+ ['Roof repair','Leaks, lifted shingles and storm wear fixed fast. Reviews mention an estimate Friday and a fix by Monday.','M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.5-.5-2.5z'],
+ ['Free video inspection','A recorded walk of your roof so you can see the problem for yourself before you decide anything.','M15 10l5-3v10l-5-3M3 7h12v10H3z'],
+ ['Storm defense systems','Florida Home Storm Defense roofing, built to hold up through hurricane season.','M7 15a4 4 0 0 1 .5-8A6 6 0 0 1 19 9a3 3 0 0 1-1 6zM11 15l-2 4m6-4-2 4'],
+ ['Commercial and multifamily','Roof systems for businesses, HOAs and multi-unit buildings, led by our commercial team.','M4 20V8h6v12M10 20V4h10v16M13 8h4m-4 4h4m-4 4h4'],
+ ['Exterior services','Gutters and the rest of the outside of your home, handled by the same people you already trust.','M3 6h18l-2 4H5zM7 10v9m10-9v9']];
+document.getElementById('svc').innerHTML=SVC.map(([h,p,d,f])=>`<div class="s${f?' big':''}"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="${f?'#fff':'#026aa6'}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg></div><h3>${h}</h3><p>${p}</p><a href="#quote">Get a quote &rarr;</a></div>`).join('');
+
+// Five-star Google reviews, quoted from Google Maps (shortened)
+const R=[
+ ['Estrella Woeckner','West Edwards personally came to our home and walked the property, sharing information and suggestions... everything went exactly as planned.'],
+ ['Sisel Peter','Abbey was especially helpful throughout the process. She explained everything clearly, kept me updated, and made sure everything was taken care of from start to finish.'],
+ ['Julie M','We had our entire roof replaced. The crew were amazingly fast, hardworking, efficient and excellent at cleaning up each day.'],
+ ['Renee Santana','The entire process was smooth from start to finish. Their team was professional, punctual, and clearly takes pride in their work.'],
+ ['Kayla Mason','I had an estimate on Friday and the guys fixed the problem by Monday. They even went above and beyond to blow off all the leaves out of my gutters and my roof.'],
+ ['Sally Shannon','Mike, the sales rep from Sharpe Roofing was knowledgeable and patient to explain the details and make suggestions.'],
+ ['Joseph Offerman','From the initial consult to the actual work being done, to the follow up... it has exceeded anything we expected.'],
+ ['Ron Ripple','The team were on time and cleaned any trash/scraps up as well! Brooks is very good and the cost was very reasonable!'],
+ ['Carla J Schaffer','I just recently had a new roof put on and Sharpe was great and easy to work with.'],
+ ['Leah','I am a property manager in the Tampa Bay Area... I came across Sharpe Roofing, I was put in contact with Brooks.']];
+const card=([n,t])=>`<figure class="rv"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><q>"${t}"</q><cite><i>${n[0]}</i>${n} <span>· Google</span></cite></figure>`;
+const a=R.slice(0,5),b=R.slice(5);
+document.getElementById('r1').innerHTML=[...a,...a].map(card).join('');
+document.getElementById('r2').innerHTML=[...b,...b].map(card).join('');
+
+// three-step quote form
+let step=0;const steps=[...document.querySelectorAll('.stepq')],bars=[...document.querySelectorAll('.bar i')],nx=document.getElementById('nx'),bk=document.getElementById('bk');
+function show(){steps.forEach((s,i)=>s.classList.toggle('on',i===step));bars.forEach((b,i)=>b.classList.toggle('on',i<=step));bk.style.display=step?'flex':'none';nx.textContent=step===2?'Send my quote request':'Next'}
+bk.onclick=()=>{step--;show()};
+document.getElementById('qf').onsubmit=e=>{e.preventDefault();if(step<2){step++;show();return}
+ const f=e.target;if(!f.name.value.trim()||!f.phone.value.trim()){(f.name.value.trim()?f.phone:f.name).focus();return}
+ f.style.display='none';document.getElementById('done').style.display='block'};
+</script>
+</body>
+</html>
