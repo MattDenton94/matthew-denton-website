@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Jakarta',sans-serif;font-weight:500;background:#ccc}
+.ad{position:relative;overflow:hidden}
+.sq{width:1080px;height:1080px}.st{width:1080px;height:1920px}
+h1{font-weight:800;letter-spacing:-.04em;line-height:.98}
+.logo{display:flex;align-items:center;gap:16px}
+.logo .m{width:70px;height:70px;border-radius:18px;background:#18204a;display:grid;place-items:center}
+.logo b{display:block;font-weight:800;font-size:40px;line-height:1;letter-spacing:-.03em}
+.logo small{display:block;font-size:17px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#ff8a80;margin-top:6px}
+.stars{color:#f2a900;letter-spacing:6px}
+/* herringbone block paving */
+.pave{position:absolute;background-color:#8f8a82;background-image:
+ linear-gradient(45deg,#7d786f 25%,transparent 25%,transparent 75%,#7d786f 75%),
+ linear-gradient(-45deg,#a29d94 25%,transparent 25%,transparent 75%,#a29d94 75%);
+ background-size:80px 80px;background-position:0 0,40px 40px}
+.pave::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent 0 38px,rgba(0,0,0,.18) 38px 40px),repeating-linear-gradient(-45deg,transparent 0 38px,rgba(0,0,0,.18) 38px 40px)}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><symbol id="mk" viewBox="0 0 26 26"><path d="M3 22 11 4h4l8 18" fill="none" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"/><path d="M13 7v3m0 3v3m0 3v3" stroke="#ff8a80" stroke-width="2.4" stroke-linecap="round"/></symbol></svg>
+
+<!-- AD 1: feed, neighbours -->
+<div class="ad sq" id="ad1" style="background:#18204a;color:#fff">
+  <div class="pave" style="left:0;right:0;bottom:0;height:330px"></div>
+  <div style="position:absolute;left:0;right:0;bottom:330px;height:10px;background:#c8322b"></div>
+  <div style="position:absolute;left:80px;top:80px" class="logo"><span class="m" style="background:#232d63"><svg width="40" height="40"><use href="#mk"/></svg></span><span><b>Worsley</b><small>Driveways &amp; Patios</small></span></div>
+  <div style="position:absolute;left:80px;right:80px;top:240px">
+    <h1 style="font-size:116px">Driveways your neighbours <span style="color:#ff8a80">stop and photograph.</span></h1>
+  </div>
+  <div style="position:absolute;left:80px;right:80px;bottom:80px;display:flex;justify-content:space-between;align-items:center">
+    <div style="background:rgba(24,32,74,.92);border-radius:18px;padding:18px 24px"><div class="stars" style="font-size:36px">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div style="font-size:28px;font-weight:700;margin-top:4px">4.8 from 169 reviews</div></div>
+    <div style="background:#c8322b;padding:28px 40px;font-size:36px;font-weight:800;border-radius:16px">Free quote &rarr;</div>
+  </div>
+</div>
+
+<!-- AD 2: story, quote is the price -->
+<div class="ad st" id="ad2" style="background:#efece6;color:#141a33">
+  <div class="pave" style="left:0;right:0;top:0;height:250px;opacity:.6"></div>
+  <div style="position:absolute;left:90px;top:300px;color:#18204a" class="logo"><span class="m"><svg width="40" height="40"><use href="#mk"/></svg></span><span><b>Worsley</b><small style="color:#c8322b">Driveways &amp; Patios</small></span></div>
+  <div style="position:absolute;left:90px;right:90px;top:460px">
+    <h1 style="font-size:132px;color:#18204a">The quote<br>is the price.</h1>
+    <p style="font-size:46px;line-height:1.3;margin-top:34px;color:#5a6075">Free site survey from Pat, a clear quote, and no hidden costs on your new drive or patio.</p>
+    <div style="margin-top:56px;background:#18204a;color:#fff;border-radius:28px;padding:44px">
+      <div class="stars" style="font-size:44px">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p style="font-size:44px;line-height:1.3;margin-top:18px;font-weight:700">"The quote given was the price we paid and the drive way looks fabulous."</p>
+      <p style="font-size:30px;color:#a7aed0;margin-top:20px;font-weight:700">Charley Parry, Google review</p>
+    </div>
+  </div>
+</div>
+
+<!-- AD 3: review, morning updates -->
+<div class="ad sq" id="ad3" style="background:#c8322b;color:#fff">
+  <div style="position:absolute;left:80px;top:60px;font-weight:800;font-size:320px;line-height:1;color:rgba(255,255,255,.25)">&ldquo;</div>
+  <div style="position:absolute;left:80px;right:80px;top:280px">
+    <div class="stars" style="font-size:52px;color:#fff">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <h1 style="font-size:84px;line-height:1.05;margin-top:26px;letter-spacing:-.035em">"A message from Patrick every morning let me know when to expect the team."</h1>
+    <p style="font-size:32px;color:#ffe0dd;margin-top:28px;font-weight:700">Liz Page, Google review</p>
+  </div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:190px;background:#18204a;display:flex;align-items:center;justify-content:space-between;padding:0 80px">
+    <div class="logo"><span class="m" style="background:#232d63;width:62px;height:62px"><svg width="36" height="36"><use href="#mk"/></svg></span><span><b style="font-size:36px">Worsley</b><small>Driveways &amp; Patios</small></span></div>
+    <div style="text-align:right"><div style="font-size:26px;color:#a7aed0;font-weight:700">Free site survey</div><div style="font-weight:800;font-size:46px;letter-spacing:-.03em">0161 706 0851</div></div>
+  </div>
+</div>
+</body></html>
