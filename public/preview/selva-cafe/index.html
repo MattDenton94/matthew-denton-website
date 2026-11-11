@@ -43,6 +43,8 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:7
 .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,26,19,.15) 0%,rgba(10,26,19,.35) 45%,rgba(10,26,19,.88) 100%)}
 .hero .wrap{position:relative;z-index:2;padding:0 0 64px;display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:end}
+.hero .ey{text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.hero p{text-shadow:0 1px 8px rgba(0,0,0,.4)}
 .hero h1{font-size:clamp(3rem,7.4vw,6.4rem)}
 .hero p{font-size:1.15rem;color:#e3ebe5;max-width:30em;margin:18px 0 28px}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap}
@@ -251,18 +253,6 @@ footer ul a{text-decoration:none;color:#d6e4db}footer ul a:hover{color:#fff}
   </div>
 </section>
 
-<section>
-  <div class="wrap toak">
-    <div class="ph"><img src="https://selvacafe.co.za/wp-content/uploads/2024/05/Selva-Coffee-Co-Whole-day-Breakfast-Menu-.png" alt="Selva breakfast platter"></div>
-    <div class="tx">
-      <span class="ey">Made for sharing</span>
-      <h2>Two of a Kind</h2>
-      <p>Four eggs, sausages, macon, mushrooms, spicy beans, avo, cream cheese, salmon, bread and chips. Then French toast with seasonal fruit and vanilla ice cream. Plus two cappuccinos, flat whites or americanos.</p>
-      <div class="price">R520</div>
-      <q>"We had the Two of a Kind, and wow... it was fresh, flavourful and absolutely amazing to look at." Ishmaeel Behardien, Google</q>
-    </div>
-  </div>
-</section>
 
 <section id="events" style="padding-top:0">
   <div class="wrap">
@@ -288,6 +278,19 @@ footer ul a{text-decoration:none;color:#d6e4db}footer ul a:hover{color:#fff}
   </div>
 </section>
 
+<section style="padding-bottom:0">
+  <div class="wrap toak">
+    <div class="ph"><img src="https://selvacafe.co.za/wp-content/uploads/2024/05/Selva-Coffee-Co-Whole-day-Breakfast-Menu-.png" alt="Selva breakfast platter"></div>
+    <div class="tx">
+      <span class="ey">Made for sharing</span>
+      <h2>Two of a Kind</h2>
+      <p>Four eggs, sausages, macon, mushrooms, spicy beans, avo, cream cheese, salmon, bread and chips. Then French toast with seasonal fruit and vanilla ice cream. Plus two cappuccinos, flat whites or americanos.</p>
+      <div class="price">R520</div>
+      <q>"We had the Two of a Kind, and wow... it was fresh, flavourful and absolutely amazing to look at." Ishmaeel Behardien, Google</q>
+    </div>
+  </div>
+</section>
+
 <section id="nursery">
   <div class="wrap nursery">
     <div>
@@ -296,7 +299,7 @@ footer ul a{text-decoration:none;color:#d6e4db}footer ul a:hover{color:#fff}
       <p>The plants around you aren't just for show. Our curated nursery has individually sourced plants for sale, and we'll pot them up and wrap them in-store. The perfect gift for someone you love, or a lovely spoil for yourself.</p>
       <a class="btn btn-j" href="#visit" style="margin-top:22px">Come and choose one</a>
     </div>
-    <div class="leaves"><img src="https://selvacafe.co.za/wp-content/uploads/2024/05/Selva-Coffee-Co-Lunch-Menu-1.png" alt="Burger among the plants at Selva"></div>
+    <div class="leaves"><img src="https://selvacafe.co.za/wp-content/uploads/2024/05/Selva-Cafe-Co-Store.jpg" alt="Hanging plants inside Selva" style="object-position:22% 50%"></div>
   </div>
 </section>
 
@@ -404,7 +407,7 @@ const ot=document.getElementById('openTxt');if(open){ot.textContent='Open now, u
 
 // reservation times
 const rdate=document.getElementById('rdate'),rtime=document.getElementById('rtime');
-const iso=x=>x.toISOString().slice(0,10);rdate.min=iso(now);rdate.value=iso(now);
+const iso=x=>x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0');let start=new Date(now);if(mins>toM(H[d][2])-60)start.setDate(start.getDate()+1);rdate.min=iso(start);rdate.value=iso(start);
 function times(){const day=new Date(rdate.value+'T12:00').getDay(),[,o,c]=H[day];const out=[];for(let m=toM(o);m<=toM(c)-60;m+=30){if(day===5&&m>=toM('12:00')&&m<toM('13:30'))continue;out.push(String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0'))}rtime.innerHTML=out.map(t=>`<option>${t}</option>`).join('')}
 rdate.onchange=times;times();
 document.getElementById('rf').onsubmit=e=>{e.preventDefault();e.target.style.display='none';document.getElementById('done').style.display='block'};
