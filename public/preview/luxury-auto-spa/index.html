@@ -16,7 +16,8 @@ a{color:inherit}
 img{display:block;max-width:100%}
 .wrap{width:min(1220px,100% - 40px);margin-inline:auto}
 h1,h2,h3{font-family:'Syne','Inter',sans-serif;font-weight:700;line-height:1;letter-spacing:-.03em}
-body{overflow-x:hidden}
+html,body{overflow-x:clip}
+.drives{contain:paint}
 .tag{display:inline-flex;align-items:center;gap:10px;font-size:.76rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
 .tag::before{content:"";width:24px;height:2px;background:currentColor}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 .98rem 'Inter';border-radius:4px;padding:15px 24px;text-decoration:none;border:0;cursor:pointer;letter-spacing:.02em;transition:transform .15s,background .15s}
@@ -118,7 +119,8 @@ section{padding:100px 0}
 .f input:focus,.f select:focus{outline:2px solid var(--red);border-color:transparent}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .chk{display:flex;flex-wrap:wrap;gap:8px}
-.chk input{position:absolute;opacity:0}
+.chk label{position:relative}
+.chk input{position:absolute;opacity:0;left:0;top:0;width:1px;height:1px}
 .chk span{display:block;border:1.5px solid #dddcd8;border-radius:999px;padding:8px 14px;font-weight:600;font-size:.88rem;cursor:pointer;background:#fafaf8}
 .chk input:checked+span{background:var(--ink);color:#fff;border-color:var(--ink)}
 .f .btn{width:100%;padding:16px;font-size:1.02rem}
