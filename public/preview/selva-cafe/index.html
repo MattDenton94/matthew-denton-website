@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Selva Café &amp; Co. | A fully halal jungle café in Harfield Village</title>
+<meta name="description" content="Concept homepage for Selva Café & Co., Harfield Village, Claremont. Fully halal whole-day breakfasts, burgers, specialty coffee, fresh juices and a plant nursery. 4.6 from 739 Google reviews.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--jungle:#143326;--leaf:#2c5e45;--moss:#3f7a5b;--sage:#dfe7d8;--cream:#f6f1e7;--card:#fffdf8;--terra:#b8583a;--terra-l:#e9a07f;--ink:#142019;--muted:#56645a;--line:#e3dccd;--star:#e5a00d}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.02;letter-spacing:-.01em}
+h1 em,h2 em{font-style:italic}
+.ey{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--terra)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 1rem 'Inter';border-radius:999px;padding:15px 24px;text-decoration:none;border:0;cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-t{background:var(--terra);color:#fff}.btn-t:hover{background:#9c4830}
+.btn-j{background:var(--jungle);color:#fff}
+.btn-w{background:#fff;color:var(--jungle)}
+.btn-gl{border:1.5px solid rgba(255,255,255,.6);color:#fff}
+.concept{background:#0c1f17;color:#a9bcb0;text-align:center;font-size:.78rem;padding:7px 16px}
+.concept a{color:var(--terra-l);font-weight:700;text-decoration:none}
+
+nav{position:sticky;top:0;z-index:40;background:rgba(246,241,231,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px;gap:20px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo img{width:54px;height:54px;object-fit:contain}
+.logo b{font-family:'DM Serif Display';font-weight:400;font-size:1.55rem;line-height:1}
+.logo small{display:block;font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.links{display:flex;gap:26px;font-weight:500;font-size:.94rem}
+.links a{text-decoration:none}.links a:hover{color:var(--terra)}
+@media (max-width:1000px){.links{display:none}}
+@media (max-width:520px){.logo small{display:none}nav .btn{padding:11px 16px;font-size:.9rem;white-space:nowrap}}
+
+/* hero */
+.hero{position:relative;min-height:min(86vh,760px);display:grid;align-items:end;color:#fff;overflow:hidden;background:var(--jungle)}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,26,19,.15) 0%,rgba(10,26,19,.35) 45%,rgba(10,26,19,.88) 100%)}
+.hero .wrap{position:relative;z-index:2;padding:0 0 64px;display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:end}
+.hero h1{font-size:clamp(3rem,7.4vw,6.4rem)}
+.hero p{font-size:1.15rem;color:#e3ebe5;max-width:30em;margin:18px 0 28px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.hcard{background:rgba(255,253,248,.95);color:var(--ink);border-radius:20px;padding:22px 24px;display:grid;gap:12px}
+.hcard .r{display:flex;align-items:center;gap:12px}
+.hcard .r b{font-family:'DM Serif Display';font-size:2.4rem;line-height:1}
+.hcard .st{color:var(--star);letter-spacing:2px}
+.hcard small{color:var(--muted);font-size:.84rem}
+.open{display:flex;align-items:center;gap:8px;font-size:.88rem;font-weight:600;border-top:1px solid var(--line);padding-top:12px}
+.open i{width:9px;height:9px;border-radius:50%;background:#2f9e5b;box-shadow:0 0 0 4px rgba(47,158,91,.18)}
+.open.closed i{background:#b0b7b2;box-shadow:none}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.hcard{max-width:360px}}
+
+.strip{background:var(--jungle);color:#dfe9e2}
+.strip .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:18px 0;font-weight:600;font-size:.95rem}
+.strip span{display:flex;align-items:center;gap:10px}
+.strip span::before{content:"";width:16px;height:16px;background:var(--terra-l);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C7 7 5 11 5 14a7 7 0 0 0 14 0c0-3-2-7-7-12z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C7 7 5 11 5 14a7 7 0 0 0 14 0c0-3-2-7-7-12z'/%3E%3C/svg%3E") center/contain no-repeat}
+@media (max-width:700px){.strip .wrap{justify-content:center}}
+
+section{padding:100px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.head h2{font-size:clamp(2.4rem,5vw,4rem);margin-top:10px;max-width:13em}
+.head p{color:var(--muted);max-width:30em}
+
+/* story */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.story .ph{border-radius:200px 200px 24px 24px;overflow:hidden;aspect-ratio:4/5;background:var(--sage)}
+.story .ph img{width:100%;height:100%;object-fit:cover}
+.story h2{font-size:clamp(2.4rem,4.8vw,3.8rem);margin:12px 0 18px}
+.story p{color:#3d4a42;margin-bottom:14px}
+.story .note{display:inline-flex;gap:10px;align-items:center;background:var(--sage);border-radius:999px;padding:10px 16px;font-weight:600;font-size:.9rem;margin-top:8px}
+@media (max-width:860px){.story{grid-template-columns:1fr}.story .ph{max-width:440px}}
+
+/* menu */
+.menu{background:var(--card);border-block:1px solid var(--line)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.tabs button{font:600 .95rem 'Inter';border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:10px 18px;cursor:pointer;color:var(--ink)}
+.tabs button[aria-selected=true]{background:var(--jungle);border-color:var(--jungle);color:#fff}
+.mgrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:44px;align-items:start}
+.mimg{border-radius:24px;overflow:hidden;aspect-ratio:1;background:var(--sage);position:sticky;top:110px}
+.mimg img{width:100%;height:100%;object-fit:cover;transition:opacity .25s}
+.items{display:grid;gap:0}
+.it{display:grid;grid-template-columns:1fr auto;gap:4px 20px;padding:18px 0;border-bottom:1px dashed var(--line)}
+.it b{font-family:'DM Serif Display';font-weight:400;font-size:1.3rem}
+.it .p{font-weight:700;color:var(--terra);font-size:1.05rem}
+.it span{grid-column:1/-1;color:var(--muted);font-size:.92rem}
+.it .tag{display:inline-block;background:var(--sage);color:var(--jungle);font-size:.7rem;font-weight:700;border-radius:999px;padding:2px 8px;margin-left:8px;vertical-align:middle;letter-spacing:.04em;text-transform:uppercase;font-family:'Inter'}
+.mfoot{margin-top:24px;color:var(--muted);font-size:.9rem}
+@media (max-width:860px){.mgrid{grid-template-columns:1fr}.mimg{position:static;max-width:420px}}
+
+/* two of a kind */
+.toak{display:grid;grid-template-columns:1fr 1fr;background:var(--jungle);color:#fff;border-radius:28px;overflow:hidden}
+.toak .ph{min-height:420px;background:var(--leaf)}
+.toak .ph img{width:100%;height:100%;object-fit:cover}
+.toak .tx{padding:56px;display:flex;flex-direction:column;justify-content:center;gap:16px}
+.toak h2{font-size:clamp(2.4rem,4.6vw,3.6rem)}
+.toak p{color:#cfdcd3}
+.toak .price{font-family:'DM Serif Display';font-size:2.6rem;color:var(--terra-l)}
+.toak q{quotes:none;font-style:italic;color:#e3ebe5;border-left:3px solid var(--terra-l);padding-left:14px}
+.toak .ey{color:var(--terra-l)}
+@media (max-width:860px){.toak{grid-template-columns:1fr}.toak .ph{min-height:300px}.toak .tx{padding:34px}}
+
+/* events */
+.events{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ev{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:10px}
+.ev .ic{width:48px;height:48px;border-radius:14px;background:var(--sage);display:grid;place-items:center;font-size:1.4rem}
+.ev h3{font-size:1.5rem}
+.ev p{color:var(--muted);font-size:.93rem}
+.ev q{quotes:none;font-size:.88rem;font-style:italic;color:#3d4a42;margin-top:auto;padding-top:10px;border-top:1px solid var(--line)}
+.evcta{margin-top:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--sage);border-radius:20px;padding:22px 26px}
+.evcta b{font-family:'DM Serif Display';font-weight:400;font-size:1.5rem}
+@media (max-width:980px){.events{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.events{grid-template-columns:1fr}}
+
+/* coffee club */
+.club{background:var(--jungle);color:#fff}
+.club .head p{color:#bcd0c3}
+.club .ey{color:var(--terra-l)}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tier{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:10px}
+.tier.hot{background:#fffdf8;color:var(--ink);border-color:#fffdf8}
+.tier h3{font-size:1.9rem}
+.tier .cups{font-weight:600;color:#bcd0c3}
+.tier.hot .cups{color:var(--muted)}
+.tier .pr{font-family:'DM Serif Display';font-size:3rem;line-height:1}
+.tier .per{font-size:.9rem;color:#bcd0c3}
+.tier.hot .per{color:var(--muted)}
+.tier ul{list-style:none;display:grid;gap:6px;margin:8px 0 14px;font-size:.93rem}
+.tier li::before{content:"✓ ";color:var(--terra-l);font-weight:700}
+.tier.hot li::before{color:var(--terra)}
+.tier .btn{margin-top:auto}
+.pill{align-self:flex-start;background:var(--terra);color:#fff;font-size:.72rem;font-weight:700;border-radius:999px;padding:4px 10px;letter-spacing:.06em;text-transform:uppercase}
+@media (max-width:900px){.tiers{grid-template-columns:1fr}}
+
+/* nursery */
+.nursery{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.nursery h2{font-size:clamp(2.4rem,4.8vw,3.8rem);margin:12px 0 16px}
+.nursery p{color:#3d4a42}
+.leaves{position:relative;aspect-ratio:1;border-radius:50%;background:var(--sage);overflow:hidden}
+.leaves img{width:100%;height:100%;object-fit:cover}
+@media (max-width:860px){.nursery{grid-template-columns:1fr}.leaves{max-width:380px}}
+
+/* reviews */
+.rv-row{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.track{display:flex;gap:16px;width:max-content;animation:sl 90s linear infinite}
+.rv-row:hover .track{animation-play-state:paused}
+@keyframes sl{to{transform:translateX(calc(-50% - 8px))}}
+.rv{width:380px;flex:none;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.rv .st{color:var(--star);letter-spacing:2px}
+.rv q{quotes:none;font-size:.97rem}
+.rv cite{font-style:normal;font-weight:700;font-size:.9rem;display:flex;align-items:center;gap:10px;margin-top:auto}
+.rv cite i{width:34px;height:34px;border-radius:50%;background:var(--sage);color:var(--jungle);display:grid;place-items:center;font-style:normal;font-family:'DM Serif Display';font-size:1rem}
+.rv cite span{color:var(--muted);font-weight:500}
+@media (max-width:600px){.rv{width:290px}}
+@media (prefers-reduced-motion:reduce){.track{animation:none}.rv-row{overflow-x:auto}}
+.score{display:flex;align-items:center;gap:14px}
+.score b{font-family:'DM Serif Display';font-size:3.6rem;line-height:1}
+.score span{color:var(--muted);font-size:.9rem}
+
+/* visit + reserve */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.vcard,.rcard{border-radius:24px;padding:36px}
+.vcard{background:var(--card);border:1px solid var(--line)}
+.vcard h3,.rcard h3{font-size:2.2rem;margin-bottom:14px}
+.hours{width:100%;border-collapse:collapse;margin:8px 0 22px}
+.hours td{padding:9px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.hours td:last-child{text-align:right;font-weight:600}
+.hours tr.today td{color:var(--terra);font-weight:700}
+.vlinks{display:flex;gap:10px;flex-wrap:wrap}
+.rcard{background:var(--leaf);color:#fff}
+.rcard p{color:#d6e4db;margin-bottom:18px}
+.rf{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rf label{display:grid;gap:5px;font-size:.78rem;font-weight:700;color:#e3ebe5}
+.rf input,.rf select{font:500 1rem 'Inter';padding:13px 14px;border:0;border-radius:12px;background:#fffdf8;color:var(--ink);width:100%}
+.rf input:focus,.rf select:focus{outline:3px solid var(--terra-l)}
+.rf .full{grid-column:1/-1}
+.rf .btn{background:var(--terra);color:#fff;padding:16px}
+.done{display:none;background:#fffdf8;color:var(--ink);border-radius:16px;padding:26px;text-align:center}
+.done b{font-family:'DM Serif Display';font-weight:400;font-size:1.8rem;display:block;margin-bottom:6px}
+@media (max-width:900px){.visit{grid-template-columns:1fr}}
+@media (max-width:460px){.rf{grid-template-columns:1fr}}
+
+footer{background:var(--jungle);color:#a9bcb0;font-size:.92rem}
+.f-top{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px;padding:64px 0 44px}
+.f-brand b{font-family:'DM Serif Display';font-weight:400;font-size:2rem;color:#fff;display:block}
+.f-brand p{margin:12px 0 0;max-width:22em}
+footer h4{color:#fff;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;font-weight:700}
+footer ul{list-style:none;display:grid;gap:9px}
+footer ul a{text-decoration:none;color:#d6e4db}footer ul a:hover{color:#fff}
+.f-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px 0 26px;border-top:1px solid #24493a;font-size:.82rem}
+.f-bot a{color:var(--terra-l);text-decoration:none}
+@media (max-width:900px){.f-top{grid-template-columns:1fr 1fr}}
+.wa{position:fixed;right:18px;bottom:18px;z-index:50;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+<div class="concept">Concept preview made for Selva Café &amp; Co. by <a href="https://www.matthewdenton.co.za">Matthew Denton</a></div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top"><img src="https://selvacafe.co.za/wp-content/uploads/2024/05/Selva-Cafe-Co-Logo-Black.png" alt="Selva Café &amp; Co. logo"><span><b>Selva</b><small>Café &amp; Co · Harfield Village</small></span></a>
+    <div class="links"><a href="#menu">Menu</a><a href="#events">Celebrations</a><a href="#club">Coffee club</a><a href="#nursery">Plant nursery</a><a href="#visit">Visit</a></div>
+    <a class="btn btn-t" href="#reserve">Reserve a table</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <img src="https://selvacafe.co.za/wp-content/uploads/2024/05/Selva-Cafe-Co-Store.jpg" alt="Inside Selva Café, full of hanging plants">
+  <div class="wrap">
+    <div>
+      <div class="ey" style="color:var(--terra-l)">Fully halal café · Harfield Village, Claremont</div>
+      <h1 style="margin-top:14px">A little <em>jungle</em> on 2nd Avenue.</h1>
+      <p>Specialty coffee, whole-day breakfasts and good food, served among a hundred plants. "Selva" means jungle in Portuguese, and once you're inside, you'll see why.</p>
+      <div class="cta-row"><a class="btn btn-t" href="#reserve">Reserve a table</a><a class="btn btn-gl" href="#menu">See the menu</a></div>
+    </div>
+    <div class="hcard">
+      <div class="r"><b>4.6</b><div><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span><br><small>739 Google reviews</small></div></div>
+      <div class="open" id="open"><i></i><span id="openTxt">Open today</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="strip"><div class="wrap"><span>Fully halal</span><span>Whole-day breakfast</span><span>Specialty coffee</span><span>Fresh juices &amp; mocktails</span><span>Plants for sale</span></div></div>
+
+<section>
+  <div class="wrap story">
+    <div class="ph"><img src="https://selvacafe.co.za/wp-content/uploads/2024/05/Selva-Coffee-Co-Coffee-Beverages-1.png" alt="Latte art at Selva"></div>
+    <div>
+      <span class="ey">Our story</span>
+      <h2>Somewhere that feels like home, and like a faraway jungle.</h2>
+      <p>Selva was created to bring friends, family and strangers together. Every dish, from our Selva breakfast to our bennies, burgers and salads, is made with the finest ingredients and "a little bit of this and a little bit of that".</p>
+      <p>Pull up a chair under the hanging plants, order a latte, and stay a while.</p>
+      <span class="note">&#127807; 100% halal, every single dish</span>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="head"><div><span class="ey">Menu</span><h2>Breakfast all day. Coffee always.</h2></div><p>A few favourites from each menu. Ask your waiter about today's bakes.</p></div>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div class="mgrid">
+      <div class="mimg"><img id="mimg" src="" alt=""></div>
+      <div><div class="items" id="items"></div><p class="mfoot" id="mfoot"></p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap toak">
+    <div class="ph"><img src="https://selvacafe.co.za/wp-content/uploads/2024/05/Selva-Coffee-Co-Whole-day-Breakfast-Menu-.png" alt="Selva breakfast platter"></div>
+    <div class="tx">
+      <span class="ey">Made for sharing</span>
+      <h2>Two of a Kind</h2>
+      <p>Four eggs, sausages, macon, mushrooms, spicy beans, avo, cream cheese, salmon, bread and chips. Then French toast with seasonal fruit and vanilla ice cream. Plus two cappuccinos, flat whites or americanos.</p>
+      <div class="price">R520</div>
+      <q>"We had the Two of a Kind, and wow... it was fresh, flavourful and absolutely amazing to look at." Ishmaeel Behardien, Google</q>
+    </div>
+  </div>
+</section>
+
+<section id="events" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><div><span class="ey">Celebrations</span><h2>Birthdays, baby showers and team lunches.</h2></div><p>Bring the whole table. Book ahead and pre-order your food so it's ready when your guests arrive.</p></div>
+    <div class="events">
+      <div class="ev"><div class="ic">&#127874;</div><h3>Birthday breakfasts</h3><p>Sharing platters, muesli bowls and lattes, served family style.</p><q>"Had a great ladies breakfast, celebrating my sister's birthday."</q></div>
+      <div class="ev"><div class="ic">&#127868;</div><h3>Baby showers</h3><p>An intimate, green and beautiful space for the people who matter.</p><q>"From the moment I made the booking right through to the end, everything was so well planned."</q></div>
+      <div class="ev"><div class="ic">&#128188;</div><h3>Office lunches</h3><p>End-of-year lunches and team breakfasts, pre-ordered and on time.</p><q>"End of year lunch for our finance department... I was stuffed."</q></div>
+      <div class="ev"><div class="ic">&#127769;</div><h3>Iftar bookings</h3><p>Gather your people at sunset in a warm, fully halal space.</p><q>"I booked the Iftar for myself and my girls and their service was top tier."</q></div>
+    </div>
+    <div class="evcta"><b>Planning something? Let's make it special.</b><a class="btn btn-j" href="#reserve">Enquire about a group booking</a></div>
+  </div>
+</section>
+
+<section class="club" id="club">
+  <div class="wrap">
+    <div class="head"><div><span class="ey">Selva coffee club</span><h2>Your daily coffee, for less.</h2></div><p>Buy a bundle of cups up front and save every visit. Americano, flat white, cappuccino or tea. Valid for 30 days.</p></div>
+    <div class="tiers">
+      <div class="tier"><h3>Staghorn</h3><span class="cups">10 cups</span><div><span class="pr">R260</span> <span class="per">R26 a cup</span></div><ul><li>Americano, flat white, cappuccino or tea</li><li>Valid for 30 days</li></ul><a class="btn btn-gl" href="#reserve">Get Staghorn</a></div>
+      <div class="tier hot"><span class="pill">Best value</span><h3>Ficus</h3><span class="cups">15 cups</span><div><span class="pr">R300</span> <span class="per">R20 a cup</span></div><ul><li>Americano, flat white, cappuccino or tea</li><li>Valid for 30 days</li></ul><a class="btn btn-t" href="#reserve">Get Ficus</a></div>
+      <div class="tier"><h3>Macho</h3><span class="cups">20 cups</span><div><span class="pr">R450</span> <span class="per">R22.50 a cup</span></div><ul><li>Americano, flat white, cappuccino or tea</li><li>Valid for 30 days</li></ul><a class="btn btn-gl" href="#reserve">Get Macho</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="nursery">
+  <div class="wrap nursery">
+    <div>
+      <span class="ey">The Selva nursery</span>
+      <h2>Take a little jungle home.</h2>
+      <p>The plants around you aren't just for show. Our curated nursery has individually sourced plants for sale, and we'll pot them up and wrap them in-store. The perfect gift for someone you love, or a lovely spoil for yourself.</p>
+      <a class="btn btn-j" href="#visit" style="margin-top:22px">Come and choose one</a>
+    </div>
+    <div class="leaves"><img src="https://selvacafe.co.za/wp-content/uploads/2024/05/Selva-Coffee-Co-Lunch-Menu-1.png" alt="Burger among the plants at Selva"></div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap"><div class="head"><div><span class="ey">Reviews</span><h2>739 reviews and counting.</h2></div><div class="score"><b>4.6</b><div><span style="color:var(--star);letter-spacing:2px">&#9733;&#9733;&#9733;&#9733;&#9733;</span><br><span>on Google</span></div></div></div></div>
+  <div class="rv-row"><div class="track" id="rt"></div></div>
+</section>
+
+<section id="visit" style="padding-top:0">
+  <div class="wrap visit">
+    <div class="vcard">
+      <span class="ey">Visit us</span>
+      <h3 style="margin-top:10px">48 2nd Avenue, Harfield Village</h3>
+      <p style="color:var(--muted)">Claremont, Cape Town, 7708</p>
+      <table class="hours" id="hours"></table>
+      <div class="vlinks"><a class="btn btn-j" href="https://maps.google.com/?q=Selva+Cafe+%26+Co+48+2nd+Ave+Claremont" target="_blank" rel="noopener">Get directions</a><a class="btn btn-t" href="tel:+27818084780">081 808 4780</a></div>
+    </div>
+    <div class="rcard" id="reserve">
+      <h3>Reserve a table</h3>
+      <p>We get busy. Book ahead, and for groups, pre-order so your food is ready when you arrive.</p>
+      <form class="rf" id="rf">
+        <label>Name<input name="name" required autocomplete="name" placeholder="Your name"></label>
+        <label>Phone<input name="phone" required type="tel" autocomplete="tel" placeholder="08..."></label>
+        <label>Date<input name="date" type="date" required id="rdate"></label>
+        <label>Time<select name="time" id="rtime"></select></label>
+        <label>Guests<select name="guests"><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7 to 10</option><option>More than 10</option></select></label>
+        <label>Occasion<select name="occ"><option>Just because</option><option>Birthday</option><option>Baby shower</option><option>Work lunch</option><option>Iftar</option><option>Other</option></select></label>
+        <button class="btn full" type="submit">Request my table</button>
+      </form>
+      <div class="done" id="done"><b>Thank you!</b><span style="color:var(--muted)">In the live site this goes straight to Selva on WhatsApp to confirm your table. For today, call 081 808 4780.</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap f-top">
+    <div class="f-brand"><b>Selva Café &amp; Co.</b><p>A fully halal café, coffee shop and plant nursery in historic Harfield Village.</p></div>
+    <div><h4>Explore</h4><ul><li><a href="#menu">Menu</a></li><li><a href="#events">Celebrations</a></li><li><a href="#club">Coffee club</a></li><li><a href="#nursery">Plant nursery</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li><a href="tel:+27818084780">081 808 4780</a></li><li><a href="mailto:info@selvacafe.co.za">info@selvacafe.co.za</a></li><li>48 2nd Ave, Claremont</li></ul></div>
+    <div><h4>Follow</h4><ul><li><a href="https://www.instagram.com/selvacafeco/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.facebook.com/selvacafeco/" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://www.tiktok.com/@selvacafeco" target="_blank" rel="noopener">TikTok</a></li></ul></div>
+  </div>
+  <div class="wrap f-bot"><span>&copy; 2026 Selva Café &amp; Co.</span><span>Concept by <a href="https://www.matthewdenton.co.za">matthewdenton.co.za</a></span></div>
+</footer>
+<a class="wa" href="https://wa.me/27818084780" target="_blank" rel="noopener" aria-label="WhatsApp Selva"><svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.2-.8-2.7-1.1-4.4-3.9-4.6-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.3.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.1z"/></svg></a>
+
+<script>
+const IMG='https://selvacafe.co.za/wp-content/uploads/2024/05/';
+const MENU={
+ 'Breakfast':{img:'Selva-Coffee-Co-Whole-day-Breakfast-Menu-.png',items:[
+  ['Selva Breakfast','R140','Two eggs, two sausages, tomatoes, mushrooms, spicy baked beans, bread and chips','Signature'],
+  ['Two of a Kind','R520','The full sharing platter with French toast and two coffees','For two'],
+  ['Hangry Eggs Benny','R149','Two poached eggs, macon, avo, sautéed spinach, mushrooms and hollandaise'],
+  ['Salmon & Avo Benny','R185','Two poached eggs, salmon, avo and hollandaise on bread'],
+  ['Hulk Omelette','R130','Three eggs with macon, spinach, avo, chilli, cherry tomatoes and feta'],
+  ['Not So Boring Avo on Toast','R135','Avocado, poached egg, salmon and cream cheese']],foot:'Served all day. Add sourdough, avo, salmon and more.'},
+ 'Lunch':{img:'Selva-Coffee-Co-Lunch-Menu-1.png',items:[
+  ['Jungle Burger','R120','Beef or chicken patty, cheese, fried egg and our secret sauce, with chips','Signature'],
+  ['Masala Beef Burger','R145','Masala patty, cheese, egg, avo, chillies, gherkins and red onion'],
+  ['Selva Macho Burger','R175','Double beef or chicken patty with cheese, mushrooms, avo and chillies'],
+  ['Mediterranean Wrap','R140','Braised steak, mixed leaves, avo and feta with tzatziki'],
+  ['Steak, Egg & Chips','R170','Masala steak with two fried eggs, side salad and chips'],
+  ['Fully Loaded Fries','R95','Spicy chips, saucy beef, cheese sauce, chillies and secret sauce']],foot:'Plus toasties, salads, wraps, pasta and kebabs.'},
+ 'Coffee':{img:'Selva-Coffee-Co-Coffee-.png',items:[
+  ['Flat White or Cappuccino','R38','Double shot as standard'],
+  ['Dirty Chai Latte','R60','Spiced chai with a shot of espresso','Favourite'],
+  ['Hazelnut, Vanilla or Caramel Latte','R50','Smooth and sweet'],
+  ['Red Cappuccino','R40','Rooibos, done the cappuccino way'],
+  ['Bar One Mocha','R55','For the sweet tooth'],
+  ['Espresso','R28','Double shot']],foot:'Join the coffee club and pay from R20 a cup.'},
+ 'Juices & mocktails':{img:'Selva-Coffee-Co-Signature-Fresh-Juices-Mocktails-5.png',items:[
+  ['Selva Smash','R45','Apple, lime, cucumber and mint','Signature'],
+  ['Horti-Melon','R60','Watermelon, orange and mint'],
+  ['Odette','R55','Orange, carrot and ginger'],
+  ['Beetle Juice','R50','Apple, beetroot and carrot'],
+  ['Strawberry Daiquiri','R50','Mocktail'],
+  ['Mojito','R50','Mocktail']],foot:'Freshly pressed. Add ginger for R10.'},
+ 'Desserts':{img:'Selva-Coffee-Co-Deserts-4.png',items:[
+  ['Selva Mudslide','R105','Buttery croissant, vanilla ice cream, Oreo crumble, fudgy brownie and chocolate sauce','Signature'],
+  ['Sticky Toffee Pudding','R60','With vanilla ice cream'],
+  ['Chocolate Fudge Brownie','R55','With vanilla ice cream']],foot:'Ask about today\'s fresh bakes, like warm scones with jam and cream.'}};
+const tabs=document.getElementById('tabs'),items=document.getElementById('items'),mimg=document.getElementById('mimg'),mfoot=document.getElementById('mfoot');
+function show(k){[...tabs.children].forEach(b=>b.setAttribute('aria-selected',b.textContent===k));const m=MENU[k];mimg.style.opacity=0;setTimeout(()=>{mimg.src=IMG+m.img;mimg.alt=k+' at Selva';mimg.style.opacity=1},150);items.innerHTML=m.items.map(([n,p,d,t])=>`<div class="it"><b>${n}${t?`<span class="tag">${t}</span>`:''}</b><span class="p">${p}</span><span>${d}</span></div>`).join('');mfoot.textContent=m.foot}
+Object.keys(MENU).forEach(k=>{const b=document.createElement('button');b.type='button';b.role='tab';b.textContent=k;b.onclick=()=>show(k);tabs.appendChild(b)});show('Breakfast');
+
+// Five-star Google reviews (shortened)
+const R=[
+ ['Fatima Hendricks','This wonderful quaint cafe off of 2nd Avenue has a great breakfast variety which is matched perfectly by their wide selection of lattes and the general ambiance.'],
+ ['Rooibos Poppy Gal','A beautiful and fully halaal cafe. The food is delicious, well presented and fresh. We had the freshly baked warm scone served with strawberry jam and fresh cream.'],
+ ['A.H.','Really great fully halaal cafe spot to have breakfast, lunch or just a coffee and a sweet treat. The aesthetic is really amazing with plants everywhere.'],
+ ['Hooman Mohammadi','The food was incredibly fresh and delicious with reasonable price, and the cafe itself is beautifully designed with a peaceful atmosphere.'],
+ ['Muzakkir Paulse','Hospitality, food, customer service was absolutely amazing!!! Najuma made us feel so welcome and at home with her customer service, a real star!'],
+ ['Emma Lalla','I booked the Iftar for myself and my girls and their service was top tier. The ambience is so warm and comforting and I just love the greenery.'],
+ ['Desiree Khan','Best to preorder as they get very busy but the food is worth the wait.'],
+ ['Tasneem Adams','From the moment we walked in, we felt welcomed and well taken care of. The food was absolutely delicious, beautifully presented, and full of flavor.']];
+const card=([n,t])=>`<figure class="rv"><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span><q>"${t}"</q><cite><i>${n[0]}</i>${n} <span>· Google</span></cite></figure>`;
+document.getElementById('rt').innerHTML=[...R,...R].map(card).join('');
+
+// hours + open now (Cape Town time)
+const H=[['Sunday','08:00','13:00'],['Monday','07:00','16:00'],['Tuesday','07:00','16:00'],['Wednesday','07:00','16:00'],['Thursday','07:00','16:00'],['Friday','07:00','16:00'],['Saturday','08:00','15:00']];
+const now=new Date(new Date().toLocaleString('en-US',{timeZone:'Africa/Johannesburg'})),d=now.getDay(),mins=now.getHours()*60+now.getMinutes();
+const toM=s=>{const [h,m]=s.split(':');return +h*60+ +m};
+document.getElementById('hours').innerHTML=[1,2,3,4,5,6,0].map(i=>{const [n,o,c]=H[i];const t=i===5?'07:00 to 12:30, 13:30 to 16:00':o+' to '+c;return `<tr${i===d?' class="today"':''}><td>${n}</td><td>${t}</td></tr>`}).join('');
+let open=mins>=toM(H[d][1])&&mins<toM(H[d][2]);if(d===5&&mins>=toM('12:30')&&mins<toM('13:30'))open=false;
+const ot=document.getElementById('openTxt');if(open){ot.textContent='Open now, until '+(d===5&&mins<toM('12:30')?'12:30':H[d][2])}else{document.getElementById('open').classList.add('closed');const nd=mins<toM(H[d][1])?d:(d+1)%7;ot.textContent=(d===5&&mins>=toM('12:30')&&mins<toM('13:30'))?'Back at 13:30':'Opens '+(nd===d?'today':H[nd][0])+' at '+H[nd][1]}
+
+// reservation times
+const rdate=document.getElementById('rdate'),rtime=document.getElementById('rtime');
+const iso=x=>x.toISOString().slice(0,10);rdate.min=iso(now);rdate.value=iso(now);
+function times(){const day=new Date(rdate.value+'T12:00').getDay(),[,o,c]=H[day];const out=[];for(let m=toM(o);m<=toM(c)-60;m+=30){if(day===5&&m>=toM('12:00')&&m<toM('13:30'))continue;out.push(String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0'))}rtime.innerHTML=out.map(t=>`<option>${t}</option>`).join('')}
+rdate.onchange=times;times();
+document.getElementById('rf').onsubmit=e=>{e.preventDefault();e.target.style.display='none';document.getElementById('done').style.display='block'};
+</script>
+</body>
+</html>
