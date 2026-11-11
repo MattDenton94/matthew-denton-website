@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-ZA"><head><meta charset="utf-8"><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#ccc}
+.ad{position:relative;overflow:hidden}
+.sq{width:1080px;height:1080px}.p45{width:1080px;height:1350px}.st{width:1080px;height:1920px}
+h1,h2,.serif{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:.98;letter-spacing:-.01em}
+em{font-style:italic}
+.logo{display:flex;align-items:center;gap:16px}
+.logo .c{width:76px;height:76px;border-radius:50%;background:#111;color:#fff;display:grid;place-items:center;font:400 22px 'DM Serif Display';letter-spacing:.06em}
+.logo b{font-family:'DM Serif Display';font-weight:400;font-size:40px;line-height:1;display:block}
+.logo small{display:block;font-size:17px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-top:6px;opacity:.75}
+.leaf{position:absolute;pointer-events:none}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute">
+ <symbol id="lf" viewBox="0 0 100 200"><path d="M50 0C88 40 100 100 50 200C0 100 12 40 50 0z"/><path d="M50 10V195" stroke="rgba(0,0,0,.18)" stroke-width="3" fill="none"/></symbol>
+ <symbol id="mon" viewBox="0 0 200 200"><path d="M100 10C150 10 190 50 190 100S150 190 100 190 10 150 10 100 50 10 100 10z"/><path d="M100 100 30 60M100 100 40 150M100 100 170 70M100 100 160 160M100 100V20" stroke="rgba(0,0,0,.22)" stroke-width="10" stroke-linecap="round"/></symbol>
+ <symbol id="cup" viewBox="0 0 200 200"><ellipse cx="100" cy="170" rx="90" ry="16" fill="#e8dfcf"/><path d="M30 70h120l-12 85a20 20 0 0 1-20 17H62a20 20 0 0 1-20-17z" fill="#fffdf8"/><path d="M150 85h12a22 22 0 0 1 0 44h-16" fill="none" stroke="#fffdf8" stroke-width="12"/><ellipse cx="90" cy="70" rx="60" ry="14" fill="#a8693d"/><path d="M90 60c-10 0-14 8-8 12 6 4 16 4 16-2 0-5-8-10-8-10z" fill="#f3e2c7"/></symbol>
+</svg>
+
+<!-- AD 1: feed square, price per cup -->
+<div class="ad sq" id="ad1" style="background:#143326;color:#fff">
+  <svg class="leaf" style="left:-90px;top:-60px;width:360px;height:520px;fill:#2c5e45;transform:rotate(-28deg)"><use href="#lf"/></svg>
+  <svg class="leaf" style="right:-120px;bottom:-110px;width:520px;height:520px;fill:#1f4a37"><use href="#mon"/></svg>
+  <svg class="leaf" style="right:120px;top:-80px;width:220px;height:380px;fill:#3f7a5b;transform:rotate(24deg)"><use href="#lf"/></svg>
+  <div style="position:absolute;left:80px;top:80px" class="logo"><div class="c">SELVA</div><span><b>Selva Coffee Club</b><small>Harfield Village · Claremont</small></span></div>
+  <div style="position:absolute;left:80px;right:80px;top:270px">
+    <div style="font:700 34px Inter;color:#e9a07f;letter-spacing:.06em">YOUR DAILY CAPPUCCINO</div>
+    <h1 style="font-size:250px;margin-top:20px">R20<span style="font-size:90px;color:#cfdcd3"> a cup</span></h1>
+    <p style="font-size:40px;color:#dfe9e2;margin-top:28px;line-height:1.3;max-width:760px">15 cups for R300 with the Ficus bundle. Americano, flat white, cappuccino or tea.</p>
+  </div>
+  <div style="position:absolute;left:80px;right:80px;bottom:80px;display:flex;justify-content:space-between;align-items:center">
+    <div style="font-size:30px;font-weight:600;color:#cfdcd3">Fully halal · 48 2nd Ave</div>
+    <div style="background:#b8583a;color:#fff;padding:26px 42px;border-radius:999px;font-size:34px;font-weight:700">Join the club &rarr;</div>
+  </div>
+</div>
+
+<!-- AD 2: 4:5 feed, plant tiers -->
+<div class="ad p45" id="ad2" style="background:#f6f1e7;color:#142019">
+  <svg class="leaf" style="right:-70px;top:-70px;width:300px;height:460px;fill:#3f7a5b;transform:rotate(30deg)"><use href="#lf"/></svg>
+  <svg class="leaf" style="right:140px;top:-140px;width:200px;height:340px;fill:#2c5e45;transform:rotate(-10deg)"><use href="#lf"/></svg>
+  <div style="position:absolute;left:80px;top:80px;color:#142019" class="logo"><div class="c">SELVA</div><span><b>Selva Café &amp; Co.</b><small>Claremont · Kenilworth</small></span></div>
+  <div style="position:absolute;left:80px;right:80px;top:250px">
+    <h1 style="font-size:132px">Pick your plant.<br><em style="color:#b8583a">Save on coffee.</em></h1>
+    <p style="font-size:36px;color:#56645a;margin-top:26px">Buy a coffee bundle, valid for 30 days.</p>
+    <div style="display:grid;gap:22px;margin-top:50px">
+      <div style="display:flex;justify-content:space-between;align-items:center;background:#fffdf8;border:2px solid #e3dccd;border-radius:28px;padding:32px 40px"><div><div class="serif" style="font-size:58px">Staghorn</div><div style="font-size:28px;color:#56645a;margin-top:6px">10 cups</div></div><div class="serif" style="font-size:72px">R260</div></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;background:#143326;color:#fff;border-radius:28px;padding:32px 40px;position:relative"><div><div class="serif" style="font-size:58px">Ficus</div><div style="font-size:28px;color:#cfdcd3;margin-top:6px">15 cups · just R20 a cup</div></div><div class="serif" style="font-size:72px;color:#e9a07f">R300</div><span style="position:absolute;top:-20px;left:40px;background:#b8583a;color:#fff;font:700 22px Inter;letter-spacing:.06em;border-radius:999px;padding:8px 16px">BEST VALUE</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;background:#fffdf8;border:2px solid #e3dccd;border-radius:28px;padding:32px 40px"><div><div class="serif" style="font-size:58px">Macho</div><div style="font-size:28px;color:#56645a;margin-top:6px">20 cups</div></div><div class="serif" style="font-size:72px">R450</div></div>
+    </div>
+  </div>
+  <div style="position:absolute;left:80px;right:80px;bottom:110px;font-size:30px;font-weight:600;color:#56645a;text-align:center">Americano · flat white · cappuccino · tea &nbsp;|&nbsp; Fully halal</div>
+</div>
+
+<!-- AD 3: story, commuter angle -->
+<div class="ad st" id="ad3" style="background:linear-gradient(180deg,#2c5e45 0%,#143326 70%);color:#fff">
+  <svg class="leaf" style="left:-100px;top:180px;width:300px;height:480px;fill:#3f7a5b;transform:rotate(-30deg)"><use href="#lf"/></svg>
+  <svg class="leaf" style="right:-140px;top:420px;width:460px;height:460px;fill:#1f4a37"><use href="#mon"/></svg>
+  <div style="position:absolute;left:90px;top:300px" class="logo"><div class="c">SELVA</div><span><b>Selva Coffee Club</b><small>Harfield Village</small></span></div>
+  <div style="position:absolute;left:90px;right:90px;top:440px">
+    <h1 style="font-size:124px">Work in Claremont or Kenilworth?</h1>
+    <p style="font-size:50px;line-height:1.25;margin-top:40px;color:#dfe9e2">Your morning coffee just got <em class="serif" style="color:#e9a07f;font-size:62px">a lot cheaper.</em></p>
+    <svg style="display:block;margin:20px 0 0 -10px;width:220px;height:220px"><use href="#cup"/></svg>
+    <div style="display:flex;gap:18px;margin-top:20px;align-items:stretch">
+      <div style="flex:1;background:rgba(255,255,255,.1);border-radius:26px;padding:28px 30px"><div style="font-size:26px;color:#cfdcd3">One cappuccino</div><div class="serif" style="font-size:72px;margin-top:6px;text-decoration:line-through;text-decoration-color:#e9a07f;text-decoration-thickness:5px">R38</div></div>
+      <div style="flex:1;background:#fffdf8;color:#142019;border-radius:26px;padding:28px 30px"><div style="font-size:26px;color:#56645a">With the club</div><div class="serif" style="font-size:72px;margin-top:6px;color:#b8583a">R20</div></div>
+    </div>
+    <div style="font-size:34px;font-weight:600;color:#dfe9e2;margin-top:28px">15 cups for R300 · 48 2nd Ave, Harfield Village</div>
+  </div>
+</div>
+</body></html>
