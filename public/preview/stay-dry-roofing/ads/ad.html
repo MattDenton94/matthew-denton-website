@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#ddd}
+.ad{position:relative;overflow:hidden;color:#fff}
+.sq{width:1080px;height:1080px}.st{width:1080px;height:1920px}
+.ink{background:#0e2430}.sun{background:#ffc93c;color:#0e2430}
+h1{font-family:'Bricolage';font-weight:800;letter-spacing:-.03em;line-height:.95}
+.logo{display:flex;align-items:center;gap:18px;font-family:'Bricolage';font-weight:800;font-size:40px}
+.logo b{color:#8fd0f0}
+.logo small{display:block;font-family:'Inter';font-size:18px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-top:4px}
+.stars{color:#f2a900;letter-spacing:6px}
+.pill{display:inline-flex;align-items:center;gap:14px;border-radius:16px;font-weight:700}
+.rain{position:absolute;inset:0;background-image:repeating-linear-gradient(100deg,rgba(143,208,240,.1) 0 3px,transparent 3px 60px)}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><symbol id="mk" viewBox="0 0 46 46"><rect width="46" height="46" rx="12" fill="#06689a"/><path d="M7 22a16 16 0 0 1 32 0" fill="#8fd0f0"/><path d="M7 22c2.7-2 5.3-2 8 0 2.7-2 5.3-2 8 0 2.7-2 5.3-2 8 0 2.7-2 5.3-2 8 0" fill="none" stroke="#0e2430" stroke-width="1.6"/><path d="M23 22v12a3 3 0 0 1-6 0" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><path d="M23 6v2" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></symbol></svg>
+
+<!-- AD 1: feed, one-day roof -->
+<div class="ad sq ink" id="ad1">
+  <div class="rain"></div>
+  <div style="position:absolute;left:80px;top:80px" class="logo"><svg width="68" height="68"><use href="#mk"/></svg><span>STAY <b>DRY</b> ROOFING<small>Tampa Bay · 30+ years</small></span></div>
+  <div style="position:absolute;left:80px;right:80px;top:250px">
+    <div style="font:700 34px Inter;color:#8fd0f0;letter-spacing:.04em">IN THE MORNING, AN OLD ROOF.</div>
+    <h1 style="font-size:150px;margin-top:22px">By dinner,<br><span style="color:#ffc93c">a new one.</span></h1>
+    <p style="font-size:36px;color:#c6d4db;margin-top:34px;max-width:860px;line-height:1.35">Family-owned GAF Master Elite roofers. Many re-roofs done in a single day.</p>
+  </div>
+  <div style="position:absolute;left:80px;right:80px;bottom:80px;display:flex;justify-content:space-between;align-items:center">
+    <div><div class="stars" style="font-size:40px">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div style="font-size:30px;font-weight:600;margin-top:6px">205 Google reviews</div></div>
+    <div class="pill" style="background:#ffc93c;color:#0e2430;padding:28px 40px;font-size:36px">Free estimate &rarr;</div>
+  </div>
+</div>
+
+<!-- AD 2: story, called back -->
+<div class="ad st sun" id="ad2">
+  <svg style="position:absolute;right:-180px;top:520px;opacity:.13" width="1000" height="1000" viewBox="0 0 100 100"><path d="M5 48a45 45 0 0 1 90 0z" fill="#0e2430"/><path d="M50 48v34a8 8 0 0 1-16 0" fill="none" stroke="#0e2430" stroke-width="5" stroke-linecap="round"/></svg>
+  <div style="position:absolute;left:90px;top:300px" class="logo"><svg width="68" height="68"><use href="#mk"/></svg><span>STAY <b style="color:#06689a">DRY</b> ROOFING<small>Tampa Bay · 30+ years</small></span></div>
+  <div style="position:absolute;left:90px;right:90px;top:460px">
+    <h1 style="font-size:124px">Tired of roofers<br>who never<br>call back?</h1>
+    <div style="margin-top:50px;background:#0e2430;color:#fff;border-radius:28px;padding:44px">
+      <div class="stars" style="font-size:44px">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p style="font-size:44px;line-height:1.3;margin-top:18px;font-weight:600">"They got back to me within 24 hours and were the only company of the first ones I contacted to get back to me."</p>
+      <p style="font-size:30px;color:#a9bfca;margin-top:20px;font-weight:600">Alan Bruce, Google review</p>
+    </div>
+  </div>
+  <div style="position:absolute;left:90px;right:90px;bottom:400px;font-size:40px;font-weight:700">Free estimates · 813-232-9430</div>
+</div>
+
+<!-- AD 3: review -->
+<div class="ad sq" id="ad3" style="background:#f4f1ec;color:#0e2430">
+  <div style="position:absolute;left:80px;top:40px;font-family:'Bricolage';font-weight:800;font-size:360px;line-height:1;color:#06689a">&ldquo;</div>
+  <div style="position:absolute;left:80px;right:80px;top:290px">
+    <div class="stars" style="font-size:52px">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <h1 style="font-size:70px;line-height:1.08;margin-top:28px;letter-spacing:-.02em">He explained exactly what was going on in plain English, and patched it on the spot.</h1>
+    <p style="font-size:34px;color:#56656e;margin-top:30px;font-weight:600">Kevin Ng, Google review</p>
+  </div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:200px;background:#0e2430;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 80px">
+    <div class="logo" style="font-size:36px"><svg width="62" height="62"><use href="#mk"/></svg><span>STAY <b>DRY</b> ROOFING<small>Family owned</small></span></div>
+    <div style="text-align:right"><div style="font-size:28px;color:#a9bfca;font-weight:600">GAF Master Elite</div><div style="font-family:'Bricolage';font-weight:800;font-size:46px">813-232-9430</div></div>
+  </div>
+</div>
+</body></html>
