@@ -92,7 +92,7 @@ section{padding:96px 0}
 .filters{display:flex;gap:8px;flex-wrap:wrap}
 .filters button{font:800 .92rem 'Jakarta';border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:10px 18px;cursor:pointer;color:var(--ink)}
 .filters button[aria-pressed=true]{background:var(--navy);border-color:var(--navy);color:#fff}
-.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:12px}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:12px;grid-auto-flow:dense}
 .gal figure{position:relative;border-radius:16px;overflow:hidden;background:#d9d4ca}
 .gal figure.w{grid-column:span 2}
 .gal figure.t{grid-row:span 2}
@@ -196,7 +196,7 @@ footer ul a{text-decoration:none;color:#d5d9f0}footer ul a:hover{color:#fff}
         <p class="lead">Driveways, patios and garden makeovers across Greater Manchester from Pat and his team. Over 20 years' experience, a free site survey, and a clear quote with no hidden costs.</p>
         <div class="cta-row"><a class="btn btn-red" href="#quote">Get a free quote</a><a class="btn btn-gl" href="#work">See our work</a></div>
         <div class="proof">
-          <div><b>4.8 <span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span></b><small>169 Google reviews</small></div>
+          <div><b>4.8</b><small><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 169 Google reviews</small></div>
           <div><b>20+</b><small>Years' experience</small></div>
           <div><b>Free</b><small>Site survey and quote</small></div>
         </div>
@@ -309,7 +309,7 @@ const P='https://www.worsleydrivewaysandpatios.co.uk/wp-content/uploads/2026/01/
 const GAL=[
  ['10.46.40-12','d','Block paving and tarmac','w'],['10.33.22-1','p','Patio and new lawn','t'],['10.46.41-8','d','Tarmac with paved border',''],['10.33.22-9','p','Indian stone patio',''],
  ['10.46.39-5','d','Tarmac driveway',''],['10.33.21','p','Back garden patio','w'],['10.46.40-7','d','Driveway and garage',''],['10.33.23-1','p','Curved stone path',''],
- ['10.46.41-1','d','Curved block paving','w'],['10.33.22-7','p','Stone patio',''],['10.46.40','d','Front drive',''],['10.46.41-7','d','Tarmac with block edging','']];
+ ['10.46.41-1','d','Curved block paving','w'],['10.33.22-7','p','Stone patio',''],['10.46.40','d','Front drive','w'],['10.46.41-7','d','Tarmac with block edging','w']];
 const gal=document.getElementById('gal');
 gal.innerHTML=GAL.map(([f,c,t,s])=>`<figure class="${s}" data-c="${c}"><img loading="lazy" src="${P}${f}.jpeg" alt="${t}"><figcaption>${t}</figcaption></figure>`).join('');
 document.getElementById('filters').onclick=e=>{const b=e.target.closest('button');if(!b)return;[...b.parentNode.children].forEach(x=>x.setAttribute('aria-pressed',x===b));gal.querySelectorAll('figure').forEach(f=>f.classList.toggle('hide',b.dataset.f!=='all'&&f.dataset.c!==b.dataset.f))};
