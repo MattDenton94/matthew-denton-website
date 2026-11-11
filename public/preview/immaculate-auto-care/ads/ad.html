@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#ccc}
+.ad{position:relative;overflow:hidden}
+.sq{width:1080px;height:1080px}.st{width:1080px;height:1920px}
+h1{font-family:'Sora';font-weight:800;letter-spacing:-.045em;line-height:1}
+.logo{display:flex;align-items:center;gap:16px;line-height:1}
+.logo .mk{width:72px;height:72px;border-radius:20px;background:#08132b;display:grid;place-items:center}
+.logo b{display:block;font-family:'Sora';font-weight:800;font-size:40px;letter-spacing:-.03em}
+.logo small{display:block;font-size:16px;font-weight:700;letter-spacing:.26em;color:#0a6fd6;margin-top:6px}
+.stars{color:#f2a900;letter-spacing:6px}
+.ph{position:absolute;background-size:cover;background-position:center}
+.btn{display:inline-block;background:#0a6fd6;color:#fff;font-weight:700;border-radius:999px}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><symbol id="mk" viewBox="0 0 26 26"><path d="M3 16.5c0-1.6 1-2.6 2.6-3l2.6-.6 2.6-3.6c.6-.8 1.4-1.2 2.4-1.2h4.1c1 0 1.9.5 2.4 1.3l1.6 2.6c1.5.4 2.2 1.4 2.2 2.8v1.7" fill="none" stroke="#1ea2ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="18" r="2.4" fill="none" stroke="#fff" stroke-width="2"/><circle cx="18.5" cy="18" r="2.4" fill="none" stroke="#fff" stroke-width="2"/></symbol></svg>
+
+<!-- AD 1: feed, weekend -->
+<div class="ad sq" id="ad1" style="background:#f3f6fa;color:#0a1630">
+  <div class="ph" style="left:40px;right:40px;top:40px;height:540px;border-radius:40px;background-image:url(gwagon.jpg);background-position:50% 62%"></div>
+  <div style="position:absolute;left:72px;top:72px;background:#fff;border-radius:22px;padding:14px 20px 14px 14px" class="logo"><span class="mk" style="width:60px;height:60px;border-radius:16px"><svg width="36" height="36"><use href="#mk"/></svg></span><span><b style="font-size:32px">Immaculate</b><small style="font-size:13px">AUTO CARE</small></span></div>
+  <div style="position:absolute;left:72px;right:72px;top:628px">
+    <h1 style="font-size:78px">Spend your weekend driving it, <span style="color:#0a6fd6">not washing it.</span></h1>
+  </div>
+  <div style="position:absolute;left:72px;right:72px;bottom:64px;display:flex;justify-content:space-between;align-items:center">
+    <div><div class="stars" style="font-size:34px">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div style="font-size:26px;font-weight:600;color:#33415c;margin-top:4px">4.9 from 126 Google reviews</div></div>
+    <div class="btn" style="font-size:32px;padding:26px 44px">Book now &rarr;</div>
+  </div>
+</div>
+
+<!-- AD 2: story, membership -->
+<div class="ad st" id="ad2" style="background:#08132b;color:#fff">
+  <div style="position:absolute;right:-200px;top:-200px;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(30,162,255,.4),transparent 65%)"></div>
+  <div style="position:absolute;left:90px;top:280px" class="logo"><span class="mk" style="background:#0f1f42"><svg width="42" height="42"><use href="#mk"/></svg></span><span><b>Immaculate</b><small style="color:#7cc8ff">AUTO CARE</small></span></div>
+  <div style="position:absolute;left:90px;right:90px;top:430px">
+    <div style="font:700 28px Inter;letter-spacing:.16em;color:#7cc8ff">PLANT CITY MEMBERSHIP</div>
+    <h1 style="font-size:116px;margin-top:22px">Always looks freshly detailed.</h1>
+  </div>
+  <div class="ph" style="left:90px;right:90px;top:900px;height:470px;border-radius:40px;background-image:url(truck.jpg);background-position:50% 55%"></div>
+  <div style="position:absolute;left:90px;right:90px;top:1410px;display:grid;gap:18px">
+    <div style="background:#0f1f42;border:2px solid #23345e;border-radius:28px;padding:30px 36px;display:flex;justify-content:space-between;align-items:center"><div style="font:700 40px Sora;letter-spacing:-.03em">Exterior plan</div><div style="font:800 52px Sora">$100<span style="font:500 24px Inter;color:#9fb0d0">/mo</span></div></div>
+    <div style="background:#0f1f42;border:2px solid #23345e;border-radius:28px;padding:30px 36px;display:flex;justify-content:space-between;align-items:center"><div style="font:700 40px Sora;letter-spacing:-.03em">Interior plan</div><div style="font:800 52px Sora">$100<span style="font:500 24px Inter;color:#9fb0d0">/mo</span></div></div>
+    <div style="font-size:26px;color:#9fb0d0;text-align:center;margin-top:6px">Starts after your first full detail</div>
+  </div>
+</div>
+
+<!-- AD 3: review -->
+<div class="ad sq" id="ad3" style="background:#0a6fd6;color:#fff">
+  <div style="position:absolute;left:72px;top:64px;font-family:'Sora';font-weight:800;font-size:300px;line-height:1;color:rgba(255,255,255,.18)">&ldquo;</div>
+  <div style="position:absolute;left:72px;right:72px;top:250px">
+    <div class="stars" style="font-size:48px;color:#fff">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <h1 style="font-size:76px;line-height:1.06;margin-top:26px">"My vehicle looks better than when I bought it! Samuel was absolutely wonderful to work with."</h1>
+    <p style="font-size:30px;color:#d6e9fb;margin-top:28px;font-weight:600">Jaclyn, Google review</p>
+  </div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:180px;background:#08132b;display:flex;align-items:center;justify-content:space-between;padding:0 72px">
+    <div class="logo"><span class="mk" style="background:#0f1f42;width:64px;height:64px"><svg width="38" height="38"><use href="#mk"/></svg></span><span><b style="font-size:34px">Immaculate</b><small style="color:#7cc8ff">AUTO CARE</small></span></div>
+    <div style="text-align:right"><div style="font-size:24px;color:#9fb0d0;font-weight:600">Plant City, FL</div><div style="font:700 42px Inter;white-space:nowrap">(813) 708-4393</div></div>
+  </div>
+</div>
+</body></html>
