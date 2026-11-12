@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#ccc}
+.ad{position:relative;overflow:hidden}
+.sq{width:1080px;height:1080px}.st{width:1080px;height:1920px}
+h1{font-family:'Archivo';font-weight:800;letter-spacing:-.035em;line-height:.98}
+.logo{display:flex;align-items:center;gap:16px;line-height:1}
+.logo .mk{width:68px;height:68px;border-radius:14px;background:#1d252c;display:grid;place-items:center}
+.logo b{display:block;font:800 36px 'Archivo';letter-spacing:-.02em}
+.logo small{display:block;font-size:15px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-top:6px}
+.stars{color:#e9a800;letter-spacing:6px}
+.ph{position:absolute;background-size:cover;background-position:center}
+.tag{position:absolute;border-radius:8px;padding:12px 20px;font-size:24px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><symbol id="mk" viewBox="0 0 28 28"><path d="M3 14 14 4l11 10" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="m9 17 4 4 8-9" fill="none" stroke="#9bd04a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
+
+<!-- AD 1: before / after -->
+<div class="ad sq" id="ad1" style="background:#1d252c;color:#fff">
+  <div class="ph" style="left:0;top:0;width:540px;height:700px;background-image:url(before.jpg);background-position:50% 40%"></div>
+  <div class="ph" style="left:540px;top:0;width:540px;height:700px;background-image:url(after.jpg);background-position:50% 40%"></div>
+  <div style="position:absolute;left:538px;top:0;width:4px;height:700px;background:#9bd04a"></div>
+  <div class="tag" style="left:30px;top:30px;background:#fff;color:#1d252c">Before</div>
+  <div class="tag" style="left:570px;top:30px;background:#9bd04a;color:#1d252c">After</div>
+  <div style="position:absolute;left:64px;right:64px;top:740px">
+    <h1 style="font-size:80px">Same roof. <span style="color:#9bd04a">Brand new.</span></h1>
+  </div>
+  <div style="position:absolute;left:64px;right:64px;bottom:56px;display:flex;justify-content:space-between;align-items:center">
+    <div class="logo"><span class="mk" style="background:#28323b"><svg width="40" height="40"><use href="#mk"/></svg></span><span><b style="font-size:32px">Your Local Roofers</b><small style="color:#9bd04a">Bolton · NFRC member</small></span></div>
+    <div style="background:#9bd04a;color:#1d252c;font-size:28px;font-weight:800;padding:22px 34px;border-radius:10px">Free quote</div>
+  </div>
+</div>
+
+<!-- AD 2: story -->
+<div class="ad st" id="ad2" style="background:#1d252c;color:#fff">
+  <div style="position:absolute;left:90px;top:250px" class="logo"><span class="mk" style="background:#28323b"><svg width="40" height="40"><use href="#mk"/></svg></span><span><b>Your Local Roofers</b><small style="color:#9bd04a">Bolton &amp; Greater Manchester</small></span></div>
+  <div style="position:absolute;left:90px;right:90px;top:410px">
+    <h1 style="font-size:118px">Let down by a roofer before?</h1>
+    <p style="font-size:40px;line-height:1.3;color:#c9d0d6;margin-top:28px">Clear quotes with no extras, photo updates as we work, and 25 years' experience.</p>
+  </div>
+  <div class="ph" style="left:90px;right:90px;top:1000px;height:520px;border-radius:24px;background-image:url(house.jpg);background-position:50% 40%"></div>
+  <div style="position:absolute;left:90px;right:90px;top:1560px;display:flex;gap:16px">
+    <div style="flex:1;background:#28323b;border:2px solid #36414b;border-radius:18px;padding:24px 28px"><div class="stars" style="font-size:30px">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div style="font-size:26px;font-weight:600;margin-top:6px">4.8 on Google</div></div>
+    <div style="flex:1;background:#9bd04a;color:#1d252c;border-radius:18px;padding:24px 28px"><div style="font:800 34px Archivo">Free roof</div><div style="font-size:26px;font-weight:700;margin-top:4px">health check</div></div>
+  </div>
+</div>
+
+<!-- AD 3: review -->
+<div class="ad sq" id="ad3" style="background:#f3f2ee;color:#1d252c">
+  <div style="position:absolute;left:64px;top:70px;width:110px;height:110px;background:#9bd04a;transform:rotate(45deg);border-radius:14px"></div>
+  <div style="position:absolute;left:64px;right:64px;top:250px">
+    <div class="stars" style="font-size:48px">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <h1 style="font-size:74px;line-height:1.08;margin-top:24px;letter-spacing:-.03em">"They've genuinely restored my faith in tradesmen!"</h1>
+    <p style="font-size:30px;color:#5d666e;margin-top:26px;font-weight:600">Google review, last month</p>
+  </div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:180px;background:#1d252c;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 64px">
+    <div class="logo"><span class="mk" style="background:#28323b"><svg width="40" height="40"><use href="#mk"/></svg></span><span><b style="font-size:32px">Your Local Roofers</b><small style="color:#9bd04a">Little Lever, Bolton</small></span></div>
+    <div style="text-align:right"><div style="font-size:24px;color:#9aa4ad;font-weight:600">Free quotes</div><div style="font:800 44px Archivo;white-space:nowrap">01204 929448</div></div>
+  </div>
+</div>
+</body></html>
