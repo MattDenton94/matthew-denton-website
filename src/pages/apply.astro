@@ -13,7 +13,7 @@ const types = ['Salon or beauty', 'Clinic', 'Gym or fitness', 'Food or café', '
 const needs = ['Website', 'Booking system', 'Online store', 'CRM', 'Logo and branding'];
 const faqs = [
   { q: 'What do I get for R5,000?', a: 'A custom website built for your business, plus your Meta ads set up and run for you: ad account, pixel, ad copy and your first campaign. After that you only pay 20% commission on the sales the ads bring in.' },
-  { q: 'Is the ad budget included?', a: 'No. Your ad budget is paid straight to Meta from your own card, so you stay in control of it. We agree the amount together, from R1,500 a month.' },
+  { q: 'Is the ad budget included?', a: 'No. Your ad budget is paid straight to Meta from your own card, so you stay in control of it. We agree the amount together, from R100 a day (about R3,000 a month).' },
   { q: 'How long does it take?', a: 'Most websites are live in 2 to 4 weeks once I have your content. You get a timeline in writing before anything starts.' },
   { q: 'Do I own the website?', a: 'Yes. It is yours. No monthly retainer to keep it online with me.' },
   { q: 'How do you track the 20%?', a: 'Sales are tracked through your website, booking system or store, and we agree how they are counted in writing before we start. You see the same numbers I do.' },
@@ -43,7 +43,7 @@ const faqs = [
             <li>Registered business in South Africa</li>
             <li>Trading for 6+ months</li>
             <li>Already selling a product or service</li>
-            <li>R1,500+ a month for ad spend</li>
+            <li>R100 a day for ad spend</li>
           </ul>
           <p class="small"><span class="tag">No upfront ad fees</span> Ad spend is paid straight to Meta, from your own card.</p>
         </div>
@@ -75,7 +75,7 @@ const faqs = [
           </div>
           <div class="step" data-step="3" hidden>
             <p class="q">How much can you spend on ads each month?</p>
-            <div class="opts" data-name="budget">{['Under R1,500', 'R1,500 to R3,000', 'R3,000 to R5,000', 'R5,000+'].map((t) => <button type="button" class="opt" data-value={t}>{t}</button>)}</div>
+            <div class="opts" data-name="budget">{['Under R3,000', 'R3,000 to R5,000', 'R5,000 to R10,000', 'R10,000+'].map((t) => <button type="button" class="opt" data-value={t}>{t}</button>)}</div>
             <p class="q">When do you want to start?</p>
             <div class="opts" data-name="when">{['This month', 'Next month', 'Just looking'].map((t) => <button type="button" class="opt" data-value={t}>{t}</button>)}</div>
           </div>
@@ -90,7 +90,7 @@ const faqs = [
           </div>
           <div class="step done" data-step="no" hidden>
             <h3>Not quite yet</h3>
-            <p>This offer works best for registered businesses that have been trading for 6+ months with at least R1,500 a month for ads. You are not far off.</p>
+            <p>This offer works best for registered businesses that have been trading for 6+ months with at least R100 a day (about R3,000 a month) for ads. You are not far off.</p>
             <p>Message me anyway and I will tell you honestly what makes sense for where you are right now.</p>
             <a class="btn btn-ghost" id="no-wa" href="#" target="_blank" rel="noopener"><WaIcon /> Message Matt</a>
           </div>
@@ -131,8 +131,8 @@ const faqs = [
           <input type="range" id="c-val" min="100" max="10000" step="100" value="800" />
           <label class="q" for="c-n">Extra sales from ads per month <output id="o-n" class="num">15</output></label>
           <input type="range" id="c-n" min="1" max="100" step="1" value="15" />
-          <label class="q" for="c-ad">Monthly ad spend (paid to Meta) <output id="o-ad" class="num">R2,000</output></label>
-          <input type="range" id="c-ad" min="1500" max="15000" step="500" value="2000" />
+          <label class="q" for="c-ad">Monthly ad spend (paid to Meta) <output id="o-ad" class="num">R3,000</output></label>
+          <input type="range" id="c-ad" min="3000" max="20000" step="500" value="3000" />
         </div>
       </div>
       <div class="est">
@@ -263,7 +263,7 @@ const faqs = [
     }
     if (cur === 3) {
       if (!ans.budget || !ans.when) return fail('Answer both to continue.');
-      const no = ans.registered === 'Not registered yet' || ans.trading === 'Under 6 months' || ans.budget === 'Under R1,500';
+      const no = ans.registered === 'Not registered yet' || ans.trading === 'Under 6 months' || ans.budget === 'Under R3,000';
       if (no) {
         document.getElementById('no-wa').href = wa(`Hi Matt, I filled in your application for ${val('a-biz')} (${ans.type}). I'm ${ans.registered.toLowerCase()}, trading ${ans.trading.toLowerCase()}, ad budget ${ans.budget}. What would you suggest for me?`);
         track('Contact', { content_name: 'not_qualified' });
