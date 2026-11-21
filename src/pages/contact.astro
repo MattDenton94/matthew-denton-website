@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import WaIcon from '../components/WaIcon.astro';
-import { contact, wa } from '../data/site';
+import { contact, wa, CRM_INTAKE } from '../data/site';
 const needs = ['Website', 'Booking system', 'CRM', 'Back office', 'Online store', 'Logo and branding', 'Meta ads', 'Ad creative', 'Not sure yet'];
 const audit = ['Tell me about your business and what you need', 'We have a quick chat on WhatsApp or a call', 'You get a clear plan and a fixed quote in writing', 'A 50% deposit and we start building'];
 ---
@@ -22,6 +22,7 @@ const audit = ['Tell me about your business and what you need', 'We have a quick
       <form class="form" id="enquiry" novalidate>
         <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required /></div>
         <div class="field"><label for="f-biz">Business name</label><input id="f-biz" name="business" autocomplete="organization" /></div>
+        <div class="field"><label for="f-phone">WhatsApp number</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="082 123 4567" /></div>
         <div class="field"><label for="f-web">Website or Instagram</label><input id="f-web" name="web" placeholder="yourbusiness.com or @yourbusiness" /></div>
         <fieldset class="field">
           <legend>What do you need?</legend>
@@ -32,6 +33,7 @@ const audit = ['Tell me about your business and what you need', 'We have a quick
           </div>
         </fieldset>
         <div class="field"><label for="f-msg">Anything else? (optional)</label><textarea id="f-msg" name="message" rows="5" placeholder="What does your business do, and what would you like this to help with?"></textarea></div>
+        <input name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
         <p class="err" id="f-err" hidden>Add your name so I know who I'm talking to.</p>
         <button class="btn btn-primary" type="submit"><WaIcon /> Send on WhatsApp</button>
         <p class="hint">Prefer email? <a id="f-mail" href={`mailto:${contact.email}`}>Send it by email instead</a>.</p>
@@ -39,7 +41,7 @@ const audit = ['Tell me about your business and what you need', 'We have a quick
     </div>
   </section>
 </Base>
-<script define:vars={{ number: contact.whatsappNumber, email: contact.email }}>
+<script define:vars={{ number: contact.whatsappNumber, email: contact.email, CRM_INTAKE }}>
   const form = document.getElementById('enquiry');
   const err = document.getElementById('f-err');
   const build = () => {
@@ -47,14 +49,30 @@ const audit = ['Tell me about your business and what you need', 'We have a quick
     const needs = d.getAll('need').join(', ') || 'Not sure yet';
     return `Hi Matt, I'm ${d.get('name')}.` +
       (d.get('business') ? `\nBusiness: ${d.get('business')}` : '') +
+      (d.get('phone') ? `\nWhatsApp: ${d.get('phone')}` : '') +
       (d.get('web') ? `\nWebsite or Instagram: ${d.get('web')}` : '') +
       `\nI need: ${needs}` +
       (d.get('message') ? `\n\n${d.get('message')}` : '');
+  };
+  // Every enquiry also lands in the CRM as a lead (fire and forget).
+  const toCrm = () => {
+    try {
+      const d = new FormData(form);
+      const qs = new URLSearchParams(location.search);
+      const out = new FormData();
+      for (const k of ['name', 'business', 'phone', 'message', 'company_url']) out.append(k, String(d.get(k) || ''));
+      out.append('website', String(d.get('web') || ''));
+      out.append('needs', d.getAll('need').join(', '));
+      out.append('source', (qs.get('utm_source') || '').toLowerCase() === 'whatsapp' ? 'WhatsApp ad' : 'Website');
+      out.append('campaign', qs.get('utm_campaign') || '');
+      fetch(CRM_INTAKE, { method: 'POST', body: out, keepalive: true }).catch(() => {});
+    } catch (x) { /* never block WhatsApp */ }
   };
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!String(new FormData(form).get('name') || '').trim()) { err.hidden = false; form.querySelector('#f-name').focus(); return; }
     err.hidden = true;
+    toCrm();
     window.open(`https://wa.me/${number}?text=${encodeURIComponent(build())}`, '_blank', 'noopener');
   });
   document.getElementById('f-mail').addEventListener('click', (e) => {

@@ -3,7 +3,7 @@
 // Built to replace Facebook instant forms with a qualifying application.
 import Base from '../layouts/Base.astro';
 import WaIcon from '../components/WaIcon.astro';
-import { contact, clients, stats } from '../data/site';
+import { contact, clients, stats, CRM_INTAKE } from '../data/site';
 
 // Paste your Meta Pixel ID here (Events Manager > Data sources). Leave empty to skip tracking.
 const PIXEL_ID = '1028847063594072';
@@ -87,6 +87,7 @@ const faqs = [
             <input id="a-phone" name="phone" type="tel" autocomplete="tel" placeholder="082 123 4567" />
             <label class="q" for="a-email">Email</label>
             <input id="a-email" name="email" type="email" autocomplete="email" />
+            <input id="a-hp" name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
           </div>
           <div class="step done" data-step="no" hidden>
             <h3>Not quite yet</h3>
@@ -206,7 +207,7 @@ const faqs = [
   <a class="sticky btn btn-primary" href="#apply" id="sticky">Check if I qualify</a>
 </Base>
 
-<script is:inline define:vars={{ number: contact.whatsappNumber, PIXEL_ID }}>
+<script is:inline define:vars={{ number: contact.whatsappNumber, PIXEL_ID, CRM_INTAKE }}>
   // Meta Pixel (only loads when PIXEL_ID is set)
   if (PIXEL_ID) {
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -245,6 +246,23 @@ const faqs = [
   const fail = (msg) => { err.textContent = msg; err.hidden = false; };
   const val = (id) => String(document.getElementById(id).value || '').trim();
   const wa = (text) => `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
+  // Send the application to the CRM too. Fire and forget, so WhatsApp still opens instantly.
+  const qs = new URLSearchParams(location.search);
+  const utm = (qs.get('utm_source') || '').toLowerCase();
+  const source = utm === 'whatsapp' ? 'WhatsApp ad' : (qs.get('fbclid') || ['facebook', 'fb', 'ig', 'instagram', 'meta'].includes(utm)) ? 'Meta ad' : 'Website';
+  const toCrm = (qualified) => {
+    try {
+      const d = new FormData();
+      const add = (k, v) => d.append(k, v || '');
+      add('name', val('a-name')); add('business', val('a-biz')); add('phone', val('a-phone')); add('email', val('a-email'));
+      add('source', source); add('campaign', qs.get('utm_campaign') || ''); add('region', 'ZA'); add('qualified', qualified ? 'yes' : 'no');
+      add('company_url', val('a-hp'));
+      add('business_type', ans.type); add('needs', ans.need.join(', ')); add('registered', ans.registered); add('trading', ans.trading);
+      add('current_website', ans.site); add('ad_budget', ans.budget); add('start', ans.when);
+      add('message', qualified ? 'Applied for the R5k website + ads offer.' : 'Applied for the R5k offer but did not qualify yet.');
+      fetch(CRM_INTAKE, { method: 'POST', body: d, keepalive: true }).catch(() => {});
+    } catch (e) { /* never block the WhatsApp step */ }
+  };
   const summary = () =>
     `Hi Matt, I'd like to apply for the website + ads offer.\n\n` +
     `Name: ${val('a-name')}\nBusiness: ${val('a-biz')} (${ans.type})\nNeed: ${ans.need.join(', ') || 'Not sure yet'}\n` +
@@ -267,6 +285,7 @@ const faqs = [
       if (no) {
         document.getElementById('no-wa').href = wa(`Hi Matt, I filled in your application for ${val('a-biz')} (${ans.type}). I'm ${ans.registered.toLowerCase()}, trading ${ans.trading.toLowerCase()}, ad budget ${ans.budget}. What would you suggest for me?`);
         track('Contact', { content_name: 'not_qualified' });
+        document.getElementById('no-wa').addEventListener('click', () => toCrm(false), { once: true });
         cur = 'no'; return show('no');
       }
       cur = 4; return show(4);
@@ -277,6 +296,7 @@ const faqs = [
       const link = wa(summary());
       document.getElementById('yes-wa').href = link;
       track('Lead', { content_name: 'website_ads_offer', value: 5000, currency: 'ZAR' });
+      toCrm(true);
       window.open(link, '_blank', 'noopener');
       cur = 'yes'; show('yes');
     }

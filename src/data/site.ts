@@ -6,6 +6,9 @@ export const contact = {
   linkedin: 'https://www.linkedin.com/in/matthew-denton94',
 };
 
+/* Form submissions also land in the CRM as leads (Supabase function "lead-intake"). */
+export const CRM_INTAKE = 'https://qnabommmawrfnpiekcqz.supabase.co/functions/v1/lead-intake';
+
 export const wa = (text = "Hi Matt, I'd like to chat about a project for my business.") =>
   `https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent(text)}`;
 
