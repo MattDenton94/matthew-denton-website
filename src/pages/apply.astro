@@ -285,7 +285,8 @@ const faqs = [
       if (no) {
         document.getElementById('no-wa').href = wa(`Hi Matt, I filled in your application for ${val('a-biz')} (${ans.type}). I'm ${ans.registered.toLowerCase()}, trading ${ans.trading.toLowerCase()}, ad budget ${ans.budget}. What would you suggest for me?`);
         track('Contact', { content_name: 'not_qualified' });
-        document.getElementById('no-wa').addEventListener('click', () => toCrm(false), { once: true });
+        // Save them to the CRM straight away, even if they never tap Message Matt.
+        if (!window.__mdSentNo) { window.__mdSentNo = true; toCrm(false); }
         cur = 'no'; return show('no');
       }
       cur = 4; return show(4);
