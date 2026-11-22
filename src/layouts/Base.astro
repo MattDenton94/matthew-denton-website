@@ -10,9 +10,12 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  /** Hide every WhatsApp link (used on US/UK landing pages, where prospects don't use WhatsApp). */
+  noWhatsApp?: boolean;
 }
 const {
   title,
+  noWhatsApp = false,
   description = 'Matthew Denton builds custom websites, booking systems, CRMs, back offices, logos, branding and Meta ads for businesses of every kind. Cape Town based, working anywhere.',
 } = Astro.props;
 
@@ -94,7 +97,7 @@ const year = new Date().getFullYear();
           </ul>
           <ul style="font-size:.92rem">
             <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
-            <li><a href={wa()} target="_blank" rel="noopener">WhatsApp {contact.whatsappDisplay}</a></li>
+            {!noWhatsApp && <li><a href={wa()} target="_blank" rel="noopener">WhatsApp {contact.whatsappDisplay}</a></li>}
             <li><a href={contact.linkedin} target="_blank" rel="noopener">LinkedIn</a></li>
           </ul>
           <p style="font-size:.85rem">&copy; {year} Matthew Denton · <a href="/privacy">Privacy policy</a></p>
@@ -102,7 +105,7 @@ const year = new Date().getFullYear();
       </div>
     </footer>
 
-    <a class="wa-float" href={wa()} target="_blank" rel="noopener" aria-label={`Chat on WhatsApp, ${contact.whatsappDisplay}`}><WaIcon /></a>
+    {!noWhatsApp && <a class="wa-float" href={wa()} target="_blank" rel="noopener" aria-label={`Chat on WhatsApp, ${contact.whatsappDisplay}`}><WaIcon /></a>}
 
     <style is:global>
       .wa-float { position: fixed; right: clamp(16px, 3vw, 28px); bottom: clamp(16px, 3vw, 28px); z-index: 60; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: #25d366; color: #fff; box-shadow: 0 14px 30px -10px rgba(0,0,0,.6); transition: transform .2s ease; }
