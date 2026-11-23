@@ -1,86 +1,75 @@
 ---
-// US ad landing page: where people land after clicking the US Meta ads (HVAC, restaurants and cafés).
-// Qualifies the lead, saves it to the CRM (region US, so it goes to Teu), then shows Teu's booking calendar.
-// No WhatsApp anywhere on this page: US prospects book a call or email.
+// US ad landing page (HVAC, restaurants and cafés). One job: get the visitor to apply.
+// Flow: pain-led hero with the first form step above the fold, proof, offer, FAQ.
+// Qualified applicants book Teu's calendar; every application is saved to the CRM as region US.
+// No WhatsApp anywhere on this page.
 import Base from '../layouts/Base.astro';
 import { CRM_INTAKE } from '../data/site';
 
 const PIXEL_ID = '1028847063594072';
-
-// ---- Fill these in ----
-// Teu's booking page (Calendly, Cal.com or similar). Leave empty and qualified leads see "Teu will email you".
 const TEU_BOOKING = 'https://calendly.com/teugcememe2/30min';
-// Teu's email, shown as the backup contact.
 const TEU_EMAIL = 'teu@matthewdenton.co.za';
-// ------------------------
 
-const types = ['HVAC', 'Restaurant', 'Coffee shop', 'Other'];
+/* Real client quotes only. Add { quote, name, business } when a client gives you one.
+   The section stays hidden while this is empty. */
+const testimonials: { quote: string; name: string; business: string }[] = [];
+
+const work = [
+  { img: '/work/ps-home.webp', name: 'Party Starters', what: 'Party hire. New site, quote builder and a back office the owner runs herself.' },
+  { img: '/work/ad-book.webp', name: 'Adamant Aesthetics', what: 'Skin and laser clinic. New site with online booking built in.' },
+  { img: '/work/tnt-home.webp', name: 'TNT Fitness', what: 'Training studio. Rebuilt around real member results and one-tap booking.' },
+];
+
 const faqs = [
-  { q: 'Is the preview really free?', a: 'Yes. I design a preview of your new homepage first, at no cost and with no obligation. If you don\'t like it, you walk away and owe nothing.' },
-  { q: 'What does a full website cost?', a: 'Websites start from $1,500, depending on how many pages and features you need (online booking, ordering links, a back office and so on). You get a fixed price in writing before anything starts.' },
-  { q: 'How do I pay?', a: 'If you like your preview, a 50% deposit books the full build. The other 50% is due when the site is finished and you have approved it, before it goes live. Card payments in USD are welcome.' },
-  { q: 'How long does it take?', a: 'Your preview is usually ready within a few days of our call. Most full websites go live 2 to 4 weeks after the deposit, once I have your content.' },
-  { q: 'Do I own the website?', a: 'Yes. Once it\'s paid for, the website and domain are yours. No lock-in.' },
-  { q: 'Who will I speak to?', a: 'Your call is with my team. They\'ll learn about your business so the preview is built around how your customers actually find and book you.' },
+  { q: 'Is the preview really free?', a: 'Yes. I design a preview of your new homepage at no cost. If you don\'t love it, you walk away and owe nothing.' },
+  { q: 'What does the full website cost?', a: 'From $1,500, depending on how many pages and features you need. You get a fixed price in writing before anything starts. No surprises.' },
+  { q: 'How do I pay?', a: 'Only if you like the preview. A 50% deposit books the build, and the other 50% is due when the site is finished and you\'ve approved it.' },
+  { q: 'How fast is it?', a: 'Your preview is usually ready a few days after our call. Most sites go live 2 to 4 weeks after the deposit.' },
+  { q: 'Do I own it?', a: 'Yes. Once it\'s paid, the site and the domain are yours. No monthly lock-in to keep it online.' },
+  { q: 'You\'re not in the US. Is that a problem?', a: 'No. Calls are booked in your time zone, updates come by email, and you see exactly what you\'re getting before you pay a cent.' },
 ];
 ---
-<Base noWhatsApp title="Get a Free Preview of Your New Website | Matthew Denton" description="A custom website for US businesses. See a free preview of your new site first. Websites from $1,500.">
+<Base noWhatsApp title="Get a Free Preview of Your New Website | Matthew Denton" description="Your website should bring in customers, not send them to competitors. See a free preview of your new site first. From $1,500.">
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <p class="eyebrow" id="eyebrow">For US business owners</p>
-        <h1 id="h1">See your new website <em>before you pay anything.</em></h1>
-        <ul class="ticks" id="ticks">
-          <li><b>A free preview, first.</b> I design a preview of your new website so you see exactly what you're getting.</li>
-          <li><b>Built to bring in customers.</b> Fast on mobile, easy to contact you, and set up to show up on Google.</li>
-          <li><b>From $1,500, fixed price.</b> Like the preview? A 50% deposit books your full build.</li>
-          <li><b>You own it.</b> No monthly lock-in to keep your site online.</li>
+        <h1 id="h1">Your website is sending customers <em>to your competitors.</em></h1>
+        <p class="lede" id="lede">Slow, outdated sites lose calls every day, and you never find out. I'll build a preview of your new one first. Free. You only pay if you love it.</p>
+        <ul class="mini" aria-label="What you get">
+          <li>Free preview first</li>
+          <li>From $1,500, fixed price</li>
+          <li>Live in 2 to 4 weeks</li>
         </ul>
-        <div class="criteria">
-          <p class="tag">Who this is for</p>
-          <ul>
-            <li>US-based business</li>
-            <li>Trading for 6+ months</li>
-            <li>Website budget from $1,500</li>
-            <li>Ready to start in the next 3 months</li>
-          </ul>
-          <p class="small"><span class="tag">No cost to apply</span> The preview is free, with no obligation.</p>
-        </div>
       </div>
 
       <div class="card" id="apply">
         <div class="card-head">
-          <h2>Get your free preview</h2>
-          <p>Takes about 2 minutes. Free, no obligation.</p>
+          <p class="step-label" id="step-label">Step 1 of 3</p>
+          <h2 id="card-title">Get your free preview</h2>
           <div class="bar" aria-hidden="true"><i id="bar"></i></div>
         </div>
         <form id="app" novalidate>
           <div class="step" data-step="1">
+            <p class="q">What type of business do you run?</p>
+            <div class="opts big" data-name="type">{['HVAC', 'Restaurant', 'Coffee shop', 'Other'].map((t) => <button type="button" class="opt" data-value={t}>{t}</button>)}</div>
             <label class="q" for="a-biz">Business name</label>
             <input id="a-biz" name="business" autocomplete="organization" placeholder="e.g. Carolina Comfort Air" />
-            <p class="q">What type of business?</p>
-            <div class="opts" data-name="type">{types.map((t) => <button type="button" class="opt" data-value={t}>{t}</button>)}</div>
             <label class="q" for="a-city">City and state</label>
             <input id="a-city" name="city" autocomplete="address-level2" placeholder="e.g. Charlotte, NC" />
           </div>
           <div class="step" data-step="2" hidden>
-            <p class="q">Do you have a website now?</p>
-            <div class="opts" data-name="site">{['Yes, it works', 'Yes, but it needs work', 'No website'].map((t) => <button type="button" class="opt" data-value={t}>{t}</button>)}</div>
+            <p class="q">Your website right now</p>
+            <div class="opts" data-name="site">{['Works, but looks dated', 'Barely works', 'I don\'t have one'].map((t) => <button type="button" class="opt" data-value={t}>{t}</button>)}</div>
             <label class="q" for="a-url">Website address <span class="opt-l">optional</span></label>
             <input id="a-url" name="website" inputmode="url" placeholder="yourbusiness.com" />
-            <p class="q">How long have you been in business?</p>
-            <div class="opts" data-name="trading">{['Under 6 months', '6 to 12 months', '1 to 3 years', '3+ years'].map((t) => <button type="button" class="opt" data-value={t}>{t}</button>)}</div>
-            <p class="q">Rough monthly revenue?</p>
-            <div class="opts" data-name="revenue">{['Under $10k', '$10k to $50k', '$50k to $150k', '$150k+'].map((t) => <button type="button" class="opt" data-value={t}>{t}</button>)}</div>
-          </div>
-          <div class="step" data-step="3" hidden>
-            <p class="q">Websites start from $1,500 depending on size, with a 50% deposit to book the build after your free preview. Does that work for you?</p>
+            <p class="q">Websites start from $1,500. A 50% deposit books the build, only after you've seen and liked your free preview. Does that work?</p>
             <div class="opts" data-name="budget">{['Yes, that works', 'No, not right now'].map((t) => <button type="button" class="opt" data-value={t}>{t}</button>)}</div>
-            <p class="q">When do you want your new site live?</p>
+            <p class="q">When do you want it live?</p>
             <div class="opts" data-name="when">{['As soon as possible', 'In 1 to 3 months', 'Just looking'].map((t) => <button type="button" class="opt" data-value={t}>{t}</button>)}</div>
           </div>
-          <div class="step" data-step="4" hidden>
-            <p class="good">✓ Good news, you look like a fit. Where should we reach you?</p>
+          <div class="step" data-step="3" hidden>
+            <p class="good">✓ You qualify. Where should we send your preview?</p>
             <label class="q" for="a-name">Your name</label>
             <input id="a-name" name="name" autocomplete="name" />
             <label class="q" for="a-email">Email</label>
@@ -91,53 +80,74 @@ const faqs = [
           </div>
           <div class="step done" data-step="no" hidden>
             <h3>Not quite yet</h3>
-            <p>Thanks for applying. Right now the free preview is for businesses that have been trading for 6+ months, are ready to start within 3 months, and have a website budget from $1,500.</p>
-            <p>If that changes, come back any time and apply again.</p>
+            <p>Thanks for applying. Right now the free preview is for businesses ready to start within 3 months with a website budget from $1,500. If that changes, come back any time.</p>
           </div>
           <div class="step done" data-step="yes" hidden>
-            <h3 id="yes-h">You're in ✓ Now pick a time</h3>
-            <p id="yes-lead">Book a quick call with my team so we can build your preview around your business.</p>
+            <h3 id="yes-h">You're in ✓ Pick a time</h3>
+            <p id="yes-lead">Book a quick 30-minute call so we can build your preview around your business.</p>
             <div class="cal" id="cal" hidden><iframe id="cal-frame" title="Book your call" loading="lazy"></iframe></div>
             <p class="small" id="yes-mail"></p>
           </div>
           <p class="err" id="err" hidden></p>
           <div class="nav-btns" id="nav-btns">
             <button type="button" class="btn btn-ghost" id="back" hidden>Back</button>
-            <button type="button" class="btn btn-primary" id="next">Continue →</button>
+            <button type="button" class="btn btn-primary" id="next">Next →</button>
           </div>
         </form>
-        <ul class="trust"><li>Free preview</li><li>Fixed price in writing</li><li>You own your site</li></ul>
+        <p class="assure">🔒 Takes 60 seconds. No payment. No obligation.</p>
       </div>
     </div>
   </section>
 
-  <section class="section video-sec">
+  <section class="section pain">
+    <div class="wrap narrow">
+      <h2 class="h2">Sound familiar?</h2>
+      <ul class="xlist" id="pain-list">
+        <li>People find you on Google, tap your site, and leave in seconds.</li>
+        <li>Your site looks broken or tiny on a phone, which is where most people see it.</li>
+        <li>There's no clear way to call, book or order, so they go somewhere that has one.</li>
+        <li>Your reviews are great, but nobody sees them on your site.</li>
+      </ul>
+      <p class="sting" id="sting">Every visitor who leaves is a customer your competitor just won. Your website should be your best salesperson, not the reason you lose the job.</p>
+    </div>
+  </section>
+
+  <section class="section offer">
     <div class="wrap">
-      <h2 class="h2 center">Here's how it works</h2>
-      <div class="video"><video id="vid" controls playsinline preload="none" poster="/apply-us/hvac.jpg"><source id="vid-src" src="/apply-us/hvac.mp4" type="video/mp4" /></video></div>
-      <a class="btn btn-primary wide" href="#apply">Get my free preview →</a>
+      <h2 class="h2 center">See it before you <mark>pay a cent</mark></h2>
+      <ol class="steps">
+        <li><b>Apply in 60 seconds</b><span>Answer a few quick questions and book a short call.</span></li>
+        <li><b>Get your free preview</b><span>I design your new homepage around your business. No cost, no obligation.</span></li>
+        <li><b>Love it? Go live</b><span>A 50% deposit books the build. Most sites go live in 2 to 4 weeks.</span></li>
+      </ol>
+      <p class="guarantee"><b>No preview you love, no payment.</b> That's the whole deal.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap">
-      <h2 class="h2">Websites I've <mark>built</mark></h2>
+      <h2 class="h2">Real sites for real businesses</h2>
       <div class="work">
-        <a href="/work/creative-pearls"><img src="/work/pearls-home.webp" alt="Creative Pearls website" loading="lazy" /><p><b>Creative Pearls</b> Handmade jewellery. Website and Meta ads.</p></a>
-        <a href="/work"><img src="/work/ps-home.webp" alt="Party Starters website" loading="lazy" /><p><b>Party Starters</b> Party hire. Website, quote list and back office.</p></a>
-        <a href="/work"><img src="/work/ad-home.webp" alt="Adamant Aesthetics website" loading="lazy" /><p><b>Adamant Aesthetics</b> Skin and laser clinic. Website with online booking.</p></a>
+        {work.map((w) => (
+          <figure><img src={w.img} alt={`${w.name} website on a phone`} loading="lazy" /><figcaption><b>{w.name}</b>{w.what}</figcaption></figure>
+        ))}
       </div>
+      {testimonials.length > 0 && (
+        <div class="quotes">
+          {testimonials.map((t) => <blockquote><p>"{t.quote}"</p><cite>{t.name}, {t.business}</cite></blockquote>)}
+        </div>
+      )}
     </div>
   </section>
 
-  <section class="section steps-sec">
-    <div class="wrap">
-      <h2 class="h2 center">How it works</h2>
-      <ol class="steps">
-        <li><b>Apply and book a call</b><span>2 minutes to apply, then a quick call with my team about your business.</span></li>
-        <li><b>See your free preview</b><span>I design a preview of your new website. No cost, no obligation.</span></li>
-        <li><b>Love it? Book the build</b><span>A 50% deposit books your full website. Most go live in 2 to 4 weeks.</span></li>
-      </ol>
+  <section class="section me">
+    <div class="wrap me-grid">
+      <img src="/apply-us/matt.jpg" alt="Matthew Denton" width="240" height="240" loading="lazy" />
+      <div>
+        <h2 class="h2">I'm Matt. I build every site myself.</h2>
+        <p>No templates, no outsourcing, no 40-page contracts. I design and code each site by hand, built to make your phone ring. Before this I was a paramedic, so I'm big on clear communication and doing what I said, when I said.</p>
+        <p class="small">Clients in fitness, events, clinics, childcare and retail.</p>
+      </div>
     </div>
   </section>
 
@@ -150,13 +160,13 @@ const faqs = [
 
   <section class="final">
     <div class="wrap center">
-      <h2 class="h2">See your new website <mark>before you pay.</mark></h2>
-      <p class="sub">I only take on a few new builds each month, so every client gets my full attention.</p>
+      <h2 class="h2" id="final-h">Stop losing customers to a better website.</h2>
+      <p class="sub">Your free preview takes 60 seconds to request. I only take on a few new builds each month.</p>
       <a class="btn btn-primary" href="#apply">Get my free preview →</a>
     </div>
   </section>
 
-  <a class="sticky btn btn-primary" href="#apply" id="sticky">Get my free preview</a>
+  <a class="sticky btn btn-primary" href="#apply" id="sticky">Get my free preview →</a>
 </Base>
 
 <script is:inline define:vars={{ PIXEL_ID, CRM_INTAKE, TEU_BOOKING, TEU_EMAIL }}>
@@ -165,31 +175,59 @@ const faqs = [
     fbq('init', PIXEL_ID); fbq('track', 'PageView');
   }
   const track = (ev, data) => { try { if (window.fbq) fbq('track', ev, data || {}); } catch (e) {} };
+  const $ = (id) => document.getElementById(id);
 
-  // ---- Niche: ?niche=hvac or ?niche=restaurants (also reads utm_content) ----
+  // ---- Niche copy: ?niche=hvac or ?niche=restaurants (also reads utm_content) ----
   const qs = new URLSearchParams(location.search);
   const nicheRaw = (qs.get('niche') || qs.get('utm_content') || '').toLowerCase();
   const niche = /hvac|heat|air/.test(nicheRaw) ? 'hvac' : /rest|cafe|coffee|food/.test(nicheRaw) ? 'restaurants' : '';
-  const $ = (id) => document.getElementById(id);
-  if (niche === 'hvac') {
-    $('eyebrow').textContent = 'For HVAC company owners';
-    $('h1').innerHTML = 'A website that books jobs while you\'re out on calls. <em>See it free before you pay.</em>';
-    $('ticks').children[1].innerHTML = '<b>Built for HVAC.</b> Click-to-call, online booking for repairs and installs, your service areas and reviews up front.';
-  } else if (niche === 'restaurants') {
-    $('eyebrow').textContent = 'For restaurant and café owners';
-    $('h1').innerHTML = 'A website that fills seats. <em>See it free before you pay.</em>';
-    $('ticks').children[1].innerHTML = '<b>Built for restaurants and cafés.</b> A menu you can update yourself, reservations or ordering links, Google Maps and your hours.';
-    $('a-biz').placeholder = 'e.g. Desert Bloom Coffee';
-    $('a-city').placeholder = 'e.g. Las Vegas, NV';
-    $('vid-src').src = '/apply-us/restaurants.mp4';
-    $('vid').poster = '/apply-us/restaurants.jpg';
-    $('vid').load();
+  const COPY = {
+    hvac: {
+      eyebrow: 'For HVAC company owners',
+      h1: 'Your website is sending HVAC jobs <em>to the company down the road.</em>',
+      lede: 'When the AC dies at 100 degrees, people call whoever looks most trustworthy online. If your site is slow, dated or hard to use on a phone, that isn\'t you. I\'ll build a preview of your new site first. Free. You only pay if you love it.',
+      pain: [
+        'Homeowners find you on Google, tap your site, and call someone else.',
+        'Your site is tiny or broken on a phone, which is where emergency calls come from.',
+        'There\'s no big "Call now" or "Book service" button, so the job goes to whoever has one.',
+        'Your 5-star reviews are buried, so you look like every other shop in town.',
+      ],
+      sting: 'One lost install can cost you more than this whole website. Your site should be booking jobs while you\'re out on calls, not handing them to competitors.',
+      final: 'Stop handing jobs to the competition.',
+      ph: ['e.g. Carolina Comfort Air', 'e.g. Charlotte, NC'],
+    },
+    restaurants: {
+      eyebrow: 'For restaurant and café owners',
+      h1: 'Hungry customers are checking your website, <em>then eating somewhere else.</em>',
+      lede: 'People look at your menu, photos and hours before they ever walk in. If your site is slow, dated or just a PDF menu, they pick the place that looks better. I\'ll build a preview of your new site first. Free. You only pay if you love it.',
+      pain: [
+        'Your menu is a PDF that\'s impossible to read on a phone.',
+        'Your photos don\'t do your food justice, so people scroll past.',
+        'Hours, location and ordering links are hard to find, so they give up.',
+        'The place down the street has a better site, and gets the table you should have.',
+      ],
+      sting: 'Every empty seat is a customer who looked you up and chose someone else. Your website should fill tables, not lose them.',
+      final: 'Stop losing tables to a better website.',
+      ph: ['e.g. Desert Bloom Coffee', 'e.g. Las Vegas, NV'],
+    },
+  };
+  const c = COPY[niche];
+  if (c) {
+    $('eyebrow').textContent = c.eyebrow;
+    $('h1').innerHTML = c.h1;
+    $('lede').textContent = c.lede;
+    $('pain-list').innerHTML = c.pain.map((p) => '<li>' + p + '</li>').join('');
+    $('sting').textContent = c.sting;
+    $('final-h').textContent = c.final;
+    $('a-biz').placeholder = c.ph[0];
+    $('a-city').placeholder = c.ph[1];
   }
 
   const form = $('app');
   const steps = [...form.querySelectorAll('.step')];
-  const ans = { type: '', site: '', trading: '', revenue: '', budget: '', when: '' };
+  const ans = { type: '', site: '', budget: '', when: '' };
   let cur = 1;
+  let started = false;
 
   form.querySelectorAll('.opts').forEach((group) => {
     const name = group.dataset.name;
@@ -197,18 +235,19 @@ const faqs = [
       const b = e.target.closest('.opt'); if (!b) return;
       group.querySelectorAll('.opt').forEach((x) => x.classList.remove('on')); b.classList.add('on'); ans[name] = b.dataset.value;
       $('err').hidden = true;
+      if (!started && e.isTrusted) { started = true; track('InitiateCheckout'); }
     });
   });
-
-  // Pre-select the business type from the ad they clicked
   if (niche === 'hvac') form.querySelector('[data-name="type"] [data-value="HVAC"]').click();
+  if (niche === 'restaurants') form.querySelector('[data-name="type"] [data-value="Restaurant"]').click();
 
   const show = (id) => {
     steps.forEach((s) => (s.hidden = s.dataset.step !== String(id)));
-    $('bar').style.width = (typeof id === 'number' ? (id - 1) / 4 * 100 + 12 : 100) + '%';
+    $('bar').style.width = (typeof id === 'number' ? (id / 3) * 100 : 100) + '%';
+    $('step-label').textContent = typeof id === 'number' ? `Step ${id} of 3` : 'Done';
     $('back').hidden = !(typeof id === 'number' && id > 1);
     $('nav-btns').hidden = typeof id !== 'number';
-    $('next').textContent = id === 4 ? 'Get my free preview →' : 'Continue →';
+    $('next').textContent = id === 3 ? 'Get my free preview →' : 'Next →';
   };
   const fail = (msg) => { $('err').textContent = msg; $('err').hidden = false; };
   const val = (id) => String($(id).value || '').trim();
@@ -218,7 +257,7 @@ const faqs = [
   const summary = (qualified) =>
     `${qualified ? 'Applied' : 'Applied but did not qualify'} for a free website preview (US ad${niche ? ', ' + niche : ''}). ` +
     `Business: ${val('a-biz')} (${ans.type}), ${val('a-city')}. Website now: ${ans.site}${val('a-url') ? ' (' + val('a-url') + ')' : ''}. ` +
-    `Trading: ${ans.trading}. Revenue: ${ans.revenue}/month. Budget from $1,500 + 50% deposit: ${ans.budget}. Wants it live: ${ans.when}.`;
+    `Budget from $1,500 + 50% deposit: ${ans.budget}. Wants it live: ${ans.when}.`;
   const toCrm = (qualified) => {
     try {
       const d = new FormData();
@@ -227,8 +266,8 @@ const faqs = [
       add('source', source); add('campaign', qs.get('utm_campaign') || 'us_leads'); add('region', 'US'); add('qualified', qualified ? 'yes' : 'no');
       add('company_url', val('a-hp'));
       add('business_type', ans.type); add('niche', niche); add('city', val('a-city'));
-      add('current_website', ans.site + (val('a-url') ? ' (' + val('a-url') + ')' : '')); add('trading', ans.trading);
-      add('revenue', ans.revenue); add('ad_budget', ans.budget); add('start', ans.when);
+      add('current_website', ans.site + (val('a-url') ? ' (' + val('a-url') + ')' : ''));
+      add('ad_budget', ans.budget); add('start', ans.when);
       add('message', summary(qualified));
       fetch(CRM_INTAKE, { method: 'POST', body: d, keepalive: true }).catch(() => {});
     } catch (e) { /* never block the booking step */ }
@@ -250,26 +289,22 @@ const faqs = [
 
   $('next').addEventListener('click', () => {
     if (cur === 1) {
-      if (!val('a-biz')) return fail('Add your business name.');
       if (!ans.type) return fail('Pick your type of business.');
+      if (!val('a-biz')) return fail('Add your business name.');
       if (!val('a-city')) return fail('Add your city and state.');
-      track('InitiateCheckout'); cur = 2; return show(2);
+      if (!started) { started = true; track('InitiateCheckout'); }
+      cur = 2; return show(2);
     }
     if (cur === 2) {
-      if (!ans.site || !ans.trading || !ans.revenue) return fail('Answer all three to continue.');
-      cur = 3; return show(3);
-    }
-    if (cur === 3) {
-      if (!ans.budget || !ans.when) return fail('Answer both to continue.');
-      const no = ans.budget.startsWith('No') || ans.when === 'Just looking' || ans.trading === 'Under 6 months';
-      if (no) {
+      if (!ans.site || !ans.budget || !ans.when) return fail('Answer the three questions to continue.');
+      if (ans.budget.startsWith('No') || ans.when === 'Just looking') {
         track('Contact', { content_name: 'us_not_qualified' });
         if (!window.__mdSentNo) { window.__mdSentNo = true; toCrm(false); }
         cur = 'no'; return show('no');
       }
-      cur = 4; return show(4);
+      cur = 3; return show(3);
     }
-    if (cur === 4) {
+    if (cur === 3) {
       if (!val('a-name')) return fail('Add your name.');
       if (!/^\S+@\S+\.\S+$/.test(val('a-email'))) return fail('Add an email address we can reach you on.');
       if (val('a-phone').replace(/\D/g, '').length < 10) return fail('Add a phone number we can reach you on.');
@@ -284,42 +319,39 @@ const faqs = [
   show(1);
 
   const sticky = $('sticky');
-  new IntersectionObserver(([e]) => sticky.classList.toggle('away', e.isIntersecting), { threshold: 0.2 }).observe($('apply'));
+  new IntersectionObserver(([e]) => sticky.classList.toggle('away', e.isIntersecting), { threshold: 0.15 }).observe($('apply'));
 </script>
 
 <style>
-  .hero { padding-block: clamp(36px, 6vw, 80px) clamp(48px, 7vw, 96px); }
-  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(28px, 5vw, 72px); align-items: start; }
-  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
-  .hero-copy { display: grid; gap: 26px; }
-  h1 { font-size: clamp(2.2rem, 1.6rem + 2.6vw, 3.9rem); }
   [hidden] { display: none !important; }
+  .hero { padding-block: clamp(20px, 5vw, 64px) clamp(40px, 6vw, 80px); }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(24px, 5vw, 64px); align-items: start; }
+  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 20px; } }
+  .hero-copy { display: grid; gap: 16px; padding-top: 8px; }
+  h1 { font-size: clamp(1.9rem, 1.3rem + 2.8vw, 3.7rem); line-height: 1.05; }
   h1 :global(em) { font-style: normal; color: var(--accent); }
-  .ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-  .ticks :global(li) { position: relative; padding-left: 36px; color: var(--muted); }
-  .ticks :global(li b) { color: var(--ink); }
-  .ticks :global(li)::before { content: '✓'; position: absolute; left: 0; top: 2px; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--accent-ink); font-weight: 800; font-size: .8rem; }
-  .criteria { border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; background: var(--surface); display: grid; gap: 12px; }
-  .criteria ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 18px; font-size: .95rem; }
-  .criteria li::before { content: '✓ '; color: var(--accent); font-weight: 700; }
-  @media (max-width: 520px) { .criteria ul { grid-template-columns: 1fr; } }
-  .tag { display: inline-block; background: var(--accent); color: var(--accent-ink); font-weight: 700; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; justify-self: start; }
-  .small { font-size: .88rem; color: var(--muted); }
+  .lede { color: var(--muted); font-size: clamp(1rem, .95rem + .3vw, 1.2rem); max-width: 54ch; }
+  .mini { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px 18px; font-weight: 600; font-size: .95rem; }
+  .mini li::before { content: '✓ '; color: var(--accent); }
+  @media (max-width: 900px) { .lede { font-size: .98rem; } .mini { display: none; } }
 
-  .card { background: var(--ink); color: #0b0f0e; border-radius: 22px; padding: clamp(20px, 3vw, 32px); box-shadow: 0 30px 80px -30px rgba(0,0,0,.8); position: sticky; top: 88px; scroll-margin-top: 90px; }
+  .card { background: var(--ink); color: #0b0f0e; border-radius: 22px; padding: clamp(18px, 3vw, 30px); box-shadow: 0 30px 80px -30px rgba(0,0,0,.8); position: sticky; top: 88px; scroll-margin-top: 80px; }
   @media (max-width: 900px) { .card { position: static; } }
-  .card-head { display: grid; gap: 4px; margin-bottom: 18px; }
-  .card h2 { font-size: var(--step-2); } .card-head p { color: #56605d; font-size: .95rem; }
-  .bar { height: 5px; background: #dfe5e3; border-radius: 9px; overflow: hidden; margin-top: 10px; }
-  .bar i { display: block; height: 100%; width: 12%; background: var(--accent-deep); transition: width .35s ease; }
-  form { display: grid; gap: 14px; }
-  .step { display: grid; gap: 10px; }
-  .q { font-weight: 650; font-size: .95rem; display: flex; justify-content: space-between; gap: 8px; margin-top: 6px; }
+  .card-head { display: grid; gap: 4px; margin-bottom: 14px; }
+  .step-label { font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-deep); }
+  .card h2 { font-size: var(--step-2); }
+  .bar { height: 5px; background: #dfe5e3; border-radius: 9px; overflow: hidden; margin-top: 8px; }
+  .bar i { display: block; height: 100%; width: 33%; background: var(--accent-deep); transition: width .35s ease; }
+  form { display: grid; gap: 12px; }
+  .step { display: grid; gap: 9px; }
+  .q { font-weight: 650; font-size: .95rem; display: flex; justify-content: space-between; gap: 8px; margin-top: 4px; }
   .opt-l { font-weight: 500; color: #7a8582; font-size: .85rem; }
   .card input { font: inherit; color: #0b0f0e; background: #fff; border: 1.5px solid #d3dad8; border-radius: 10px; padding: 12px 14px; width: 100%; }
   .card input:focus { outline: none; border-color: var(--accent-deep); }
   .opts { display: flex; flex-wrap: wrap; gap: 8px; }
-  .opt { font: 550 .92rem var(--f-body); border: 1.5px solid #d3dad8; background: #fff; color: #0b0f0e; border-radius: 999px; padding: 8px 14px; cursor: pointer; transition: border-color .15s, background .15s; }
+  .opts.big { display: grid; grid-template-columns: 1fr 1fr; }
+  .opts.big .opt { padding: 13px 10px; font-size: 1rem; }
+  .opt { font: 600 .92rem var(--f-body); border: 1.5px solid #d3dad8; background: #fff; color: #0b0f0e; border-radius: 12px; padding: 9px 14px; cursor: pointer; transition: border-color .15s, background .15s; }
   .opt:hover { border-color: var(--accent-deep); }
   .opt.on { background: var(--accent-deep); border-color: var(--accent-deep); color: #fff; }
   .good { background: #e3f7f2; color: #0d4a40; font-weight: 650; border-radius: 10px; padding: 10px 14px; }
@@ -327,36 +359,44 @@ const faqs = [
   .cal { border-radius: 14px; overflow: hidden; border: 1px solid #d3dad8; background: #fff; }
   .cal iframe { width: 100%; height: 680px; border: 0; display: block; }
   .err { color: #c0392b; font-weight: 650; font-size: .92rem; }
-  .nav-btns { display: flex; gap: 10px; justify-content: space-between; margin-top: 6px; }
+  .nav-btns { display: flex; gap: 10px; margin-top: 4px; }
   .nav-btns .btn-ghost { color: #0b0f0e; border-color: #c9d1cf; }
-  #next { flex: 1; justify-content: center; background: var(--accent-deep); color: #fff; }
-  .trust { list-style: none; margin: 18px 0 0; padding: 14px 0 0; border-top: 1px solid #e3e8e6; display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .84rem; color: #56605d; }
-  .trust li::before { content: '✓ '; color: var(--accent-deep); font-weight: 700; }
+  #next { flex: 1; justify-content: center; background: var(--accent-deep); color: #fff; font-size: 1.05rem; padding-block: 14px; }
+  .assure { margin-top: 12px; font-size: .85rem; color: #56605d; text-align: center; }
 
   .h2 { font-size: var(--step-3); }
-  .center { text-align: center; justify-items: center; }
-  mark { background: var(--accent); color: var(--accent-ink); padding: 0 .18em; border-radius: 8px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-  .sub { color: var(--muted); margin-top: 12px; max-width: 52ch; }
-  .final .sub { margin-inline: auto; margin-bottom: 26px; }
+  .center { text-align: center; }
+  mark { background: var(--accent); color: var(--accent-ink); padding: 0 .18em; border-radius: 8px; }
+  .narrow { max-width: 760px; }
+  .small { font-size: .9rem; color: var(--muted); }
 
-  .video-sec .wrap { display: grid; gap: 28px; justify-items: center; }
-  .video { width: 100%; max-width: 380px; aspect-ratio: 9/16; border-radius: 20px; overflow: hidden; background: var(--surface); border: 1px solid var(--line); }
-  .video video { width: 100%; height: 100%; object-fit: cover; }
-  .wide { width: 100%; max-width: 380px; justify-content: center; }
+  .pain { background: var(--bg-2); }
+  .xlist { list-style: none; padding: 0; margin: 24px 0; display: grid; gap: 12px; }
+  .xlist :global(li) { position: relative; padding: 14px 16px 14px 48px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; font-size: 1.02rem; }
+  .xlist :global(li)::before { content: '✕'; position: absolute; left: 16px; top: 13px; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; background: #3a1616; color: #ff8a80; font-weight: 800; font-size: .75rem; }
+  .sting { font-size: 1.15rem; font-weight: 650; border-left: 4px solid var(--accent); padding-left: 16px; }
 
-  .work { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 32px; }
-  @media (max-width: 820px) { .work { grid-template-columns: 1fr; } }
-  .work a { text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; display: grid; transition: transform .2s; }
-  .work a:hover { transform: translateY(-3px); }
-  .work img { width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: top; }
-  .work p { padding: 16px 18px; color: var(--muted); font-size: .95rem; } .work b { color: var(--ink); display: block; }
-
-  .steps-sec { background: var(--bg-2); }
-  .steps { list-style: none; counter-reset: s; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .steps { list-style: none; counter-reset: s; margin: 30px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   @media (max-width: 820px) { .steps { grid-template-columns: 1fr; } }
-  .steps li { counter-increment: s; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: grid; gap: 6px; }
-  .steps li::before { content: counter(s); width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-weight: 800; margin-bottom: 6px; }
+  .steps li { counter-increment: s; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: grid; gap: 6px; }
+  .steps li::before { content: counter(s); width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-weight: 800; margin-bottom: 4px; }
   .steps b { font: 700 var(--step-1) var(--f-display); } .steps span { color: var(--muted); }
+  .guarantee { text-align: center; margin-top: 24px; font-size: 1.1rem; }
+  .guarantee b { color: var(--accent); }
+
+  .work { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+  @media (max-width: 820px) { .work { grid-template-columns: 1fr; } }
+  .work figure { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+  .work img { width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: top; display: block; }
+  .work figcaption { padding: 14px 16px; color: var(--muted); font-size: .95rem; } .work b { color: var(--ink); display: block; }
+  .quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 20px; }
+  .quotes blockquote { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 20px; }
+  .quotes cite { display: block; margin-top: 10px; color: var(--muted); font-style: normal; font-size: .9rem; }
+
+  .me-grid { display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: center; max-width: 860px; }
+  .me-grid img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); }
+  .me-grid p { color: var(--muted); margin-top: 10px; }
+  @media (max-width: 640px) { .me-grid { grid-template-columns: 1fr; justify-items: start; } .me-grid img { width: 120px; height: 120px; } }
 
   .faq-wrap { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; }
   @media (max-width: 820px) { .faq-wrap { grid-template-columns: 1fr; } }
@@ -366,8 +406,9 @@ const faqs = [
   .faq details[open] summary::after { content: '−'; }
   .faq p { color: var(--muted); margin-top: 10px; }
 
-  .final { padding-block: clamp(64px, 9vw, 120px); border-top: 1px solid var(--line); }
-  .final .wrap { display: grid; justify-items: center; }
+  .final { padding-block: clamp(56px, 8vw, 110px); border-top: 1px solid var(--line); }
+  .final .wrap { display: grid; justify-items: center; gap: 14px; }
+  .sub { color: var(--muted); max-width: 52ch; margin-bottom: 10px; }
 
   .sticky { display: none; }
   @media (max-width: 900px) {
