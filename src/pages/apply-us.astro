@@ -21,24 +21,32 @@ const work = [
 ];
 
 const faqs = [
+  { q: 'How does the $500 Black Friday credit work?', a: 'It comes straight off your build price. A $1,500 website becomes $1,000. It\'s only for the first 10 HVAC companies and the first 10 restaurants or cafés that sign on. Once those spots are gone, the credit is gone.' },
   { q: 'Is the preview really free?', a: 'Yes. I design a preview of your new homepage at no cost. If you don\'t love it, you walk away and owe nothing.' },
-  { q: 'What does the full website cost?', a: 'From $1,500, depending on how many pages and features you need. You get a fixed price in writing before anything starts. No surprises.' },
+  { q: 'What does the full website cost?', a: 'From $1,500, depending on how many pages and features you need, and your $500 credit comes off that. You get a fixed price in writing before anything starts. No surprises.' },
   { q: 'How do I pay?', a: 'Only if you like the preview. A 50% deposit books the build, and the other 50% is due when the site is finished and you\'ve approved it.' },
   { q: 'How fast is it?', a: 'Your preview is usually ready a few days after our call. Most sites go live 2 to 4 weeks after the deposit.' },
   { q: 'Do I own it?', a: 'Yes. Once it\'s paid, the site and the domain are yours. No monthly lock-in to keep it online.' },
   { q: 'You\'re not in the US. Is that a problem?', a: 'No. Calls are booked in your time zone, updates come by email, and you see exactly what you\'re getting before you pay a cent.' },
 ];
 ---
-<Base noWhatsApp title="Get a Free Preview of Your New Website | Matthew Denton" description="Your website should bring in customers, not send them to competitors. See a free preview of your new site first. From $1,500.">
+<Base noWhatsApp title="Black Friday: $500 Off Your New Website | Matthew Denton" description="Your website should bring in customers, not send them to competitors. See a free preview of your new site first, then get $500 off your build. Only 10 spots per industry.">
   <section class="hero">
+    <div class="wrap">
+      <div class="bf" role="note">
+        <span class="bf-tag">BLACK FRIDAY</span>
+        <span class="bf-txt"><b>$500 credit</b> off your new website</span>
+        <span class="bf-spots"><span class="dots" aria-hidden="true">{Array.from({ length: 10 }, () => <i></i>)}</span><span id="spots-txt">Only 10 spots per industry</span></span>
+      </div>
+    </div>
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <p class="eyebrow" id="eyebrow">For US business owners</p>
         <h1 id="h1">Your website is sending customers <em>to your competitors.</em></h1>
-        <p class="lede" id="lede">Slow, outdated sites lose calls every day, and you never find out. I'll build a preview of your new one first. Free. You only pay if you love it.</p>
+        <p class="lede" id="lede">Slow, outdated sites lose calls every day, and you never find out. I'll build a preview of your new one first. Free. Love it, and $500 comes off your build.</p>
         <ul class="mini" aria-label="What you get">
           <li>Free preview first</li>
-          <li>From $1,500, fixed price</li>
+          <li>$500 Black Friday credit</li>
           <li>Live in 2 to 4 weeks</li>
         </ul>
       </div>
@@ -46,7 +54,7 @@ const faqs = [
       <div class="card" id="apply">
         <div class="card-head">
           <p class="step-label" id="step-label">Step 1 of 3</p>
-          <h2 id="card-title">Get your free preview</h2>
+          <h2 id="card-title">Claim your $500 credit</h2>
           <div class="bar" aria-hidden="true"><i id="bar"></i></div>
         </div>
         <form id="app" novalidate>
@@ -63,13 +71,13 @@ const faqs = [
             <div class="opts" data-name="site">{['Works, but looks dated', 'Barely works', 'I don\'t have one'].map((t) => <button type="button" class="opt" data-value={t}>{t}</button>)}</div>
             <label class="q" for="a-url">Website address <span class="opt-l">optional</span></label>
             <input id="a-url" name="website" inputmode="url" placeholder="yourbusiness.com" />
-            <p class="q">Websites start from $1,500. A 50% deposit books the build, only after you've seen and liked your free preview. Does that work?</p>
+            <p class="q">Websites start from $1,500, and your $500 credit comes off that (so from $1,000). A 50% deposit books the build, only after you've seen and liked your free preview. Does that work?</p>
             <div class="opts" data-name="budget">{['Yes, that works', 'No, not right now'].map((t) => <button type="button" class="opt" data-value={t}>{t}</button>)}</div>
             <p class="q">When do you want it live?</p>
             <div class="opts" data-name="when">{['As soon as possible', 'In 1 to 3 months', 'Just looking'].map((t) => <button type="button" class="opt" data-value={t}>{t}</button>)}</div>
           </div>
           <div class="step" data-step="3" hidden>
-            <p class="good">✓ You qualify. Where should we send your preview?</p>
+            <p class="good">✓ You qualify for the $500 credit. Where should we send your preview?</p>
             <label class="q" for="a-name">Your name</label>
             <input id="a-name" name="name" autocomplete="name" />
             <label class="q" for="a-email">Email</label>
@@ -80,11 +88,11 @@ const faqs = [
           </div>
           <div class="step done" data-step="no" hidden>
             <h3>Not quite yet</h3>
-            <p>Thanks for applying. Right now the free preview is for businesses ready to start within 3 months with a website budget from $1,500. If that changes, come back any time.</p>
+            <p>Thanks for applying. Right now the free preview is for businesses ready to start within 3 months with a website budget from $1,500 ($1,000 after the credit). If that changes, come back any time.</p>
           </div>
           <div class="step done" data-step="yes" hidden>
             <h3 id="yes-h">You're in ✓ Pick a time</h3>
-            <p id="yes-lead">Book a quick 30-minute call so we can build your preview around your business.</p>
+            <p id="yes-lead">Book a quick 30-minute call so we can build your preview around your business. Your $500 credit is locked in once you book.</p>
             <div class="cal" id="cal" hidden><iframe id="cal-frame" title="Book your call" loading="lazy"></iframe></div>
             <p class="small" id="yes-mail"></p>
           </div>
@@ -118,9 +126,9 @@ const faqs = [
       <ol class="steps">
         <li><b>Apply in 60 seconds</b><span>Answer a few quick questions and book a short call.</span></li>
         <li><b>Get your free preview</b><span>I design your new homepage around your business. No cost, no obligation.</span></li>
-        <li><b>Love it? Go live</b><span>A 50% deposit books the build. Most sites go live in 2 to 4 weeks.</span></li>
+        <li><b>Love it? Go live</b><span>Your $500 credit comes off the build, then a 50% deposit books it. Most sites go live in 2 to 4 weeks.</span></li>
       </ol>
-      <p class="guarantee"><b>No preview you love, no payment.</b> That's the whole deal.</p>
+      <p class="guarantee"><b>No preview you love, no payment.</b> Love it, and you get $500 off. That's the whole deal.</p>
     </div>
   </section>
 
@@ -161,12 +169,12 @@ const faqs = [
   <section class="final">
     <div class="wrap center">
       <h2 class="h2" id="final-h">Stop losing customers to a better website.</h2>
-      <p class="sub">Your free preview takes 60 seconds to request. I only take on a few new builds each month.</p>
-      <a class="btn btn-primary" href="#apply">Get my free preview →</a>
+      <p class="sub">Only 10 spots per industry get the $500 Black Friday credit. Once they're gone, they're gone. It takes 60 seconds to apply.</p>
+      <a class="btn btn-primary" href="#apply">Claim my $500 credit →</a>
     </div>
   </section>
 
-  <a class="sticky btn btn-primary" href="#apply" id="sticky">Get my free preview →</a>
+  <a class="sticky btn btn-primary" href="#apply" id="sticky">Claim my $500 credit →</a>
 </Base>
 
 <script is:inline define:vars={{ PIXEL_ID, CRM_INTAKE, TEU_BOOKING, TEU_EMAIL }}>
@@ -185,7 +193,8 @@ const faqs = [
     hvac: {
       eyebrow: 'For HVAC company owners',
       h1: 'Your website is sending HVAC jobs <em>to the company down the road.</em>',
-      lede: 'When the AC dies at 100 degrees, people call whoever looks most trustworthy online. If your site is slow, dated or hard to use on a phone, that isn\'t you. I\'ll build a preview of your new site first. Free. You only pay if you love it.',
+      lede: 'When the AC dies at 100 degrees, people call whoever looks most trustworthy online. If your site is slow, dated or hard to use on a phone, that isn\'t you. I\'ll build a preview of your new site first. Free. Love it, and $500 comes off your build.',
+      spots: 'Only 10 spots for HVAC companies',
       pain: [
         'Homeowners find you on Google, tap your site, and call someone else.',
         'Your site is tiny or broken on a phone, which is where emergency calls come from.',
@@ -199,7 +208,8 @@ const faqs = [
     restaurants: {
       eyebrow: 'For restaurant and café owners',
       h1: 'Hungry customers are checking your website, <em>then eating somewhere else.</em>',
-      lede: 'People look at your menu, photos and hours before they ever walk in. If your site is slow, dated or just a PDF menu, they pick the place that looks better. I\'ll build a preview of your new site first. Free. You only pay if you love it.',
+      lede: 'People look at your menu, photos and hours before they ever walk in. If your site is slow, dated or just a PDF menu, they pick the place that looks better. I\'ll build a preview of your new site first. Free. Love it, and $500 comes off your build.',
+      spots: 'Only 10 spots for restaurants and cafés',
       pain: [
         'Your menu is a PDF that\'s impossible to read on a phone.',
         'Your photos don\'t do your food justice, so people scroll past.',
@@ -216,6 +226,7 @@ const faqs = [
     $('eyebrow').textContent = c.eyebrow;
     $('h1').innerHTML = c.h1;
     $('lede').textContent = c.lede;
+    $('spots-txt').textContent = c.spots;
     $('pain-list').innerHTML = c.pain.map((p) => '<li>' + p + '</li>').join('');
     $('sting').textContent = c.sting;
     $('final-h').textContent = c.final;
@@ -247,7 +258,7 @@ const faqs = [
     $('step-label').textContent = typeof id === 'number' ? `Step ${id} of 3` : 'Done';
     $('back').hidden = !(typeof id === 'number' && id > 1);
     $('nav-btns').hidden = typeof id !== 'number';
-    $('next').textContent = id === 3 ? 'Get my free preview →' : 'Next →';
+    $('next').textContent = id === 3 ? 'Claim my $500 credit →' : 'Next →';
   };
   const fail = (msg) => { $('err').textContent = msg; $('err').hidden = false; };
   const val = (id) => String($(id).value || '').trim();
@@ -255,9 +266,9 @@ const faqs = [
   const utm = (qs.get('utm_source') || '').toLowerCase();
   const source = (qs.get('fbclid') || ['facebook', 'fb', 'ig', 'instagram', 'meta'].includes(utm)) ? 'Meta ad' : 'Website';
   const summary = (qualified) =>
-    `${qualified ? 'Applied' : 'Applied but did not qualify'} for a free website preview (US ad${niche ? ', ' + niche : ''}). ` +
+    `${qualified ? 'Applied' : 'Applied but did not qualify'} for a free website preview + Black Friday $500 credit (US ad${niche ? ', ' + niche : ''}). ` +
     `Business: ${val('a-biz')} (${ans.type}), ${val('a-city')}. Website now: ${ans.site}${val('a-url') ? ' (' + val('a-url') + ')' : ''}. ` +
-    `Budget from $1,500 + 50% deposit: ${ans.budget}. Wants it live: ${ans.when}.`;
+    `Budget from $1,500 ($1,000 after $500 credit) + 50% deposit: ${ans.budget}. Wants it live: ${ans.when}.`;
   const toCrm = (qualified) => {
     try {
       const d = new FormData();
@@ -284,7 +295,7 @@ const faqs = [
       $('yes-h').textContent = 'You\'re in ✓';
       $('yes-lead').textContent = 'Thanks! My team will email you within 24 hours to book a quick call about your preview.';
     }
-    if (TEU_EMAIL) $('yes-mail').innerHTML = `Prefer email? Write to <a href="mailto:${TEU_EMAIL}?subject=${encodeURIComponent('Free website preview: ' + val('a-biz'))}">${TEU_EMAIL}</a>.`;
+    if (TEU_EMAIL) $('yes-mail').innerHTML = `Prefer email? Write to <a href="mailto:${TEU_EMAIL}?subject=${encodeURIComponent('Free preview + $500 credit: ' + val('a-biz'))}">${TEU_EMAIL}</a>.`;
   };
 
   $('next').addEventListener('click', () => {
@@ -308,7 +319,7 @@ const faqs = [
       if (!val('a-name')) return fail('Add your name.');
       if (!/^\S+@\S+\.\S+$/.test(val('a-email'))) return fail('Add an email address we can reach you on.');
       if (val('a-phone').replace(/\D/g, '').length < 10) return fail('Add a phone number we can reach you on.');
-      track('Lead', { content_name: 'us_free_preview', value: 1500, currency: 'USD' });
+      track('Lead', { content_name: 'us_free_preview', value: 1000, currency: 'USD' });
       toCrm(true);
       openBooking();
       cur = 'yes'; show('yes');
@@ -335,6 +346,12 @@ const faqs = [
   .mini li::before { content: '✓ '; color: var(--accent); }
   @media (max-width: 900px) { .lede { font-size: .98rem; } .mini { display: none; } }
 
+  .bf { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; background: linear-gradient(135deg, #7df0d8, #4fd1b8 55%, #2aa58d); color: #04201b; border-radius: 16px; padding: 12px 18px; margin-bottom: clamp(16px, 3vw, 28px); font-weight: 700; }
+  .bf-tag { background: #000; color: #fff; font-weight: 800; letter-spacing: .08em; font-size: .8rem; padding: 6px 10px; border-radius: 8px; }
+  .bf-txt { font-size: clamp(1rem, .9rem + .5vw, 1.25rem); } .bf-txt b { font-weight: 900; }
+  .bf-spots { margin-left: auto; display: flex; align-items: center; gap: 10px; font-size: .92rem; }
+  .dots { display: flex; gap: 4px; } .dots i { width: 10px; height: 14px; border-radius: 3px; background: #04201b; opacity: .85; }
+  @media (max-width: 700px) { .bf { padding: 10px 14px; gap: 6px 10px; border-radius: 12px; } .bf-tag { font-size: .68rem; padding: 4px 8px; } .bf-txt { font-size: 1rem; } .dots { display: none; } .bf-spots { margin-left: 0; width: 100%; font-size: .85rem; } }
   .card { background: var(--ink); color: #0b0f0e; border-radius: 22px; padding: clamp(18px, 3vw, 30px); box-shadow: 0 30px 80px -30px rgba(0,0,0,.8); position: sticky; top: 88px; scroll-margin-top: 80px; }
   @media (max-width: 900px) { .card { position: static; } }
   .card-head { display: grid; gap: 4px; margin-bottom: 14px; }
